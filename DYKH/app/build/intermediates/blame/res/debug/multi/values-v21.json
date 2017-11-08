@@ -1,0 +1,3654 @@
+[
+    {
+        "outputFile": "/Users/gael/Documents/AndroidProjects/DYKH/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-v21/values-v21.xml",
+        "map": [
+            {
+                "to": {
+                    "startLine": 2,
+                    "startColumn": 4,
+                    "startOffset": 55,
+                    "endLine": 13,
+                    "endColumn": 24,
+                    "endOffset": 586
+                },
+                "from": {
+                    "file": "/Users/gael/Documents/AndroidProjects/DYKH/app/src/main/res/values-v21/attrs.xml",
+                    "position": {
+                        "startLine": 2,
+                        "startColumn": 4,
+                        "startOffset": 57,
+                        "endLine": 13,
+                        "endColumn": 24,
+                        "endOffset": 607
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 14,
+                    "startColumn": 4,
+                    "startOffset": 591,
+                    "endLine": 28,
+                    "endColumn": 24,
+                    "endOffset": 1348
+                },
+                "from": {
+                    "file": "/Users/gael/Documents/AndroidProjects/DYKH/app/src/main/res/values-v21/attrs.xml",
+                    "position": {
+                        "startLine": 14,
+                        "startColumn": 4,
+                        "startOffset": 613,
+                        "endLine": 28,
+                        "endColumn": 24,
+                        "endOffset": 1395
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 29,
+                    "startColumn": 4,
+                    "startOffset": 1353,
+                    "endLine": 34,
+                    "endColumn": 16,
+                    "endOffset": 1669
+                },
+                "from": {
+                    "file": "/Users/gael/Documents/AndroidProjects/DYKH/app/src/main/res/values-v21/styles.xml",
+                    "position": {
+                        "startLine": 1,
+                        "startColumn": 12,
+                        "startOffset": 25,
+                        "endLine": 6,
+                        "endColumn": 16,
+                        "endOffset": 346
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 35,
+                    "startColumn": 4,
+                    "startOffset": 1674,
+                    "endColumn": 90,
+                    "endOffset": 1760
+                },
+                "from": {
+                    "file": "/Users/gael/Documents/AndroidProjects/DYKH/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values-v21/values-v21.xml",
+                    "position": {
+                        "startLine": 2,
+                        "startColumn": 4,
+                        "startOffset": 55,
+                        "endColumn": 90,
+                        "endOffset": 141
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 36,
+                    "startColumn": 4,
+                    "startOffset": 1765,
+                    "endColumn": 102,
+                    "endOffset": 1863
+                },
+                "from": {
+                    "file": "/Users/gael/Documents/AndroidProjects/DYKH/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values-v21/values-v21.xml",
+                    "position": {
+                        "startLine": 3,
+                        "startColumn": 4,
+                        "startOffset": 146,
+                        "endColumn": 102,
+                        "endOffset": 244
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 37,
+                    "startColumn": 4,
+                    "startOffset": 1868,
+                    "endColumn": 102,
+                    "endOffset": 1966
+                },
+                "from": {
+                    "file": "/Users/gael/Documents/AndroidProjects/DYKH/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values-v21/values-v21.xml",
+                    "position": {
+                        "startLine": 4,
+                        "startColumn": 4,
+                        "startOffset": 249,
+                        "endColumn": 102,
+                        "endOffset": 347
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 38,
+                    "startColumn": 4,
+                    "startOffset": 1971,
+                    "endColumn": 104,
+                    "endOffset": 2071
+                },
+                "from": {
+                    "file": "/Users/gael/Documents/AndroidProjects/DYKH/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values-v21/values-v21.xml",
+                    "position": {
+                        "startLine": 5,
+                        "startColumn": 4,
+                        "startOffset": 352,
+                        "endColumn": 104,
+                        "endOffset": 452
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 39,
+                    "startColumn": 4,
+                    "startOffset": 2076,
+                    "endColumn": 106,
+                    "endOffset": 2178
+                },
+                "from": {
+                    "file": "/Users/gael/Documents/AndroidProjects/DYKH/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values-v21/values-v21.xml",
+                    "position": {
+                        "startLine": 6,
+                        "startColumn": 4,
+                        "startOffset": 457,
+                        "endColumn": 106,
+                        "endOffset": 559
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 40,
+                    "startColumn": 4,
+                    "startOffset": 2183,
+                    "endColumn": 108,
+                    "endOffset": 2287
+                },
+                "from": {
+                    "file": "/Users/gael/Documents/AndroidProjects/DYKH/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values-v21/values-v21.xml",
+                    "position": {
+                        "startLine": 7,
+                        "startColumn": 4,
+                        "startOffset": 564,
+                        "endColumn": 108,
+                        "endOffset": 668
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 41,
+                    "startColumn": 4,
+                    "startOffset": 2292,
+                    "endColumn": 108,
+                    "endOffset": 2396
+                },
+                "from": {
+                    "file": "/Users/gael/Documents/AndroidProjects/DYKH/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values-v21/values-v21.xml",
+                    "position": {
+                        "startLine": 8,
+                        "startColumn": 4,
+                        "startOffset": 673,
+                        "endColumn": 108,
+                        "endOffset": 777
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 42,
+                    "startColumn": 4,
+                    "startOffset": 2401,
+                    "endColumn": 108,
+                    "endOffset": 2505
+                },
+                "from": {
+                    "file": "/Users/gael/Documents/AndroidProjects/DYKH/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values-v21/values-v21.xml",
+                    "position": {
+                        "startLine": 9,
+                        "startColumn": 4,
+                        "startOffset": 782,
+                        "endColumn": 108,
+                        "endOffset": 886
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 43,
+                    "startColumn": 4,
+                    "startOffset": 2510,
+                    "endColumn": 108,
+                    "endOffset": 2614
+                },
+                "from": {
+                    "file": "/Users/gael/Documents/AndroidProjects/DYKH/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values-v21/values-v21.xml",
+                    "position": {
+                        "startLine": 10,
+                        "startColumn": 4,
+                        "startOffset": 891,
+                        "endColumn": 108,
+                        "endOffset": 995
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 44,
+                    "startColumn": 4,
+                    "startOffset": 2619,
+                    "endColumn": 108,
+                    "endOffset": 2723
+                },
+                "from": {
+                    "file": "/Users/gael/Documents/AndroidProjects/DYKH/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values-v21/values-v21.xml",
+                    "position": {
+                        "startLine": 11,
+                        "startColumn": 4,
+                        "startOffset": 1000,
+                        "endColumn": 108,
+                        "endOffset": 1104
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 45,
+                    "startColumn": 4,
+                    "startOffset": 2728,
+                    "endColumn": 106,
+                    "endOffset": 2830
+                },
+                "from": {
+                    "file": "/Users/gael/Documents/AndroidProjects/DYKH/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values-v21/values-v21.xml",
+                    "position": {
+                        "startLine": 12,
+                        "startColumn": 4,
+                        "startOffset": 1109,
+                        "endColumn": 106,
+                        "endOffset": 1211
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 46,
+                    "startColumn": 4,
+                    "startOffset": 2835,
+                    "endColumn": 102,
+                    "endOffset": 2933
+                },
+                "from": {
+                    "file": "/Users/gael/Documents/AndroidProjects/DYKH/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values-v21/values-v21.xml",
+                    "position": {
+                        "startLine": 13,
+                        "startColumn": 4,
+                        "startOffset": 1216,
+                        "endColumn": 102,
+                        "endOffset": 1314
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 47,
+                    "startColumn": 4,
+                    "startOffset": 2938,
+                    "endColumn": 118,
+                    "endOffset": 3052
+                },
+                "from": {
+                    "file": "/Users/gael/Documents/AndroidProjects/DYKH/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values-v21/values-v21.xml",
+                    "position": {
+                        "startLine": 14,
+                        "startColumn": 4,
+                        "startOffset": 1319,
+                        "endColumn": 118,
+                        "endOffset": 1433
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 48,
+                    "startColumn": 4,
+                    "startOffset": 3057,
+                    "endLine": 49,
+                    "endColumn": 12,
+                    "endOffset": 3207
+                },
+                "from": {
+                    "file": "/Users/gael/Documents/AndroidProjects/DYKH/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values-v21/values-v21.xml",
+                    "position": {
+                        "startLine": 15,
+                        "startColumn": 4,
+                        "startOffset": 1438,
+                        "endLine": 16,
+                        "endColumn": 12,
+                        "endOffset": 1588
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 50,
+                    "startColumn": 4,
+                    "startOffset": 3212,
+                    "endLine": 51,
+                    "endColumn": 12,
+                    "endOffset": 3362
+                },
+                "from": {
+                    "file": "/Users/gael/Documents/AndroidProjects/DYKH/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values-v21/values-v21.xml",
+                    "position": {
+                        "startLine": 17,
+                        "startColumn": 4,
+                        "startOffset": 1593,
+                        "endLine": 18,
+                        "endColumn": 12,
+                        "endOffset": 1743
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 52,
+                    "startColumn": 4,
+                    "startOffset": 3367,
+                    "endColumn": 104,
+                    "endOffset": 3467
+                },
+                "from": {
+                    "file": "/Users/gael/Documents/AndroidProjects/DYKH/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values-v21/values-v21.xml",
+                    "position": {
+                        "startLine": 19,
+                        "startColumn": 4,
+                        "startOffset": 1748,
+                        "endColumn": 104,
+                        "endOffset": 1848
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 53,
+                    "startColumn": 4,
+                    "startOffset": 3472,
+                    "endColumn": 120,
+                    "endOffset": 3588
+                },
+                "from": {
+                    "file": "/Users/gael/Documents/AndroidProjects/DYKH/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values-v21/values-v21.xml",
+                    "position": {
+                        "startLine": 20,
+                        "startColumn": 4,
+                        "startOffset": 1853,
+                        "endColumn": 120,
+                        "endOffset": 1969
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 54,
+                    "startColumn": 4,
+                    "startOffset": 3593,
+                    "endColumn": 100,
+                    "endOffset": 3689
+                },
+                "from": {
+                    "file": "/Users/gael/Documents/AndroidProjects/DYKH/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values-v21/values-v21.xml",
+                    "position": {
+                        "startLine": 21,
+                        "startColumn": 4,
+                        "startOffset": 1974,
+                        "endColumn": 100,
+                        "endOffset": 2070
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 55,
+                    "startColumn": 4,
+                    "startOffset": 3694,
+                    "endLine": 56,
+                    "endColumn": 12,
+                    "endOffset": 3836
+                },
+                "from": {
+                    "file": "/Users/gael/Documents/AndroidProjects/DYKH/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values-v21/values-v21.xml",
+                    "position": {
+                        "startLine": 22,
+                        "startColumn": 4,
+                        "startOffset": 2075,
+                        "endLine": 23,
+                        "endColumn": 12,
+                        "endOffset": 2217
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 57,
+                    "startColumn": 4,
+                    "startOffset": 3841,
+                    "endLine": 58,
+                    "endColumn": 12,
+                    "endOffset": 3977
+                },
+                "from": {
+                    "file": "/Users/gael/Documents/AndroidProjects/DYKH/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values-v21/values-v21.xml",
+                    "position": {
+                        "startLine": 24,
+                        "startColumn": 4,
+                        "startOffset": 2222,
+                        "endLine": 25,
+                        "endColumn": 12,
+                        "endOffset": 2358
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 59,
+                    "startColumn": 4,
+                    "startOffset": 3982,
+                    "endColumn": 102,
+                    "endOffset": 4080
+                },
+                "from": {
+                    "file": "/Users/gael/Documents/AndroidProjects/DYKH/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values-v21/values-v21.xml",
+                    "position": {
+                        "startLine": 26,
+                        "startColumn": 4,
+                        "startOffset": 2363,
+                        "endColumn": 102,
+                        "endOffset": 2461
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 60,
+                    "startColumn": 4,
+                    "startOffset": 4085,
+                    "endColumn": 118,
+                    "endOffset": 4199
+                },
+                "from": {
+                    "file": "/Users/gael/Documents/AndroidProjects/DYKH/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values-v21/values-v21.xml",
+                    "position": {
+                        "startLine": 27,
+                        "startColumn": 4,
+                        "startOffset": 2466,
+                        "endColumn": 118,
+                        "endOffset": 2580
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 61,
+                    "startColumn": 4,
+                    "startOffset": 4204,
+                    "endColumn": 106,
+                    "endOffset": 4306
+                },
+                "from": {
+                    "file": "/Users/gael/Documents/AndroidProjects/DYKH/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values-v21/values-v21.xml",
+                    "position": {
+                        "startLine": 28,
+                        "startColumn": 4,
+                        "startOffset": 2585,
+                        "endColumn": 106,
+                        "endOffset": 2687
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 62,
+                    "startColumn": 4,
+                    "startOffset": 4311,
+                    "endColumn": 102,
+                    "endOffset": 4409
+                },
+                "from": {
+                    "file": "/Users/gael/Documents/AndroidProjects/DYKH/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values-v21/values-v21.xml",
+                    "position": {
+                        "startLine": 29,
+                        "startColumn": 4,
+                        "startOffset": 2692,
+                        "endColumn": 102,
+                        "endOffset": 2790
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 63,
+                    "startColumn": 4,
+                    "startOffset": 4414,
+                    "endLine": 64,
+                    "endColumn": 12,
+                    "endOffset": 4564
+                },
+                "from": {
+                    "file": "/Users/gael/Documents/AndroidProjects/DYKH/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values-v21/values-v21.xml",
+                    "position": {
+                        "startLine": 30,
+                        "startColumn": 4,
+                        "startOffset": 2795,
+                        "endLine": 31,
+                        "endColumn": 12,
+                        "endOffset": 2945
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 65,
+                    "startColumn": 4,
+                    "startOffset": 4569,
+                    "endLine": 66,
+                    "endColumn": 12,
+                    "endOffset": 4735
+                },
+                "from": {
+                    "file": "/Users/gael/Documents/AndroidProjects/DYKH/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values-v21/values-v21.xml",
+                    "position": {
+                        "startLine": 32,
+                        "startColumn": 4,
+                        "startOffset": 2950,
+                        "endLine": 33,
+                        "endColumn": 12,
+                        "endOffset": 3116
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 67,
+                    "startColumn": 4,
+                    "startOffset": 4740,
+                    "endLine": 68,
+                    "endColumn": 12,
+                    "endOffset": 4884
+                },
+                "from": {
+                    "file": "/Users/gael/Documents/AndroidProjects/DYKH/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values-v21/values-v21.xml",
+                    "position": {
+                        "startLine": 34,
+                        "startColumn": 4,
+                        "startOffset": 3121,
+                        "endLine": 35,
+                        "endColumn": 12,
+                        "endOffset": 3265
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 69,
+                    "startColumn": 4,
+                    "startOffset": 4889,
+                    "endLine": 70,
+                    "endColumn": 12,
+                    "endOffset": 5049
+                },
+                "from": {
+                    "file": "/Users/gael/Documents/AndroidProjects/DYKH/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values-v21/values-v21.xml",
+                    "position": {
+                        "startLine": 36,
+                        "startColumn": 4,
+                        "startOffset": 3270,
+                        "endLine": 37,
+                        "endColumn": 12,
+                        "endOffset": 3430
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 71,
+                    "startColumn": 4,
+                    "startOffset": 5054,
+                    "endLine": 72,
+                    "endColumn": 12,
+                    "endOffset": 5206
+                },
+                "from": {
+                    "file": "/Users/gael/Documents/AndroidProjects/DYKH/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values-v21/values-v21.xml",
+                    "position": {
+                        "startLine": 38,
+                        "startColumn": 4,
+                        "startOffset": 3435,
+                        "endLine": 39,
+                        "endColumn": 12,
+                        "endOffset": 3587
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 73,
+                    "startColumn": 4,
+                    "startOffset": 5211,
+                    "endLine": 74,
+                    "endColumn": 12,
+                    "endOffset": 5357
+                },
+                "from": {
+                    "file": "/Users/gael/Documents/AndroidProjects/DYKH/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values-v21/values-v21.xml",
+                    "position": {
+                        "startLine": 40,
+                        "startColumn": 4,
+                        "startOffset": 3592,
+                        "endLine": 41,
+                        "endColumn": 12,
+                        "endOffset": 3738
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 75,
+                    "startColumn": 4,
+                    "startOffset": 5362,
+                    "endColumn": 118,
+                    "endOffset": 5476
+                },
+                "from": {
+                    "file": "/Users/gael/Documents/AndroidProjects/DYKH/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values-v21/values-v21.xml",
+                    "position": {
+                        "startLine": 42,
+                        "startColumn": 4,
+                        "startOffset": 3743,
+                        "endColumn": 118,
+                        "endOffset": 3857
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 76,
+                    "startColumn": 4,
+                    "startOffset": 5481,
+                    "endLine": 80,
+                    "endColumn": 12,
+                    "endOffset": 5848
+                },
+                "from": {
+                    "file": "/Users/gael/Documents/AndroidProjects/DYKH/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values-v21/values-v21.xml",
+                    "position": {
+                        "startLine": 43,
+                        "startColumn": 4,
+                        "startOffset": 3862,
+                        "endLine": 47,
+                        "endColumn": 12,
+                        "endOffset": 4229
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 81,
+                    "startColumn": 4,
+                    "startOffset": 5853,
+                    "endLine": 82,
+                    "endColumn": 12,
+                    "endOffset": 5997
+                },
+                "from": {
+                    "file": "/Users/gael/Documents/AndroidProjects/DYKH/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values-v21/values-v21.xml",
+                    "position": {
+                        "startLine": 48,
+                        "startColumn": 4,
+                        "startOffset": 4234,
+                        "endLine": 49,
+                        "endColumn": 12,
+                        "endOffset": 4378
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 83,
+                    "startColumn": 4,
+                    "startOffset": 6002,
+                    "endLine": 84,
+                    "endColumn": 12,
+                    "endOffset": 6146
+                },
+                "from": {
+                    "file": "/Users/gael/Documents/AndroidProjects/DYKH/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values-v21/values-v21.xml",
+                    "position": {
+                        "startLine": 50,
+                        "startColumn": 4,
+                        "startOffset": 4383,
+                        "endLine": 51,
+                        "endColumn": 12,
+                        "endOffset": 4527
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 85,
+                    "startColumn": 4,
+                    "startOffset": 6151,
+                    "endColumn": 111,
+                    "endOffset": 6258
+                },
+                "from": {
+                    "file": "/Users/gael/Documents/AndroidProjects/DYKH/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values-v21/values-v21.xml",
+                    "position": {
+                        "startLine": 52,
+                        "startColumn": 4,
+                        "startOffset": 4532,
+                        "endColumn": 111,
+                        "endOffset": 4639
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 86,
+                    "startColumn": 4,
+                    "startOffset": 6263,
+                    "endColumn": 146,
+                    "endOffset": 6405
+                },
+                "from": {
+                    "file": "/Users/gael/Documents/AndroidProjects/DYKH/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values-v21/values-v21.xml",
+                    "position": {
+                        "startLine": 53,
+                        "startColumn": 4,
+                        "startOffset": 4644,
+                        "endColumn": 146,
+                        "endOffset": 4786
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 87,
+                    "startColumn": 4,
+                    "startOffset": 6410,
+                    "endLine": 88,
+                    "endColumn": 12,
+                    "endOffset": 6558
+                },
+                "from": {
+                    "file": "/Users/gael/Documents/AndroidProjects/DYKH/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values-v21/values-v21.xml",
+                    "position": {
+                        "startLine": 54,
+                        "startColumn": 4,
+                        "startOffset": 4791,
+                        "endLine": 55,
+                        "endColumn": 12,
+                        "endOffset": 4939
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 89,
+                    "startColumn": 4,
+                    "startOffset": 6563,
+                    "endLine": 90,
+                    "endColumn": 12,
+                    "endOffset": 6705
+                },
+                "from": {
+                    "file": "/Users/gael/Documents/AndroidProjects/DYKH/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values-v21/values-v21.xml",
+                    "position": {
+                        "startLine": 56,
+                        "startColumn": 4,
+                        "startOffset": 4944,
+                        "endLine": 57,
+                        "endColumn": 12,
+                        "endOffset": 5086
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 91,
+                    "startColumn": 4,
+                    "startOffset": 6710,
+                    "endColumn": 74,
+                    "endOffset": 6780
+                },
+                "from": {
+                    "file": "/Users/gael/Documents/AndroidProjects/DYKH/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values-v21/values-v21.xml",
+                    "position": {
+                        "startLine": 58,
+                        "startColumn": 4,
+                        "startOffset": 5091,
+                        "endColumn": 74,
+                        "endOffset": 5161
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 92,
+                    "startColumn": 4,
+                    "startOffset": 6785,
+                    "endColumn": 88,
+                    "endOffset": 6869
+                },
+                "from": {
+                    "file": "/Users/gael/Documents/AndroidProjects/DYKH/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values-v21/values-v21.xml",
+                    "position": {
+                        "startLine": 59,
+                        "startColumn": 4,
+                        "startOffset": 5166,
+                        "endColumn": 88,
+                        "endOffset": 5250
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 93,
+                    "startColumn": 4,
+                    "startOffset": 6874,
+                    "endColumn": 86,
+                    "endOffset": 6956
+                },
+                "from": {
+                    "file": "/Users/gael/Documents/AndroidProjects/DYKH/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values-v21/values-v21.xml",
+                    "position": {
+                        "startLine": 60,
+                        "startColumn": 4,
+                        "startOffset": 5255,
+                        "endColumn": 86,
+                        "endOffset": 5337
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 94,
+                    "startColumn": 4,
+                    "startOffset": 6961,
+                    "endColumn": 100,
+                    "endOffset": 7057
+                },
+                "from": {
+                    "file": "/Users/gael/Documents/AndroidProjects/DYKH/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values-v21/values-v21.xml",
+                    "position": {
+                        "startLine": 61,
+                        "startColumn": 4,
+                        "startOffset": 5342,
+                        "endColumn": 100,
+                        "endOffset": 5438
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 95,
+                    "startColumn": 4,
+                    "startOffset": 7062,
+                    "endColumn": 102,
+                    "endOffset": 7160
+                },
+                "from": {
+                    "file": "/Users/gael/Documents/AndroidProjects/DYKH/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values-v21/values-v21.xml",
+                    "position": {
+                        "startLine": 62,
+                        "startColumn": 4,
+                        "startOffset": 5443,
+                        "endColumn": 102,
+                        "endOffset": 5541
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 96,
+                    "startColumn": 4,
+                    "startOffset": 7165,
+                    "endLine": 139,
+                    "endColumn": 12,
+                    "endOffset": 10228
+                },
+                "from": {
+                    "file": "/Users/gael/Documents/AndroidProjects/DYKH/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values-v21/values-v21.xml",
+                    "position": {
+                        "startLine": 63,
+                        "startColumn": 4,
+                        "startOffset": 5546,
+                        "endLine": 106,
+                        "endColumn": 12,
+                        "endOffset": 8609
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 140,
+                    "startColumn": 4,
+                    "startOffset": 10233,
+                    "endLine": 142,
+                    "endColumn": 12,
+                    "endOffset": 10414
+                },
+                "from": {
+                    "file": "/Users/gael/Documents/AndroidProjects/DYKH/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values-v21/values-v21.xml",
+                    "position": {
+                        "startLine": 107,
+                        "startColumn": 4,
+                        "startOffset": 8614,
+                        "endLine": 109,
+                        "endColumn": 12,
+                        "endOffset": 8795
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 143,
+                    "startColumn": 4,
+                    "startOffset": 10419,
+                    "endLine": 186,
+                    "endColumn": 12,
+                    "endOffset": 13494
+                },
+                "from": {
+                    "file": "/Users/gael/Documents/AndroidProjects/DYKH/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values-v21/values-v21.xml",
+                    "position": {
+                        "startLine": 110,
+                        "startColumn": 4,
+                        "startOffset": 8800,
+                        "endLine": 153,
+                        "endColumn": 12,
+                        "endOffset": 11875
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 187,
+                    "startColumn": 4,
+                    "startOffset": 13499,
+                    "endLine": 189,
+                    "endColumn": 12,
+                    "endOffset": 13692
+                },
+                "from": {
+                    "file": "/Users/gael/Documents/AndroidProjects/DYKH/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values-v21/values-v21.xml",
+                    "position": {
+                        "startLine": 154,
+                        "startColumn": 4,
+                        "startOffset": 11880,
+                        "endLine": 156,
+                        "endColumn": 12,
+                        "endOffset": 12073
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 190,
+                    "startColumn": 4,
+                    "startOffset": 13697,
+                    "endLine": 192,
+                    "endColumn": 12,
+                    "endOffset": 13892
+                },
+                "from": {
+                    "file": "/Users/gael/Documents/AndroidProjects/DYKH/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values-v21/values-v21.xml",
+                    "position": {
+                        "startLine": 157,
+                        "startColumn": 4,
+                        "startOffset": 12078,
+                        "endLine": 159,
+                        "endColumn": 12,
+                        "endOffset": 12273
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 193,
+                    "startColumn": 4,
+                    "startOffset": 13897,
+                    "endLine": 194,
+                    "endColumn": 12,
+                    "endOffset": 14015
+                },
+                "from": {
+                    "file": "/Users/gael/Documents/AndroidProjects/DYKH/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values-v21/values-v21.xml",
+                    "position": {
+                        "startLine": 160,
+                        "startColumn": 4,
+                        "startOffset": 12278,
+                        "endLine": 161,
+                        "endColumn": 12,
+                        "endOffset": 12396
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 195,
+                    "startColumn": 4,
+                    "startOffset": 14020,
+                    "endLine": 196,
+                    "endColumn": 12,
+                    "endOffset": 14138
+                },
+                "from": {
+                    "file": "/Users/gael/Documents/AndroidProjects/DYKH/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values-v21/values-v21.xml",
+                    "position": {
+                        "startLine": 162,
+                        "startColumn": 4,
+                        "startOffset": 12401,
+                        "endLine": 163,
+                        "endColumn": 12,
+                        "endOffset": 12519
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 197,
+                    "startColumn": 4,
+                    "startOffset": 14143,
+                    "endLine": 198,
+                    "endColumn": 12,
+                    "endOffset": 14251
+                },
+                "from": {
+                    "file": "/Users/gael/Documents/AndroidProjects/DYKH/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values-v21/values-v21.xml",
+                    "position": {
+                        "startLine": 164,
+                        "startColumn": 4,
+                        "startOffset": 12524,
+                        "endLine": 165,
+                        "endColumn": 12,
+                        "endOffset": 12632
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 199,
+                    "startColumn": 4,
+                    "startOffset": 14256,
+                    "endLine": 201,
+                    "endColumn": 12,
+                    "endOffset": 14434
+                },
+                "from": {
+                    "file": "/Users/gael/Documents/AndroidProjects/DYKH/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values-v21/values-v21.xml",
+                    "position": {
+                        "startLine": 166,
+                        "startColumn": 4,
+                        "startOffset": 12637,
+                        "endLine": 168,
+                        "endColumn": 12,
+                        "endOffset": 12815
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 202,
+                    "startColumn": 4,
+                    "startOffset": 14439,
+                    "endLine": 203,
+                    "endColumn": 12,
+                    "endOffset": 14565
+                },
+                "from": {
+                    "file": "/Users/gael/Documents/AndroidProjects/DYKH/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values-v21/values-v21.xml",
+                    "position": {
+                        "startLine": 169,
+                        "startColumn": 4,
+                        "startOffset": 12820,
+                        "endLine": 170,
+                        "endColumn": 12,
+                        "endOffset": 12946
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 204,
+                    "startColumn": 4,
+                    "startOffset": 14570,
+                    "endLine": 206,
+                    "endColumn": 12,
+                    "endOffset": 14766
+                },
+                "from": {
+                    "file": "/Users/gael/Documents/AndroidProjects/DYKH/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values-v21/values-v21.xml",
+                    "position": {
+                        "startLine": 171,
+                        "startColumn": 4,
+                        "startOffset": 12951,
+                        "endLine": 173,
+                        "endColumn": 12,
+                        "endOffset": 13147
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 207,
+                    "startColumn": 4,
+                    "startOffset": 14771,
+                    "endColumn": 88,
+                    "endOffset": 14855
+                },
+                "from": {
+                    "file": "/Users/gael/Documents/AndroidProjects/DYKH/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values-v21/values-v21.xml",
+                    "position": {
+                        "startLine": 174,
+                        "startColumn": 4,
+                        "startOffset": 13152,
+                        "endColumn": 88,
+                        "endOffset": 13236
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 208,
+                    "startColumn": 4,
+                    "startOffset": 14860,
+                    "endColumn": 110,
+                    "endOffset": 14966
+                },
+                "from": {
+                    "file": "/Users/gael/Documents/AndroidProjects/DYKH/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values-v21/values-v21.xml",
+                    "position": {
+                        "startLine": 175,
+                        "startColumn": 4,
+                        "startOffset": 13241,
+                        "endColumn": 110,
+                        "endOffset": 13347
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 209,
+                    "startColumn": 4,
+                    "startOffset": 14971,
+                    "endLine": 211,
+                    "endColumn": 12,
+                    "endOffset": 15199
+                },
+                "from": {
+                    "file": "/Users/gael/Documents/AndroidProjects/DYKH/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values-v21/values-v21.xml",
+                    "position": {
+                        "startLine": 176,
+                        "startColumn": 4,
+                        "startOffset": 13352,
+                        "endLine": 178,
+                        "endColumn": 12,
+                        "endOffset": 13580
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 212,
+                    "startColumn": 4,
+                    "startOffset": 15204,
+                    "endColumn": 100,
+                    "endOffset": 15300
+                },
+                "from": {
+                    "file": "/Users/gael/Documents/AndroidProjects/DYKH/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values-v21/values-v21.xml",
+                    "position": {
+                        "startLine": 179,
+                        "startColumn": 4,
+                        "startOffset": 13585,
+                        "endColumn": 100,
+                        "endOffset": 13681
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 213,
+                    "startColumn": 4,
+                    "startOffset": 15305,
+                    "endColumn": 94,
+                    "endOffset": 15395
+                },
+                "from": {
+                    "file": "/Users/gael/Documents/AndroidProjects/DYKH/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values-v21/values-v21.xml",
+                    "position": {
+                        "startLine": 180,
+                        "startColumn": 4,
+                        "startOffset": 13686,
+                        "endColumn": 94,
+                        "endOffset": 13776
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 214,
+                    "startColumn": 4,
+                    "startOffset": 15400,
+                    "endColumn": 122,
+                    "endOffset": 15518
+                },
+                "from": {
+                    "file": "/Users/gael/Documents/AndroidProjects/DYKH/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values-v21/values-v21.xml",
+                    "position": {
+                        "startLine": 181,
+                        "startColumn": 4,
+                        "startOffset": 13781,
+                        "endColumn": 122,
+                        "endOffset": 13899
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 215,
+                    "startColumn": 4,
+                    "startOffset": 15523,
+                    "endColumn": 128,
+                    "endOffset": 15647
+                },
+                "from": {
+                    "file": "/Users/gael/Documents/AndroidProjects/DYKH/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values-v21/values-v21.xml",
+                    "position": {
+                        "startLine": 182,
+                        "startColumn": 4,
+                        "startOffset": 13904,
+                        "endColumn": 128,
+                        "endOffset": 14028
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 216,
+                    "startColumn": 4,
+                    "startOffset": 15652,
+                    "endColumn": 116,
+                    "endOffset": 15764
+                },
+                "from": {
+                    "file": "/Users/gael/Documents/AndroidProjects/DYKH/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values-v21/values-v21.xml",
+                    "position": {
+                        "startLine": 183,
+                        "startColumn": 4,
+                        "startOffset": 14033,
+                        "endColumn": 116,
+                        "endOffset": 14145
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 217,
+                    "startColumn": 4,
+                    "startOffset": 15769,
+                    "endLine": 219,
+                    "endColumn": 12,
+                    "endOffset": 15941
+                },
+                "from": {
+                    "file": "/Users/gael/Documents/AndroidProjects/DYKH/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values-v21/values-v21.xml",
+                    "position": {
+                        "startLine": 184,
+                        "startColumn": 4,
+                        "startOffset": 14150,
+                        "endLine": 186,
+                        "endColumn": 12,
+                        "endOffset": 14322
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 220,
+                    "startColumn": 4,
+                    "startOffset": 15946,
+                    "endColumn": 98,
+                    "endOffset": 16040
+                },
+                "from": {
+                    "file": "/Users/gael/Documents/AndroidProjects/DYKH/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values-v21/values-v21.xml",
+                    "position": {
+                        "startLine": 187,
+                        "startColumn": 4,
+                        "startOffset": 14327,
+                        "endColumn": 98,
+                        "endOffset": 14421
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 221,
+                    "startColumn": 4,
+                    "startOffset": 16045,
+                    "endLine": 222,
+                    "endColumn": 12,
+                    "endOffset": 16175
+                },
+                "from": {
+                    "file": "/Users/gael/Documents/AndroidProjects/DYKH/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values-v21/values-v21.xml",
+                    "position": {
+                        "startLine": 188,
+                        "startColumn": 4,
+                        "startOffset": 14426,
+                        "endLine": 189,
+                        "endColumn": 12,
+                        "endOffset": 14556
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 223,
+                    "startColumn": 4,
+                    "startOffset": 16180,
+                    "endLine": 224,
+                    "endColumn": 12,
+                    "endOffset": 16318
+                },
+                "from": {
+                    "file": "/Users/gael/Documents/AndroidProjects/DYKH/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values-v21/values-v21.xml",
+                    "position": {
+                        "startLine": 190,
+                        "startColumn": 4,
+                        "startOffset": 14561,
+                        "endLine": 191,
+                        "endColumn": 12,
+                        "endOffset": 14699
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 225,
+                    "startColumn": 4,
+                    "startOffset": 16323,
+                    "endLine": 226,
+                    "endColumn": 12,
+                    "endOffset": 16453
+                },
+                "from": {
+                    "file": "/Users/gael/Documents/AndroidProjects/DYKH/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values-v21/values-v21.xml",
+                    "position": {
+                        "startLine": 192,
+                        "startColumn": 4,
+                        "startOffset": 14704,
+                        "endLine": 193,
+                        "endColumn": 12,
+                        "endOffset": 14834
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 227,
+                    "startColumn": 4,
+                    "startOffset": 16458,
+                    "endLine": 228,
+                    "endColumn": 12,
+                    "endOffset": 16572
+                },
+                "from": {
+                    "file": "/Users/gael/Documents/AndroidProjects/DYKH/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values-v21/values-v21.xml",
+                    "position": {
+                        "startLine": 194,
+                        "startColumn": 4,
+                        "startOffset": 14839,
+                        "endLine": 195,
+                        "endColumn": 12,
+                        "endOffset": 14953
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 229,
+                    "startColumn": 4,
+                    "startOffset": 16577,
+                    "endLine": 232,
+                    "endColumn": 12,
+                    "endOffset": 16773
+                },
+                "from": {
+                    "file": "/Users/gael/Documents/AndroidProjects/DYKH/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values-v21/values-v21.xml",
+                    "position": {
+                        "startLine": 196,
+                        "startColumn": 4,
+                        "startOffset": 14958,
+                        "endLine": 199,
+                        "endColumn": 12,
+                        "endOffset": 15154
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 233,
+                    "startColumn": 4,
+                    "startOffset": 16778,
+                    "endLine": 234,
+                    "endColumn": 12,
+                    "endOffset": 16892
+                },
+                "from": {
+                    "file": "/Users/gael/Documents/AndroidProjects/DYKH/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values-v21/values-v21.xml",
+                    "position": {
+                        "startLine": 200,
+                        "startColumn": 4,
+                        "startOffset": 15159,
+                        "endLine": 201,
+                        "endColumn": 12,
+                        "endOffset": 15273
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 235,
+                    "startColumn": 4,
+                    "startOffset": 16897,
+                    "endColumn": 92,
+                    "endOffset": 16985
+                },
+                "from": {
+                    "file": "/Users/gael/Documents/AndroidProjects/DYKH/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values-v21/values-v21.xml",
+                    "position": {
+                        "startLine": 202,
+                        "startColumn": 4,
+                        "startOffset": 15278,
+                        "endColumn": 92,
+                        "endOffset": 15366
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 236,
+                    "startColumn": 4,
+                    "startOffset": 16990,
+                    "endColumn": 110,
+                    "endOffset": 17096
+                },
+                "from": {
+                    "file": "/Users/gael/Documents/AndroidProjects/DYKH/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values-v21/values-v21.xml",
+                    "position": {
+                        "startLine": 203,
+                        "startColumn": 4,
+                        "startOffset": 15371,
+                        "endColumn": 110,
+                        "endOffset": 15477
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 237,
+                    "startColumn": 4,
+                    "startOffset": 17101,
+                    "endColumn": 55,
+                    "endOffset": 17152
+                },
+                "from": {
+                    "file": "/Users/gael/Documents/AndroidProjects/DYKH/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values-v21/values-v21.xml",
+                    "position": {
+                        "startLine": 204,
+                        "startColumn": 4,
+                        "startOffset": 15482,
+                        "endColumn": 55,
+                        "endOffset": 15533
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 238,
+                    "startColumn": 4,
+                    "startOffset": 17157,
+                    "endLine": 239,
+                    "endColumn": 12,
+                    "endOffset": 17259
+                },
+                "from": {
+                    "file": "/Users/gael/Documents/AndroidProjects/DYKH/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values-v21/values-v21.xml",
+                    "position": {
+                        "startLine": 205,
+                        "startColumn": 4,
+                        "startOffset": 15538,
+                        "endLine": 206,
+                        "endColumn": 12,
+                        "endOffset": 15640
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 240,
+                    "startColumn": 4,
+                    "startOffset": 17264,
+                    "endLine": 243,
+                    "endColumn": 12,
+                    "endOffset": 17454
+                },
+                "from": {
+                    "file": "/Users/gael/Documents/AndroidProjects/DYKH/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values-v21/values-v21.xml",
+                    "position": {
+                        "startLine": 207,
+                        "startColumn": 4,
+                        "startOffset": 15645,
+                        "endLine": 210,
+                        "endColumn": 12,
+                        "endOffset": 15835
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 244,
+                    "startColumn": 4,
+                    "startOffset": 17459,
+                    "endLine": 245,
+                    "endColumn": 12,
+                    "endOffset": 17565
+                },
+                "from": {
+                    "file": "/Users/gael/Documents/AndroidProjects/DYKH/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values-v21/values-v21.xml",
+                    "position": {
+                        "startLine": 211,
+                        "startColumn": 4,
+                        "startOffset": 15840,
+                        "endLine": 212,
+                        "endColumn": 12,
+                        "endOffset": 15946
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 246,
+                    "startColumn": 4,
+                    "startOffset": 17570,
+                    "endLine": 247,
+                    "endColumn": 12,
+                    "endOffset": 17698
+                },
+                "from": {
+                    "file": "/Users/gael/Documents/AndroidProjects/DYKH/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values-v21/values-v21.xml",
+                    "position": {
+                        "startLine": 213,
+                        "startColumn": 4,
+                        "startOffset": 15951,
+                        "endLine": 214,
+                        "endColumn": 12,
+                        "endOffset": 16079
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 248,
+                    "startColumn": 4,
+                    "startOffset": 17703,
+                    "endColumn": 94,
+                    "endOffset": 17793
+                },
+                "from": {
+                    "file": "/Users/gael/Documents/AndroidProjects/DYKH/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values-v21/values-v21.xml",
+                    "position": {
+                        "startLine": 215,
+                        "startColumn": 4,
+                        "startOffset": 16084,
+                        "endColumn": 94,
+                        "endOffset": 16174
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 249,
+                    "startColumn": 4,
+                    "startOffset": 17798,
+                    "endColumn": 90,
+                    "endOffset": 17884
+                },
+                "from": {
+                    "file": "/Users/gael/Documents/AndroidProjects/DYKH/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values-v21/values-v21.xml",
+                    "position": {
+                        "startLine": 216,
+                        "startColumn": 4,
+                        "startOffset": 16179,
+                        "endColumn": 90,
+                        "endOffset": 16265
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 250,
+                    "startColumn": 4,
+                    "startOffset": 17889,
+                    "endColumn": 90,
+                    "endOffset": 17975
+                },
+                "from": {
+                    "file": "/Users/gael/Documents/AndroidProjects/DYKH/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values-v21/values-v21.xml",
+                    "position": {
+                        "startLine": 217,
+                        "startColumn": 4,
+                        "startOffset": 16270,
+                        "endColumn": 90,
+                        "endOffset": 16356
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 251,
+                    "startColumn": 4,
+                    "startOffset": 17980,
+                    "endColumn": 116,
+                    "endOffset": 18092
+                },
+                "from": {
+                    "file": "/Users/gael/Documents/AndroidProjects/DYKH/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values-v21/values-v21.xml",
+                    "position": {
+                        "startLine": 218,
+                        "startColumn": 4,
+                        "startOffset": 16361,
+                        "endColumn": 116,
+                        "endOffset": 16473
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 252,
+                    "startColumn": 4,
+                    "startOffset": 18097,
+                    "endLine": 253,
+                    "endColumn": 12,
+                    "endOffset": 18231
+                },
+                "from": {
+                    "file": "/Users/gael/Documents/AndroidProjects/DYKH/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values-v21/values-v21.xml",
+                    "position": {
+                        "startLine": 219,
+                        "startColumn": 4,
+                        "startOffset": 16478,
+                        "endLine": 220,
+                        "endColumn": 12,
+                        "endOffset": 16612
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 254,
+                    "startColumn": 4,
+                    "startOffset": 18236,
+                    "endLine": 263,
+                    "endColumn": 12,
+                    "endOffset": 18744
+                },
+                "from": {
+                    "file": "/Users/gael/Documents/AndroidProjects/DYKH/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values-v21/values-v21.xml",
+                    "position": {
+                        "startLine": 221,
+                        "startColumn": 4,
+                        "startOffset": 16617,
+                        "endLine": 230,
+                        "endColumn": 12,
+                        "endOffset": 17125
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 264,
+                    "startColumn": 4,
+                    "startOffset": 18749,
+                    "endLine": 273,
+                    "endColumn": 12,
+                    "endOffset": 19269
+                },
+                "from": {
+                    "file": "/Users/gael/Documents/AndroidProjects/DYKH/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values-v21/values-v21.xml",
+                    "position": {
+                        "startLine": 231,
+                        "startColumn": 4,
+                        "startOffset": 17130,
+                        "endLine": 240,
+                        "endColumn": 12,
+                        "endOffset": 17650
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 274,
+                    "startColumn": 4,
+                    "startOffset": 19274,
+                    "endLine": 283,
+                    "endColumn": 12,
+                    "endOffset": 19949
+                },
+                "from": {
+                    "file": "/Users/gael/Documents/AndroidProjects/DYKH/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values-v21/values-v21.xml",
+                    "position": {
+                        "startLine": 241,
+                        "startColumn": 4,
+                        "startOffset": 17655,
+                        "endLine": 250,
+                        "endColumn": 12,
+                        "endOffset": 18330
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 284,
+                    "startColumn": 4,
+                    "startOffset": 19954,
+                    "endColumn": 56,
+                    "endOffset": 20006
+                },
+                "from": {
+                    "file": "/Users/gael/Documents/AndroidProjects/DYKH/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values-v21/values-v21.xml",
+                    "position": {
+                        "startLine": 251,
+                        "startColumn": 4,
+                        "startOffset": 18335,
+                        "endColumn": 56,
+                        "endOffset": 18387
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 285,
+                    "startColumn": 4,
+                    "startOffset": 20011,
+                    "endColumn": 57,
+                    "endOffset": 20064
+                },
+                "from": {
+                    "file": "/Users/gael/Documents/AndroidProjects/DYKH/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values-v21/values-v21.xml",
+                    "position": {
+                        "startLine": 252,
+                        "startColumn": 4,
+                        "startOffset": 18392,
+                        "endColumn": 57,
+                        "endOffset": 18445
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 286,
+                    "startColumn": 4,
+                    "startOffset": 20069,
+                    "endLine": 288,
+                    "endColumn": 12,
+                    "endOffset": 20258
+                },
+                "from": {
+                    "file": "/Users/gael/Documents/AndroidProjects/DYKH/app/build/intermediates/exploded-aar/com.android.support/design/24.2.1/res/values-v21/values-v21.xml",
+                    "position": {
+                        "startLine": 2,
+                        "startColumn": 4,
+                        "startOffset": 55,
+                        "endLine": 4,
+                        "endColumn": 12,
+                        "endOffset": 244
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "outputFile": "/Users/gael/Documents/AndroidProjects/DYKH/C:\\Espace de travail\\AndroidProjets\\DYKH\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v21\\values-v21.xml",
+        "map": [
+            {
+                "to": {
+                    "startLine": 2,
+                    "startColumn": 4,
+                    "startOffset": 55,
+                    "endLine": 13,
+                    "endColumn": 24,
+                    "endOffset": 586
+                },
+                "from": {
+                    "file": "/Users/gael/Documents/AndroidProjects/DYKH/C:\\Espace de travail\\AndroidProjets\\DYKH\\app\\src\\main\\res\\values-v21\\attrs.xml",
+                    "position": {
+                        "startLine": 2,
+                        "startColumn": 4,
+                        "startOffset": 57,
+                        "endLine": 13,
+                        "endColumn": 24,
+                        "endOffset": 607
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 14,
+                    "startColumn": 4,
+                    "startOffset": 591,
+                    "endLine": 28,
+                    "endColumn": 24,
+                    "endOffset": 1348
+                },
+                "from": {
+                    "file": "/Users/gael/Documents/AndroidProjects/DYKH/C:\\Espace de travail\\AndroidProjets\\DYKH\\app\\src\\main\\res\\values-v21\\attrs.xml",
+                    "position": {
+                        "startLine": 14,
+                        "startColumn": 4,
+                        "startOffset": 613,
+                        "endLine": 28,
+                        "endColumn": 24,
+                        "endOffset": 1395
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 29,
+                    "startColumn": 4,
+                    "startOffset": 1353,
+                    "endLine": 34,
+                    "endColumn": 16,
+                    "endOffset": 1669
+                },
+                "from": {
+                    "file": "/Users/gael/Documents/AndroidProjects/DYKH/C:\\Espace de travail\\AndroidProjets\\DYKH\\app\\src\\main\\res\\values-v21\\styles.xml",
+                    "position": {
+                        "startLine": 1,
+                        "startColumn": 12,
+                        "startOffset": 25,
+                        "endLine": 6,
+                        "endColumn": 16,
+                        "endOffset": 346
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 35,
+                    "startColumn": 4,
+                    "startOffset": 1674,
+                    "endColumn": 90,
+                    "endOffset": 1760
+                },
+                "from": {
+                    "file": "/Users/gael/Documents/AndroidProjects/DYKH/C:\\Espace de travail\\AndroidProjets\\DYKH\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
+                    "position": {
+                        "startLine": 2,
+                        "startColumn": 4,
+                        "startOffset": 55,
+                        "endColumn": 90,
+                        "endOffset": 141
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 36,
+                    "startColumn": 4,
+                    "startOffset": 1765,
+                    "endColumn": 102,
+                    "endOffset": 1863
+                },
+                "from": {
+                    "file": "/Users/gael/Documents/AndroidProjects/DYKH/C:\\Espace de travail\\AndroidProjets\\DYKH\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
+                    "position": {
+                        "startLine": 3,
+                        "startColumn": 4,
+                        "startOffset": 146,
+                        "endColumn": 102,
+                        "endOffset": 244
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 37,
+                    "startColumn": 4,
+                    "startOffset": 1868,
+                    "endColumn": 102,
+                    "endOffset": 1966
+                },
+                "from": {
+                    "file": "/Users/gael/Documents/AndroidProjects/DYKH/C:\\Espace de travail\\AndroidProjets\\DYKH\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
+                    "position": {
+                        "startLine": 4,
+                        "startColumn": 4,
+                        "startOffset": 249,
+                        "endColumn": 102,
+                        "endOffset": 347
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 38,
+                    "startColumn": 4,
+                    "startOffset": 1971,
+                    "endColumn": 104,
+                    "endOffset": 2071
+                },
+                "from": {
+                    "file": "/Users/gael/Documents/AndroidProjects/DYKH/C:\\Espace de travail\\AndroidProjets\\DYKH\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
+                    "position": {
+                        "startLine": 5,
+                        "startColumn": 4,
+                        "startOffset": 352,
+                        "endColumn": 104,
+                        "endOffset": 452
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 39,
+                    "startColumn": 4,
+                    "startOffset": 2076,
+                    "endColumn": 106,
+                    "endOffset": 2178
+                },
+                "from": {
+                    "file": "/Users/gael/Documents/AndroidProjects/DYKH/C:\\Espace de travail\\AndroidProjets\\DYKH\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
+                    "position": {
+                        "startLine": 6,
+                        "startColumn": 4,
+                        "startOffset": 457,
+                        "endColumn": 106,
+                        "endOffset": 559
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 40,
+                    "startColumn": 4,
+                    "startOffset": 2183,
+                    "endColumn": 108,
+                    "endOffset": 2287
+                },
+                "from": {
+                    "file": "/Users/gael/Documents/AndroidProjects/DYKH/C:\\Espace de travail\\AndroidProjets\\DYKH\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
+                    "position": {
+                        "startLine": 7,
+                        "startColumn": 4,
+                        "startOffset": 564,
+                        "endColumn": 108,
+                        "endOffset": 668
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 41,
+                    "startColumn": 4,
+                    "startOffset": 2292,
+                    "endColumn": 108,
+                    "endOffset": 2396
+                },
+                "from": {
+                    "file": "/Users/gael/Documents/AndroidProjects/DYKH/C:\\Espace de travail\\AndroidProjets\\DYKH\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
+                    "position": {
+                        "startLine": 8,
+                        "startColumn": 4,
+                        "startOffset": 673,
+                        "endColumn": 108,
+                        "endOffset": 777
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 42,
+                    "startColumn": 4,
+                    "startOffset": 2401,
+                    "endColumn": 108,
+                    "endOffset": 2505
+                },
+                "from": {
+                    "file": "/Users/gael/Documents/AndroidProjects/DYKH/C:\\Espace de travail\\AndroidProjets\\DYKH\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
+                    "position": {
+                        "startLine": 9,
+                        "startColumn": 4,
+                        "startOffset": 782,
+                        "endColumn": 108,
+                        "endOffset": 886
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 43,
+                    "startColumn": 4,
+                    "startOffset": 2510,
+                    "endColumn": 108,
+                    "endOffset": 2614
+                },
+                "from": {
+                    "file": "/Users/gael/Documents/AndroidProjects/DYKH/C:\\Espace de travail\\AndroidProjets\\DYKH\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
+                    "position": {
+                        "startLine": 10,
+                        "startColumn": 4,
+                        "startOffset": 891,
+                        "endColumn": 108,
+                        "endOffset": 995
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 44,
+                    "startColumn": 4,
+                    "startOffset": 2619,
+                    "endColumn": 108,
+                    "endOffset": 2723
+                },
+                "from": {
+                    "file": "/Users/gael/Documents/AndroidProjects/DYKH/C:\\Espace de travail\\AndroidProjets\\DYKH\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
+                    "position": {
+                        "startLine": 11,
+                        "startColumn": 4,
+                        "startOffset": 1000,
+                        "endColumn": 108,
+                        "endOffset": 1104
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 45,
+                    "startColumn": 4,
+                    "startOffset": 2728,
+                    "endColumn": 106,
+                    "endOffset": 2830
+                },
+                "from": {
+                    "file": "/Users/gael/Documents/AndroidProjects/DYKH/C:\\Espace de travail\\AndroidProjets\\DYKH\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
+                    "position": {
+                        "startLine": 12,
+                        "startColumn": 4,
+                        "startOffset": 1109,
+                        "endColumn": 106,
+                        "endOffset": 1211
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 46,
+                    "startColumn": 4,
+                    "startOffset": 2835,
+                    "endColumn": 102,
+                    "endOffset": 2933
+                },
+                "from": {
+                    "file": "/Users/gael/Documents/AndroidProjects/DYKH/C:\\Espace de travail\\AndroidProjets\\DYKH\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
+                    "position": {
+                        "startLine": 13,
+                        "startColumn": 4,
+                        "startOffset": 1216,
+                        "endColumn": 102,
+                        "endOffset": 1314
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 47,
+                    "startColumn": 4,
+                    "startOffset": 2938,
+                    "endColumn": 118,
+                    "endOffset": 3052
+                },
+                "from": {
+                    "file": "/Users/gael/Documents/AndroidProjects/DYKH/C:\\Espace de travail\\AndroidProjets\\DYKH\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
+                    "position": {
+                        "startLine": 14,
+                        "startColumn": 4,
+                        "startOffset": 1319,
+                        "endColumn": 118,
+                        "endOffset": 1433
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 48,
+                    "startColumn": 4,
+                    "startOffset": 3057,
+                    "endLine": 49,
+                    "endColumn": 12,
+                    "endOffset": 3207
+                },
+                "from": {
+                    "file": "/Users/gael/Documents/AndroidProjects/DYKH/C:\\Espace de travail\\AndroidProjets\\DYKH\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
+                    "position": {
+                        "startLine": 15,
+                        "startColumn": 4,
+                        "startOffset": 1438,
+                        "endLine": 16,
+                        "endColumn": 12,
+                        "endOffset": 1588
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 50,
+                    "startColumn": 4,
+                    "startOffset": 3212,
+                    "endLine": 51,
+                    "endColumn": 12,
+                    "endOffset": 3362
+                },
+                "from": {
+                    "file": "/Users/gael/Documents/AndroidProjects/DYKH/C:\\Espace de travail\\AndroidProjets\\DYKH\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
+                    "position": {
+                        "startLine": 17,
+                        "startColumn": 4,
+                        "startOffset": 1593,
+                        "endLine": 18,
+                        "endColumn": 12,
+                        "endOffset": 1743
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 52,
+                    "startColumn": 4,
+                    "startOffset": 3367,
+                    "endColumn": 104,
+                    "endOffset": 3467
+                },
+                "from": {
+                    "file": "/Users/gael/Documents/AndroidProjects/DYKH/C:\\Espace de travail\\AndroidProjets\\DYKH\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
+                    "position": {
+                        "startLine": 19,
+                        "startColumn": 4,
+                        "startOffset": 1748,
+                        "endColumn": 104,
+                        "endOffset": 1848
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 53,
+                    "startColumn": 4,
+                    "startOffset": 3472,
+                    "endColumn": 120,
+                    "endOffset": 3588
+                },
+                "from": {
+                    "file": "/Users/gael/Documents/AndroidProjects/DYKH/C:\\Espace de travail\\AndroidProjets\\DYKH\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
+                    "position": {
+                        "startLine": 20,
+                        "startColumn": 4,
+                        "startOffset": 1853,
+                        "endColumn": 120,
+                        "endOffset": 1969
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 54,
+                    "startColumn": 4,
+                    "startOffset": 3593,
+                    "endColumn": 100,
+                    "endOffset": 3689
+                },
+                "from": {
+                    "file": "/Users/gael/Documents/AndroidProjects/DYKH/C:\\Espace de travail\\AndroidProjets\\DYKH\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
+                    "position": {
+                        "startLine": 21,
+                        "startColumn": 4,
+                        "startOffset": 1974,
+                        "endColumn": 100,
+                        "endOffset": 2070
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 55,
+                    "startColumn": 4,
+                    "startOffset": 3694,
+                    "endLine": 56,
+                    "endColumn": 12,
+                    "endOffset": 3836
+                },
+                "from": {
+                    "file": "/Users/gael/Documents/AndroidProjects/DYKH/C:\\Espace de travail\\AndroidProjets\\DYKH\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
+                    "position": {
+                        "startLine": 22,
+                        "startColumn": 4,
+                        "startOffset": 2075,
+                        "endLine": 23,
+                        "endColumn": 12,
+                        "endOffset": 2217
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 57,
+                    "startColumn": 4,
+                    "startOffset": 3841,
+                    "endLine": 58,
+                    "endColumn": 12,
+                    "endOffset": 3977
+                },
+                "from": {
+                    "file": "/Users/gael/Documents/AndroidProjects/DYKH/C:\\Espace de travail\\AndroidProjets\\DYKH\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
+                    "position": {
+                        "startLine": 24,
+                        "startColumn": 4,
+                        "startOffset": 2222,
+                        "endLine": 25,
+                        "endColumn": 12,
+                        "endOffset": 2358
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 59,
+                    "startColumn": 4,
+                    "startOffset": 3982,
+                    "endColumn": 102,
+                    "endOffset": 4080
+                },
+                "from": {
+                    "file": "/Users/gael/Documents/AndroidProjects/DYKH/C:\\Espace de travail\\AndroidProjets\\DYKH\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
+                    "position": {
+                        "startLine": 26,
+                        "startColumn": 4,
+                        "startOffset": 2363,
+                        "endColumn": 102,
+                        "endOffset": 2461
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 60,
+                    "startColumn": 4,
+                    "startOffset": 4085,
+                    "endColumn": 118,
+                    "endOffset": 4199
+                },
+                "from": {
+                    "file": "/Users/gael/Documents/AndroidProjects/DYKH/C:\\Espace de travail\\AndroidProjets\\DYKH\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
+                    "position": {
+                        "startLine": 27,
+                        "startColumn": 4,
+                        "startOffset": 2466,
+                        "endColumn": 118,
+                        "endOffset": 2580
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 61,
+                    "startColumn": 4,
+                    "startOffset": 4204,
+                    "endColumn": 106,
+                    "endOffset": 4306
+                },
+                "from": {
+                    "file": "/Users/gael/Documents/AndroidProjects/DYKH/C:\\Espace de travail\\AndroidProjets\\DYKH\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
+                    "position": {
+                        "startLine": 28,
+                        "startColumn": 4,
+                        "startOffset": 2585,
+                        "endColumn": 106,
+                        "endOffset": 2687
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 62,
+                    "startColumn": 4,
+                    "startOffset": 4311,
+                    "endColumn": 102,
+                    "endOffset": 4409
+                },
+                "from": {
+                    "file": "/Users/gael/Documents/AndroidProjects/DYKH/C:\\Espace de travail\\AndroidProjets\\DYKH\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
+                    "position": {
+                        "startLine": 29,
+                        "startColumn": 4,
+                        "startOffset": 2692,
+                        "endColumn": 102,
+                        "endOffset": 2790
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 63,
+                    "startColumn": 4,
+                    "startOffset": 4414,
+                    "endLine": 64,
+                    "endColumn": 12,
+                    "endOffset": 4564
+                },
+                "from": {
+                    "file": "/Users/gael/Documents/AndroidProjects/DYKH/C:\\Espace de travail\\AndroidProjets\\DYKH\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
+                    "position": {
+                        "startLine": 30,
+                        "startColumn": 4,
+                        "startOffset": 2795,
+                        "endLine": 31,
+                        "endColumn": 12,
+                        "endOffset": 2945
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 65,
+                    "startColumn": 4,
+                    "startOffset": 4569,
+                    "endLine": 66,
+                    "endColumn": 12,
+                    "endOffset": 4735
+                },
+                "from": {
+                    "file": "/Users/gael/Documents/AndroidProjects/DYKH/C:\\Espace de travail\\AndroidProjets\\DYKH\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
+                    "position": {
+                        "startLine": 32,
+                        "startColumn": 4,
+                        "startOffset": 2950,
+                        "endLine": 33,
+                        "endColumn": 12,
+                        "endOffset": 3116
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 67,
+                    "startColumn": 4,
+                    "startOffset": 4740,
+                    "endLine": 68,
+                    "endColumn": 12,
+                    "endOffset": 4884
+                },
+                "from": {
+                    "file": "/Users/gael/Documents/AndroidProjects/DYKH/C:\\Espace de travail\\AndroidProjets\\DYKH\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
+                    "position": {
+                        "startLine": 34,
+                        "startColumn": 4,
+                        "startOffset": 3121,
+                        "endLine": 35,
+                        "endColumn": 12,
+                        "endOffset": 3265
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 69,
+                    "startColumn": 4,
+                    "startOffset": 4889,
+                    "endLine": 70,
+                    "endColumn": 12,
+                    "endOffset": 5049
+                },
+                "from": {
+                    "file": "/Users/gael/Documents/AndroidProjects/DYKH/C:\\Espace de travail\\AndroidProjets\\DYKH\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
+                    "position": {
+                        "startLine": 36,
+                        "startColumn": 4,
+                        "startOffset": 3270,
+                        "endLine": 37,
+                        "endColumn": 12,
+                        "endOffset": 3430
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 71,
+                    "startColumn": 4,
+                    "startOffset": 5054,
+                    "endLine": 72,
+                    "endColumn": 12,
+                    "endOffset": 5206
+                },
+                "from": {
+                    "file": "/Users/gael/Documents/AndroidProjects/DYKH/C:\\Espace de travail\\AndroidProjets\\DYKH\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
+                    "position": {
+                        "startLine": 38,
+                        "startColumn": 4,
+                        "startOffset": 3435,
+                        "endLine": 39,
+                        "endColumn": 12,
+                        "endOffset": 3587
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 73,
+                    "startColumn": 4,
+                    "startOffset": 5211,
+                    "endLine": 74,
+                    "endColumn": 12,
+                    "endOffset": 5357
+                },
+                "from": {
+                    "file": "/Users/gael/Documents/AndroidProjects/DYKH/C:\\Espace de travail\\AndroidProjets\\DYKH\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
+                    "position": {
+                        "startLine": 40,
+                        "startColumn": 4,
+                        "startOffset": 3592,
+                        "endLine": 41,
+                        "endColumn": 12,
+                        "endOffset": 3738
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 75,
+                    "startColumn": 4,
+                    "startOffset": 5362,
+                    "endColumn": 118,
+                    "endOffset": 5476
+                },
+                "from": {
+                    "file": "/Users/gael/Documents/AndroidProjects/DYKH/C:\\Espace de travail\\AndroidProjets\\DYKH\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
+                    "position": {
+                        "startLine": 42,
+                        "startColumn": 4,
+                        "startOffset": 3743,
+                        "endColumn": 118,
+                        "endOffset": 3857
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 76,
+                    "startColumn": 4,
+                    "startOffset": 5481,
+                    "endLine": 80,
+                    "endColumn": 12,
+                    "endOffset": 5848
+                },
+                "from": {
+                    "file": "/Users/gael/Documents/AndroidProjects/DYKH/C:\\Espace de travail\\AndroidProjets\\DYKH\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
+                    "position": {
+                        "startLine": 43,
+                        "startColumn": 4,
+                        "startOffset": 3862,
+                        "endLine": 47,
+                        "endColumn": 12,
+                        "endOffset": 4229
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 81,
+                    "startColumn": 4,
+                    "startOffset": 5853,
+                    "endLine": 82,
+                    "endColumn": 12,
+                    "endOffset": 5997
+                },
+                "from": {
+                    "file": "/Users/gael/Documents/AndroidProjects/DYKH/C:\\Espace de travail\\AndroidProjets\\DYKH\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
+                    "position": {
+                        "startLine": 48,
+                        "startColumn": 4,
+                        "startOffset": 4234,
+                        "endLine": 49,
+                        "endColumn": 12,
+                        "endOffset": 4378
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 83,
+                    "startColumn": 4,
+                    "startOffset": 6002,
+                    "endLine": 84,
+                    "endColumn": 12,
+                    "endOffset": 6146
+                },
+                "from": {
+                    "file": "/Users/gael/Documents/AndroidProjects/DYKH/C:\\Espace de travail\\AndroidProjets\\DYKH\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
+                    "position": {
+                        "startLine": 50,
+                        "startColumn": 4,
+                        "startOffset": 4383,
+                        "endLine": 51,
+                        "endColumn": 12,
+                        "endOffset": 4527
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 85,
+                    "startColumn": 4,
+                    "startOffset": 6151,
+                    "endColumn": 111,
+                    "endOffset": 6258
+                },
+                "from": {
+                    "file": "/Users/gael/Documents/AndroidProjects/DYKH/C:\\Espace de travail\\AndroidProjets\\DYKH\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
+                    "position": {
+                        "startLine": 52,
+                        "startColumn": 4,
+                        "startOffset": 4532,
+                        "endColumn": 111,
+                        "endOffset": 4639
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 86,
+                    "startColumn": 4,
+                    "startOffset": 6263,
+                    "endColumn": 146,
+                    "endOffset": 6405
+                },
+                "from": {
+                    "file": "/Users/gael/Documents/AndroidProjects/DYKH/C:\\Espace de travail\\AndroidProjets\\DYKH\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
+                    "position": {
+                        "startLine": 53,
+                        "startColumn": 4,
+                        "startOffset": 4644,
+                        "endColumn": 146,
+                        "endOffset": 4786
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 87,
+                    "startColumn": 4,
+                    "startOffset": 6410,
+                    "endLine": 88,
+                    "endColumn": 12,
+                    "endOffset": 6558
+                },
+                "from": {
+                    "file": "/Users/gael/Documents/AndroidProjects/DYKH/C:\\Espace de travail\\AndroidProjets\\DYKH\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
+                    "position": {
+                        "startLine": 54,
+                        "startColumn": 4,
+                        "startOffset": 4791,
+                        "endLine": 55,
+                        "endColumn": 12,
+                        "endOffset": 4939
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 89,
+                    "startColumn": 4,
+                    "startOffset": 6563,
+                    "endLine": 90,
+                    "endColumn": 12,
+                    "endOffset": 6705
+                },
+                "from": {
+                    "file": "/Users/gael/Documents/AndroidProjects/DYKH/C:\\Espace de travail\\AndroidProjets\\DYKH\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
+                    "position": {
+                        "startLine": 56,
+                        "startColumn": 4,
+                        "startOffset": 4944,
+                        "endLine": 57,
+                        "endColumn": 12,
+                        "endOffset": 5086
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 91,
+                    "startColumn": 4,
+                    "startOffset": 6710,
+                    "endColumn": 74,
+                    "endOffset": 6780
+                },
+                "from": {
+                    "file": "/Users/gael/Documents/AndroidProjects/DYKH/C:\\Espace de travail\\AndroidProjets\\DYKH\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
+                    "position": {
+                        "startLine": 58,
+                        "startColumn": 4,
+                        "startOffset": 5091,
+                        "endColumn": 74,
+                        "endOffset": 5161
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 92,
+                    "startColumn": 4,
+                    "startOffset": 6785,
+                    "endColumn": 88,
+                    "endOffset": 6869
+                },
+                "from": {
+                    "file": "/Users/gael/Documents/AndroidProjects/DYKH/C:\\Espace de travail\\AndroidProjets\\DYKH\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
+                    "position": {
+                        "startLine": 59,
+                        "startColumn": 4,
+                        "startOffset": 5166,
+                        "endColumn": 88,
+                        "endOffset": 5250
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 93,
+                    "startColumn": 4,
+                    "startOffset": 6874,
+                    "endColumn": 86,
+                    "endOffset": 6956
+                },
+                "from": {
+                    "file": "/Users/gael/Documents/AndroidProjects/DYKH/C:\\Espace de travail\\AndroidProjets\\DYKH\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
+                    "position": {
+                        "startLine": 60,
+                        "startColumn": 4,
+                        "startOffset": 5255,
+                        "endColumn": 86,
+                        "endOffset": 5337
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 94,
+                    "startColumn": 4,
+                    "startOffset": 6961,
+                    "endColumn": 100,
+                    "endOffset": 7057
+                },
+                "from": {
+                    "file": "/Users/gael/Documents/AndroidProjects/DYKH/C:\\Espace de travail\\AndroidProjets\\DYKH\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
+                    "position": {
+                        "startLine": 61,
+                        "startColumn": 4,
+                        "startOffset": 5342,
+                        "endColumn": 100,
+                        "endOffset": 5438
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 95,
+                    "startColumn": 4,
+                    "startOffset": 7062,
+                    "endColumn": 102,
+                    "endOffset": 7160
+                },
+                "from": {
+                    "file": "/Users/gael/Documents/AndroidProjects/DYKH/C:\\Espace de travail\\AndroidProjets\\DYKH\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
+                    "position": {
+                        "startLine": 62,
+                        "startColumn": 4,
+                        "startOffset": 5443,
+                        "endColumn": 102,
+                        "endOffset": 5541
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 96,
+                    "startColumn": 4,
+                    "startOffset": 7165,
+                    "endLine": 139,
+                    "endColumn": 12,
+                    "endOffset": 10228
+                },
+                "from": {
+                    "file": "/Users/gael/Documents/AndroidProjects/DYKH/C:\\Espace de travail\\AndroidProjets\\DYKH\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
+                    "position": {
+                        "startLine": 63,
+                        "startColumn": 4,
+                        "startOffset": 5546,
+                        "endLine": 106,
+                        "endColumn": 12,
+                        "endOffset": 8609
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 140,
+                    "startColumn": 4,
+                    "startOffset": 10233,
+                    "endLine": 142,
+                    "endColumn": 12,
+                    "endOffset": 10414
+                },
+                "from": {
+                    "file": "/Users/gael/Documents/AndroidProjects/DYKH/C:\\Espace de travail\\AndroidProjets\\DYKH\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
+                    "position": {
+                        "startLine": 107,
+                        "startColumn": 4,
+                        "startOffset": 8614,
+                        "endLine": 109,
+                        "endColumn": 12,
+                        "endOffset": 8795
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 143,
+                    "startColumn": 4,
+                    "startOffset": 10419,
+                    "endLine": 186,
+                    "endColumn": 12,
+                    "endOffset": 13494
+                },
+                "from": {
+                    "file": "/Users/gael/Documents/AndroidProjects/DYKH/C:\\Espace de travail\\AndroidProjets\\DYKH\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
+                    "position": {
+                        "startLine": 110,
+                        "startColumn": 4,
+                        "startOffset": 8800,
+                        "endLine": 153,
+                        "endColumn": 12,
+                        "endOffset": 11875
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 187,
+                    "startColumn": 4,
+                    "startOffset": 13499,
+                    "endLine": 189,
+                    "endColumn": 12,
+                    "endOffset": 13692
+                },
+                "from": {
+                    "file": "/Users/gael/Documents/AndroidProjects/DYKH/C:\\Espace de travail\\AndroidProjets\\DYKH\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
+                    "position": {
+                        "startLine": 154,
+                        "startColumn": 4,
+                        "startOffset": 11880,
+                        "endLine": 156,
+                        "endColumn": 12,
+                        "endOffset": 12073
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 190,
+                    "startColumn": 4,
+                    "startOffset": 13697,
+                    "endLine": 192,
+                    "endColumn": 12,
+                    "endOffset": 13892
+                },
+                "from": {
+                    "file": "/Users/gael/Documents/AndroidProjects/DYKH/C:\\Espace de travail\\AndroidProjets\\DYKH\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
+                    "position": {
+                        "startLine": 157,
+                        "startColumn": 4,
+                        "startOffset": 12078,
+                        "endLine": 159,
+                        "endColumn": 12,
+                        "endOffset": 12273
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 193,
+                    "startColumn": 4,
+                    "startOffset": 13897,
+                    "endLine": 194,
+                    "endColumn": 12,
+                    "endOffset": 14015
+                },
+                "from": {
+                    "file": "/Users/gael/Documents/AndroidProjects/DYKH/C:\\Espace de travail\\AndroidProjets\\DYKH\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
+                    "position": {
+                        "startLine": 160,
+                        "startColumn": 4,
+                        "startOffset": 12278,
+                        "endLine": 161,
+                        "endColumn": 12,
+                        "endOffset": 12396
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 195,
+                    "startColumn": 4,
+                    "startOffset": 14020,
+                    "endLine": 196,
+                    "endColumn": 12,
+                    "endOffset": 14138
+                },
+                "from": {
+                    "file": "/Users/gael/Documents/AndroidProjects/DYKH/C:\\Espace de travail\\AndroidProjets\\DYKH\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
+                    "position": {
+                        "startLine": 162,
+                        "startColumn": 4,
+                        "startOffset": 12401,
+                        "endLine": 163,
+                        "endColumn": 12,
+                        "endOffset": 12519
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 197,
+                    "startColumn": 4,
+                    "startOffset": 14143,
+                    "endLine": 198,
+                    "endColumn": 12,
+                    "endOffset": 14251
+                },
+                "from": {
+                    "file": "/Users/gael/Documents/AndroidProjects/DYKH/C:\\Espace de travail\\AndroidProjets\\DYKH\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
+                    "position": {
+                        "startLine": 164,
+                        "startColumn": 4,
+                        "startOffset": 12524,
+                        "endLine": 165,
+                        "endColumn": 12,
+                        "endOffset": 12632
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 199,
+                    "startColumn": 4,
+                    "startOffset": 14256,
+                    "endLine": 201,
+                    "endColumn": 12,
+                    "endOffset": 14434
+                },
+                "from": {
+                    "file": "/Users/gael/Documents/AndroidProjects/DYKH/C:\\Espace de travail\\AndroidProjets\\DYKH\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
+                    "position": {
+                        "startLine": 166,
+                        "startColumn": 4,
+                        "startOffset": 12637,
+                        "endLine": 168,
+                        "endColumn": 12,
+                        "endOffset": 12815
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 202,
+                    "startColumn": 4,
+                    "startOffset": 14439,
+                    "endLine": 203,
+                    "endColumn": 12,
+                    "endOffset": 14565
+                },
+                "from": {
+                    "file": "/Users/gael/Documents/AndroidProjects/DYKH/C:\\Espace de travail\\AndroidProjets\\DYKH\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
+                    "position": {
+                        "startLine": 169,
+                        "startColumn": 4,
+                        "startOffset": 12820,
+                        "endLine": 170,
+                        "endColumn": 12,
+                        "endOffset": 12946
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 204,
+                    "startColumn": 4,
+                    "startOffset": 14570,
+                    "endLine": 206,
+                    "endColumn": 12,
+                    "endOffset": 14766
+                },
+                "from": {
+                    "file": "/Users/gael/Documents/AndroidProjects/DYKH/C:\\Espace de travail\\AndroidProjets\\DYKH\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
+                    "position": {
+                        "startLine": 171,
+                        "startColumn": 4,
+                        "startOffset": 12951,
+                        "endLine": 173,
+                        "endColumn": 12,
+                        "endOffset": 13147
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 207,
+                    "startColumn": 4,
+                    "startOffset": 14771,
+                    "endColumn": 88,
+                    "endOffset": 14855
+                },
+                "from": {
+                    "file": "/Users/gael/Documents/AndroidProjects/DYKH/C:\\Espace de travail\\AndroidProjets\\DYKH\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
+                    "position": {
+                        "startLine": 174,
+                        "startColumn": 4,
+                        "startOffset": 13152,
+                        "endColumn": 88,
+                        "endOffset": 13236
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 208,
+                    "startColumn": 4,
+                    "startOffset": 14860,
+                    "endColumn": 110,
+                    "endOffset": 14966
+                },
+                "from": {
+                    "file": "/Users/gael/Documents/AndroidProjects/DYKH/C:\\Espace de travail\\AndroidProjets\\DYKH\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
+                    "position": {
+                        "startLine": 175,
+                        "startColumn": 4,
+                        "startOffset": 13241,
+                        "endColumn": 110,
+                        "endOffset": 13347
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 209,
+                    "startColumn": 4,
+                    "startOffset": 14971,
+                    "endLine": 211,
+                    "endColumn": 12,
+                    "endOffset": 15199
+                },
+                "from": {
+                    "file": "/Users/gael/Documents/AndroidProjects/DYKH/C:\\Espace de travail\\AndroidProjets\\DYKH\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
+                    "position": {
+                        "startLine": 176,
+                        "startColumn": 4,
+                        "startOffset": 13352,
+                        "endLine": 178,
+                        "endColumn": 12,
+                        "endOffset": 13580
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 212,
+                    "startColumn": 4,
+                    "startOffset": 15204,
+                    "endColumn": 100,
+                    "endOffset": 15300
+                },
+                "from": {
+                    "file": "/Users/gael/Documents/AndroidProjects/DYKH/C:\\Espace de travail\\AndroidProjets\\DYKH\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
+                    "position": {
+                        "startLine": 179,
+                        "startColumn": 4,
+                        "startOffset": 13585,
+                        "endColumn": 100,
+                        "endOffset": 13681
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 213,
+                    "startColumn": 4,
+                    "startOffset": 15305,
+                    "endColumn": 94,
+                    "endOffset": 15395
+                },
+                "from": {
+                    "file": "/Users/gael/Documents/AndroidProjects/DYKH/C:\\Espace de travail\\AndroidProjets\\DYKH\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
+                    "position": {
+                        "startLine": 180,
+                        "startColumn": 4,
+                        "startOffset": 13686,
+                        "endColumn": 94,
+                        "endOffset": 13776
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 214,
+                    "startColumn": 4,
+                    "startOffset": 15400,
+                    "endColumn": 122,
+                    "endOffset": 15518
+                },
+                "from": {
+                    "file": "/Users/gael/Documents/AndroidProjects/DYKH/C:\\Espace de travail\\AndroidProjets\\DYKH\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
+                    "position": {
+                        "startLine": 181,
+                        "startColumn": 4,
+                        "startOffset": 13781,
+                        "endColumn": 122,
+                        "endOffset": 13899
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 215,
+                    "startColumn": 4,
+                    "startOffset": 15523,
+                    "endColumn": 128,
+                    "endOffset": 15647
+                },
+                "from": {
+                    "file": "/Users/gael/Documents/AndroidProjects/DYKH/C:\\Espace de travail\\AndroidProjets\\DYKH\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
+                    "position": {
+                        "startLine": 182,
+                        "startColumn": 4,
+                        "startOffset": 13904,
+                        "endColumn": 128,
+                        "endOffset": 14028
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 216,
+                    "startColumn": 4,
+                    "startOffset": 15652,
+                    "endColumn": 116,
+                    "endOffset": 15764
+                },
+                "from": {
+                    "file": "/Users/gael/Documents/AndroidProjects/DYKH/C:\\Espace de travail\\AndroidProjets\\DYKH\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
+                    "position": {
+                        "startLine": 183,
+                        "startColumn": 4,
+                        "startOffset": 14033,
+                        "endColumn": 116,
+                        "endOffset": 14145
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 217,
+                    "startColumn": 4,
+                    "startOffset": 15769,
+                    "endLine": 219,
+                    "endColumn": 12,
+                    "endOffset": 15941
+                },
+                "from": {
+                    "file": "/Users/gael/Documents/AndroidProjects/DYKH/C:\\Espace de travail\\AndroidProjets\\DYKH\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
+                    "position": {
+                        "startLine": 184,
+                        "startColumn": 4,
+                        "startOffset": 14150,
+                        "endLine": 186,
+                        "endColumn": 12,
+                        "endOffset": 14322
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 220,
+                    "startColumn": 4,
+                    "startOffset": 15946,
+                    "endColumn": 98,
+                    "endOffset": 16040
+                },
+                "from": {
+                    "file": "/Users/gael/Documents/AndroidProjects/DYKH/C:\\Espace de travail\\AndroidProjets\\DYKH\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
+                    "position": {
+                        "startLine": 187,
+                        "startColumn": 4,
+                        "startOffset": 14327,
+                        "endColumn": 98,
+                        "endOffset": 14421
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 221,
+                    "startColumn": 4,
+                    "startOffset": 16045,
+                    "endLine": 222,
+                    "endColumn": 12,
+                    "endOffset": 16175
+                },
+                "from": {
+                    "file": "/Users/gael/Documents/AndroidProjects/DYKH/C:\\Espace de travail\\AndroidProjets\\DYKH\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
+                    "position": {
+                        "startLine": 188,
+                        "startColumn": 4,
+                        "startOffset": 14426,
+                        "endLine": 189,
+                        "endColumn": 12,
+                        "endOffset": 14556
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 223,
+                    "startColumn": 4,
+                    "startOffset": 16180,
+                    "endLine": 224,
+                    "endColumn": 12,
+                    "endOffset": 16318
+                },
+                "from": {
+                    "file": "/Users/gael/Documents/AndroidProjects/DYKH/C:\\Espace de travail\\AndroidProjets\\DYKH\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
+                    "position": {
+                        "startLine": 190,
+                        "startColumn": 4,
+                        "startOffset": 14561,
+                        "endLine": 191,
+                        "endColumn": 12,
+                        "endOffset": 14699
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 225,
+                    "startColumn": 4,
+                    "startOffset": 16323,
+                    "endLine": 226,
+                    "endColumn": 12,
+                    "endOffset": 16453
+                },
+                "from": {
+                    "file": "/Users/gael/Documents/AndroidProjects/DYKH/C:\\Espace de travail\\AndroidProjets\\DYKH\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
+                    "position": {
+                        "startLine": 192,
+                        "startColumn": 4,
+                        "startOffset": 14704,
+                        "endLine": 193,
+                        "endColumn": 12,
+                        "endOffset": 14834
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 227,
+                    "startColumn": 4,
+                    "startOffset": 16458,
+                    "endLine": 228,
+                    "endColumn": 12,
+                    "endOffset": 16572
+                },
+                "from": {
+                    "file": "/Users/gael/Documents/AndroidProjects/DYKH/C:\\Espace de travail\\AndroidProjets\\DYKH\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
+                    "position": {
+                        "startLine": 194,
+                        "startColumn": 4,
+                        "startOffset": 14839,
+                        "endLine": 195,
+                        "endColumn": 12,
+                        "endOffset": 14953
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 229,
+                    "startColumn": 4,
+                    "startOffset": 16577,
+                    "endLine": 232,
+                    "endColumn": 12,
+                    "endOffset": 16773
+                },
+                "from": {
+                    "file": "/Users/gael/Documents/AndroidProjects/DYKH/C:\\Espace de travail\\AndroidProjets\\DYKH\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
+                    "position": {
+                        "startLine": 196,
+                        "startColumn": 4,
+                        "startOffset": 14958,
+                        "endLine": 199,
+                        "endColumn": 12,
+                        "endOffset": 15154
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 233,
+                    "startColumn": 4,
+                    "startOffset": 16778,
+                    "endLine": 234,
+                    "endColumn": 12,
+                    "endOffset": 16892
+                },
+                "from": {
+                    "file": "/Users/gael/Documents/AndroidProjects/DYKH/C:\\Espace de travail\\AndroidProjets\\DYKH\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
+                    "position": {
+                        "startLine": 200,
+                        "startColumn": 4,
+                        "startOffset": 15159,
+                        "endLine": 201,
+                        "endColumn": 12,
+                        "endOffset": 15273
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 235,
+                    "startColumn": 4,
+                    "startOffset": 16897,
+                    "endColumn": 92,
+                    "endOffset": 16985
+                },
+                "from": {
+                    "file": "/Users/gael/Documents/AndroidProjects/DYKH/C:\\Espace de travail\\AndroidProjets\\DYKH\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
+                    "position": {
+                        "startLine": 202,
+                        "startColumn": 4,
+                        "startOffset": 15278,
+                        "endColumn": 92,
+                        "endOffset": 15366
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 236,
+                    "startColumn": 4,
+                    "startOffset": 16990,
+                    "endColumn": 110,
+                    "endOffset": 17096
+                },
+                "from": {
+                    "file": "/Users/gael/Documents/AndroidProjects/DYKH/C:\\Espace de travail\\AndroidProjets\\DYKH\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
+                    "position": {
+                        "startLine": 203,
+                        "startColumn": 4,
+                        "startOffset": 15371,
+                        "endColumn": 110,
+                        "endOffset": 15477
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 237,
+                    "startColumn": 4,
+                    "startOffset": 17101,
+                    "endColumn": 55,
+                    "endOffset": 17152
+                },
+                "from": {
+                    "file": "/Users/gael/Documents/AndroidProjects/DYKH/C:\\Espace de travail\\AndroidProjets\\DYKH\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
+                    "position": {
+                        "startLine": 204,
+                        "startColumn": 4,
+                        "startOffset": 15482,
+                        "endColumn": 55,
+                        "endOffset": 15533
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 238,
+                    "startColumn": 4,
+                    "startOffset": 17157,
+                    "endLine": 239,
+                    "endColumn": 12,
+                    "endOffset": 17259
+                },
+                "from": {
+                    "file": "/Users/gael/Documents/AndroidProjects/DYKH/C:\\Espace de travail\\AndroidProjets\\DYKH\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
+                    "position": {
+                        "startLine": 205,
+                        "startColumn": 4,
+                        "startOffset": 15538,
+                        "endLine": 206,
+                        "endColumn": 12,
+                        "endOffset": 15640
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 240,
+                    "startColumn": 4,
+                    "startOffset": 17264,
+                    "endLine": 243,
+                    "endColumn": 12,
+                    "endOffset": 17454
+                },
+                "from": {
+                    "file": "/Users/gael/Documents/AndroidProjects/DYKH/C:\\Espace de travail\\AndroidProjets\\DYKH\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
+                    "position": {
+                        "startLine": 207,
+                        "startColumn": 4,
+                        "startOffset": 15645,
+                        "endLine": 210,
+                        "endColumn": 12,
+                        "endOffset": 15835
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 244,
+                    "startColumn": 4,
+                    "startOffset": 17459,
+                    "endLine": 245,
+                    "endColumn": 12,
+                    "endOffset": 17565
+                },
+                "from": {
+                    "file": "/Users/gael/Documents/AndroidProjects/DYKH/C:\\Espace de travail\\AndroidProjets\\DYKH\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
+                    "position": {
+                        "startLine": 211,
+                        "startColumn": 4,
+                        "startOffset": 15840,
+                        "endLine": 212,
+                        "endColumn": 12,
+                        "endOffset": 15946
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 246,
+                    "startColumn": 4,
+                    "startOffset": 17570,
+                    "endLine": 247,
+                    "endColumn": 12,
+                    "endOffset": 17698
+                },
+                "from": {
+                    "file": "/Users/gael/Documents/AndroidProjects/DYKH/C:\\Espace de travail\\AndroidProjets\\DYKH\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
+                    "position": {
+                        "startLine": 213,
+                        "startColumn": 4,
+                        "startOffset": 15951,
+                        "endLine": 214,
+                        "endColumn": 12,
+                        "endOffset": 16079
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 248,
+                    "startColumn": 4,
+                    "startOffset": 17703,
+                    "endColumn": 94,
+                    "endOffset": 17793
+                },
+                "from": {
+                    "file": "/Users/gael/Documents/AndroidProjects/DYKH/C:\\Espace de travail\\AndroidProjets\\DYKH\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
+                    "position": {
+                        "startLine": 215,
+                        "startColumn": 4,
+                        "startOffset": 16084,
+                        "endColumn": 94,
+                        "endOffset": 16174
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 249,
+                    "startColumn": 4,
+                    "startOffset": 17798,
+                    "endColumn": 90,
+                    "endOffset": 17884
+                },
+                "from": {
+                    "file": "/Users/gael/Documents/AndroidProjects/DYKH/C:\\Espace de travail\\AndroidProjets\\DYKH\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
+                    "position": {
+                        "startLine": 216,
+                        "startColumn": 4,
+                        "startOffset": 16179,
+                        "endColumn": 90,
+                        "endOffset": 16265
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 250,
+                    "startColumn": 4,
+                    "startOffset": 17889,
+                    "endColumn": 90,
+                    "endOffset": 17975
+                },
+                "from": {
+                    "file": "/Users/gael/Documents/AndroidProjects/DYKH/C:\\Espace de travail\\AndroidProjets\\DYKH\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
+                    "position": {
+                        "startLine": 217,
+                        "startColumn": 4,
+                        "startOffset": 16270,
+                        "endColumn": 90,
+                        "endOffset": 16356
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 251,
+                    "startColumn": 4,
+                    "startOffset": 17980,
+                    "endColumn": 116,
+                    "endOffset": 18092
+                },
+                "from": {
+                    "file": "/Users/gael/Documents/AndroidProjects/DYKH/C:\\Espace de travail\\AndroidProjets\\DYKH\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
+                    "position": {
+                        "startLine": 218,
+                        "startColumn": 4,
+                        "startOffset": 16361,
+                        "endColumn": 116,
+                        "endOffset": 16473
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 252,
+                    "startColumn": 4,
+                    "startOffset": 18097,
+                    "endLine": 253,
+                    "endColumn": 12,
+                    "endOffset": 18231
+                },
+                "from": {
+                    "file": "/Users/gael/Documents/AndroidProjects/DYKH/C:\\Espace de travail\\AndroidProjets\\DYKH\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
+                    "position": {
+                        "startLine": 219,
+                        "startColumn": 4,
+                        "startOffset": 16478,
+                        "endLine": 220,
+                        "endColumn": 12,
+                        "endOffset": 16612
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 254,
+                    "startColumn": 4,
+                    "startOffset": 18236,
+                    "endLine": 263,
+                    "endColumn": 12,
+                    "endOffset": 18744
+                },
+                "from": {
+                    "file": "/Users/gael/Documents/AndroidProjects/DYKH/C:\\Espace de travail\\AndroidProjets\\DYKH\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
+                    "position": {
+                        "startLine": 221,
+                        "startColumn": 4,
+                        "startOffset": 16617,
+                        "endLine": 230,
+                        "endColumn": 12,
+                        "endOffset": 17125
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 264,
+                    "startColumn": 4,
+                    "startOffset": 18749,
+                    "endLine": 273,
+                    "endColumn": 12,
+                    "endOffset": 19269
+                },
+                "from": {
+                    "file": "/Users/gael/Documents/AndroidProjects/DYKH/C:\\Espace de travail\\AndroidProjets\\DYKH\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
+                    "position": {
+                        "startLine": 231,
+                        "startColumn": 4,
+                        "startOffset": 17130,
+                        "endLine": 240,
+                        "endColumn": 12,
+                        "endOffset": 17650
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 274,
+                    "startColumn": 4,
+                    "startOffset": 19274,
+                    "endLine": 283,
+                    "endColumn": 12,
+                    "endOffset": 19949
+                },
+                "from": {
+                    "file": "/Users/gael/Documents/AndroidProjects/DYKH/C:\\Espace de travail\\AndroidProjets\\DYKH\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
+                    "position": {
+                        "startLine": 241,
+                        "startColumn": 4,
+                        "startOffset": 17655,
+                        "endLine": 250,
+                        "endColumn": 12,
+                        "endOffset": 18330
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 284,
+                    "startColumn": 4,
+                    "startOffset": 19954,
+                    "endColumn": 56,
+                    "endOffset": 20006
+                },
+                "from": {
+                    "file": "/Users/gael/Documents/AndroidProjects/DYKH/C:\\Espace de travail\\AndroidProjets\\DYKH\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
+                    "position": {
+                        "startLine": 251,
+                        "startColumn": 4,
+                        "startOffset": 18335,
+                        "endColumn": 56,
+                        "endOffset": 18387
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 285,
+                    "startColumn": 4,
+                    "startOffset": 20011,
+                    "endColumn": 57,
+                    "endOffset": 20064
+                },
+                "from": {
+                    "file": "/Users/gael/Documents/AndroidProjects/DYKH/C:\\Espace de travail\\AndroidProjets\\DYKH\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.2.1\\res\\values-v21\\values-v21.xml",
+                    "position": {
+                        "startLine": 252,
+                        "startColumn": 4,
+                        "startOffset": 18392,
+                        "endColumn": 57,
+                        "endOffset": 18445
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 286,
+                    "startColumn": 4,
+                    "startOffset": 20069,
+                    "endLine": 288,
+                    "endColumn": 12,
+                    "endOffset": 20258
+                },
+                "from": {
+                    "file": "/Users/gael/Documents/AndroidProjects/DYKH/C:\\Espace de travail\\AndroidProjets\\DYKH\\app\\build\\intermediates\\exploded-aar\\com.android.support\\design\\24.2.1\\res\\values-v21\\values-v21.xml",
+                    "position": {
+                        "startLine": 2,
+                        "startColumn": 4,
+                        "startOffset": 55,
+                        "endLine": 4,
+                        "endColumn": 12,
+                        "endOffset": 244
+                    }
+                }
+            }
+        ]
+    }
+]

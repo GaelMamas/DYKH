@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="ArcButton">
+        <attr name="arcbutton_angle" format="float" />
+        <attr name="arcbutton_previous" format="float" />
+        <attr name="arcbutton_little_radius" format="float" />
+        <attr name="arcbutton_great_radius" format="float" />
+
+        <attr name="arcbutton_text_color" format="color" />
+        <attr name="arcbutton_text_size" format="dimension" />
+        <attr name="arcbutton_title" format="string" />
+
+        <attr name="arcbutton_arc_color" format="color" />
+    </declare-styleable>
+    <declare-styleable name="TimeClipper">
+        <attr name="outer_stroke" format="float" />
+        <attr name="inner_stroke" format="float" />
+        <attr name="progress_stroke" format="float" />
+        <attr name="progress_angle" format="float" />
+        <attr name="outer_arc_number" format="integer" />
+        <attr name="inner_arc_number" format="integer" />
+        <attr name="outer_color" format="color" />
+        <attr name="inner_color" format="color" />
+        <attr name="progress_color" format="color" />
+        <attr name="circle_color" format="color" />
+        <attr name="view_minimum_size" format="integer" />
+        <attr name="period_titles" format="reference"/>
+        <attr name="era_titles" format="reference"/>
+    </declare-styleable>
+
+
+</resources>

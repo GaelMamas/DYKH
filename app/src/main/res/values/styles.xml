@@ -1,0 +1,51 @@
+<resources>
+
+    <style name="BaseTheme" parent="Theme.AppCompat.NoActionBar" />
+
+    <style name="BaseTheme.MainTheme" />
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="BaseTheme.MainTheme">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/color_event_theme_general</item>
+    </style>
+
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="AppCompatAlertDialogStyle" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="android:colorAccent">@color/colorPrimary</item>
+        <item name="android:textColorPrimary">@color/generic_black_text_color</item>
+        <item name="android:background">@color/generic_background_color</item>
+    </style>
+
+    <style name="DYKHEditTextStyle" parent="AppTheme">
+        <item name="colorControlNormal">#eee</item>
+        <item name="colorControlActivated">@color/color_event_theme_general</item>
+        <item name="android:colorActivatedHighlight">@color/colorPrimary</item>
+        <item name="android:textColor">@color/generic_black_text_color</item>
+    </style>
+
+    <style name="DYKHSpinnerStyle" parent="Widget.AppCompat.DropDownItem.Spinner">
+        <item name="android:background">#eee</item>
+        <item name="android:textColorHint">@color/generic_grey_hint_color</item>
+        <item name="android:textColor">@color/event_creation_spinner_nominal_text_color</item>
+        <item name="android:padding">@dimen/space.normal</item>
+    </style>
+
+    <style name="EventCreationEditText" parent="DYKHEditTextStyle">
+
+        <item name="android:textColorHint">@color/generic_grey_hint_color</item>
+        <item name="android:layout_margin">@dimen/space.small</item>
+
+    </style>
+
+    <color name="event_creation_spinner_nominal_text_color">#333</color>
+</resources>

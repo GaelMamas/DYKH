@@ -1,0 +1,22 @@
+[
+    {
+        "merged": "C:\\Espace de travail\\AndroidProjets\\DYKH\\app\\build\\intermediates\\res\\merged\\debug\\menu\\drawer_menu.xml",
+        "source": "C:\\Espace de travail\\AndroidProjets\\DYKH\\app\\src\\main\\res\\menu\\drawer_menu.xml"
+    },
+    {
+        "merged": "C:\\Espace de travail\\AndroidProjets\\DYKH\\app\\build\\intermediates\\res\\merged\\debug\\menu\\menu_update.xml",
+        "source": "C:\\Espace de travail\\AndroidProjets\\DYKH\\app\\src\\main\\res\\menu\\menu_update.xml"
+    },
+    {
+        "merged": "C:\\Espace de travail\\AndroidProjets\\DYKH\\app\\build\\intermediates\\res\\merged\\debug\\menu\\menu_main.xml",
+        "source": "C:\\Espace de travail\\AndroidProjets\\DYKH\\app\\src\\main\\res\\menu\\menu_main.xml"
+    },
+    {
+        "merged": "C:\\Espace de travail\\AndroidProjets\\DYKH\\app\\build\\intermediates\\res\\merged\\debug\\menu\\menu_ready.xml",
+        "source": "C:\\Espace de travail\\AndroidProjets\\DYKH\\app\\src\\main\\res\\menu\\menu_ready.xml"
+    },
+    {
+        "merged": "C:\\Espace de travail\\AndroidProjets\\DYKH\\app\\build\\intermediates\\res\\merged\\debug\\menu\\menu_creative.xml",
+        "source": "C:\\Espace de travail\\AndroidProjets\\DYKH\\app\\src\\main\\res\\menu\\menu_creative.xml"
+    }
+]

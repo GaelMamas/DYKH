@@ -1,0 +1,71 @@
+<resources>
+    <!-- GLOBAL STRINGS -->
+    <string name="app_name">DYKH</string>
+    <string name="map_api_key">AIzaSyDrUvRTzbCJxCZu01FEwBY5Bwt8dvMul_0</string>
+
+    <!-- ANY OTHERS -->
+
+    <string name="action_settings">Settings</string>
+    <string name="navigation.drawer.myspace">Mon espace</string>
+    <string name="navigation.drawer.home">Accueil</string>
+    <string name="global_back" />
+    <string name="navigation_drawer_opened">ouvert</string>
+    <string name="navigation_drawer_closed">fermé</string>
+    <string name="action_submit">OK</string>
+    <string name="ok_button">OK</string>
+    <string name="no_button">NO</string>
+    <string name="more_button">Voir plus</string>
+    <string name="action_search">Search</string>
+    <string name="action_create">Create</string>
+    <string name="hint_search_event">Search an event</string>
+    <string name="dykh_create_event">Publish a history event</string>
+    <string name="event_title_hint">Title</string>
+    <string name="event_historic_location_hint">Historic location</string>
+    <string name="event_story_hint">Story</string>
+    <string name="event_publish_button">Publish</string>
+    <string name="event_theme_hint">Theme</string>
+    <string name="event_today_location_hint">Today location</string>
+    <string name="dykh_warning">Attention!</string>
+    <string name="dyky_publishing_msg_error">The theme or the country or date has not been defined</string>
+    <string name="event_fill_blank_location">Unknown</string>
+    <string name="event_which_bc_ad_hint">BC or AD?</string>
+    <string name="event_year_hint">Year</string>
+    <string name="event_main_info_block_title">Main discription</string>
+    <string name="event_location_block_title">Location</string>
+    <string name="event_time_block_title">Date and Time</string>
+    <string name="event_month_hint">Month</string>
+    <string name="event_day_hint">Day</string>
+    <string name="event_modify_apply_button">Apply</string>
+    <string name="app_login_screen">Login to DYKH</string>
+    <string name="login_email_hint">Enter your email</string>
+    <string name="button_login_connect">Log in</string>
+    <string name="login_password_hint">Enter your password</string>
+
+    <string-array name="event_themes">
+        <item name="event_theme_discovery">Discovery</item>
+        <item name="event_theme_invention">Invention</item>
+        <item name="event_theme_peace_treaty">Peace Treaty</item>
+        <item name="event_theme_science">Science</item>
+        <item name="event_theme_war">War</item>
+        <item name="event_theme_war_empire">War, Empire</item>
+    </string-array>
+
+    <string-array name="event_bc_or_ad">
+        <item name="event_bc">BC</item>
+        <item name="event_ad">AD</item>
+    </string-array>
+
+
+    <string-array name="period_titles">
+        <item>Préhistoire</item>
+        <item>Histoire</item>
+    </string-array>
+
+    <string-array name="era_titles">
+        <item>Néolithique</item>
+        <item>Antiquité</item>
+        <item>Moyen-Age</item>
+        <item>T. Modernes</item>
+        <item>Contemporaine</item>
+    </string-array>
+</resources>

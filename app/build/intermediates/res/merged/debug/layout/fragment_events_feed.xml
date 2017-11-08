@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#eeffffff">
+
+        <android.support.v4.widget.SwipeRefreshLayout
+            android:id="@+id/swipe_refresh"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:layout="@layout/cell_summary_event">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@android:id/list"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:clipToPadding="false"
+                android:paddingBottom="@dimen/space.normal"
+                android:paddingEnd="@dimen/space.normal"
+                android:paddingLeft="@dimen/space.normal"
+                android:paddingRight="@dimen/space.normal"
+                android:paddingTop="@dimen/space.biggest"
+                android:scrollbars="vertical"
+                tools:ignore="RtlSymmetry"/>
+
+        </android.support.v4.widget.SwipeRefreshLayout>
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/event_searching_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/background_edittext"
+        app:cardCornerRadius="1dp"
+        android:layout_margin="2dp">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/generic_background_color">
+
+            <android.support.v7.widget.AppCompatEditText
+                android:id="@+id/edittext_searching_event"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:imeOptions="actionSearch"
+                android:inputType="text"
+                android:maxLines="1"
+                android:textColor="@color/generic_black_text_color"
+                android:textColorHint="@android:color/darker_gray"
+                android:hint="@string/hint_search_event"
+                android:theme="@style/DYKHEditTextStyle" />
+
+            <ImageView
+                android:id="@+id/image_delete_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|end"
+                android:src="@drawable/ic_back_space_24dp" />
+
+        </FrameLayout>
+
+    </android.support.v7.widget.CardView>
+
+
+</FrameLayout>

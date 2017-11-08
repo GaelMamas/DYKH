@@ -1,0 +1,34 @@
+[
+    {
+        "merged": "C:\\Espace de travail\\AndroidProjets\\DYKH\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21\\design_ic_visibility_off.xml",
+        "source": "C:\\Users\\VM32776N\\.android\\build-cache\\355356cb2fa5f00d9d0b1528d9382537f1d2b261\\output\\res\\drawable-anydpi-v21\\design_ic_visibility_off.xml"
+    },
+    {
+        "merged": "C:\\Espace de travail\\AndroidProjets\\DYKH\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21\\design_ic_visibility.xml",
+        "source": "C:\\Users\\VM32776N\\.android\\build-cache\\355356cb2fa5f00d9d0b1528d9382537f1d2b261\\output\\res\\drawable-anydpi-v21\\design_ic_visibility.xml"
+    },
+    {
+        "merged": "C:\\Espace de travail\\AndroidProjets\\DYKH\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21\\ic_arrow_back_24dp.xml",
+        "source": "C:\\Espace de travail\\AndroidProjets\\DYKH\\app\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v21\\ic_arrow_back_24dp.xml"
+    },
+    {
+        "merged": "C:\\Espace de travail\\AndroidProjets\\DYKH\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21\\ic_search_24dp.xml",
+        "source": "C:\\Espace de travail\\AndroidProjets\\DYKH\\app\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v21\\ic_search_24dp.xml"
+    },
+    {
+        "merged": "C:\\Espace de travail\\AndroidProjets\\DYKH\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21\\ic_arrow_drop_down_black_24dp.xml",
+        "source": "C:\\Espace de travail\\AndroidProjets\\DYKH\\app\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v21\\ic_arrow_drop_down_black_24dp.xml"
+    },
+    {
+        "merged": "C:\\Espace de travail\\AndroidProjets\\DYKH\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21\\ic_open_editor_black_24dp.xml",
+        "source": "C:\\Espace de travail\\AndroidProjets\\DYKH\\app\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v21\\ic_open_editor_black_24dp.xml"
+    },
+    {
+        "merged": "C:\\Espace de travail\\AndroidProjets\\DYKH\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21\\ic_done_24dp.xml",
+        "source": "C:\\Espace de travail\\AndroidProjets\\DYKH\\app\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v21\\ic_done_24dp.xml"
+    },
+    {
+        "merged": "C:\\Espace de travail\\AndroidProjets\\DYKH\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21\\ic_back_space_24dp.xml",
+        "source": "C:\\Espace de travail\\AndroidProjets\\DYKH\\app\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v21\\ic_back_space_24dp.xml"
+    }
+]

@@ -1,0 +1,7 @@
+#Tue Nov 08 18:38:47 CET 2016
+base.0=/Users/gael/Documents/AndroidProjects/DYKH/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_d3cee85f2a423ff4a5b5dcd0d955e45d3b13534a
+renamed.1=classes.dex
+renamed.0=classes2.dex
+file.1=/Users/gael/Documents/AndroidProjects/DYKH/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_290815785016ba9638573b65e6748d6b14a1d120/classes.dex
+base.1=/Users/gael/Documents/AndroidProjects/DYKH/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_290815785016ba9638573b65e6748d6b14a1d120
+file.0=/Users/gael/Documents/AndroidProjects/DYKH/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_d3cee85f2a423ff4a5b5dcd0d955e45d3b13534a/classes.dex

@@ -1,0 +1,7 @@
+#Mon Oct 30 17:18:54 CET 2017
+base.0=C\:\\Espace de travail\\AndroidProjets\\DYKH\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run_971013611199cdc84cdccdabc55685fe30ae2fc4
+renamed.1=classes.dex
+renamed.0=classes2.dex
+file.1=C\:\\Espace de travail\\AndroidProjets\\DYKH\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run-bootstrap_3f3fff558cab23cf4a6e0e007efc67898fbf53af\\classes.dex
+base.1=C\:\\Espace de travail\\AndroidProjets\\DYKH\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run-bootstrap_3f3fff558cab23cf4a6e0e007efc67898fbf53af
+file.0=C\:\\Espace de travail\\AndroidProjets\\DYKH\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run_971013611199cdc84cdccdabc55685fe30ae2fc4\\classes.dex

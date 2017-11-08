@@ -1,0 +1,423 @@
+{
+	"events": [{
+		"location": "Near East, Europe",
+		"theme": "",
+		"title": "Cro-Magnon man is flourishing",
+		"sliceTime": "30000 BC",
+		"story": "Cro-Magnon man is flourishing, moving from the Near East into Europe, lives by hunting and gathering. Cro-Magnon/'s painted caves with drawings of the animals they killed."
+	}, {
+		"location": "Bering Strait, Asia, Americas",
+		"theme": "",
+		"title": "Bering Strait is crossed by humans",
+		"sliceTime": "25000 BC",
+		"story": "Bering Strait is crossed by humans, connecting Asia to the Americas."
+	}, {
+		"location": "",
+		"theme": "",
+		"title": "Clay pottery. Raw metals use.",
+		"sliceTime": "18000 BC",
+		"story": "Clay pottery ware is created. Humans begin to use raw metals."
+	}, {
+		"location": "South America",
+		"theme": "",
+		"title": "Humans make it to the southern most point of South America.",
+		"sliceTime": "10000 BC",
+		"story": "Humans make it to the southern most point of South America."
+	}, {
+		"location": "the Fertile Cresen, Middle Eastern area",
+		"theme": "",
+		"title": "The Neolithic Revolution and an agriculture way of life is discovered",
+		"sliceTime": "8000 BC",
+		"story": "The Neolithic Revolution and an agriculture way of life is discovered in the Fertile Cresent/Middle Eastern area. Cows and sheep were domesticated and crops where manipulated and tended.(interesting fact: first domesticated dog ever was found in Idaho, USA 8400 BC)."
+	}, {
+		"location": "Jericho",
+		"theme": "",
+		"title": "A great earthquake destroys the city of Jericho",
+		"sliceTime": "7000 BC",
+		"story": "A great earthquake destroys the city of Jericho."
+	}, {
+		"location": "England",
+		"theme": "",
+		"title": "The oceans and sea's rise",
+		"sliceTime": "6500 BC",
+		"story": "The oceans and sea\u2019s rise, England is now cut off from Europe by land."
+	}, {
+		"location": "the Near East",
+		"theme": "",
+		"title": ".    First beer is brewed from grain",
+		"sliceTime": "6000 BC",
+		"story": ".    First beer is brewed from grain in the Near East."
+	}, {
+		"location": "the Mesopotamia region.",
+		"theme": "",
+		"title": "First settled societies",
+		"sliceTime": "5500 BC",
+		"story": "First settled societies in the Mesopotamia region."
+	}, {
+		"location": "",
+		"theme": "",
+		"title": "Humans learn how to use the plow.",
+		"sliceTime": "4500 BC",
+		"story": "Humans learn how to use the plow."
+	}, {
+		"location": "",
+		"theme": "",
+		"title": "Development of copper and bronze metallurgy.",
+		"sliceTime": "4250 BC",
+		"story": "Development of copper and bronze metallurgy."
+	}, {
+		"location": "Egypt",
+		"theme": "",
+		"title": "The very first year on the Egyptian calendar.",
+		"sliceTime": "4242 BC",
+		"story": "The very first year on the Egyptian calendar."
+	}, {
+		"location": "China",
+		"theme": "Invention",
+		"title": "The wheel is invented and begins to be used. Rice farming",
+		"sliceTime": "4000 BC",
+		"story": "The wheel is invented and begins to be used. Rice farming in China is developed."
+	}, {
+		"location": "",
+		"theme": "Writing",
+		"title": "Beginning forms of writing. Earliest ziggurats are built.",
+		"sliceTime": "3400 BC",
+		"story": "Beginning forms of writing. Earliest ziggurats are built."
+	}, {
+		"location": "",
+		"theme": "",
+		"title": "First date in the Mayan calendar",
+		"sliceTime": "3113 BC",
+		"story": "First date in the Mayan calendar."
+	}, {
+		"location": "Egypt",
+		"theme": "",
+		"title": "Egypt's 1st Dynasty.",
+		"sliceTime": "3100 BC",
+		"story": "Egypt's 1st Dynasty created by the joining of the upper and lower kingdoms of Egypt."
+	}, {
+		"location": "",
+		"theme": "",
+		"title": "Bricks for construction. importance of Temples. Military campaigns.",
+		"sliceTime": "3000 BC",
+		"story": "Bricks are used widely(and made by a fired process). First city-states are created, palaces are starting to be build. Temples are usually build at the center of the cities.There were large military campaigns by ethnic groups of people."
+	}, {
+		"location": "Uruk",
+		"theme": "",
+		"title": "Rule of Gilgamesh. King of Uruk.",
+		"sliceTime": "2750 BC",
+		"story": "Rule of Gilgamesh. King of Uruk."
+	}, {
+		"location": "Egypt.",
+		"theme": "",
+		"title": "Very first pyramids were built",
+		"sliceTime": "2667 BC",
+		"story": "Very first pyramids were built in Egypt."
+	}, {
+		"location": "",
+		"theme": "",
+		"title": "First written legal codes.",
+		"sliceTime": "2500 BC",
+		"story": "First written legal codes."
+	}, {
+		"location": "England",
+		"theme": "",
+		"title": "The construction of Stonehenge",
+		"sliceTime": "2400 BC",
+		"story": "The construction of Stonehenge in England starts."
+	}, {
+		"location": "Babylon",
+		"theme": "",
+		"title": "Hammurabi begins his rule as king.",
+		"sliceTime": "1792 BC",
+		"story": "Hammurabi begins his rule as king."
+	}, {
+		"location": "Anatolia",
+		"theme": "",
+		"title": "The Hittites conquer Babylon.",
+		"sliceTime": "1531 BC",
+		"story": "The Hittites conquer Babylon."
+	}, {
+		"location": "Egypt",
+		"theme": "",
+		"title": "A young boy named Tutankhamun succeeds Akhenaten, he restores the nation to worshiping the old Egyptian gods.",
+		"sliceTime": "1333 BC",
+		"story": "A young boy named Tutankhamun succeeds Akhenaten, he restores the nation to worshiping the old Egyptian gods."
+	}, {
+		"location": "Khuzestan, Egypt",
+		"theme": "",
+		"title": "Iran construction, Israelites Exodus",
+		"sliceTime": "1250 BC",
+		"story": "Ziggurat in Khuzestan, in present day Iran is built. Moses leads the Israelites on an exodus out of Egypt."
+	}, {
+		"location": "Egypt",
+		"theme": "",
+		"title": "Moses leads his people out of Egypt.",
+		"sliceTime": "1200 BC",
+		"story": "Moses leads his people out of Egypt."
+	}, {
+		"location": "Tunisia",
+		"theme": "",
+		"title": "The First North African city of Utica (Tunisia) is established by the Phoenicians.",
+		"sliceTime": "1140 BC",
+		"story": "The First North African city of Utica (Tunisia) is established by the Phoenicians."
+	}, {
+		"location": "Babylon",
+		"theme": "",
+		"title": "Nebuchadnezzar I begins his rule as king of Babylon.",
+		"sliceTime": "1126 BC",
+		"story": "Nebuchadnezzar I begins his rule as king of Babylon."
+	}, {
+		"location": "China",
+		"theme": "",
+		"title": "The Chou Dynasty and the feudal system",
+		"sliceTime": "1122 BC",
+		"story": "The Chou Dynasty is formed in China by Emperor Wu Wang. The feudal system follows."
+	}, {
+		"location": "Egypt",
+		"theme": "",
+		"title": "The New Kingdom phase, the XXIst Dynasty formation",
+		"sliceTime": "1077 BC",
+		"story": "The New Kingdom phase in Egypt is over when Rameses XI dies. Smendes ascends to Pharaoh and forms the XXIst Dynasty."
+	}, {
+		"location": "Nubia (Southern Egypt)",
+		"theme": "",
+		"title": "The Kingdom of Kush",
+		"sliceTime": "1070 BC",
+		"story": "The Kingdom of Kush in Nubia begins."
+	}, {
+		"location": "land of Canaan",
+		"theme": "",
+		"title": "Israel is invaded and defeated by the Philistines.",
+		"sliceTime": "1050 BC",
+		"story": "Israel is invaded and defeated by the Philistines."
+	}, {
+		"location": "Israel",
+		"theme": "",
+		"title": "Saul is anointed king of Israel by the one of the last remaining Israelite judges.",
+		"sliceTime": "1020 BC",
+		"story": "Saul is anointed king of Israel by the one of the last remaining Israelite judges."
+	}, {
+		"location": "Israel",
+		"theme": "",
+		"title": "In the battle of Gilboa, Saul is killed and David ascends to the throne.",
+		"sliceTime": "1000 BC",
+		"story": "In the battle of Gilboa, Saul is killed and David ascends to the throne."
+	}, {
+		"location": "Israel",
+		"theme": "",
+		"title": "David dies and his throne is replaced by his son Solomon.",
+		"sliceTime": "961 BC",
+		"story": "David dies and his throne is replaced by his son Solomon."
+	}, {
+		"location": "Israel",
+		"theme": "",
+		"title": "The Dedication of Temple at Jerusalem is built by Solomon.",
+		"sliceTime": "953 BC",
+		"story": "The Dedication of Temple at Jerusalem is built by Solomon."
+	}, {
+		"location": "Israel",
+		"theme": "",
+		"title": "Solomon dies and his throne is replaced by his son Rehoboam who faces a rebellion soon after his ascension.",
+		"sliceTime": "922 BC",
+		"story": "Solomon dies and his throne is replaced by his son Rehoboam who faces a rebellion soon after his ascension."
+	}, {
+		"location": "Utica",
+		"theme": "",
+		"title": "Carthage is founded by the Phoenicians, not far from Utica.",
+		"sliceTime": "814 BC",
+		"story": "Carthage is founded by the Phoenicians, not far from Utica."
+	}, {
+		"location": "",
+		"theme": "",
+		"title": "The great poet Homer writes The Iliad and The Odyssey",
+		"sliceTime": "800 BC",
+		"story": "The great poet Homer writes The Iliad and The Odyssey"
+	}, {
+		"location": "Greece",
+		"theme": "",
+		"title": "The very first recorded Olympic Games are established",
+		"sliceTime": "776 BC",
+		"story": "The very first recorded Olympic Games are established in Greece."
+	}, {
+		"location": "China",
+		"theme": "",
+		"title": "The Eastern Chou Dynasty",
+		"sliceTime": "770 BC",
+		"story": "The Eastern Chou Dynasty in China begins."
+	}, {
+		"location": "India",
+		"theme": "",
+		"title": "Buddha death",
+		"sliceTime": "483 BC",
+		"story": "Buddha dies in India."
+	}, {
+		"location": "Greece",
+		"theme": "",
+		"title": "Hippocrates is born.",
+		"sliceTime": "460 BC",
+		"story": "Hippocrates is born."
+	}, {
+		"location": "Greece",
+		"theme": "",
+		"title": "The Government of the Thirty Tyrants begins.",
+		"sliceTime": "404 BC",
+		"story": "The Government of the Thirty Tyrants begins."
+	}, {
+		"location": "Coronea",
+		"theme": "War",
+		"title": "Spartan forces win the Battle of Coronea.",
+		"sliceTime": "394 BC",
+		"story": "Spartan forces win the Battle of Coronea."
+	}, {
+		"location": "Europe",
+		"theme": "",
+		"title": "The city of Rome is ransacked by The Gauls from France.",
+		"sliceTime": "390 BC",
+		"story": "The city of Rome is ransacked by The Gauls from France."
+	}, {
+		"location": "",
+		"theme": "",
+		"title": "Antalcidas of Sparta forms a peace pact with Persia.",
+		"sliceTime": "386 BC",
+		"story": "Antalcidas of Sparta forms a peace pact with Persia."
+	}, {
+		"location": "Greece",
+		"theme": "",
+		"title": "Hippocrates dies.",
+		"sliceTime": "377 BC",
+		"story": "Hippocrates dies."
+	}, {
+		"location": "",
+		"theme": "",
+		"title": "Sparta and The Athenian League form a peace pact.",
+		"sliceTime": "371 BC",
+		"story": "Sparta and The Athenian League form a peace pact."
+	}, {
+		"location": "Rome",
+		"theme": "",
+		"title": "Rome elects its first plebeian council member.",
+		"sliceTime": "367 BC",
+		"story": "Rome elects its first plebeian council member."
+	}, {
+		"location": "",
+		"theme": "",
+		"title": "The Third Sacred War begins.",
+		"sliceTime": "356 BC",
+		"story": "The Third Sacred War begins."
+	}, {
+		"location": "",
+		"theme": "",
+		"title": "The Fourth Sacred War begins.",
+		"sliceTime": "339 BC",
+		"story": "The Fourth Sacred War begins."
+	}, {
+		"location": "Macedonia",
+		"theme": "",
+		"title": "Philip II of Macedonia is assassinated.",
+		"sliceTime": "336 BC",
+		"story": "Philip II of Macedonia is assassinated."
+	}, {
+		"location": "Egypt",
+		"theme": "War, Empire",
+		"title": "Alexander the Great invades Egypt and founds the city Alexandria.",
+		"sliceTime": "332 BC",
+		"story": "Alexander the Great invades Egypt and founds the city Alexandria."
+	}, {
+		"location": "",
+		"theme": "War",
+		"title": "The First Punic War begins.",
+		"sliceTime": "264 BC",
+		"story": "The First Punic War begins."
+	}, {
+		"location": "China",
+		"theme": "",
+		"title": "China unification",
+		"sliceTime": "221 BC",
+		"story": "China is united under the reign of Shi Huangdi, China's first emperor."
+	}, {
+		"location": "China",
+		"theme": "",
+		"title": "Construction begins on The Great Wall of China.",
+		"sliceTime": "214 BC",
+		"story": "Construction begins on The Great Wall of China."
+	}, {
+		"location": "China",
+		"theme": "",
+		"title": "Construction is completed on The Great Wall of China.",
+		"sliceTime": "204 BC",
+		"story": "Construction is completed on The Great Wall of China."
+	}, {
+		"location": "",
+		"theme": "",
+		"title": "Roman forces defeat Perseus at the Battle of Pydna.",
+		"sliceTime": "168 BC",
+		"story": "Roman forces defeat Perseus at the Battle of Pydna."
+	}, {
+		"location": "Jerusalem",
+		"theme": "",
+		"title": "Jewish people liberate Jerusalem.",
+		"sliceTime": "141 BC",
+		"story": "Jewish people liberate Jerusalem."
+	}, {
+		"location": "China",
+		"theme": "",
+		"title": "Wu (Liu Che) becomes Martial Emperor of China.",
+		"sliceTime": "140 BC",
+		"story": "Wu (Liu Che) becomes Martial Emperor of China."
+	}, {
+		"location": "89 BC",
+		"theme": "",
+		"title": "First Mithridatic War.",
+		"sliceTime": "89 BC",
+		"story": "First Mithridatic War."
+	}, {
+		"location": "Judea",
+		"theme": "",
+		"title": "Judea is captured by the Roman empire.",
+		"sliceTime": "63 BC",
+		"story": "Judea is captured by the Roman empire."
+	}, {
+		"location": "Carrhae",
+		"theme": "",
+		"title": "The Battle of Carrhae.",
+		"sliceTime": "53 BC",
+		"story": "The Battle of Carrhae, between Parthian and Roman empires."
+	}, {
+		"location": "France",
+		"theme": "",
+		"title": "France is conquered by Julius Caesar.",
+		"sliceTime": "50 BC",
+		"story": "France is conquered by Julius Caesar."
+	}, {
+		"location": "Rome",
+		"theme": "",
+		"title": "Caesar becomes dictator of Rome.",
+		"sliceTime": "45 BC",
+		"story": "Caesar becomes dictator of Rome."
+	}, {
+		"location": "Rome",
+		"theme": "",
+		"title": "Caesar is assassinated.",
+		"sliceTime": "44 BC",
+		"story": "Caesar is assassinated."
+	}, {
+		"location": "Egypt",
+		"theme": "",
+		"title": "Egypt, a province of the current Roman empire.",
+		"sliceTime": "30 BC",
+		"story": "Egypt is absorbed and becomes a province of the current Roman empire."
+	}, {
+		"location": "Rome",
+		"theme": "",
+		"title": "Augustus,the first Roman emperor.",
+		"sliceTime": "27 BC",
+		"story": "Augustus begins his rule of the Roman Empire as the first Roman emperor."
+	}, {
+		"location": "Bethlehem",
+		"theme": "",
+		"title": "Jesus is born",
+		"sliceTime": "5 BC",
+		"story": "Jesus is born in Bethlehem."
+	}]
+}

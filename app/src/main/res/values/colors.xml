@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="my_light_cardview_background">#FFE</color>
+    <color name="generic_background_color">#FFF</color>
+    <color name="generic_black_text_color">@android:color/background_dark</color>
+    <color name="generic_grey_hint_color">#666</color>
+
+    <color name="default_screen_bg">#f9f9f9</color>
+    <color name="rounded_container_bg">#222222</color>
+    <color name="rounded_container_border">#3b3f44</color>
+    <color name="light_gray_header_color">#646663</color>
+    <color name="progress_shadow_color">#81D4FA</color>
+    <color name="dykh_grey_color">#ccc</color>
+    <color name="color_event_title_basis">#E3F2FD</color>
+    <color name="color_event_title_medium">#42A5F5</color>
+    <color name="color_event_title_top">#1565C0</color>
+    <color name="color_event_theme_invention">#CDDC39</color>
+    <color name="color_event_theme_war">#E91E63</color>
+    <color name="color_event_theme_discovery">#FF8F00</color>
+    <color name="color_event_theme_peace_treaty">#CFD8DC</color>
+    <color name="color_event_theme_general">#2196F3</color>
+</resources>
