@@ -10,13 +10,18 @@ import android.widget.TextView;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 import java.util.Random;
 
+import malakoff.dykh.AppApplication.AppApplication;
 import malakoff.dykh.AppApplication.Constants;
+import malakoff.dykh.Event.Event;
 import malakoff.dykh.ModelBase.Base.EraTime;
 import malakoff.dykh.ModelBase.EventsPartition;
 import malakoff.dykh.ModelBase.TimeLine;
@@ -145,5 +150,33 @@ public class UsefulGenericMethods {
         }
 
         return list;
+    }
+
+    public static JSONObject getEventJSONObject(Event event) throws NullPointerException{
+
+        JSONObject params = null;
+
+        try {
+            params = new JSONObject();
+
+            params.put("_id", "Admin");
+            params.put("sliceTime", event.getSliceTime());
+            params.put("location", event.getLocation());
+            params.put("title", event.getTitle());
+            params.put("story", event.getStory());
+            params.put("theme", event.getTheme());
+            params.put("isValidate", String.valueOf(event.getIsValidate()));
+            params.put("locationModernCalling", event.getLocationModernCalling());
+            params.put("longitude", String.valueOf(event.getLongitude()));
+            params.put("userId", AppApplication.getUserInfo().getUserId());
+            params.put("latitude", String.valueOf(event.getLatitude()));
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+
+            new NullPointerException(e.getMessage());
+        }
+
+        return params;
     }
 }

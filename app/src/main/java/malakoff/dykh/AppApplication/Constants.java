@@ -35,7 +35,11 @@ public class Constants {
     public static final float ANGLE_MAX = 359.99f;
     public static String DYKH_PREFERENCES = "dykh preferences";
 
-    public static final String SERVER_URL_ROOT = "http://130.98.39.115:8080";
+    //public static final String SERVER_URL_ROOT = "http://130.98.39.115:8000";
+
+    public static final String SERVER_URL_ROOT = "https://aqueous-everglades-11958.herokuapp.com";
+
+
     public static final String SERVER_URL_EVENT_ROUT = "/Event";
     public static final String SERVER_URL_USER_ROUT = "/User";
 

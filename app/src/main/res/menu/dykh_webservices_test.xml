@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/events_getter"
+        android:title="Get many events"/>
+
+    <item
+        android:id="@+id/event_deleter"
+        android:title="Delete an event"/>
+
+    <item
+        android:id="@+id/event_poster"
+        android:title="Post an event"/>
+
+    <item
+        android:id="@+id/events_poster"
+        android:title="Post many events"/>
+
+
+</menu>

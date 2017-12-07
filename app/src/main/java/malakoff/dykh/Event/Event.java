@@ -55,6 +55,7 @@ public class Event {
 			String eventId,
 			String sliceTime,
 			String location,
+			String locationModernCalling,
 			String userId,
 			String title,
 			String story,
@@ -63,6 +64,7 @@ public class Event {
 		this._id = eventId;
 		this.sliceTime = sliceTime;
 		this.location = location;
+		this.locationModernCalling = locationModernCalling;
 		this.userId = userId;
 		this.title = title;
 		this.story = story;

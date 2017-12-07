@@ -35,7 +35,7 @@ public class FetchAddressIntentService extends IntentService {
 
         String errorMessage = "";
 
-        String name = intent.getStringExtra(Constants.LOCATION_DATA_EXTRA);
+        /*String name = intent.getStringExtra(Constants.LOCATION_DATA_EXTRA);
 
         List<Address> addresses = null;
 
@@ -64,12 +64,12 @@ public class FetchAddressIntentService extends IntentService {
             deliverResultToReceiver(Constants.SUCCESS_RESULT,
                     TextUtils.join(System.getProperty("line.separator"),
                             addressFragments));
-        }
+        }*/
     }
 
     private void deliverResultToReceiver(int resultCode, String message) {
         Bundle bundle = new Bundle();
-        bundle.putString(Constants.RESULT_DATA_KEY, message);
+        //bundle.putString(Constants.RESULT_DATA_KEY, message);
         mReceiver.send(resultCode, bundle);
     }
 }

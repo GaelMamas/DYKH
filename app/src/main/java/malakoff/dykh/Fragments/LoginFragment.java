@@ -67,7 +67,7 @@ public class LoginFragment extends BaseFragment implements TextView.OnEditorActi
             @Override
             public boolean onLongClick(View v) {
 
-                login("mviviengael@gmail.com", "Admin");
+                login("toto@toto.com", "Veol");
 
                 return true;
             }
@@ -79,6 +79,7 @@ public class LoginFragment extends BaseFragment implements TextView.OnEditorActi
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
+        //noinspection ConstantConditions
         queue = MySingleton.getInstance(getContext().getApplicationContext()).getRequestQueue();
         queue.start();
     }
@@ -90,7 +91,7 @@ public class LoginFragment extends BaseFragment implements TextView.OnEditorActi
             params = new JSONObject();
 
             params.put("email", email);
-            params.put("name", password);
+            params.put("pwd", password);
 
 
             JsonObjectRequest jsonObjectGsonRequest = new JsonObjectRequest(
