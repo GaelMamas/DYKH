@@ -55,4 +55,8 @@ freeline.py
 freeline/
 freeline_project_description.json
 
-.DS_Store
+#DS_store
+*.DS_Store
+
+#.properties
+*.properties

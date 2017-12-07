@@ -117,7 +117,7 @@ public class EventCreationFragment extends WriteEventBaseFragment {
                                         .setDefaultModelData(getResources().openRawResource(R.raw.ad_events)));
 
 
-                                if (eventsUploadingTest.isEmpty() && getContext() != null) {
+                                if (getContext() != null) {
 
                                     AlertDialog.Builder builder = new AlertDialog.Builder(getContext(), R.style.AppCompatAlertDialogStyle);
 
@@ -153,19 +153,21 @@ public class EventCreationFragment extends WriteEventBaseFragment {
 
     private void setUploadEventsListAccordingToPeriod(EventsPartition eventsPartition) {
 
-        /*if (eventsPartition != null
+        if (eventsPartition != null
                 && eventsPartition.getEvents() != null
                 && !eventsPartition.getEvents().isEmpty()
-                && AppApplication.getUserInfo().getUserId()) {
+                && AppApplication.getUserInfo() != null) {
 
             for(Event event:eventsPartition.getEvents()){
 
-                event.set
+                event.setUserId(AppApplication.getUserInfo().getUserId());
 
             }
 
+            eventsUploadingTest.addAll(eventsPartition.getEvents());
 
-        }*/
+
+        }
 
     }
 
