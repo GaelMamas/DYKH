@@ -51,6 +51,10 @@ public class EventManager {
 
         if(TextUtils.isEmpty(eventId))return null;
 
+        if(events == null){
+            events = gsonEventFactory.getEvents();
+        }
+
         for (Event event : events) {
             if (event.getEventId().contentEquals(eventId)) {
                 return event;

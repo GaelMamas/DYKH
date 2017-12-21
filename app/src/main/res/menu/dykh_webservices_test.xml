@@ -17,5 +17,9 @@
         android:id="@+id/events_poster"
         android:title="Post many events"/>
 
+    <item
+        android:id="@+id/events_deleter"
+        android:title="Delete many events"/>
+
 
 </menu>

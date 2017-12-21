@@ -121,13 +121,53 @@ public class EventCreationFragment extends WriteEventBaseFragment {
 
                                     AlertDialog.Builder builder = new AlertDialog.Builder(getContext(), R.style.AppCompatAlertDialogStyle);
 
-                                    builder.setTitle("Warning")
+                                    builder.setTitle("Posting Warning")
                                             .setMessage("Are you sure to post many events at once")
                                             .setPositiveButton("YES", new DialogInterface.OnClickListener() {
                                                 @Override
                                                 public void onClick(DialogInterface dialogInterface, int i) {
 
                                                     runANewRequest(postManyEvents(eventsUploadingTest));
+                                                }
+                                            })
+                                            .setNegativeButton("No", null)
+                                            .create().show();
+
+                                }
+
+
+                                break;
+
+                            case R.id.events_deleter:
+
+                                mEventManager.readEvents(AppApplication.getUserInfo().getUserId());
+
+                                if(getContext() != null
+                                        && mEventManager.getEvents() != null
+                                        && mEventManager.getEvents().size() > 0){
+
+                                    final JSONArray jsonArray = new JSONArray();
+
+                                    for (Event event: mEventManager.getEvents()){
+
+                                            try {
+                                                jsonArray.put(event.getEventId());
+                                            } catch (NullPointerException e) {
+                                                Log.e(this.getClass().getSimpleName(), e.getMessage());
+                                            }
+
+                                    }
+
+                                    AlertDialog.Builder builder = new AlertDialog.Builder(getContext(), R.style.AppCompatAlertDialogStyle);
+
+                                    builder.setTitle("Deleting Warning")
+                                            .setMessage("Are you sure to delete many events at once")
+                                            .setPositiveButton("YES", new DialogInterface.OnClickListener() {
+                                                @Override
+                                                public void onClick(DialogInterface dialogInterface, int i) {
+
+                                                    runANewRequest(deleteManyEvents(jsonArray));
+
                                                 }
                                             })
                                             .setNegativeButton("No", null)
@@ -150,6 +190,7 @@ public class EventCreationFragment extends WriteEventBaseFragment {
             }
         });
     }
+
 
     private void setUploadEventsListAccordingToPeriod(EventsPartition eventsPartition) {
 
@@ -386,6 +427,39 @@ public class EventCreationFragment extends WriteEventBaseFragment {
 
 
                     }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(getContext(), "That didn't work!", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+    }
+
+
+    private JsonArrayRequest deleteManyEvents(JSONArray eventIdsArray) {
+
+
+        return new JsonArrayRequest(
+                Request.Method.DELETE,
+                Constants.SERVER_URL_ROOT + Constants.SERVER_URL_EVENT_ROUT + "/deleteManyEvents",
+                eventIdsArray,
+                new Response.Listener<JSONArray>() {
+                    @Override
+                    public void onResponse(JSONArray response) {
+                        if (response != null) {
+
+                            Toast.makeText(getContext(), "Response is: " + response.toString(), Toast.LENGTH_LONG).show();
+
+                            Log.d(this.getClass().getSimpleName(), "Delete Success " + response.toString());
+
+                        } else {
+
+                            Log.d(this.getClass().getSimpleName(), "Delete Failure " + response.toString());
+
+                        }
+                    }
+
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
