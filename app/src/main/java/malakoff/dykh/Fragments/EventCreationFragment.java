@@ -41,6 +41,7 @@ import malakoff.dykh.Fragments.Base.WriteEventBaseFragment;
 import malakoff.dykh.ModelBase.EventsPartition;
 import malakoff.dykh.Network.GsonArrayRequest;
 import malakoff.dykh.Network.MySingleton;
+import malakoff.dykh.Network.RequestsFactory;
 import malakoff.dykh.R;
 import malakoff.dykh.Utils.UsefulGenericMethods;
 
@@ -83,17 +84,17 @@ public class EventCreationFragment extends WriteEventBaseFragment {
                         switch (item.getItemId()) {
                             case R.id.events_getter:
 
-                                runANewRequest(getSpecificEvents(AppApplication.getUserInfo().getUserId()));
+                                runANewRequest(RequestsFactory.getSpecificEvents(getContext(), AppApplication.getUserInfo().getUserId()));
 
                                 break;
                             case R.id.event_deleter:
 
-                                runANewRequest(deleteAnEvent("???????"));
+                                runANewRequest(RequestsFactory.deleteAnEvent(getContext(), "???????"));
 
                                 break;
                             case R.id.event_poster:
 
-                                runANewRequest(postAnEvent(new Event(
+                                runANewRequest(RequestsFactory.postAnEvent(getContext(), getView(), new Event(
                                         "",
                                         new SimpleDateFormat("yyyy").format(System.currentTimeMillis()) + "AD",
                                         "Clamart",
@@ -127,7 +128,7 @@ public class EventCreationFragment extends WriteEventBaseFragment {
                                                 @Override
                                                 public void onClick(DialogInterface dialogInterface, int i) {
 
-                                                    runANewRequest(postManyEvents(eventsUploadingTest));
+                                                    runANewRequest(RequestsFactory.postManyEvents(getContext(), getView(), eventsUploadingTest));
                                                 }
                                             })
                                             .setNegativeButton("No", null)
@@ -166,7 +167,7 @@ public class EventCreationFragment extends WriteEventBaseFragment {
                                                 @Override
                                                 public void onClick(DialogInterface dialogInterface, int i) {
 
-                                                    runANewRequest(deleteManyEvents(jsonArray));
+                                                    runANewRequest(RequestsFactory.deleteManyEvents(getContext(), jsonArray));
 
                                                 }
                                             })
@@ -255,7 +256,7 @@ public class EventCreationFragment extends WriteEventBaseFragment {
 
                 } else if (getView() != null) {
 
-                    runANewRequest(postAnEvent(new Event(
+                    runANewRequest(RequestsFactory.postAnEvent(getContext(), getView(), new Event(
                             "",
                             newEventFinalDate[0] + "-" + newEventFinalDate[1] + "-" + newEventFinalDate[2] + " " + selectedBCAD,
                             historicLocation,
@@ -288,184 +289,5 @@ public class EventCreationFragment extends WriteEventBaseFragment {
             ((BaseDawerActivity) getActivity()).changeToolbarConfig(R.drawable.ic_arrow_back_24dp,
                     R.string.dykh_create_event);
         }
-    }
-
-    public JsonArrayRequest postManyEvents(List<Event> events) {
-
-        JSONArray jsonArray = new JSONArray();
-
-        for (Event event : events) {
-            try {
-                jsonArray.put(UsefulGenericMethods.getEventJSONObject(event));
-            } catch (NullPointerException e) {
-                Log.e(this.getClass().getSimpleName(), e.getMessage());
-            }
-
-        }
-
-        return new JsonArrayRequest(
-                Request.Method.POST,
-                Constants.SERVER_URL_ROOT + Constants.SERVER_URL_EVENT_ROUT + "/postEventsArray",
-                jsonArray,
-                new Response.Listener<JSONArray>() {
-                    @Override
-                    public void onResponse(JSONArray response) {
-                        if (getView() != null) {
-                            Snackbar.make(getView(), "Response is: " + response.length(), Toast.LENGTH_LONG).show();
-                            Log.d(this.getClass().getSimpleName(), "Posts Success " + response.length());
-                        } else {
-                            Toast.makeText(getContext(), "Response is: " + response.length(), Toast.LENGTH_LONG).show();
-                            Log.d(this.getClass().getSimpleName(), "Posts Failure " + response.length());
-                        }
-                    }
-                }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Toast.makeText(getContext(), "That didn't work!", Toast.LENGTH_SHORT).show();
-            }
-        });
-    }
-
-    public JsonObjectRequest postAnEvent(Event event) {
-
-        return new JsonObjectRequest(
-                Request.Method.POST,
-                Constants.SERVER_URL_ROOT + Constants.SERVER_URL_EVENT_ROUT + "/postAnEvent",
-                UsefulGenericMethods.getEventJSONObject(event),
-                new Response.Listener<JSONObject>() {
-                    @Override
-                    public void onResponse(JSONObject response) {
-
-
-                        Event event = new Gson().fromJson(String.valueOf(response),
-                                new TypeToken<Event>() {
-                                }.getType());
-
-                        if (event != null && getView() != null) {
-
-                            Snackbar.make(getView(),
-                                    mEventManager.fillForm2CreateEvent(event) ?
-                                            "Published with succes" : "Not have been published", Snackbar.LENGTH_SHORT).show();
-
-                            Log.d(this.getClass().getSimpleName(), "Post Success " + response.length());
-
-                        } else {
-
-                            Toast.makeText(getContext(), "Response is: " + response.toString(), Toast.LENGTH_LONG).show();
-
-                            Log.d(this.getClass().getSimpleName(), "Post Failure " + response.length());
-                        }
-                    }
-                }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Toast.makeText(getContext(), "That didn't work!", Toast.LENGTH_SHORT).show();
-            }
-        });
-
-    }
-
-    public GsonArrayRequest getSpecificEvents(String userId) {
-
-        Map<String, String> params = new HashMap<>();
-
-        params.put("userId", userId);
-
-        return new GsonArrayRequest(
-                Request.Method.GET,
-                Constants.SERVER_URL_ROOT + Constants.SERVER_URL_EVENT_ROUT + "/getEvents",
-                JSONArray.class,
-                params,
-                new Response.Listener<JSONArray>() {
-                    @Override
-                    public void onResponse(JSONArray response) {
-                        try {
-                            Toast.makeText(getContext(), "Response is: " + response.get(0).toString(), Toast.LENGTH_LONG).show();
-
-                            Log.d(this.getClass().getSimpleName(), "Get Event Success " + response.get(0).toString());
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-
-                            Log.d(this.getClass().getSimpleName(), "Get Event Failure ");
-                        }
-                    }
-                }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Toast.makeText(getContext(), "That didn't work!", Toast.LENGTH_SHORT).show();
-            }
-        });
-
-    }
-
-    public JsonObjectRequest deleteAnEvent(String eventId) {
-
-
-        Map<String, String> deleteParams = new HashMap<>();
-
-        deleteParams.put("_id", eventId);
-
-        return new JsonObjectRequest(
-                Request.Method.DELETE,
-                Constants.SERVER_URL_ROOT + Constants.SERVER_URL_EVENT_ROUT + "/deletetest",
-                new JSONObject(deleteParams),
-                new Response.Listener<JSONObject>() {
-                    @Override
-                    public void onResponse(JSONObject response) {
-
-                        if (response != null) {
-
-                            Toast.makeText(getContext(), "Response is: " + response.toString(), Toast.LENGTH_LONG).show();
-
-                            Log.d(this.getClass().getSimpleName(), "Delete Success " + response.toString());
-
-                        } else {
-
-                            Log.d(this.getClass().getSimpleName(), "Delete Failure " + response.toString());
-
-                        }
-
-
-                    }
-                }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Toast.makeText(getContext(), "That didn't work!", Toast.LENGTH_SHORT).show();
-            }
-        });
-
-    }
-
-
-    private JsonArrayRequest deleteManyEvents(JSONArray eventIdsArray) {
-
-
-        return new JsonArrayRequest(
-                Request.Method.DELETE,
-                Constants.SERVER_URL_ROOT + Constants.SERVER_URL_EVENT_ROUT + "/deleteManyEvents",
-                eventIdsArray,
-                new Response.Listener<JSONArray>() {
-                    @Override
-                    public void onResponse(JSONArray response) {
-                        if (response != null) {
-
-                            Toast.makeText(getContext(), "Response is: " + response.toString(), Toast.LENGTH_LONG).show();
-
-                            Log.d(this.getClass().getSimpleName(), "Delete Success " + response.toString());
-
-                        } else {
-
-                            Log.d(this.getClass().getSimpleName(), "Delete Failure " + response.toString());
-
-                        }
-                    }
-
-                }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Toast.makeText(getContext(), "That didn't work!", Toast.LENGTH_SHORT).show();
-            }
-        });
-
     }
 }
