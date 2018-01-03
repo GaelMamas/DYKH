@@ -89,14 +89,14 @@ public class EventCreationFragment extends WriteEventBaseFragment {
                                 break;
                             case R.id.event_deleter:
 
-                                runANewRequest(RequestsFactory.deleteAnEvent(getContext(), "???????"));
+                                runANewRequest(RequestsFactory.deleteAnEvent(getContext(), "5a4cf52d5fdf98001e11a74d"));
 
                                 break;
                             case R.id.event_poster:
 
                                 runANewRequest(RequestsFactory.postAnEvent(getContext(), getView(), new Event(
                                         "",
-                                        new SimpleDateFormat("yyyy").format(System.currentTimeMillis()) + "AD",
+                                        new SimpleDateFormat("yyyy").format(System.currentTimeMillis()) + " AD",
                                         "Clamart",
                                         "Clamart",
                                         AppApplication.getUserInfo().getUserId(),

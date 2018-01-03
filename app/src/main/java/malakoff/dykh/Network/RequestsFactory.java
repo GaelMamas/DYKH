@@ -151,7 +151,7 @@ public class RequestsFactory {
 
         return new JsonObjectRequest(
                 Request.Method.DELETE,
-                Constants.SERVER_URL_ROOT + Constants.SERVER_URL_EVENT_ROUT + "/deletetest",
+                Constants.SERVER_URL_ROOT + Constants.SERVER_URL_EVENT_ROUT + "/deleteAnEvent",
                 new JSONObject(deleteParams),
                 new Response.Listener<JSONObject>() {
                     @Override
