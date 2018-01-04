@@ -89,7 +89,11 @@ public class EventCreationFragment extends WriteEventBaseFragment {
                                 break;
                             case R.id.event_deleter:
 
-                                runANewRequest(RequestsFactory.deleteAnEvent(getContext(), "5a4cf52d5fdf98001e11a74d"));
+                                try {
+                                    runANewRequest(RequestsFactory.deleteAnEvent(getContext(), "5a297bd86f29dc001e91da2b"));
+                                } catch (JSONException e) {
+                                    e.printStackTrace();
+                                }
 
                                 break;
                             case R.id.event_poster:
@@ -152,9 +156,15 @@ public class EventCreationFragment extends WriteEventBaseFragment {
                                     for (Event event: mEventManager.getEvents()){
 
                                             try {
-                                                jsonArray.put(event.getEventId());
+
+                                                JSONObject jsonObject = new JSONObject();
+                                                jsonObject.put("_id", event.getEventId());
+                                                jsonArray.put(jsonObject);
+
                                             } catch (NullPointerException e) {
                                                 Log.e(this.getClass().getSimpleName(), e.getMessage());
+                                            } catch (JSONException e) {
+                                                e.printStackTrace();
                                             }
 
                                     }

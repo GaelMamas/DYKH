@@ -142,17 +142,16 @@ public class RequestsFactory {
 
     }
 
-    public static JsonObjectRequest deleteAnEvent(final Context context, String eventId) {
+    public static JsonObjectRequest deleteAnEvent(final Context context, String eventId) throws JSONException {
 
 
-        Map<String, String> deleteParams = new HashMap<>();
-
+        JSONObject deleteParams = new JSONObject();
         deleteParams.put("_id", eventId);
 
         return new JsonObjectRequest(
                 Request.Method.DELETE,
                 Constants.SERVER_URL_ROOT + Constants.SERVER_URL_EVENT_ROUT + "/deleteAnEvent",
-                new JSONObject(deleteParams),
+                deleteParams,
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
