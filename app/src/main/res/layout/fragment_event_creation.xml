@@ -224,7 +224,6 @@
             android:layout_marginBottom="@dimen/space.big"
             android:layout_marginTop="@dimen/space.big"
             android:background="@color/colorPrimaryDark"
-            android:clickable="true"
             android:padding="@dimen/space.normal"
             android:text="@string/event_publish_button" />
 

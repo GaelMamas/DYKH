@@ -145,13 +145,13 @@ public class RequestsFactory {
     public static JsonObjectRequest deleteAnEvent(final Context context, String eventId) throws JSONException {
 
 
-        JSONObject deleteParams = new JSONObject();
-        deleteParams.put("_id", eventId);
+        JSONObject body = new JSONObject();
+        body.put("_id", eventId);
 
         return new JsonObjectRequest(
                 Request.Method.DELETE,
                 Constants.SERVER_URL_ROOT + Constants.SERVER_URL_EVENT_ROUT + "/deleteAnEvent",
-                deleteParams,
+                body,
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
@@ -180,13 +180,13 @@ public class RequestsFactory {
     }
 
 
-    public static JsonArrayRequest deleteManyEvents(final Context context, JSONArray eventIdsArray) {
+    public static JsonArrayRequest deleteManyEvents(final Context context, JSONArray body) {
 
 
         return new JsonArrayRequest(
                 Request.Method.DELETE,
                 Constants.SERVER_URL_ROOT + Constants.SERVER_URL_EVENT_ROUT + "/deleteManyEvents",
-                eventIdsArray,
+                body,
                 new Response.Listener<JSONArray>() {
                     @Override
                     public void onResponse(JSONArray response) {
@@ -212,5 +212,70 @@ public class RequestsFactory {
 
     }
 
+    public static JsonObjectRequest putAnEvent(final Context context, JSONObject body) throws JSONException {
+
+
+        return new JsonObjectRequest(
+                Request.Method.PUT,
+                Constants.SERVER_URL_ROOT + Constants.SERVER_URL_EVENT_ROUT + "/putAnEvent",
+                body,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+
+                        if (response != null) {
+
+                            Toast.makeText(context, "Response is: " + response.toString(), Toast.LENGTH_LONG).show();
+
+                            Log.d(context.getClass().getSimpleName(), "Modify Success " + response.toString());
+
+                        } else {
+
+                            Log.d(context.getClass().getSimpleName(), "Modify Failure " + response.toString());
+
+                        }
+
+
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(context, "That didn't work!", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+    }
+
+
+    public static JsonArrayRequest putManyEvents(final Context context, JSONArray bodyArray) {
+
+        return new JsonArrayRequest(
+                Request.Method.PUT,
+                Constants.SERVER_URL_ROOT + Constants.SERVER_URL_EVENT_ROUT + "/putManyEvents",
+                bodyArray,
+                new Response.Listener<JSONArray>() {
+                    @Override
+                    public void onResponse(JSONArray response) {
+                        if (response != null) {
+
+                            Toast.makeText(context, "Response is: " + response.toString(), Toast.LENGTH_LONG).show();
+
+                            Log.d(context.getClass().getSimpleName(), "Modify Success " + response.toString());
+
+                        } else {
+
+                            Log.d(context.getClass().getSimpleName(), "Modify Failure " + response.toString());
+
+                        }
+                    }
+
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(context, "That didn't work!", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+    }
 
 }

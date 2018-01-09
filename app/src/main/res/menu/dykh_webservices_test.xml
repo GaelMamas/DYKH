@@ -3,23 +3,31 @@
 
     <item
         android:id="@+id/events_getter"
-        android:title="Get many events"/>
-
-    <item
-        android:id="@+id/event_deleter"
-        android:title="Delete an event"/>
+        android:title="Get many events" />
 
     <item
         android:id="@+id/event_poster"
-        android:title="Post an event"/>
+        android:title="Post an event" />
 
     <item
         android:id="@+id/events_poster"
-        android:title="Post many events"/>
+        android:title="Post many events" />
+
+    <item
+        android:id="@+id/event_putter"
+        android:title="Put an event" />
+
+    <item
+        android:id="@+id/events_putter"
+        android:title="Put many events" />
+
+    <item
+        android:id="@+id/event_deleter"
+        android:title="Delete an event" />
 
     <item
         android:id="@+id/events_deleter"
-        android:title="Delete many events"/>
+        android:title="Delete many events" />
 
 
 </menu>

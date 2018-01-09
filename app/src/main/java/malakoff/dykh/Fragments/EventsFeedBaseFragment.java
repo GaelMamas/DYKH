@@ -188,7 +188,9 @@ public class EventsFeedBaseFragment extends RecyclerBaseFragment<Event>{
 
             @Override
             public void onItemClicked(int position, Event data) {
-                UtilitaryActivity.open(getActivity(), data.getLocation(), String.valueOf(position), data.getTitle(), data.getTheme());
+                UtilitaryActivity.open(getActivity(), data.getLocation(), String.valueOf(position),
+                        data.getTitle(), data.getTheme(), AppApplication.getUserInfo().getUserId()
+                            .contentEquals(data.getUserId()));
             }
 
             @Override

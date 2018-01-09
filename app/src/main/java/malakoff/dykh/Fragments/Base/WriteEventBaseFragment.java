@@ -12,10 +12,13 @@ import android.widget.DatePicker;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.Request;
+
 import java.util.Arrays;
 import java.util.Calendar;
 
 import malakoff.dykh.DesignWidget.BetterSpinner;
+import malakoff.dykh.Network.MySingleton;
 import malakoff.dykh.R;
 import malakoff.dykh.Utils.UsefulGenericMethods;
 
@@ -223,5 +226,13 @@ public class WriteEventBaseFragment extends InstanceBaseFragement implements Vie
 
 
         return false;
+    }
+
+    public void runANewRequest(Request gsonRequest) {
+
+        // Run a new request into the RequestQueue.
+
+        MySingleton.getInstance(getContext()).addToRequestQueue(gsonRequest);
+
     }
 }

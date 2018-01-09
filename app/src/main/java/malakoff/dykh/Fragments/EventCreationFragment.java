@@ -81,24 +81,17 @@ public class EventCreationFragment extends WriteEventBaseFragment {
                     @SuppressLint("SimpleDateFormat")
                     public boolean onMenuItemClick(MenuItem item) {
 
+                        final JSONArray jsonArray;
+
                         switch (item.getItemId()) {
                             case R.id.events_getter:
 
                                 runANewRequest(RequestsFactory.getSpecificEvents(getContext(), AppApplication.getUserInfo().getUserId()));
 
                                 break;
-                            case R.id.event_deleter:
-
-                                try {
-                                    runANewRequest(RequestsFactory.deleteAnEvent(getContext(), "5a297bd86f29dc001e91da2b"));
-                                } catch (JSONException e) {
-                                    e.printStackTrace();
-                                }
-
-                                break;
                             case R.id.event_poster:
 
-                                runANewRequest(RequestsFactory.postAnEvent(getContext(), getView(), new Event(
+                            runANewRequest(RequestsFactory.postAnEvent(getContext(), getView(), new Event(
                                         "",
                                         new SimpleDateFormat("yyyy").format(System.currentTimeMillis()) + " AD",
                                         "Clamart",
@@ -110,21 +103,21 @@ public class EventCreationFragment extends WriteEventBaseFragment {
 
                                 )));
 
-                                break;
+                            break;
                             case R.id.events_poster:
 
 
-                                setUploadEventsListAccordingToPeriod(UsefulGenericMethods
+                            setUploadEventsListAccordingToPeriod(UsefulGenericMethods
                                         .setDefaultModelData(getResources().openRawResource(R.raw.bc_events)));
 
 
-                                setUploadEventsListAccordingToPeriod(UsefulGenericMethods
+                            setUploadEventsListAccordingToPeriod(UsefulGenericMethods
                                         .setDefaultModelData(getResources().openRawResource(R.raw.ad_events)));
 
 
-                                if (getContext() != null) {
+                            if (getContext() != null) {
 
-                                    AlertDialog.Builder builder = new AlertDialog.Builder(getContext(), R.style.AppCompatAlertDialogStyle);
+                                AlertDialog.Builder builder = new AlertDialog.Builder(getContext(), R.style.AppCompatAlertDialogStyle);
 
                                     builder.setTitle("Posting Warning")
                                             .setMessage("Are you sure to post many events at once")
@@ -138,8 +131,18 @@ public class EventCreationFragment extends WriteEventBaseFragment {
                                             .setNegativeButton("No", null)
                                             .create().show();
 
-                                }
+                            }
 
+
+                            break;
+
+                            case R.id.event_deleter:
+
+                                try {
+                                    runANewRequest(RequestsFactory.deleteAnEvent(getContext(), "5a5124ebde9a37001e49bb9f"));
+                                } catch (JSONException e) {
+                                    e.printStackTrace();
+                                }
 
                                 break;
 
@@ -151,15 +154,15 @@ public class EventCreationFragment extends WriteEventBaseFragment {
                                         && mEventManager.getEvents() != null
                                         && mEventManager.getEvents().size() > 0){
 
-                                    final JSONArray jsonArray = new JSONArray();
+                                    jsonArray = new JSONArray();
 
                                     for (Event event: mEventManager.getEvents()){
 
                                             try {
 
-                                                JSONObject jsonObject = new JSONObject();
-                                                jsonObject.put("_id", event.getEventId());
-                                                jsonArray.put(jsonObject);
+                                                jsonArray.put(new JSONObject()
+                                                                .put("_id",
+                                                                        event.getEventId()));
 
                                             } catch (NullPointerException e) {
                                                 Log.e(this.getClass().getSimpleName(), e.getMessage());
@@ -280,15 +283,6 @@ public class EventCreationFragment extends WriteEventBaseFragment {
                 }
                 break;
         }
-    }
-
-
-    public void runANewRequest(Request gsonRequest) {
-
-        // Run a new request into the RequestQueue.
-
-        MySingleton.getInstance(getContext()).addToRequestQueue(gsonRequest);
-
     }
 
     @Override

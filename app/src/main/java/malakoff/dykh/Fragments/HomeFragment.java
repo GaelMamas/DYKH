@@ -35,6 +35,7 @@ import java.util.concurrent.TimeUnit;
 
 import malakoff.dykh.Activities.MainActivity;
 import malakoff.dykh.Activities.UtilitaryActivity;
+import malakoff.dykh.AppApplication.AppApplication;
 import malakoff.dykh.AppApplication.Constants;
 import malakoff.dykh.CellHolder.TitleCellHolder;
 import malakoff.dykh.DesignWidget.ModelBase.TimeClipperButton;
@@ -337,7 +338,9 @@ public class HomeFragment extends InstanceBaseFragement implements View.OnTouchL
                             .setPositiveButton(R.string.more_button, new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialogInterface, int i) {
-                                    UtilitaryActivity.open(getActivity(), data.getLocation(), data.getEventId(), data.getTitle(), data.getTheme());
+                                    UtilitaryActivity.open(getActivity(), data.getLocation(), data.getEventId(),
+                                            data.getTitle(), data.getTheme(), AppApplication.getUserInfo().getUserId()
+                                                .contentEquals(data.getUserId()));
                                 }
                             });
 

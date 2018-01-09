@@ -1,5 +1,6 @@
 package malakoff.dykh.Activities;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.location.Address;
@@ -14,8 +15,6 @@ import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
-import android.view.Window;
-import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -53,16 +52,17 @@ public class UtilitaryActivity extends BaseActivity implements OnMapReadyCallbac
 
     private String currentEventIndex;
 
-    public static void open(Activity activity, String location, String eventId, String title, String theme) {
-        if(TextUtils.isEmpty(eventId)) {
+    public static void open(Activity activity, String location, String eventId, String title, String theme, boolean hasPermissionToModify) {
+        if (TextUtils.isEmpty(eventId)) {
             Log.e(UtilitaryActivity.class.getSimpleName(), "eventId = " + eventId);
-        }else{
+        } else {
 
             Intent intent = new Intent(activity, UtilitaryActivity.class);
             intent.putExtra(Constants.DYKH_ID_VALUE, location);
             intent.putExtra(Constants.DYKH_TITLE_EXTRA, title);
             intent.putExtra("THEME_TEST", theme); //TODO TEST
             intent.putExtra(Constants.DYKH_FRAGMENT_SELECTION, eventId);
+            intent.putExtra(Constants.DYKH_BOOLEAN_EXTRA, hasPermissionToModify);
             activity.startActivity(intent);
         }
     }
@@ -122,9 +122,13 @@ public class UtilitaryActivity extends BaseActivity implements OnMapReadyCallbac
             fragment = EventDetailsFragment.newInstance(currentEventIndex);
 
         } else {
-            currentEventIndex =  getIntent().getStringExtra(Constants.DYKH_FRAGMENT_SELECTION);
+            currentEventIndex = getIntent().getStringExtra(Constants.DYKH_FRAGMENT_SELECTION);
             fragment = EventDetailsFragment.newInstance(currentEventIndex);
         }
+
+        myFAB.setVisibility(getIntent().hasExtra(Constants.DYKH_BOOLEAN_EXTRA)
+                && getIntent().getBooleanExtra(Constants.DYKH_BOOLEAN_EXTRA, false) ?
+                View.VISIBLE : View.GONE);
 
         fragment.setArguments(getIntent().getExtras());
 
@@ -184,6 +188,7 @@ public class UtilitaryActivity extends BaseActivity implements OnMapReadyCallbac
         setMarkerOnMap();
     }
 
+    @SuppressLint("StaticFieldLeak")
     private void setMarkerOnMap() {
         final String locationName = getIntent().getStringExtra(Constants.DYKH_ID_VALUE);
 

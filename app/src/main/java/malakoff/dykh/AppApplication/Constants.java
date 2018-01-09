@@ -33,6 +33,7 @@ public class Constants {
     public static final float ARBITRARY_END_OF_TIMES = 1996;
     public static final float ANGLE_ZERO = 5f;
     public static final float ANGLE_MAX = 359.99f;
+    public static final String DYKH_BOOLEAN_EXTRA = "constant boolean";
     public static String DYKH_PREFERENCES = "dykh preferences";
 
     //public static final String SERVER_URL_ROOT = "http://130.98.39.115:8000";

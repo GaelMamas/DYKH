@@ -23,6 +23,7 @@ import java.io.IOException;
 import java.util.List;
 
 import malakoff.dykh.Activities.UtilitaryActivity;
+import malakoff.dykh.AppApplication.AppApplication;
 import malakoff.dykh.Event.Event;
 import malakoff.dykh.ModelBase.MapRequestObject;
 
@@ -127,7 +128,9 @@ public class DykhGoogleMapManager {
                             UtilitaryActivity.open((Activity) context, json.getString("location"),
                                     json.getString("eventId"),
                                     title,
-                                    json.getString("theme"));
+                                    json.getString("theme"),
+                                    AppApplication.getUserInfo().getUserId()
+                                            .contentEquals(json.getString("userId")));
 
                             return true;
                         }
