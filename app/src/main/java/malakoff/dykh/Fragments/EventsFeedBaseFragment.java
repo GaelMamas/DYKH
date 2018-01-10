@@ -122,7 +122,7 @@ public class EventsFeedBaseFragment extends RecyclerBaseFragment<Event>{
                     .addToRequestQueue(
                     new GsonArrayRequest(
                             Request.Method.GET,
-                            Constants.SERVER_URL_ROOT + Constants.SERVER_URL_EVENT_ROUT + "/getEventsByUserId/598afcdf81a5a420e464ee49",
+                            Constants.SERVER_URL_ROOT + Constants.SERVER_URL_EVENT_ROUT + "/getEventsByUser/5a26a37f7c2079001e8da3cc",
                             JSONArray.class,
                             param,
                             new Response.Listener<JSONArray>() {

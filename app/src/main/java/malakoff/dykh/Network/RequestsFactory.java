@@ -4,6 +4,7 @@ import android.content.Context;
 import android.support.design.widget.Snackbar;
 import android.util.Log;
 import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -25,6 +26,7 @@ import java.util.Map;
 import malakoff.dykh.AppApplication.Constants;
 import malakoff.dykh.Event.Event;
 import malakoff.dykh.Factory.FactoryManagers;
+import malakoff.dykh.Fragments.Base.WriteEventBaseFragment;
 import malakoff.dykh.Utils.UsefulGenericMethods;
 
 /**
@@ -34,7 +36,7 @@ import malakoff.dykh.Utils.UsefulGenericMethods;
 public class RequestsFactory {
 
 
-    public static JsonArrayRequest postManyEvents(final Context context, final View snackBarEnchorView, List<Event> events) {
+    public static JsonArrayRequest postManyEvents(final Context context, final View snackBarEnchorView, List<Event> events, final ProgressBar progressBar) {
 
         JSONArray jsonArray = new JSONArray();
 
@@ -54,6 +56,8 @@ public class RequestsFactory {
                 new Response.Listener<JSONArray>() {
                     @Override
                     public void onResponse(JSONArray response) {
+                        progressBar.setVisibility(View.GONE);
+
                         if (snackBarEnchorView != null) {
                             Snackbar.make(snackBarEnchorView, "Response is: " + response.length(), Toast.LENGTH_LONG).show();
                             Log.d(context.getClass().getSimpleName(), "Posts Success " + response.length());
@@ -65,12 +69,14 @@ public class RequestsFactory {
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
+                progressBar.setVisibility(View.GONE);
+
                 Toast.makeText(context, "That didn't work!", Toast.LENGTH_SHORT).show();
             }
         });
     }
 
-    public static JsonObjectRequest postAnEvent(final Context context, final View snackBarEnchorView, Event event) {
+    public static JsonObjectRequest postAnEvent(final Context context, final View snackBarEnchorView, Event event, final ProgressBar progressBar) {
 
         return new JsonObjectRequest(
                 Request.Method.POST,
@@ -79,7 +85,7 @@ public class RequestsFactory {
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
-
+                        progressBar.setVisibility(View.GONE);
 
                         Event event = new Gson().fromJson(String.valueOf(response),
                                 new TypeToken<Event>() {
@@ -103,6 +109,8 @@ public class RequestsFactory {
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
+                progressBar.setVisibility(View.GONE);
+
                 Toast.makeText(context, "That didn't work!", Toast.LENGTH_SHORT).show();
             }
         });
@@ -142,7 +150,7 @@ public class RequestsFactory {
 
     }
 
-    public static JsonObjectRequest deleteAnEvent(final Context context, String eventId) throws JSONException {
+    public static JsonObjectRequest deleteAnEvent(final Context context, String eventId, final ProgressBar progressBar) throws JSONException {
 
 
         JSONObject body = new JSONObject();
@@ -155,6 +163,7 @@ public class RequestsFactory {
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
+                        progressBar.setVisibility(View.GONE);
 
                         if (response != null) {
 
@@ -173,6 +182,8 @@ public class RequestsFactory {
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
+                progressBar.setVisibility(View.GONE);
+
                 Toast.makeText(context, "That didn't work!", Toast.LENGTH_SHORT).show();
             }
         });
@@ -180,7 +191,7 @@ public class RequestsFactory {
     }
 
 
-    public static JsonArrayRequest deleteManyEvents(final Context context, JSONArray body) {
+    public static JsonArrayRequest deleteManyEvents(final Context context, JSONArray body, final ProgressBar progressBar) {
 
 
         return new JsonArrayRequest(
@@ -190,6 +201,8 @@ public class RequestsFactory {
                 new Response.Listener<JSONArray>() {
                     @Override
                     public void onResponse(JSONArray response) {
+                        progressBar.setVisibility(View.GONE);
+
                         if (response != null) {
 
                             Toast.makeText(context, "Response is: " + response.toString(), Toast.LENGTH_LONG).show();
@@ -206,13 +219,15 @@ public class RequestsFactory {
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
+                progressBar.setVisibility(View.GONE);
+
                 Toast.makeText(context, "That didn't work!", Toast.LENGTH_SHORT).show();
             }
         });
 
     }
 
-    public static JsonObjectRequest putAnEvent(final Context context, JSONObject body) throws JSONException {
+    public static JsonObjectRequest putAnEvent(final Context context, JSONObject body, final ProgressBar progressBar) throws JSONException {
 
 
         return new JsonObjectRequest(
@@ -223,6 +238,8 @@ public class RequestsFactory {
                     @Override
                     public void onResponse(JSONObject response) {
 
+                        progressBar.setVisibility(View.GONE);
+
                         if (response != null) {
 
                             Toast.makeText(context, "Response is: " + response.toString(), Toast.LENGTH_LONG).show();
@@ -235,19 +252,23 @@ public class RequestsFactory {
 
                         }
 
+                        progressBar.setVisibility(View.GONE);
 
                     }
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
+                progressBar.setVisibility(View.GONE);
+
                 Toast.makeText(context, "That didn't work!", Toast.LENGTH_SHORT).show();
+
             }
         });
 
     }
 
 
-    public static JsonArrayRequest putManyEvents(final Context context, JSONArray bodyArray) {
+    public static JsonArrayRequest putManyEvents(final Context context, JSONArray bodyArray, final ProgressBar progressBar) {
 
         return new JsonArrayRequest(
                 Request.Method.PUT,
@@ -256,6 +277,8 @@ public class RequestsFactory {
                 new Response.Listener<JSONArray>() {
                     @Override
                     public void onResponse(JSONArray response) {
+                        progressBar.setVisibility(View.GONE);
+
                         if (response != null) {
 
                             Toast.makeText(context, "Response is: " + response.toString(), Toast.LENGTH_LONG).show();
@@ -272,6 +295,8 @@ public class RequestsFactory {
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
+                progressBar.setVisibility(View.GONE);
+
                 Toast.makeText(context, "That didn't work!", Toast.LENGTH_SHORT).show();
             }
         });

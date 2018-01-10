@@ -1,5 +1,6 @@
 package malakoff.dykh.Fragments.Base;
 
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.widget.AppCompatEditText;
 import android.text.TextUtils;
@@ -9,6 +10,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -26,15 +28,16 @@ import malakoff.dykh.Utils.UsefulGenericMethods;
  * Created by VM32776N on 03/03/2017.
  */
 
-public class WriteEventBaseFragment extends InstanceBaseFragement implements View.OnClickListener, AdapterView.OnItemSelectedListener, TextView.OnEditorActionListener{
+public class WriteEventBaseFragment extends InstanceBaseFragement implements View.OnClickListener, AdapterView.OnItemSelectedListener, TextView.OnEditorActionListener {
 
     protected String selectedTheme, selectedTodayLocaction, selectedBCAD;
-    protected String [] newEventFinalDate;
+    protected String[] newEventFinalDate;
     protected BetterSpinner themeSprinner, todayLocationSpinner, mBCADSpinner;
     protected AppCompatEditText titleEditText, historicLocationEditText, storyEditText, yearEditText, monthEditText, dayEditText;
     protected View dateSetterLayout;
     protected DatePicker datePicker;
     protected Button publishButton;
+    protected ProgressBar mEventUpdatingProgressBar;
 
 
     @Override
@@ -83,23 +86,25 @@ public class WriteEventBaseFragment extends InstanceBaseFragement implements Vie
 
     @Override
     protected void assignViews(View view) {
-        themeSprinner = (BetterSpinner) view.findViewById(R.id.spinner_event_theme);
-        todayLocationSpinner = (BetterSpinner) view.findViewById(R.id.spinner_event_today_location);
-        mBCADSpinner = (BetterSpinner) view.findViewById(R.id.spinner_event_bc_or_ad);
+        themeSprinner = view.findViewById(R.id.spinner_event_theme);
+        todayLocationSpinner = view.findViewById(R.id.spinner_event_today_location);
+        mBCADSpinner = view.findViewById(R.id.spinner_event_bc_or_ad);
 
-        titleEditText = (AppCompatEditText) view.findViewById(R.id.edittext_event_title);
-        historicLocationEditText = (AppCompatEditText) view.findViewById(R.id.edittext_event_location);
-        storyEditText = (AppCompatEditText) view.findViewById(R.id.edittext_event_story);
+        titleEditText = view.findViewById(R.id.edittext_event_title);
+        historicLocationEditText = view.findViewById(R.id.edittext_event_location);
+        storyEditText = view.findViewById(R.id.edittext_event_story);
 
         dateSetterLayout = view.findViewById(R.id.event_date_setter_layout);
 
-        yearEditText = (AppCompatEditText) view.findViewById(R.id.edittext_event_year_setter);
-        monthEditText = (AppCompatEditText) view.findViewById(R.id.edittext_event_month_setter);
-        dayEditText = (AppCompatEditText) view.findViewById(R.id.edittext_event_day_setter);
+        yearEditText = view.findViewById(R.id.edittext_event_year_setter);
+        monthEditText = view.findViewById(R.id.edittext_event_month_setter);
+        dayEditText = view.findViewById(R.id.edittext_event_day_setter);
 
-        datePicker = (DatePicker) view.findViewById(R.id.datePicker);
+        datePicker = view.findViewById(R.id.datePicker);
 
-        publishButton = (Button) view.findViewById(R.id.button_event_publish);
+        publishButton = view.findViewById(R.id.button_event_publish);
+
+        mEventUpdatingProgressBar = view.findViewById(R.id.progressbar_event_updating);
     }
 
     @Override
@@ -163,20 +168,28 @@ public class WriteEventBaseFragment extends InstanceBaseFragement implements Vie
                 int year = Integer.parseInt(inputYear);
 
                 if (selectedBCAD.contentEquals(getResources().getStringArray(R.array.event_bc_or_ad)[0])) {
+                    newEventFinalDate[0] = String.valueOf(year);
                     monthEditText.setVisibility(View.VISIBLE);
                 } else if (selectedBCAD.contentEquals(getResources().getStringArray(R.array.event_bc_or_ad)[1])) {
-                    //TODO DATE HAS TO BE DECLARED IN THE PAST
                     if (year >= 1900 && year <= Calendar.getInstance().get(Calendar.YEAR)) {
                         dateSetterLayout.setVisibility(View.GONE);
                         datePicker.setVisibility(View.VISIBLE);
                         datePicker.init(year, 0, 1, new DatePicker.OnDateChangedListener() {
                             @Override
                             public void onDateChanged(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-                                newEventFinalDate[0] = String.valueOf(year);
-                                newEventFinalDate[1] = String.valueOf(monthOfYear);
-                                newEventFinalDate[2] = String.valueOf(dayOfMonth);
 
-                                Toast.makeText(getContext(), newEventFinalDate[0] + "-" + newEventFinalDate[1] + "-" + newEventFinalDate[2], Toast.LENGTH_SHORT).show();
+                                if(monthOfYear <= Calendar.getInstance().get(Calendar.MONTH)
+                                        && dayOfMonth <= Calendar.getInstance().get(Calendar.DAY_OF_MONTH)) {
+
+                                    newEventFinalDate[0] = String.valueOf(year);
+                                    newEventFinalDate[1] = String.valueOf(monthOfYear);
+                                    newEventFinalDate[2] = String.valueOf(dayOfMonth);
+
+                                    Toast.makeText(getContext(), newEventFinalDate[0] + "-" + newEventFinalDate[1] + "-" + newEventFinalDate[2], Toast.LENGTH_SHORT).show();
+
+                                }else{
+                                    Toast.makeText(getContext(), "Please enter correct date", Toast.LENGTH_SHORT).show();
+                                }
                             }
                         });
                     } else if (year <= Calendar.getInstance().get(Calendar.YEAR)) {
@@ -195,7 +208,7 @@ public class WriteEventBaseFragment extends InstanceBaseFragement implements Vie
 
                 int month = Integer.parseInt(inputMonth);
 
-                if (month > 0 && month < 12) {
+                if (month >= 1 && month < 13) {
                     dayEditText.setVisibility(View.VISIBLE);
                     newEventFinalDate[1] = inputMonth;
                 } else {
@@ -221,6 +234,8 @@ public class WriteEventBaseFragment extends InstanceBaseFragement implements Vie
 
                 Toast.makeText(getContext(), newEventFinalDate[0] + "-" + newEventFinalDate[1] + "-" + newEventFinalDate[2], Toast.LENGTH_SHORT).show();
 
+                UsefulGenericMethods.hideKeyboard(getContext(), v);
+
                 return true;
         }
 
@@ -234,5 +249,29 @@ public class WriteEventBaseFragment extends InstanceBaseFragement implements Vie
 
         MySingleton.getInstance(getContext()).addToRequestQueue(gsonRequest);
 
+    }
+
+    class ResetInputsAyncTasks extends AsyncTask<Boolean, Void, Void>{
+
+
+        @Override
+        protected Void doInBackground(Boolean... booleans) {
+
+            if(booleans[0]){
+
+                titleEditText.setText("");
+                storyEditText.setText("");
+                historicLocationEditText.setText("");
+
+            }
+
+            dateSetterLayout.setVisibility(View.GONE);
+
+            datePicker.setVisibility(View.GONE);
+
+            mEventUpdatingProgressBar.setVisibility(View.GONE);
+
+            return null;
+        }
     }
 }

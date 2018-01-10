@@ -100,8 +100,7 @@ public class EventCreationFragment extends WriteEventBaseFragment {
                                         selectedTodayLocaction,
                                         "Node JS, Block Chain Smart Contract",
                                         "Invention"
-
-                                )));
+                                ), mEventUpdatingProgressBar));
 
                             break;
                             case R.id.events_poster:
@@ -125,7 +124,7 @@ public class EventCreationFragment extends WriteEventBaseFragment {
                                                 @Override
                                                 public void onClick(DialogInterface dialogInterface, int i) {
 
-                                                    runANewRequest(RequestsFactory.postManyEvents(getContext(), getView(), eventsUploadingTest));
+                                                    runANewRequest(RequestsFactory.postManyEvents(getContext(), getView(), eventsUploadingTest, mEventUpdatingProgressBar));
                                                 }
                                             })
                                             .setNegativeButton("No", null)
@@ -139,7 +138,7 @@ public class EventCreationFragment extends WriteEventBaseFragment {
                             case R.id.event_deleter:
 
                                 try {
-                                    runANewRequest(RequestsFactory.deleteAnEvent(getContext(), "5a5124ebde9a37001e49bb9f"));
+                                    runANewRequest(RequestsFactory.deleteAnEvent(getContext(), "5a5124ebde9a37001e49bb9f", mEventUpdatingProgressBar));
                                 } catch (JSONException e) {
                                     e.printStackTrace();
                                 }
@@ -180,7 +179,7 @@ public class EventCreationFragment extends WriteEventBaseFragment {
                                                 @Override
                                                 public void onClick(DialogInterface dialogInterface, int i) {
 
-                                                    runANewRequest(RequestsFactory.deleteManyEvents(getContext(), jsonArray));
+                                                    runANewRequest(RequestsFactory.deleteManyEvents(getContext(), jsonArray, mEventUpdatingProgressBar));
 
                                                 }
                                             })
@@ -267,7 +266,9 @@ public class EventCreationFragment extends WriteEventBaseFragment {
 
                     alertDialog.show();
 
-                } else if (getView() != null) {
+                } else if (getView() != null && mEventUpdatingProgressBar.getVisibility() == View.GONE) {
+
+                    mEventUpdatingProgressBar.setVisibility(View.VISIBLE);
 
                     runANewRequest(RequestsFactory.postAnEvent(getContext(), getView(), new Event(
                             "",
@@ -278,8 +279,7 @@ public class EventCreationFragment extends WriteEventBaseFragment {
                             title,
                             story,
                             selectedTheme
-
-                    )));
+                    ), mEventUpdatingProgressBar));
                 }
                 break;
         }

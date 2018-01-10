@@ -98,7 +98,7 @@ public class ModifyEventFragment extends WriteEventBaseFragment{
                                 case R.id.event_putter:
 
                                     try {
-                                        runANewRequest(RequestsFactory.putAnEvent(getContext(), UsefulGenericMethods.getEventJSONObject(currentEvent)));
+                                        runANewRequest(RequestsFactory.putAnEvent(getContext(), UsefulGenericMethods.getEventJSONObject(currentEvent), mEventUpdatingProgressBar));
                                     } catch (JSONException e) {
                                         e.printStackTrace();
                                     }
@@ -125,7 +125,7 @@ public class ModifyEventFragment extends WriteEventBaseFragment{
 
                                         }
 
-                                        runANewRequest(RequestsFactory.putManyEvents(getContext(), jsonArray));
+                                        runANewRequest(RequestsFactory.putManyEvents(getContext(), jsonArray, mEventUpdatingProgressBar));
 
                                     }
 
@@ -134,7 +134,7 @@ public class ModifyEventFragment extends WriteEventBaseFragment{
                                 case R.id.event_deleter:
 
                                     try {
-                                        runANewRequest(RequestsFactory.deleteAnEvent(getContext(), "5a5124ebde9a37001e49bb9f"));
+                                        runANewRequest(RequestsFactory.deleteAnEvent(getContext(), "5a5124ebde9a37001e49bb9f", mEventUpdatingProgressBar));
                                     } catch (JSONException e) {
                                         e.printStackTrace();
                                     }
@@ -175,7 +175,7 @@ public class ModifyEventFragment extends WriteEventBaseFragment{
                                                     @Override
                                                     public void onClick(DialogInterface dialogInterface, int i) {
 
-                                                        runANewRequest(RequestsFactory.deleteManyEvents(getContext(), jsonArray));
+                                                        runANewRequest(RequestsFactory.deleteManyEvents(getContext(), jsonArray, mEventUpdatingProgressBar));
 
                                                     }
                                                 })
@@ -212,12 +212,8 @@ public class ModifyEventFragment extends WriteEventBaseFragment{
                         story = storyEditText.getText().toString();
 
 
-                if (TextUtils.isEmpty(title)
-                        || TextUtils.isEmpty(historicLocation)
-                        || TextUtils.isEmpty(story)) {
+                if (TextUtils.isEmpty(title)) {
                     titleEditText.setError("Need to be filled");
-                    historicLocationEditText.setError("Need to be filled");
-                    storyEditText.setError("Need to be filled");
 
                 } else if (getActivity() != null && (TextUtils.isEmpty(selectedTheme)
                         || TextUtils.isEmpty(selectedTodayLocaction))) {
@@ -235,9 +231,12 @@ public class ModifyEventFragment extends WriteEventBaseFragment{
 
                     alertDialog.show();
 
-                } else {
+                } else if(mEventUpdatingProgressBar.getVisibility() == View.GONE){
 
                     try {
+
+                        mEventUpdatingProgressBar.setVisibility(View.VISIBLE);
+
                         runANewRequest(RequestsFactory.putAnEvent(getContext(), UsefulGenericMethods.getEventJSONObject(
                                 new Event(
                                 currentEvent.getEventId(),
@@ -248,8 +247,8 @@ public class ModifyEventFragment extends WriteEventBaseFragment{
                                 title,
                                 story,
                                 selectedTheme
+                        )), mEventUpdatingProgressBar));
 
-                        ))));
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
