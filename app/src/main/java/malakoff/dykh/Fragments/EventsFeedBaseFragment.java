@@ -132,6 +132,8 @@ public class EventsFeedBaseFragment extends RecyclerBaseFragment<Event>{
                                             new TypeToken<List<Event>>() {
                                             }.getType());
 
+
+
                                     if(events != null) {
 
                                         mEventManager.loadEvents(events);
@@ -188,7 +190,7 @@ public class EventsFeedBaseFragment extends RecyclerBaseFragment<Event>{
 
             @Override
             public void onItemClicked(int position, Event data) {
-                UtilitaryActivity.open(getActivity(), data.getLocation(), String.valueOf(position),
+                UtilitaryActivity.open(getActivity(), data.getLocation(), data.getEventId(),
                         data.getTitle(), data.getTheme(), AppApplication.getUserInfo().getUserId()
                             .contentEquals(data.getUserId()));
             }

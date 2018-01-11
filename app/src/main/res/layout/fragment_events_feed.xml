@@ -59,7 +59,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center|end"
-                android:src="@drawable/ic_back_space_24dp" />
+                app:srcCompat="@drawable/ic_back_space_24dp" />
 
         </FrameLayout>
 
