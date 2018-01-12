@@ -136,6 +136,8 @@ public class EventsFeedBaseFragment extends RecyclerBaseFragment<Event>{
 
                                     if(events != null) {
 
+                                        adapter.clear();
+
                                         mEventManager.loadEvents(events);
 
                                         mEventManager.readEvents(AppApplication.getUserInfo().getUserId());
@@ -269,7 +271,6 @@ public class EventsFeedBaseFragment extends RecyclerBaseFragment<Event>{
 
     @Override
     public void onRefresh() {
-        adapter.clear();
         super.onRefresh();
     }
 
