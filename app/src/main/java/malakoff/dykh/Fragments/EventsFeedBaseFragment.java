@@ -269,6 +269,7 @@ public class EventsFeedBaseFragment extends RecyclerBaseFragment<Event>{
 
     @Override
     public void onRefresh() {
+        adapter.clear();
         super.onRefresh();
     }
 

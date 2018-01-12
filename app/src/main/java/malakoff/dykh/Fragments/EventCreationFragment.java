@@ -4,7 +4,6 @@ import android.annotation.SuppressLint;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.PopupMenu;
 import android.text.TextUtils;
@@ -12,16 +11,8 @@ import android.util.Log;
 import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Toast;
 
-import com.android.volley.Request;
 import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonArrayRequest;
-import com.android.volley.toolbox.JsonObjectRequest;
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -29,17 +20,13 @@ import org.json.JSONObject;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import malakoff.dykh.Activities.Base.BaseDawerActivity;
 import malakoff.dykh.AppApplication.AppApplication;
-import malakoff.dykh.AppApplication.Constants;
 import malakoff.dykh.Event.Event;
 import malakoff.dykh.Fragments.Base.WriteEventBaseFragment;
 import malakoff.dykh.ModelBase.EventsPartition;
-import malakoff.dykh.Network.GsonArrayRequest;
 import malakoff.dykh.Network.MySingleton;
 import malakoff.dykh.Network.RequestsFactory;
 import malakoff.dykh.R;
@@ -91,7 +78,7 @@ public class EventCreationFragment extends WriteEventBaseFragment {
                                 break;
                             case R.id.event_poster:
 
-                            runANewRequest(RequestsFactory.postAnEvent(getContext(), getView(), new Event(
+                                runANewRequest(RequestsFactory.postAnEvent(getContext(), getView(), new Event(
                                         "",
                                         new SimpleDateFormat("yyyy").format(System.currentTimeMillis()) + " AD",
                                         "Clamart",
@@ -100,23 +87,23 @@ public class EventCreationFragment extends WriteEventBaseFragment {
                                         selectedTodayLocaction,
                                         "Node JS, Block Chain Smart Contract",
                                         "Invention"
-                                ), mEventUpdatingProgressBar));
+                                ), resetInputsListener));
 
-                            break;
+                                break;
                             case R.id.events_poster:
 
 
-                            setUploadEventsListAccordingToPeriod(UsefulGenericMethods
+                                setUploadEventsListAccordingToPeriod(UsefulGenericMethods
                                         .setDefaultModelData(getResources().openRawResource(R.raw.bc_events)));
 
 
-                            setUploadEventsListAccordingToPeriod(UsefulGenericMethods
+                                setUploadEventsListAccordingToPeriod(UsefulGenericMethods
                                         .setDefaultModelData(getResources().openRawResource(R.raw.ad_events)));
 
 
-                            if (getContext() != null) {
+                                if (getContext() != null) {
 
-                                AlertDialog.Builder builder = new AlertDialog.Builder(getContext(), R.style.AppCompatAlertDialogStyle);
+                                    AlertDialog.Builder builder = new AlertDialog.Builder(getContext(), R.style.AppCompatAlertDialogStyle);
 
                                     builder.setTitle("Posting Warning")
                                             .setMessage("Are you sure to post many events at once")
@@ -124,21 +111,21 @@ public class EventCreationFragment extends WriteEventBaseFragment {
                                                 @Override
                                                 public void onClick(DialogInterface dialogInterface, int i) {
 
-                                                    runANewRequest(RequestsFactory.postManyEvents(getContext(), getView(), eventsUploadingTest, mEventUpdatingProgressBar));
+                                                    runANewRequest(RequestsFactory.postManyEvents(getContext(), getView(), eventsUploadingTest, resetInputsListener));
                                                 }
                                             })
                                             .setNegativeButton("No", null)
                                             .create().show();
 
-                            }
+                                }
 
 
-                            break;
+                                break;
 
                             case R.id.event_deleter:
 
                                 try {
-                                    runANewRequest(RequestsFactory.deleteAnEvent(getContext(), "5a5124ebde9a37001e49bb9f", mEventUpdatingProgressBar));
+                                    runANewRequest(RequestsFactory.deleteAnEvent(getContext(), "5a562ee1585960001e86baa5", resetInputsListener));
                                 } catch (JSONException e) {
                                     e.printStackTrace();
                                 }
@@ -149,25 +136,25 @@ public class EventCreationFragment extends WriteEventBaseFragment {
 
                                 mEventManager.readEvents(AppApplication.getUserInfo().getUserId());
 
-                                if(getContext() != null
+                                if (getContext() != null
                                         && mEventManager.getEvents() != null
-                                        && mEventManager.getEvents().size() > 0){
+                                        && mEventManager.getEvents().size() > 0) {
 
                                     jsonArray = new JSONArray();
 
-                                    for (Event event: mEventManager.getEvents()){
+                                    for (Event event : mEventManager.getEvents()) {
 
-                                            try {
+                                        try {
 
-                                                jsonArray.put(new JSONObject()
-                                                                .put("_id",
-                                                                        event.getEventId()));
+                                            jsonArray.put(new JSONObject()
+                                                    .put("_id",
+                                                            event.getEventId()));
 
-                                            } catch (NullPointerException e) {
-                                                Log.e(this.getClass().getSimpleName(), e.getMessage());
-                                            } catch (JSONException e) {
-                                                e.printStackTrace();
-                                            }
+                                        } catch (NullPointerException e) {
+                                            Log.e(this.getClass().getSimpleName(), e.getMessage());
+                                        } catch (JSONException e) {
+                                            e.printStackTrace();
+                                        }
 
                                     }
 
@@ -179,7 +166,7 @@ public class EventCreationFragment extends WriteEventBaseFragment {
                                                 @Override
                                                 public void onClick(DialogInterface dialogInterface, int i) {
 
-                                                    runANewRequest(RequestsFactory.deleteManyEvents(getContext(), jsonArray, mEventUpdatingProgressBar));
+                                                    runANewRequest(RequestsFactory.deleteManyEvents(getContext(), jsonArray, resetInputsListener));
 
                                                 }
                                             })
@@ -212,7 +199,7 @@ public class EventCreationFragment extends WriteEventBaseFragment {
                 && !eventsPartition.getEvents().isEmpty()
                 && AppApplication.getUserInfo() != null) {
 
-            for(Event event:eventsPartition.getEvents()){
+            for (Event event : eventsPartition.getEvents()) {
 
                 event.setUserId(AppApplication.getUserInfo().getUserId());
 
@@ -244,29 +231,39 @@ public class EventCreationFragment extends WriteEventBaseFragment {
 
 
                 if (TextUtils.isEmpty(title)
-                        || TextUtils.isEmpty(historicLocation)
                         || TextUtils.isEmpty(story)) {
                     titleEditText.setError("Need to be filled");
-                    historicLocationEditText.setError("Need to be filled");
                     storyEditText.setError("Need to be filled");
 
-                } else if (getActivity() != null && (TextUtils.isEmpty(selectedTheme)
-                        || TextUtils.isEmpty(selectedTodayLocaction))) {
+                    titleEditText.scrollTo(titleEditText.getScrollX(), titleEditText.getScrollY());
 
-                    AlertDialog.Builder alertDialog = new AlertDialog.Builder(getActivity(), R.style.AppCompatAlertDialogStyle);
+                } else if (themeSprinner.getSelectedIndex() == -1) {
 
-                    alertDialog.setTitle(R.string.dykh_warning)
-                            .setMessage(R.string.dyky_publishing_msg_error)
-                            .setNeutralButton(R.string.ok_button, new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialogInterface, int i) {
-                                    dialogInterface.dismiss();
-                                }
-                            });
+                    themeSprinner.setError("Need to be filled");
+                    themeSprinner.scrollTo(themeSprinner.getScrollX(), themeSprinner.getScrollY());
 
-                    alertDialog.show();
+                } else if (todayLocationSpinner.getSelectedIndex() == -1) {
 
-                } else if (getView() != null && mEventUpdatingProgressBar.getVisibility() == View.GONE) {
+                    todayLocationSpinner.setError("Need to be filled");
+                    todayLocationSpinner.scrollTo(todayLocationSpinner.getScrollX(), todayLocationSpinner.getScrollY());
+
+                } else if (TextUtils.isEmpty(historicLocationEditText.getText())) {
+
+                    historicLocationEditText.setError("Need to be filled");
+                    historicLocationEditText.scrollTo(historicLocationEditText.getScrollX(),
+                            historicLocationEditText.getScrollY());
+
+                } else if (mBCADSpinner.getSelectedIndex() == -1) {
+
+                    mBCADSpinner.setError("Need to be filled");
+                    mBCADSpinner.scrollTo(mBCADSpinner.getScrollX(), mBCADSpinner.getScrollY());
+
+                } else if (TextUtils.isEmpty(yearEditText.getText())) {
+
+                    yearEditText.setError("Need to be filled");
+                    yearEditText.scrollTo(yearEditText.getScrollX(), yearEditText.getScrollY());
+
+                }  else if (getView() != null && resetInputsListener.canProcess()) {
 
                     mEventUpdatingProgressBar.setVisibility(View.VISIBLE);
 
@@ -279,7 +276,7 @@ public class EventCreationFragment extends WriteEventBaseFragment {
                             title,
                             story,
                             selectedTheme
-                    ), mEventUpdatingProgressBar));
+                    ), resetInputsListener));
                 }
                 break;
         }

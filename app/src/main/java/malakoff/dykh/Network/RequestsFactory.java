@@ -100,7 +100,7 @@ public class RequestsFactory {
 
                         if (event != null) {
 
-                            listener.fail();
+                            listener.succeed();
 
                             Snackbar.make(snackBarEnchorView,
                                     FactoryManagers.getmEventManagerInstance().fillForm2CreateEvent(event) ?
@@ -162,12 +162,11 @@ public class RequestsFactory {
 
     public static JsonObjectRequest deleteAnEvent(final Context context, String eventId, final ResetInputsListener listener) throws JSONException {
 
-
         JSONObject body = new JSONObject();
         body.put("_id", eventId);
 
         return new JsonObjectRequest(
-                Request.Method.DELETE,
+                Request.Method.POST,
                 Constants.SERVER_URL_ROOT + Constants.SERVER_URL_EVENT_ROUT + "/deleteAnEvent",
                 body,
                 new Response.Listener<JSONObject>() {
@@ -208,7 +207,7 @@ public class RequestsFactory {
 
 
         return new JsonArrayRequest(
-                Request.Method.DELETE,
+                Request.Method.POST,
                 Constants.SERVER_URL_ROOT + Constants.SERVER_URL_EVENT_ROUT + "/deleteManyEvents",
                 body,
                 new Response.Listener<JSONArray>() {
@@ -283,7 +282,7 @@ public class RequestsFactory {
     }
 
 
-    public static JsonArrayRequest putManyEvents(final Context context, JSONArray bodyArray, final ProgressBar progressBar) {
+    public static JsonArrayRequest putManyEvents(final Context context, JSONArray bodyArray, final ResetInputsListener listener) {
 
         return new JsonArrayRequest(
                 Request.Method.PUT,
@@ -292,15 +291,17 @@ public class RequestsFactory {
                 new Response.Listener<JSONArray>() {
                     @Override
                     public void onResponse(JSONArray response) {
-                        progressBar.setVisibility(View.GONE);
 
                         if (response != null) {
+
+                            listener.succeed();
 
                             Toast.makeText(context, "Response is: " + response.toString(), Toast.LENGTH_LONG).show();
 
                             Log.d(context.getClass().getSimpleName(), "Modify Success " + response.toString());
 
                         } else {
+                            listener.fail();
 
                             Log.d(context.getClass().getSimpleName(), "Modify Failure " + response.toString());
 
@@ -310,7 +311,7 @@ public class RequestsFactory {
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                progressBar.setVisibility(View.GONE);
+                listener.fail();
 
                 Toast.makeText(context, "That didn't work!", Toast.LENGTH_SHORT).show();
             }

@@ -10,13 +10,11 @@ import android.util.Log;
 import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.TextView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.List;
 
@@ -24,9 +22,7 @@ import malakoff.dykh.Activities.Base.BaseDawerActivity;
 import malakoff.dykh.AppApplication.AppApplication;
 import malakoff.dykh.AppApplication.Constants;
 import malakoff.dykh.Event.Event;
-import malakoff.dykh.Fragments.Base.InstanceBaseFragement;
 import malakoff.dykh.Fragments.Base.WriteEventBaseFragment;
-import malakoff.dykh.Interfaces.ResetInputsListener;
 import malakoff.dykh.Network.RequestsFactory;
 import malakoff.dykh.R;
 import malakoff.dykh.Utils.UsefulGenericMethods;
@@ -34,7 +30,7 @@ import malakoff.dykh.Utils.UsefulGenericMethods;
 /**
  * Created by user on 12/07/2016.
  */
-public class ModifyEventFragment extends WriteEventBaseFragment{
+public class ModifyEventFragment extends WriteEventBaseFragment {
 
     private Event currentEvent;
 
@@ -45,34 +41,71 @@ public class ModifyEventFragment extends WriteEventBaseFragment{
 
         currentEvent = mEventManager.readSpecificEvent(getArguments().getString(Constants.DYKH_FRAGMENT_SELECTION));
 
-        if(getActivity() instanceof BaseDawerActivity){
-            ((BaseDawerActivity)getActivity()).setDefaultDrawable();
+        if (getActivity() instanceof BaseDawerActivity) {
+            ((BaseDawerActivity) getActivity()).setDefaultDrawable();
             ((BaseDawerActivity) getActivity()).changeToolbarConfig(R.drawable.ic_arrow_back_24dp,
-                    currentEvent != null && !TextUtils.isEmpty(currentEvent.getTitle())?
-                            currentEvent.getTitle():getString(R.string.app_name));
+                    currentEvent != null && !TextUtils.isEmpty(currentEvent.getTitle()) ?
+                            currentEvent.getTitle() : getString(R.string.app_name));
         }
 
-        if(currentEvent != null){
+        if (currentEvent != null) {
             titleEditText.setText(currentEvent.getTitle());
             List<String> themes = Arrays.asList(getResources().getStringArray(R.array.event_themes));
-            if(themes.contains(currentEvent.getTheme())){
+            if (themes.contains(currentEvent.getTheme())) {
                 themeSprinner.setSelection(themes.indexOf(currentEvent.getTheme()));
             }
 
             storyEditText.setText(currentEvent.getStory());
 
             List<String> todayLocations = UsefulGenericMethods.getWorldCountriesList();
-            //TODO Change current.getLoction() into current.getLocationModernCalling()
-            if(todayLocations.contains(currentEvent.getLocation())){
+
+            if (todayLocations.contains(!TextUtils.isEmpty(currentEvent.getLocationModernCalling()) ?
+                    currentEvent.getLocationModernCalling() : currentEvent.getLocation())) {
                 try {
-                    todayLocationSpinner.setSelection(themes.indexOf(currentEvent.getLocation()));
-                }catch (IndexOutOfBoundsException e){
+                    todayLocationSpinner.setSelection(themes.indexOf(currentEvent.getLocationModernCalling()));
+                } catch (IndexOutOfBoundsException e) {
                     Log.d(ModifyEventFragment.class.getSimpleName(), e.getLocalizedMessage());
                 }
             }
             historicLocationEditText.setText(currentEvent.getLocation());
 
-            yearEditText.setText(currentEvent.getSliceTime());
+            if (!TextUtils.isEmpty(currentEvent.getSliceTime())) {
+
+                dateSetterLayout.setVisibility(View.VISIBLE);
+
+                mBCADSpinner.setSelection("BC".contains(currentEvent.getSliceTime()) ? 0 : 1);
+
+                if ("-".contains(currentEvent.getSliceTime())) {
+
+                    try {
+                        String[] mYMD = TextUtils.split(currentEvent.getSliceTime(), "-");
+
+                        yearEditText.setText(mYMD[0]);
+                        monthEditText.setText(mYMD[1]);
+
+                        if ("BC".contains(mYMD[2]) || "AD".contains(mYMD[2])) {
+
+                            dayEditText.setText(mYMD[2].split(" ")[0]);
+
+                        } else {
+
+                            dayEditText.setText(mYMD[2]);
+
+                        }
+
+
+                    } catch (NullPointerException e) {
+                        e.getStackTrace();
+                    }
+
+                } else {
+
+                    yearEditText.setText(currentEvent.getSliceTime());
+
+                }
+
+            }
+
 
             publishButton.setText(R.string.event_modify_apply_button);
 
@@ -83,10 +116,9 @@ public class ModifyEventFragment extends WriteEventBaseFragment{
                     if (getActivity() == null) return false;
 
                     PopupMenu popup = new PopupMenu(getActivity(), publishButton, Gravity.TOP);
-                    //Inflating the Popup using xml file
+
                     popup.getMenuInflater().inflate(R.menu.dykh_webservices_test, popup.getMenu());
 
-                    //registering popup with OnMenuItemClickListener
                     popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
                         @SuppressLint("SimpleDateFormat")
                         public boolean onMenuItemClick(MenuItem item) {
@@ -108,7 +140,7 @@ public class ModifyEventFragment extends WriteEventBaseFragment{
 
                                 case R.id.events_putter:
 
-                                    if(getContext() != null
+                                    if (getContext() != null
                                             && mEventManager.getEvents() != null
                                             && mEventManager.getEvents().size() > 0) {
 
@@ -126,7 +158,7 @@ public class ModifyEventFragment extends WriteEventBaseFragment{
 
                                         }
 
-                                        runANewRequest(RequestsFactory.putManyEvents(getContext(), jsonArray, mEventUpdatingProgressBar));
+                                        runANewRequest(RequestsFactory.putManyEvents(getContext(), jsonArray, resetInputsListener));
 
                                     }
 
@@ -135,7 +167,7 @@ public class ModifyEventFragment extends WriteEventBaseFragment{
                                 case R.id.event_deleter:
 
                                     try {
-                                        runANewRequest(RequestsFactory.deleteAnEvent(getContext(), "5a5124ebde9a37001e49bb9f", mEventUpdatingProgressBar));
+                                        runANewRequest(RequestsFactory.deleteAnEvent(getContext(), "5a5124ebde9a37001e49bb9f", resetInputsListener));
                                     } catch (JSONException e) {
                                         e.printStackTrace();
                                     }
@@ -146,13 +178,13 @@ public class ModifyEventFragment extends WriteEventBaseFragment{
 
                                     mEventManager.readEvents(AppApplication.getUserInfo().getUserId());
 
-                                    if(getContext() != null
+                                    if (getContext() != null
                                             && mEventManager.getEvents() != null
-                                            && mEventManager.getEvents().size() > 0){
+                                            && mEventManager.getEvents().size() > 0) {
 
                                         jsonArray = new JSONArray();
 
-                                        for (Event event: mEventManager.getEvents()){
+                                        for (Event event : mEventManager.getEvents()) {
 
                                             try {
 
@@ -176,7 +208,7 @@ public class ModifyEventFragment extends WriteEventBaseFragment{
                                                     @Override
                                                     public void onClick(DialogInterface dialogInterface, int i) {
 
-                                                        runANewRequest(RequestsFactory.deleteManyEvents(getContext(), jsonArray, mEventUpdatingProgressBar));
+                                                        runANewRequest(RequestsFactory.deleteManyEvents(getContext(), jsonArray, resetInputsListener));
 
                                                     }
                                                 })
@@ -194,7 +226,7 @@ public class ModifyEventFragment extends WriteEventBaseFragment{
                         }
                     });
 
-                    popup.show();//showing popup menu
+                    popup.show();
 
                     return true;
                 }
@@ -215,24 +247,35 @@ public class ModifyEventFragment extends WriteEventBaseFragment{
 
                 if (TextUtils.isEmpty(title)) {
                     titleEditText.setError("Need to be filled");
+                    titleEditText.scrollTo(titleEditText.getScrollX(), titleEditText.getScrollY());
 
-                } else if (getActivity() != null && (TextUtils.isEmpty(selectedTheme)
-                        || TextUtils.isEmpty(selectedTodayLocaction))) {
+                } else if (themeSprinner.getSelectedIndex() == -1) {
 
-                    AlertDialog.Builder alertDialog = new AlertDialog.Builder(getActivity(), R.style.AppCompatAlertDialogStyle);
+                    themeSprinner.setError("Need to be filled");
+                    themeSprinner.scrollTo(themeSprinner.getScrollX(), themeSprinner.getScrollY());
 
-                    alertDialog.setTitle(R.string.dykh_warning)
-                            .setMessage(R.string.dyky_publishing_msg_error)
-                            .setNeutralButton(R.string.ok_button, new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialogInterface, int i) {
-                                    dialogInterface.dismiss();
-                                }
-                            });
+                } else if (todayLocationSpinner.getSelectedIndex() == -1) {
 
-                    alertDialog.show();
+                    todayLocationSpinner.setError("Need to be filled");
+                    todayLocationSpinner.scrollTo(todayLocationSpinner.getScrollX(), todayLocationSpinner.getScrollY());
 
-                } else if(mEventUpdatingProgressBar.getVisibility() == View.GONE){
+                } else if (TextUtils.isEmpty(historicLocationEditText.getText())) {
+
+                    historicLocationEditText.setError("Need to be filled");
+                    historicLocationEditText.scrollTo(historicLocationEditText.getScrollX(),
+                            historicLocationEditText.getScrollY());
+
+                } else if (mBCADSpinner.getSelectedIndex() == -1) {
+
+                    mBCADSpinner.setError("Need to be filled");
+                    mBCADSpinner.scrollTo(mBCADSpinner.getScrollX(), mBCADSpinner.getScrollY());
+
+                } else if (TextUtils.isEmpty(yearEditText.getText())) {
+
+                    yearEditText.setError("Need to be filled");
+                    yearEditText.scrollTo(yearEditText.getScrollX(), yearEditText.getScrollY());
+
+                }else if (resetInputsListener.canProcess()) {
 
                     try {
 

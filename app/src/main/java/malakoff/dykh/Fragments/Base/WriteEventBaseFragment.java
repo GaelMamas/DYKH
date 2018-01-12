@@ -47,6 +47,10 @@ public class WriteEventBaseFragment extends InstanceBaseFragement implements Vie
             storyEditText.setText("");
             historicLocationEditText.setText("");
 
+            themeSprinner.setSelection(-1);
+            todayLocationSpinner.setSelection(-1);
+            mBCADSpinner.setSelection(-1);
+
             dateSetterLayout.setVisibility(View.GONE);
 
             datePicker.setVisibility(View.GONE);
@@ -59,6 +63,11 @@ public class WriteEventBaseFragment extends InstanceBaseFragement implements Vie
 
             mEventUpdatingProgressBar.setVisibility(View.GONE);
 
+        }
+
+        @Override
+        public boolean canProcess() {
+            return mEventUpdatingProgressBar.getVisibility() == View.GONE;
         }
     };
 

@@ -9,4 +9,6 @@ public interface ResetInputsListener {
     void succeed();
 
     void fail();
+
+    boolean canProcess();
 }

@@ -159,7 +159,7 @@ public class UsefulGenericMethods {
         try {
             params = new JSONObject();
 
-            params.put("_id", "Admin");
+            params.put("_id", event.getEventId());
             params.put("sliceTime", event.getSliceTime());
             params.put("location", event.getLocation());
             params.put("title", event.getTitle());
@@ -168,7 +168,7 @@ public class UsefulGenericMethods {
             params.put("isValidate", String.valueOf(event.getIsValidate()));
             params.put("locationModernCalling", event.getLocationModernCalling());
             params.put("longitude", String.valueOf(event.getLongitude()));
-            params.put("userId", AppApplication.getUserInfo().getUserId());
+            params.put("userId", event.getUserId());
             params.put("latitude", String.valueOf(event.getLatitude()));
 
         } catch (JSONException e) {

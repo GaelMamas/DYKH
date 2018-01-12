@@ -124,4 +124,8 @@ public class AnimatedReAdapter<T> extends RecyclerView.Adapter<ReCellHolder<T>> 
         objects.addAll(newData);
         notifyDataSetChanged();
     }
+
+    public void clear(){
+        objects.clear();
+    }
 }
