@@ -26,6 +26,7 @@ import malakoff.dykh.AppApplication.Constants;
 import malakoff.dykh.Event.Event;
 import malakoff.dykh.Fragments.Base.InstanceBaseFragement;
 import malakoff.dykh.Fragments.Base.WriteEventBaseFragment;
+import malakoff.dykh.Interfaces.ResetInputsListener;
 import malakoff.dykh.Network.RequestsFactory;
 import malakoff.dykh.R;
 import malakoff.dykh.Utils.UsefulGenericMethods;
@@ -98,7 +99,7 @@ public class ModifyEventFragment extends WriteEventBaseFragment{
                                 case R.id.event_putter:
 
                                     try {
-                                        runANewRequest(RequestsFactory.putAnEvent(getContext(), UsefulGenericMethods.getEventJSONObject(currentEvent), mEventUpdatingProgressBar));
+                                        runANewRequest(RequestsFactory.putAnEvent(getContext(), UsefulGenericMethods.getEventJSONObject(currentEvent), resetInputsListener));
                                     } catch (JSONException e) {
                                         e.printStackTrace();
                                     }
@@ -239,15 +240,15 @@ public class ModifyEventFragment extends WriteEventBaseFragment{
 
                         runANewRequest(RequestsFactory.putAnEvent(getContext(), UsefulGenericMethods.getEventJSONObject(
                                 new Event(
-                                currentEvent.getEventId(),
-                                newEventFinalDate[0] + "-" + newEventFinalDate[1] + "-" + newEventFinalDate[2] + " " + selectedBCAD,
-                                historicLocation,
-                                selectedTodayLocaction,
-                                AppApplication.getUserInfo().getUserId(),
-                                title,
-                                story,
-                                selectedTheme
-                        )), mEventUpdatingProgressBar));
+                                        currentEvent.getEventId(),
+                                        newEventFinalDate[0] + "-" + newEventFinalDate[1] + "-" + newEventFinalDate[2] + " " + selectedBCAD,
+                                        historicLocation,
+                                        selectedTodayLocaction,
+                                        AppApplication.getUserInfo().getUserId(),
+                                        title,
+                                        story,
+                                        selectedTheme
+                                )), resetInputsListener));
 
                     } catch (JSONException e) {
                         e.printStackTrace();

@@ -1,6 +1,5 @@
 package malakoff.dykh.Fragments.Base;
 
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.widget.AppCompatEditText;
 import android.text.TextUtils;
@@ -20,6 +19,7 @@ import java.util.Arrays;
 import java.util.Calendar;
 
 import malakoff.dykh.DesignWidget.BetterSpinner;
+import malakoff.dykh.Interfaces.ResetInputsListener;
 import malakoff.dykh.Network.MySingleton;
 import malakoff.dykh.R;
 import malakoff.dykh.Utils.UsefulGenericMethods;
@@ -38,6 +38,29 @@ public class WriteEventBaseFragment extends InstanceBaseFragement implements Vie
     protected DatePicker datePicker;
     protected Button publishButton;
     protected ProgressBar mEventUpdatingProgressBar;
+
+    protected ResetInputsListener resetInputsListener = new ResetInputsListener() {
+        @Override
+        public void succeed() {
+
+            titleEditText.setText("");
+            storyEditText.setText("");
+            historicLocationEditText.setText("");
+
+            dateSetterLayout.setVisibility(View.GONE);
+
+            datePicker.setVisibility(View.GONE);
+
+            mEventUpdatingProgressBar.setVisibility(View.GONE);
+        }
+
+        @Override
+        public void fail() {
+
+            mEventUpdatingProgressBar.setVisibility(View.GONE);
+
+        }
+    };
 
 
     @Override
@@ -178,7 +201,7 @@ public class WriteEventBaseFragment extends InstanceBaseFragement implements Vie
                             @Override
                             public void onDateChanged(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
 
-                                if(monthOfYear <= Calendar.getInstance().get(Calendar.MONTH)
+                                if (monthOfYear <= Calendar.getInstance().get(Calendar.MONTH)
                                         && dayOfMonth <= Calendar.getInstance().get(Calendar.DAY_OF_MONTH)) {
 
                                     newEventFinalDate[0] = String.valueOf(year);
@@ -187,7 +210,7 @@ public class WriteEventBaseFragment extends InstanceBaseFragement implements Vie
 
                                     Toast.makeText(getContext(), newEventFinalDate[0] + "-" + newEventFinalDate[1] + "-" + newEventFinalDate[2], Toast.LENGTH_SHORT).show();
 
-                                }else{
+                                } else {
                                     Toast.makeText(getContext(), "Please enter correct date", Toast.LENGTH_SHORT).show();
                                 }
                             }
@@ -249,29 +272,5 @@ public class WriteEventBaseFragment extends InstanceBaseFragement implements Vie
 
         MySingleton.getInstance(getContext()).addToRequestQueue(gsonRequest);
 
-    }
-
-    class ResetInputsAyncTasks extends AsyncTask<Boolean, Void, Void>{
-
-
-        @Override
-        protected Void doInBackground(Boolean... booleans) {
-
-            if(booleans[0]){
-
-                titleEditText.setText("");
-                storyEditText.setText("");
-                historicLocationEditText.setText("");
-
-            }
-
-            dateSetterLayout.setVisibility(View.GONE);
-
-            datePicker.setVisibility(View.GONE);
-
-            mEventUpdatingProgressBar.setVisibility(View.GONE);
-
-            return null;
-        }
     }
 }
