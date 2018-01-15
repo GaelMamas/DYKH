@@ -40,6 +40,9 @@
     <string name="login_email_hint">Enter your email</string>
     <string name="button_login_connect">Log in</string>
     <string name="login_password_hint">Enter your password</string>
+    <string name="event_single_dated_hint">Single or couple dated?</string>
+    <string name="event_couple_dated_title">Event End Date</string>
+
 
     <string-array name="event_themes">
         <item name="event_theme_discovery">Discovery</item>
@@ -53,6 +56,11 @@
     <string-array name="event_bc_or_ad">
         <item name="event_bc">BC</item>
         <item name="event_ad">AD</item>
+    </string-array>
+
+    <string-array name="event_single_couple_dated">
+        <item name="event_bc">Has just one date</item>
+        <item name="event_ad">Has a start and an end dates</item>
     </string-array>
 
 

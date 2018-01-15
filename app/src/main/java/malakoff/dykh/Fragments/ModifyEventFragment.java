@@ -52,7 +52,7 @@ public class ModifyEventFragment extends WriteEventBaseFragment {
             titleEditText.setText(currentEvent.getTitle());
             List<String> themes = Arrays.asList(getResources().getStringArray(R.array.event_themes));
             if (themes.contains(currentEvent.getTheme())) {
-                themeSprinner.setSelection(themes.indexOf(currentEvent.getTheme()));
+                themeSpinner.setSelection(themes.indexOf(currentEvent.getTheme()));
             }
 
             storyEditText.setText(currentEvent.getStory());
@@ -81,15 +81,15 @@ public class ModifyEventFragment extends WriteEventBaseFragment {
                         String[] mYMD = TextUtils.split(currentEvent.getSliceTime(), "-");
 
                         yearEditText.setText(mYMD[0]);
-                        monthEditText.setText(mYMD[1]);
+                        monthSpinner.setText(mYMD[1]);
 
                         if ("BC".contains(mYMD[2]) || "AD".contains(mYMD[2])) {
 
-                            dayEditText.setText(mYMD[2].split(" ")[0]);
+                            daySpinner.setText(mYMD[2].split(" ")[0]);
 
                         } else {
 
-                            dayEditText.setText(mYMD[2]);
+                            daySpinner.setText(mYMD[2]);
 
                         }
 
@@ -249,10 +249,10 @@ public class ModifyEventFragment extends WriteEventBaseFragment {
                     titleEditText.setError("Need to be filled");
                     titleEditText.scrollTo(titleEditText.getScrollX(), titleEditText.getScrollY());
 
-                } else if (themeSprinner.getSelectedIndex() == -1) {
+                } else if (themeSpinner.getSelectedIndex() == -1) {
 
-                    themeSprinner.setError("Need to be filled");
-                    themeSprinner.scrollTo(themeSprinner.getScrollX(), themeSprinner.getScrollY());
+                    themeSpinner.setError("Need to be filled");
+                    themeSpinner.scrollTo(themeSpinner.getScrollX(), themeSpinner.getScrollY());
 
                 } else if (todayLocationSpinner.getSelectedIndex() == -1) {
 

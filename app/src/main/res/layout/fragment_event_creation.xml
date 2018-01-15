@@ -144,12 +144,29 @@
                         android:textStyle="bold" />
 
                     <malakoff.dykh.DesignWidget.BetterSpinner
+                        android:id="@+id/spinner_event_single_date"
+                        style="@style/DYKHSpinnerStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/space.normal"
+                        android:hint="@string/event_single_dated_hint" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/space.normal"
+                        android:text="@string/event_couple_dated_title"
+                        android:textColor="@color/color_event_title_top"
+                        android:textSize="15sp" />
+
+                    <malakoff.dykh.DesignWidget.BetterSpinner
                         android:id="@+id/spinner_event_bc_or_ad"
                         style="@style/DYKHSpinnerStyle"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="@dimen/space.normal"
                         android:hint="@string/event_which_bc_ad_hint" />
+
 
                     <LinearLayout
                         android:id="@+id/event_date_setter_layout"
@@ -160,6 +177,7 @@
                         android:animateLayoutChanges="true"
                         android:orientation="horizontal"
                         android:visibility="gone"
+                        android:weightSum="3"
                         tools:visibility="visible">
 
                         <android.support.v7.widget.AppCompatEditText
@@ -168,44 +186,36 @@
                             android:layout_height="wrap_content"
                             android:layout_marginEnd="@dimen/space.normal"
                             android:layout_marginRight="@dimen/space.normal"
+                            android:layout_weight="1"
                             android:hint="@string/event_year_hint"
                             android:imeOptions="actionNext"
                             android:inputType="number"
                             android:maxLines="1"
-                            android:nextFocusDown="@+id/edittext_event_month_setter"
+                            android:nextFocusDown="@+id/spinner_event_month_setter"
                             android:textColor="@color/generic_black_text_color"
                             android:theme="@style/EventCreationEditText" />
 
-                        <android.support.v7.widget.AppCompatEditText
-                            android:id="@+id/edittext_event_month_setter"
+                        <malakoff.dykh.DesignWidget.BetterSpinner
+                            android:id="@+id/spinner_event_month_setter"
+                            style="@style/DYKHSpinnerStyle"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginBottom="@dimen/space.normal"
                             android:layout_marginEnd="@dimen/space.normal"
                             android:layout_marginRight="@dimen/space.normal"
-                            android:hint="@string/event_month_hint"
-                            android:imeOptions="actionNext"
-                            android:inputType="number"
-                            android:maxLines="1"
-                            android:nextFocusDown="@+id/edittext_event_day_setter"
-                            android:textColor="@color/generic_black_text_color"
-                            android:theme="@style/EventCreationEditText"
-                            android:visibility="gone"
-                            tools:visibility="visible" />
+                            android:layout_weight="1"
+                            android:hint="@string/event_month_hint" />
 
-                        <android.support.v7.widget.AppCompatEditText
-                            android:id="@+id/edittext_event_day_setter"
+                        <malakoff.dykh.DesignWidget.BetterSpinner
+                            android:id="@+id/spinner_event_day_setter"
+                            style="@style/DYKHSpinnerStyle"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginBottom="@dimen/space.normal"
                             android:layout_marginEnd="@dimen/space.normal"
                             android:layout_marginRight="@dimen/space.normal"
-                            android:hint="@string/event_day_hint"
-                            android:imeOptions="actionGo"
-                            android:inputType="number"
-                            android:maxLines="1"
-                            android:textColor="@color/generic_black_text_color"
-                            android:theme="@style/EventCreationEditText"
-                            android:visibility="gone"
-                            tools:visibility="visible" />
+                            android:layout_weight="1"
+                            android:hint="@string/event_day_hint" />
 
                     </LinearLayout>
 
@@ -251,6 +261,6 @@
         android:layout_height="60dp"
         android:layout_gravity="center"
         android:visibility="gone"
-        tools:visibility="visible"/>
+        tools:visibility="visible" />
 
 </FrameLayout>

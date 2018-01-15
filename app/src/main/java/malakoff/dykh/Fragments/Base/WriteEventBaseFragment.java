@@ -15,8 +15,10 @@ import android.widget.Toast;
 
 import com.android.volley.Request;
 
+import java.text.DateFormatSymbols;
 import java.util.Arrays;
 import java.util.Calendar;
+import java.util.Locale;
 
 import malakoff.dykh.DesignWidget.BetterSpinner;
 import malakoff.dykh.Interfaces.ResetInputsListener;
@@ -31,9 +33,11 @@ import malakoff.dykh.Utils.UsefulGenericMethods;
 public class WriteEventBaseFragment extends InstanceBaseFragement implements View.OnClickListener, AdapterView.OnItemSelectedListener, TextView.OnEditorActionListener {
 
     protected String selectedTheme, selectedTodayLocaction, selectedBCAD;
+    protected boolean isDatedSingleEvent;
+    protected int monthIndex = 0, dayIndex = 0;
     protected String[] newEventFinalDate;
-    protected BetterSpinner themeSprinner, todayLocationSpinner, mBCADSpinner;
-    protected AppCompatEditText titleEditText, historicLocationEditText, storyEditText, yearEditText, monthEditText, dayEditText;
+    protected BetterSpinner themeSpinner, todayLocationSpinner, mBCADSpinner, mDatedTypeEventSpinner, monthSpinner, daySpinner;
+    protected AppCompatEditText titleEditText, historicLocationEditText, storyEditText, yearEditText;
     protected View dateSetterLayout;
     protected DatePicker datePicker;
     protected Button publishButton;
@@ -47,9 +51,9 @@ public class WriteEventBaseFragment extends InstanceBaseFragement implements Vie
             storyEditText.setText("");
             historicLocationEditText.setText("");
 
-            themeSprinner.setSelection(-1);
-            todayLocationSpinner.setSelection(-1);
-            mBCADSpinner.setSelection(-1);
+            themeSpinner.resetPlaceHolderText();
+            todayLocationSpinner.resetPlaceHolderText();
+            mBCADSpinner.resetPlaceHolderText();
 
             dateSetterLayout.setVisibility(View.GONE);
 
@@ -94,18 +98,46 @@ public class WriteEventBaseFragment extends InstanceBaseFragement implements Vie
 
         mBCADAdapter.setDropDownViewResource(R.layout.cell_text_darker);
 
-        themeSprinner.setAdapter(themeAdapter);
-        themeSprinner.setOnItemSelectedListener(this);
+        ArrayAdapter<String> mDatedTypeAdapter = new ArrayAdapter<>(getContext(),
+                R.layout.cell_text_dark,
+                Arrays.asList(getResources().getStringArray(R.array.event_single_couple_dated)));
+
+        ArrayAdapter<String> mMonthsAdapter = new ArrayAdapter<>(getContext(),
+                R.layout.cell_text_dark,
+                DateFormatSymbols.getInstance(Locale.getDefault()).getMonths());
+
+        String[] monthDay = new String[setMondaysNumber()];
+
+        for (int i = 0; i < monthDay.length; i++) {
+
+            monthDay[i] = String.valueOf(i + 1);
+
+        }
+
+        ArrayAdapter<String> mDaysAdapter = new ArrayAdapter<>(getContext(),
+                R.layout.cell_text_dark,
+                monthDay);
+
+        themeSpinner.setAdapter(themeAdapter);
+        themeSpinner.setOnItemSelectedListener(this);
 
         todayLocationSpinner.setAdapter(todayLocationAdapter);
         todayLocationSpinner.setOnItemSelectedListener(this);
 
+
         mBCADSpinner.setAdapter(mBCADAdapter);
         mBCADSpinner.setOnItemSelectedListener(this);
 
+        mDatedTypeEventSpinner.setAdapter(mDatedTypeAdapter);
+        mDatedTypeEventSpinner.setOnItemSelectedListener(this);
+
         yearEditText.setOnEditorActionListener(this);
-        monthEditText.setOnEditorActionListener(this);
-        dayEditText.setOnEditorActionListener(this);
+
+        monthSpinner.setAdapter(mMonthsAdapter);
+        monthSpinner.setOnItemSelectedListener(this);
+
+        daySpinner.setAdapter(mDaysAdapter);
+        daySpinner.setOnItemSelectedListener(this);
 
         publishButton.setOnClickListener(this);
 
@@ -116,11 +148,37 @@ public class WriteEventBaseFragment extends InstanceBaseFragement implements Vie
         }
     }
 
+    private int setMondaysNumber() {
+        switch (monthIndex) {
+            case 1:
+
+                return 29;
+            case 0:
+            case 2:
+            case 4:
+            case 6:
+            case 7:
+            case 9:
+            case 11:
+
+                return 31;
+
+            case 3:
+            case 5:
+            case 8:
+            case 10:
+            default:
+
+                return 30;
+        }
+    }
+
     @Override
     protected void assignViews(View view) {
-        themeSprinner = view.findViewById(R.id.spinner_event_theme);
+        themeSpinner = view.findViewById(R.id.spinner_event_theme);
         todayLocationSpinner = view.findViewById(R.id.spinner_event_today_location);
         mBCADSpinner = view.findViewById(R.id.spinner_event_bc_or_ad);
+        mDatedTypeEventSpinner = view.findViewById(R.id.spinner_event_single_date);
 
         titleEditText = view.findViewById(R.id.edittext_event_title);
         historicLocationEditText = view.findViewById(R.id.edittext_event_location);
@@ -129,8 +187,8 @@ public class WriteEventBaseFragment extends InstanceBaseFragement implements Vie
         dateSetterLayout = view.findViewById(R.id.event_date_setter_layout);
 
         yearEditText = view.findViewById(R.id.edittext_event_year_setter);
-        monthEditText = view.findViewById(R.id.edittext_event_month_setter);
-        dayEditText = view.findViewById(R.id.edittext_event_day_setter);
+        monthSpinner = view.findViewById(R.id.spinner_event_month_setter);
+        daySpinner = view.findViewById(R.id.spinner_event_day_setter);
 
         datePicker = view.findViewById(R.id.datePicker);
 
@@ -155,29 +213,65 @@ public class WriteEventBaseFragment extends InstanceBaseFragement implements Vie
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         switch ((int) id) {
+
             case R.id.spinner_event_theme:
+
                 selectedTheme = (String) parent.getItemAtPosition(position);
+
                 break;
+
             case R.id.spinner_event_today_location:
+
+
                 selectedTodayLocaction = (String) parent.getItemAtPosition(position);
 
                 if (!TextUtils.isEmpty(selectedTodayLocaction))
                     Toast.makeText(getContext(), "Set precisely the location", Toast.LENGTH_SHORT).show();
+
                 break;
+
+
+            case R.id.spinner_event_single_date:
+
+                isDatedSingleEvent = position == 0;
+
+                break;
+
+
             case R.id.spinner_event_bc_or_ad:
-                datePicker.setVisibility(View.GONE);
-                dateSetterLayout.setVisibility(View.GONE);
-                monthEditText.setVisibility(View.GONE);
-                dayEditText.setVisibility(View.GONE);
 
-                yearEditText.setText("");
-                monthEditText.setText("");
-                dayEditText.setText("");
 
-                selectedBCAD = (String) parent.getItemAtPosition(position);
+            datePicker.setVisibility(View.GONE);
+            dateSetterLayout.setVisibility(View.GONE);
+            monthSpinner.setVisibility(View.GONE);
+            daySpinner.setVisibility(View.GONE);
 
-                if (!TextUtils.isEmpty(selectedBCAD)) dateSetterLayout.setVisibility(View.VISIBLE);
+            yearEditText.setText("");
+            monthSpinner.setText("");
+            daySpinner.setText("");
+
+            selectedBCAD = (String) parent.getItemAtPosition(position);
+
+            if (!TextUtils.isEmpty(selectedBCAD)) dateSetterLayout.setVisibility(View.VISIBLE);
+
+
+            break;
+
+
+
+            case R.id.spinner_event_month_setter:
+
+                monthIndex = position;
+
+                return;
+
+
+            case R.id.spinner_event_day_setter:
+
+                dayIndex = position;
+
                 break;
+
         }
     }
 
@@ -201,7 +295,7 @@ public class WriteEventBaseFragment extends InstanceBaseFragement implements Vie
 
                 if (selectedBCAD.contentEquals(getResources().getStringArray(R.array.event_bc_or_ad)[0])) {
                     newEventFinalDate[0] = String.valueOf(year);
-                    monthEditText.setVisibility(View.VISIBLE);
+                    monthSpinner.setVisibility(View.VISIBLE);
                 } else if (selectedBCAD.contentEquals(getResources().getStringArray(R.array.event_bc_or_ad)[1])) {
                     if (year >= 1900 && year <= Calendar.getInstance().get(Calendar.YEAR)) {
                         dateSetterLayout.setVisibility(View.GONE);
@@ -225,48 +319,10 @@ public class WriteEventBaseFragment extends InstanceBaseFragement implements Vie
                             }
                         });
                     } else if (year <= Calendar.getInstance().get(Calendar.YEAR)) {
-                        monthEditText.setVisibility(View.VISIBLE);
+                        monthSpinner.setVisibility(View.VISIBLE);
                         newEventFinalDate[0] = inputYear;
                     }
                 }
-
-                return true;
-            case R.id.edittext_event_month_setter:
-                String inputMonth = v.getText().toString();
-                if (inputMonth.isEmpty()) {
-                    newEventFinalDate[1] = "0";
-                    return false;
-                }
-
-                int month = Integer.parseInt(inputMonth);
-
-                if (month >= 1 && month < 13) {
-                    dayEditText.setVisibility(View.VISIBLE);
-                    newEventFinalDate[1] = inputMonth;
-                } else {
-                    newEventFinalDate[1] = "0";
-                }
-
-                return true;
-            case R.id.edittext_event_day_setter:
-                String inputDay = v.getText().toString();
-                if (inputDay.isEmpty()) {
-                    newEventFinalDate[2] = "0";
-                    return false;
-                }
-
-                int day = Integer.parseInt(inputDay);
-
-                month = Integer.parseInt(monthEditText.getText().toString());
-                if (day > 0 && day < (month == 2 ? 29 : (month == 4 || month == 6 || month == 9 || month == 11) ? 30 : 31)) {
-                    newEventFinalDate[2] = inputDay;
-                } else {
-                    newEventFinalDate[2] = "0";
-                }
-
-                Toast.makeText(getContext(), newEventFinalDate[0] + "-" + newEventFinalDate[1] + "-" + newEventFinalDate[2], Toast.LENGTH_SHORT).show();
-
-                UsefulGenericMethods.hideKeyboard(getContext(), v);
 
                 return true;
         }

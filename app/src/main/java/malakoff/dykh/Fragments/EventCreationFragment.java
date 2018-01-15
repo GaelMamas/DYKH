@@ -237,10 +237,10 @@ public class EventCreationFragment extends WriteEventBaseFragment {
 
                     titleEditText.scrollTo(titleEditText.getScrollX(), titleEditText.getScrollY());
 
-                } else if (themeSprinner.getSelectedIndex() == -1) {
+                } else if (themeSpinner.getSelectedIndex() == -1) {
 
-                    themeSprinner.setError("Need to be filled");
-                    themeSprinner.scrollTo(themeSprinner.getScrollX(), themeSprinner.getScrollY());
+                    themeSpinner.setError("Need to be filled");
+                    themeSpinner.scrollTo(themeSpinner.getScrollX(), themeSpinner.getScrollY());
 
                 } else if (todayLocationSpinner.getSelectedIndex() == -1) {
 
