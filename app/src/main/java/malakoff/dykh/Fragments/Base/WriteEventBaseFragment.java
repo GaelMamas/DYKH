@@ -16,8 +16,10 @@ import android.widget.Toast;
 import com.android.volley.Request;
 
 import java.text.DateFormatSymbols;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
+import java.util.List;
 import java.util.Locale;
 
 import malakoff.dykh.DesignWidget.BetterSpinner;
@@ -42,6 +44,8 @@ public class WriteEventBaseFragment extends InstanceBaseFragement implements Vie
     protected DatePicker datePicker;
     protected Button publishButton;
     protected ProgressBar mEventUpdatingProgressBar;
+
+
 
     protected ResetInputsListener resetInputsListener = new ResetInputsListener() {
         @Override
@@ -106,17 +110,10 @@ public class WriteEventBaseFragment extends InstanceBaseFragement implements Vie
                 R.layout.cell_text_dark,
                 DateFormatSymbols.getInstance(Locale.getDefault()).getMonths());
 
-        String[] monthDay = new String[setMondaysNumber()];
-
-        for (int i = 0; i < monthDay.length; i++) {
-
-            monthDay[i] = String.valueOf(i + 1);
-
-        }
 
         ArrayAdapter<String> mDaysAdapter = new ArrayAdapter<>(getContext(),
                 R.layout.cell_text_dark,
-                monthDay);
+                setMonthDays());
 
         themeSpinner.setAdapter(themeAdapter);
         themeSpinner.setOnItemSelectedListener(this);
@@ -148,7 +145,21 @@ public class WriteEventBaseFragment extends InstanceBaseFragement implements Vie
         }
     }
 
-    private int setMondaysNumber() {
+
+    private List<String> setMonthDays(){
+
+        List<String> monthDay = new ArrayList<>();
+
+        for (int i = 0; i < setMonthDaysNumber(); i++) {
+
+            monthDay.add(String.valueOf(i + 1));
+
+        }
+
+        return monthDay;
+    }
+
+    private int setMonthDaysNumber() {
         switch (monthIndex) {
             case 1:
 
@@ -262,6 +273,11 @@ public class WriteEventBaseFragment extends InstanceBaseFragement implements Vie
             case R.id.spinner_event_month_setter:
 
                 monthIndex = position;
+
+                daySpinner.setVisibility(View.VISIBLE);
+                daySpinner.setAdapter(new ArrayAdapter<>(getContext(),
+                        R.layout.cell_text_dark,
+                        setMonthDays()));
 
                 return;
 
