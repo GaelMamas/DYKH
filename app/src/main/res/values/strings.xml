@@ -40,8 +40,12 @@
     <string name="login_email_hint">Enter your email</string>
     <string name="button_login_connect">Log in</string>
     <string name="login_password_hint">Enter your password</string>
-    <string name="event_single_dated_hint">Single or couple dated?</string>
-    <string name="event_couple_dated_title">Event End Date</string>
+    <string name="event_single_dated_hint">Define the event dates</string>
+    <string name="event_chronological_alert_message">The end date has to come after the first one</string>
+    <string-array name="event_couple_dated_title">
+        <item name="first">Beginning date</item>
+        <item name="first">Ending date</item>
+    </string-array>
 
 
     <string-array name="event_themes">
@@ -59,8 +63,8 @@
     </string-array>
 
     <string-array name="event_single_couple_dated">
-        <item name="event_bc">Has just one date</item>
-        <item name="event_ad">Has a start and an end dates</item>
+        <item name="event_bc">Beginning date</item>
+        <item name="event_ad">Ending date if applicable</item>
     </string-array>
 
 

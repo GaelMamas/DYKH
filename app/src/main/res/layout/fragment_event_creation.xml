@@ -151,20 +151,14 @@
                         android:layout_marginBottom="@dimen/space.normal"
                         android:hint="@string/event_single_dated_hint" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="@dimen/space.normal"
-                        android:text="@string/event_couple_dated_title"
-                        android:textColor="@color/color_event_title_top"
-                        android:textSize="15sp" />
-
                     <malakoff.dykh.DesignWidget.BetterSpinner
                         android:id="@+id/spinner_event_bc_or_ad"
                         style="@style/DYKHSpinnerStyle"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="@dimen/space.normal"
+                        android:visibility="gone"
+                        tools:visibility="visible"
                         android:hint="@string/event_which_bc_ad_hint" />
 
 
@@ -188,7 +182,7 @@
                             android:layout_marginRight="@dimen/space.normal"
                             android:layout_weight=".8"
                             android:hint="@string/event_year_hint"
-                            android:imeOptions="actionNext"
+                            android:imeOptions="actionDone"
                             android:inputType="number"
                             android:maxLines="1"
                             android:nextFocusDown="@+id/spinner_event_month_setter"
