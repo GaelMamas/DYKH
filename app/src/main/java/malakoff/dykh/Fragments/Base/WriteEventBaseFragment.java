@@ -22,6 +22,7 @@ import java.util.Calendar;
 import java.util.List;
 import java.util.Locale;
 
+import malakoff.dykh.AppApplication.Constants;
 import malakoff.dykh.DesignWidget.BetterSpinner;
 import malakoff.dykh.Interfaces.ResetInputsListener;
 import malakoff.dykh.Network.MySingleton;
@@ -135,7 +136,7 @@ public class WriteEventBaseFragment extends InstanceBaseFragement implements Vie
 
 
         List<String> monthsList = new ArrayList<>();
-        monthsList.add("Unknown");
+        monthsList.add(getString(R.string.event_creation_unknown_item_date));
         monthsList.addAll(Arrays.asList(DateFormatSymbols.getInstance(Locale.getDefault()).getMonths()));
         ArrayAdapter<String> mMonthsAdapter = new ArrayAdapter<>(getContext(),
                 R.layout.cell_text_dark,
@@ -265,7 +266,8 @@ public class WriteEventBaseFragment extends InstanceBaseFragement implements Vie
 
                                     }else {
 
-                                        daySpinner.setVisibility(View.GONE);
+                                        daySpinner.setVisibility(View.VISIBLE);
+                                        daySpinner.setSelection(0);
 
                                     }
 
@@ -273,13 +275,14 @@ public class WriteEventBaseFragment extends InstanceBaseFragement implements Vie
 
                             }else{
 
-                                monthSpinner.setVisibility(View.GONE);
+                                monthSpinner.setVisibility(View.VISIBLE);
+                                monthSpinner.setSelection(0);
 
                             }
 
                         }else{
 
-                            dateSetterLayout.setVisibility(View.GONE);
+                            dateSetterLayout.setVisibility(View.VISIBLE);
 
                         }
 
@@ -369,7 +372,7 @@ public class WriteEventBaseFragment extends InstanceBaseFragement implements Vie
                     String month = (String) parent.getItemAtPosition(position);
 
                     switch (month) {
-                        case "Unknown":
+                        case Constants.DYKH_ITEM_DATE_UNKNOWN:
 
 
                             if (eventDates.isEmpty()) {
@@ -473,7 +476,7 @@ public class WriteEventBaseFragment extends InstanceBaseFragement implements Vie
 
 
                 switch (day) {
-                    case "Unknown":
+                    case Constants.DYKH_ITEM_DATE_UNKNOWN:
 
                         if (eventDates.isEmpty()) {
 
@@ -639,7 +642,7 @@ public class WriteEventBaseFragment extends InstanceBaseFragement implements Vie
 
         List<String> monthDay = new ArrayList<>();
 
-        monthDay.add("Unknown");
+        monthDay.add(getString(R.string.event_creation_unknown_item_date));
 
 
         for (int i = 0; i < number; i++) {

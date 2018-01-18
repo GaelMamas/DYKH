@@ -29,6 +29,7 @@ public class Constants {
     public static final String EVENT_THEME_WAR_EMPIRE = "War, Empire";
     public final static String BEGINNING_OF_MANTIME = "4004 BC";
     public final static String ARBITRARY_END_OF_MANTIME = "1996 AD";
+    public final static String DYKH_ITEM_DATE_UNKNOWN = "Unknown";
     public static final float BENCH_TIME_ORIGINE = 4004;
     public static final float ARBITRARY_END_OF_TIMES = 1996;
     public static final float ANGLE_ZERO = 5f;
