@@ -43,6 +43,7 @@
     <string name="event_single_dated_hint">Define the event dates</string>
     <string name="event_chronological_alert_message">The end date has to come after the first one</string>
     <string name="event_creation_unknown_item_date">Unknown</string>
+    <string name="event_correct_date_reminder_message">Please enter correct date</string>
     <string-array name="event_couple_dated_title">
         <item name="first">Beginning date</item>
         <item name="first">Ending date</item>

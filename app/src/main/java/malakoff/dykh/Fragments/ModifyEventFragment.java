@@ -284,9 +284,9 @@ public class ModifyEventFragment extends WriteEventBaseFragment {
                         runANewRequest(RequestsFactory.putAnEvent(getContext(), UsefulGenericMethods.getEventJSONObject(
                                 new Event(
                                         currentEvent.getEventId(),
-                                        newEventFinalDate[0] + "-" + newEventFinalDate[1] + "-" + newEventFinalDate[2] + " " + selectedBCAD,
+                                        makeUpEventDateFormat(),
                                         historicLocation,
-                                        selectedTodayLocaction,
+                                        selectedTodayLocation,
                                         AppApplication.getUserInfo().getUserId(),
                                         title,
                                         story,

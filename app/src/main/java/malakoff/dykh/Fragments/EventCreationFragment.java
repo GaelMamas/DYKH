@@ -84,7 +84,7 @@ public class EventCreationFragment extends WriteEventBaseFragment {
                                         "Clamart",
                                         "Clamart",
                                         AppApplication.getUserInfo().getUserId(),
-                                        selectedTodayLocaction,
+                                        selectedTodayLocation,
                                         "Node JS, Block Chain Smart Contract",
                                         "Invention"
                                 ), resetInputsListener));
@@ -267,11 +267,13 @@ public class EventCreationFragment extends WriteEventBaseFragment {
 
                     mEventUpdatingProgressBar.setVisibility(View.VISIBLE);
 
+
+
                     runANewRequest(RequestsFactory.postAnEvent(getContext(), getView(), new Event(
                             "",
-                            newEventFinalDate[0] + "-" + newEventFinalDate[1] + "-" + newEventFinalDate[2] + " " + selectedBCAD,
+                             makeUpEventDateFormat(),
                             historicLocation,
-                            selectedTodayLocaction,
+                            selectedTodayLocation,
                             AppApplication.getUserInfo().getUserId(),
                             title,
                             story,
