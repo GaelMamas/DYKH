@@ -3,6 +3,7 @@ package malakoff.dykh.Fragments.Base;
 import android.os.Bundle;
 import android.support.v7.widget.AppCompatEditText;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.AdapterView;
@@ -236,11 +237,12 @@ public class WriteEventBaseFragment extends InstanceBaseFragement implements Vie
                         mDatedTypeEventSpinner.resetPlaceHolderText();
                         mBCADSpinner.setVisibility(View.GONE);
                         dateSetterLayout.setVisibility(View.GONE);
+                        datePicker.setVisibility(View.GONE);
 
                     } else if (eventDates.size() > 1) {
 
 
-                        playbackAnEventDate(position);
+                        playbackAnEventDate(1);
 
 
                     } else {
@@ -248,6 +250,7 @@ public class WriteEventBaseFragment extends InstanceBaseFragement implements Vie
                         mBCADSpinner.resetPlaceHolderText();
                         mBCADSpinner.setVisibility(View.VISIBLE);
                         dateSetterLayout.setVisibility(View.GONE);
+                        datePicker.setVisibility(View.GONE);
 
 
                     }
@@ -520,11 +523,8 @@ public class WriteEventBaseFragment extends InstanceBaseFragement implements Vie
                 if (TextUtils.isEmpty(v.getText().toString())
                         && v.getText().toString().matches("[-+]?\\d*\\.?\\d+")) {
 
-                    Toast.makeText(getContext(),
-                            R.string.event_correct_date_reminder_message,
-                            Toast.LENGTH_SHORT).show();
+                    yearEditText.setError(getString(R.string.event_correct_date_reminder_message));
                     return false;
-
 
                 }
 
@@ -532,10 +532,7 @@ public class WriteEventBaseFragment extends InstanceBaseFragement implements Vie
                 if (eventDates.isEmpty()) {
 
 
-                    setYearInput(Integer.parseInt(inputYear = v.getText().toString()), event);
-
-
-                    return true;
+                    setYearInput(Integer.parseInt(inputYear = v.getText().toString()), 0, 1);
 
 
                 } else if (mDatedTypeEventSpinner.getSelectedIndex() == 1) {
@@ -548,27 +545,33 @@ public class WriteEventBaseFragment extends InstanceBaseFragement implements Vie
 
                     } else if (eventDates.size() == 1) {
 
+                        EventDate eventDate = eventDates.get(0);
 
-                        setYearInput(Integer.parseInt(inputYear = v.getText().toString()), event);
+                        setYearInput(Integer.parseInt(inputYear = v.getText().toString()),
+                                UsefulGenericMethods.isANumeric(eventDate.getMonth())? Integer.parseInt(eventDate.getMonth()):0,
+                                UsefulGenericMethods.isANumeric(eventDate.getDay())? Integer.parseInt(eventDate.getDay()):1);
 
 
                     } else {
 
+                        playbackYear(1);
 
                     }
 
 
                 } else {
 
+                    playbackYear(0);
 
                 }
 
 
-                return false;
         }
 
 
-        return false;
+        UsefulGenericMethods.hideKeyboard(getContext(), yearEditText);
+
+        return true;
     }
 
     private List<String> setMonthDays() {
@@ -643,6 +646,8 @@ public class WriteEventBaseFragment extends InstanceBaseFragement implements Vie
                 finalEventDate = makeUpFirstPartEventDate()
                         .append("}");
 
+
+                Log.i("DYKH Date Format", finalEventDate.toString());
 
                 return finalEventDate.toString();
             default:
@@ -730,22 +735,21 @@ public class WriteEventBaseFragment extends InstanceBaseFragement implements Vie
 
     }
 
-    private void playbackYear(int position){
+    private void playbackYear(int position) {
 
-
-        String year = eventDates.get(position).getYear();
+        EventDate eventDate = eventDates.get(position);
+        String year = eventDate.getYear();
 
         if (TextUtils.isEmpty(year)
                 && !year.matches("[-+]?\\d*\\.?\\d+")) return;
 
 
         int yearNumber = Integer.parseInt(year);
-        EventDate eventDate = eventDates.get(position);
 
 
         if (getResources().getStringArray(R.array.event_bc_or_ad)[1]
                 .contentEquals(eventDate.getmBCAD())
-                && yearNumber > 1899) {
+                && yearNumber >= 1900) {
 
             datePicker.setVisibility(View.VISIBLE);
             dateSetterLayout.setVisibility(View.GONE);
@@ -758,8 +762,8 @@ public class WriteEventBaseFragment extends InstanceBaseFragement implements Vie
 
         } else {
 
-            datePicker.setVisibility(View.VISIBLE);
-            dateSetterLayout.setVisibility(View.GONE);
+            datePicker.setVisibility(View.GONE);
+            dateSetterLayout.setVisibility(View.VISIBLE);
 
             yearEditText.setText(year);
 
@@ -767,24 +771,25 @@ public class WriteEventBaseFragment extends InstanceBaseFragement implements Vie
             monthSpinner.setVisibility(View.VISIBLE);
             daySpinner.setVisibility(View.VISIBLE);
 
+            monthSpinner.setSelection(0);
+            daySpinner.setSelection(0);
+
             if (!TextUtils.isEmpty(eventDate.getMonth())) {
 
-                try {
+                String month = eventDate.getMonth();
 
-                    monthSpinner.setSelection(Integer.parseInt(eventDate.getMonth()));
-                    daySpinner.setSelection(Integer.parseInt(eventDate.getDay()));
+                monthSpinner.setSelection(month.matches("[-+]?\\d*\\.?\\d+") ?
+                        Integer.parseInt(month) : 0);
+
+                String day = eventDates.get(position).getDay();
+
+                if (!TextUtils.isEmpty(day)) {
 
 
-                } catch (NumberFormatException e) {
+                    daySpinner.setSelection(day.matches("[-+]?\\d*\\.?\\d+") ?
+                            Integer.parseInt(day) : 0);
 
-                    monthSpinner.setSelection(0);
-                    daySpinner.setSelection(0);
                 }
-
-            } else {
-
-                monthSpinner.setSelection(0);
-                daySpinner.setSelection(0);
 
             }
 
@@ -811,12 +816,17 @@ public class WriteEventBaseFragment extends InstanceBaseFragement implements Vie
                     if (getResources().getStringArray(R.array.event_bc_or_ad)[0]
                             .contentEquals(eventDates.get(0).getmBCAD())) {
 
-                        return Integer.parseInt(value) < Integer.parseInt(eventDates.get(backwardTime ? 1 : 0).getYear());
+
+                        return backwardTime ?
+                                Integer.parseInt(value) < Integer.parseInt(eventDates.get(1).getYear()) :
+                                Integer.parseInt(value) > Integer.parseInt(eventDates.get(0).getYear());
 
                     } else if (getResources().getStringArray(R.array.event_bc_or_ad)[1]
                             .contentEquals(eventDates.get(0).getmBCAD())) {
 
-                        return Integer.parseInt(value) > Integer.parseInt(eventDates.get(backwardTime ? 1 : 0).getYear());
+                        return backwardTime ?
+                                Integer.parseInt(value) > Integer.parseInt(eventDates.get(1).getYear()) :
+                                Integer.parseInt(value) < Integer.parseInt(eventDates.get(0).getYear());
 
                     }
 
@@ -860,58 +870,27 @@ public class WriteEventBaseFragment extends InstanceBaseFragement implements Vie
     private void playbackAnEventDate(int position) {
 
 
-        String firstDateBCAD = eventDates.get(position).getmBCAD();
-        String firstDateYear = eventDates.get(position).getYear();
+        String mDateBCAD = eventDates.get(position).getmBCAD();
+        String mDateYear = eventDates.get(position).getYear();
 
-        if (!TextUtils.isEmpty(firstDateBCAD)) {
 
-            mBCADSpinner.setVisibility(View.VISIBLE);
-            mBCADSpinner.setSelection(firstDateBCAD
-                    .contentEquals(getResources().getStringArray(R.array.event_bc_or_ad)[0]) ? 0 : 1);
+        mBCADSpinner.setVisibility(View.VISIBLE);
+
+        if (TextUtils.isEmpty(mDateBCAD)) {
+
+            mBCADSpinner.resetPlaceHolderText();
+            return;
 
         }
 
-        if (!TextUtils.isEmpty(firstDateYear)) {
 
-            dateSetterLayout.setVisibility(View.VISIBLE);
-            yearEditText.setText(firstDateYear);
-
-            String month = eventDates.get(position).getMonth();
-
-            if (!TextUtils.isEmpty(month)) {
-
-                monthSpinner.setVisibility(View.VISIBLE);
-                monthSpinner.setSelection(month.matches("[-+]?\\d*\\.?\\d+") ?
-                        Integer.parseInt(month) : 0);
+        mBCADSpinner.setSelection(mDateBCAD
+                .contentEquals(getResources().getStringArray(R.array.event_bc_or_ad)[0]) ? 0 : 1);
 
 
-                if (monthSpinner.getSelectedIndex() > 0) {
+        if (!TextUtils.isEmpty(mDateYear)) {
 
-                    String day = eventDates.get(position).getDay();
-
-                    if (!TextUtils.isEmpty(day)) {
-
-
-                        daySpinner.setVisibility(View.VISIBLE);
-                        daySpinner.setSelection(day.matches("[-+]?\\d*\\.?\\d+") ?
-                                Integer.parseInt(day) : 0);
-
-
-                    } else {
-
-                        daySpinner.setVisibility(View.VISIBLE);
-                        daySpinner.setSelection(0);
-
-                    }
-
-                }
-
-            } else {
-
-                monthSpinner.setVisibility(View.VISIBLE);
-                monthSpinner.setSelection(0);
-
-            }
+            playbackYear(position);
 
         } else {
 
@@ -923,7 +902,7 @@ public class WriteEventBaseFragment extends InstanceBaseFragement implements Vie
     }
 
 
-    private void setYearInput(int year, KeyEvent event) {
+    private void setYearInput(int year, int monthOfYear, int dayOfMonth) {
 
 
         if (selectedBCAD.contentEquals(getResources()
@@ -944,7 +923,7 @@ public class WriteEventBaseFragment extends InstanceBaseFragement implements Vie
                 datePicker.setVisibility(View.VISIBLE);
 
 
-                setEventDatePicker(year, 0, 0);
+                setEventDatePicker(year, monthOfYear, dayOfMonth);
 
 
             } else if (year < 1900) {
@@ -954,14 +933,12 @@ public class WriteEventBaseFragment extends InstanceBaseFragement implements Vie
 
 
             }
-        }
-
-
-        if (event != null && event.getKeyCode() == KeyEvent.FLAG_EDITOR_ACTION) {
-
-            UsefulGenericMethods.hideKeyboard(getContext(), yearEditText);
 
         }
+
+
+        UsefulGenericMethods.hideKeyboard(getContext(), yearEditText);
+
 
     }
 

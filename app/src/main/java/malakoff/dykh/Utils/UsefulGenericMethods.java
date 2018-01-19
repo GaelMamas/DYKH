@@ -2,6 +2,7 @@ package malakoff.dykh.Utils;
 
 import android.content.Context;
 import android.support.v4.content.ContextCompat;
+import android.text.TextUtils;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
@@ -178,5 +179,11 @@ public class UsefulGenericMethods {
         }
 
         return params;
+    }
+
+    public static boolean isANumeric(String number){
+
+        return !TextUtils.isEmpty(number) && number.matches("[-+]?\\d*\\.?\\d+");
+
     }
 }
