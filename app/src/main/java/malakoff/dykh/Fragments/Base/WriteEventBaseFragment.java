@@ -548,8 +548,9 @@ public class WriteEventBaseFragment extends InstanceBaseFragement implements Vie
                         EventDate eventDate = eventDates.get(0);
 
                         setYearInput(Integer.parseInt(inputYear = v.getText().toString()),
-                                UsefulGenericMethods.isANumeric(eventDate.getMonth())? Integer.parseInt(eventDate.getMonth()):0,
-                                UsefulGenericMethods.isANumeric(eventDate.getDay())? Integer.parseInt(eventDate.getDay()):1);
+                                UsefulGenericMethods.isANumeric(eventDate.getMonth()) ? Integer.parseInt(eventDate.getMonth()) : 0,
+                                UsefulGenericMethods.isANumeric(eventDate.getDay()) ? Integer.parseInt(eventDate.getDay()) : 1);
+
 
 
                     } else {
@@ -714,7 +715,8 @@ public class WriteEventBaseFragment extends InstanceBaseFragement implements Vie
             case 0:
             default:
 
-                if (eventDates.size() > 0 && position == 0) {
+                if (eventDates.size() > 0 && position == 0
+                        && mDatedTypeEventSpinner.getSelectedIndex() == 0) {
 
                     playbackYear(0);
 
@@ -778,12 +780,24 @@ public class WriteEventBaseFragment extends InstanceBaseFragement implements Vie
 
                 String month = eventDate.getMonth();
 
-                monthSpinner.setSelection(month.matches("[-+]?\\d*\\.?\\d+") ?
-                        Integer.parseInt(month) : 0);
+                monthIndex = month.matches("[-+]?\\d*\\.?\\d+") ?
+                        Integer.parseInt(month) : 0;
+
+
+                monthSpinner.setAdapter(new ArrayAdapter<>(getContext(),
+                        R.layout.cell_text_dark,
+                        setMonthDays()));
+
+                monthSpinner.setSelection(monthIndex);
+
 
                 String day = eventDates.get(position).getDay();
 
-                if (!TextUtils.isEmpty(day)) {
+                if (monthIndex > 0 && !TextUtils.isEmpty(day)) {
+
+                    daySpinner.setAdapter(new ArrayAdapter<>(getContext(),
+                            R.layout.cell_text_dark,
+                            setMonthDays()));
 
 
                     daySpinner.setSelection(day.matches("[-+]?\\d*\\.?\\d+") ?
@@ -884,8 +898,25 @@ public class WriteEventBaseFragment extends InstanceBaseFragement implements Vie
         }
 
 
-        mBCADSpinner.setSelection(mDateBCAD
-                .contentEquals(getResources().getStringArray(R.array.event_bc_or_ad)[0]) ? 0 : 1);
+
+        boolean isBCorAD = mDateBCAD
+                .contentEquals(getResources().getStringArray(R.array.event_bc_or_ad)[0]);
+
+        try {
+
+
+            mBCADSpinner.setSelection(isBCorAD ? 0 : 1);
+
+
+        }catch (IndexOutOfBoundsException e){
+
+            mBCADSpinner.setAdapter(new ArrayAdapter<>(getContext(),
+                    R.layout.cell_text_dark,
+                    Arrays.asList(getResources().getStringArray(R.array.event_bc_or_ad))));
+
+            mBCADSpinner.setSelection(isBCorAD ? 0 : 1);
+
+        }
 
 
         if (!TextUtils.isEmpty(mDateYear)) {
@@ -944,20 +975,19 @@ public class WriteEventBaseFragment extends InstanceBaseFragement implements Vie
 
     private void setEventDatePicker(int year, int monthOfYear, int dayOfMonth) {
 
+        saveEventYearFromDatePicker(year, monthOfYear, dayOfMonth);
 
         datePicker.init(year, monthOfYear, dayOfMonth == 0 ? 1 : dayOfMonth, new DatePicker.OnDateChangedListener() {
             @Override
             public void onDateChanged(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
 
 
-                if (monthOfYear <= Calendar.getInstance().get(Calendar.MONTH)
-                        && dayOfMonth <= Calendar.getInstance().get(Calendar.DAY_OF_MONTH)) {
+                if ((year < Calendar.getInstance().get(Calendar.YEAR)) ||
+                        (monthOfYear <= Calendar.getInstance().get(Calendar.MONTH)
+                        && dayOfMonth <= Calendar.getInstance().get(Calendar.DAY_OF_MONTH))) {
 
 
-                    eventDates.add(new EventDate(selectedBCAD,
-                            String.valueOf(year),
-                            String.valueOf(monthOfYear),
-                            String.valueOf(dayOfMonth)));
+                    saveEventYearFromDatePicker(year, monthOfYear, dayOfMonth);
 
 
                 } else {
@@ -972,6 +1002,55 @@ public class WriteEventBaseFragment extends InstanceBaseFragement implements Vie
             }
         });
 
+
+    }
+
+    private void saveEventYearFromDatePicker(int year, int monthOfYear, int dayOfMonth) {
+
+        if(mDatedTypeEventSpinner.getSelectedIndex() == 1){
+
+
+            switch (eventDates.size()){
+
+                case 2:
+
+                    eventDates.set(1, new EventDate(selectedBCAD,
+                            String.valueOf(year),
+                            String.valueOf(monthOfYear),
+                            String.valueOf(dayOfMonth)));
+
+                case 1:
+
+                    eventDates.add(new EventDate(selectedBCAD,
+                            String.valueOf(year),
+                            String.valueOf(monthOfYear),
+                            String.valueOf(dayOfMonth)));
+
+
+            }
+
+        }else{
+
+            switch (eventDates.size()){
+
+                case 2:
+                case 1:
+
+                    eventDates.set(0, new EventDate(selectedBCAD,
+                            String.valueOf(year),
+                            String.valueOf(monthOfYear),
+                            String.valueOf(dayOfMonth)));
+
+                case 0:
+
+                    eventDates.add(new EventDate(selectedBCAD,
+                            String.valueOf(year),
+                            String.valueOf(monthOfYear),
+                            String.valueOf(dayOfMonth)));
+
+            }
+
+        }
 
     }
 
