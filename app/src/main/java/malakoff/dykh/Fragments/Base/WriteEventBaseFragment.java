@@ -1,6 +1,8 @@
 package malakoff.dykh.Fragments.Base;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.AppCompatEditText;
 import android.text.TextUtils;
 import android.util.Log;
@@ -10,6 +12,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -44,6 +47,7 @@ public class WriteEventBaseFragment extends InstanceBaseFragement implements Vie
 
     protected BetterSpinner themeSpinner, todayLocationSpinner, mBCADSpinner, mDatedTypeEventSpinner, monthSpinner, daySpinner;
     protected AppCompatEditText titleEditText, historicLocationEditText, storyEditText, yearEditText;
+    protected ImageView mCancelEventDateButton;
     protected View dateSetterLayout;
     protected DatePicker datePicker;
     protected Button publishButton;
@@ -93,6 +97,8 @@ public class WriteEventBaseFragment extends InstanceBaseFragement implements Vie
         titleEditText = view.findViewById(R.id.edittext_event_title);
         historicLocationEditText = view.findViewById(R.id.edittext_event_location);
         storyEditText = view.findViewById(R.id.edittext_event_story);
+
+        mCancelEventDateButton = view.findViewById(R.id.button_event_cancel_date);
 
         dateSetterLayout = view.findViewById(R.id.event_date_setter_layout);
 
@@ -168,6 +174,7 @@ public class WriteEventBaseFragment extends InstanceBaseFragement implements Vie
         daySpinner.setAdapter(mDaysAdapter);
         daySpinner.setOnItemSelectedListener(this);
 
+        mCancelEventDateButton.setOnClickListener(this);
         publishButton.setOnClickListener(this);
 
     }
@@ -182,6 +189,44 @@ public class WriteEventBaseFragment extends InstanceBaseFragement implements Vie
     @Override
     protected int getLayoutId() {
         return R.layout.fragment_event_creation;
+    }
+
+
+    @Override
+    public void onClick(View view) {
+        super.onClick(view);
+
+        switch (view.getId()) {
+            case R.id.button_event_cancel_date:
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(getContext(), R.style.AppCompatAlertDialogStyle);
+
+                builder.setTitle(R.string.event_creation_cancel_warning_title)
+                        .setMessage(R.string.event_creation_cancel_warning_msg)
+                        .setPositiveButton(R.string.ok_button, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+
+                                mDatedTypeEventSpinner.resetPlaceHolderText();
+                                mBCADSpinner.resetPlaceHolderText();
+                                yearEditText.setText("");
+
+                                monthSpinner.resetPlaceHolderText();
+                                daySpinner.resetPlaceHolderText();
+
+                                mBCADSpinner.setVisibility(View.GONE);
+                                dateSetterLayout.setVisibility(View.GONE);
+                                datePicker.setVisibility(View.GONE);
+
+                                eventDates.clear();
+
+                                mCancelEventDateButton.setVisibility(View.INVISIBLE);
+
+                            }
+                        })
+                        .setNegativeButton(R.string.no_button, null)
+                        .create().show();
+        }
     }
 
     @Override
@@ -331,10 +376,7 @@ public class WriteEventBaseFragment extends InstanceBaseFragement implements Vie
                             if (eventDates.isEmpty()) {
 
 
-                                eventDates.add(new EventDate(selectedBCAD, inputYear, null, null));
-
-
-                                mDatedTypeEventSpinner.requestFocus();
+                                addAnEventDate(selectedBCAD, inputYear, null, null);
 
 
                             } else if (mDatedTypeEventSpinner.getSelectedIndex() == 1) {
@@ -345,7 +387,7 @@ public class WriteEventBaseFragment extends InstanceBaseFragement implements Vie
 
                                 } else {
 
-                                    eventDates.add(new EventDate(selectedBCAD, inputYear, null, null));
+                                    addAnEventDate(selectedBCAD, inputYear, null, null);
 
                                 }
 
@@ -431,9 +473,8 @@ public class WriteEventBaseFragment extends InstanceBaseFragement implements Vie
 
                         if (eventDates.isEmpty()) {
 
-                            eventDates.add(new EventDate(selectedBCAD, inputYear, String.valueOf(monthIndex), null));
+                            addAnEventDate(selectedBCAD, inputYear, String.valueOf(monthIndex), null);
 
-                            mDatedTypeEventSpinner.requestFocus();
 
                         } else if (mDatedTypeEventSpinner.getSelectedIndex() == 1) {
 
@@ -443,7 +484,7 @@ public class WriteEventBaseFragment extends InstanceBaseFragement implements Vie
 
                             } else {
 
-                                eventDates.add(new EventDate(selectedBCAD, inputYear, String.valueOf(monthIndex), null));
+                                addAnEventDate(selectedBCAD, inputYear, String.valueOf(monthIndex), null);
 
                             }
 
@@ -467,9 +508,7 @@ public class WriteEventBaseFragment extends InstanceBaseFragement implements Vie
 
                         if (eventDates.isEmpty()) {
 
-                            eventDates.add(new EventDate(selectedBCAD, inputYear, String.valueOf(monthIndex), String.valueOf(position)));
-
-                            mDatedTypeEventSpinner.requestFocus();
+                            addAnEventDate(selectedBCAD, inputYear, String.valueOf(monthIndex), String.valueOf(position));
 
                         } else if (mDatedTypeEventSpinner.getSelectedIndex() == 1) {
 
@@ -479,7 +518,7 @@ public class WriteEventBaseFragment extends InstanceBaseFragement implements Vie
 
                             } else {
 
-                                eventDates.add(new EventDate(selectedBCAD, inputYear, String.valueOf(monthIndex), day));
+                                addAnEventDate(selectedBCAD, inputYear, String.valueOf(monthIndex), day);
 
                             }
 
@@ -550,7 +589,6 @@ public class WriteEventBaseFragment extends InstanceBaseFragement implements Vie
                         setYearInput(Integer.parseInt(inputYear = v.getText().toString()),
                                 UsefulGenericMethods.isANumeric(eventDate.getMonth()) ? Integer.parseInt(eventDate.getMonth()) : 0,
                                 UsefulGenericMethods.isANumeric(eventDate.getDay()) ? Integer.parseInt(eventDate.getDay()) : 1);
-
 
 
                     } else {
@@ -632,19 +670,31 @@ public class WriteEventBaseFragment extends InstanceBaseFragement implements Vie
         switch (eventDates.size()) {
             case 2:
 
-                StringBuilder finalEventDate = makeUpFirstPartEventDate();
+                StringBuilder finalEventDate = makeUpFirstPartEventDate(eventDates.get(0));
 
-                finalEventDate.append(" - ")
-                        .append(eventDates.get(0).getYear())
-                        .append(!TextUtils.isEmpty(eventDates.get(0).getMonth()) ? eventDates.get(0).getMonth() : "")
-                        .append(!TextUtils.isEmpty(eventDates.get(0).getDay()) ? eventDates.get(0).getDay() : "")
-                        .append(eventDates.get(0).getmBCAD())
-                        .append("}");
+
+                if (finalEventDate.toString().contentEquals(makeUpFirstPartEventDate(eventDates.get(1)))) {
+
+                    finalEventDate = makeUpFirstPartEventDate(eventDates.get(0))
+                            .append("}");
+
+
+                    Log.i("DYKH Date Format", "Same Date " + finalEventDate.toString());
+
+                } else {
+
+                    finalEventDate.append(" - ")
+                            .append(eventDates.get(0).getYear())
+                            .append(!TextUtils.isEmpty(eventDates.get(0).getMonth()) ? eventDates.get(0).getMonth() : "")
+                            .append(!TextUtils.isEmpty(eventDates.get(0).getDay()) ? eventDates.get(0).getDay() : "")
+                            .append(eventDates.get(0).getmBCAD())
+                            .append("}");
+                }
 
                 return finalEventDate.toString();
             case 1:
 
-                finalEventDate = makeUpFirstPartEventDate()
+                finalEventDate = makeUpFirstPartEventDate(eventDates.get(0))
                         .append("}");
 
 
@@ -658,17 +708,18 @@ public class WriteEventBaseFragment extends InstanceBaseFragement implements Vie
 
     }
 
-    private StringBuilder makeUpFirstPartEventDate() {
+    private StringBuilder makeUpFirstPartEventDate(EventDate eventDate) {
 
-        return new StringBuilder().append(eventDates.get(0).getYear())
-                .append(eventDates.get(0).getmBCAD())
+        return new StringBuilder().append(eventDate.getYear())
+                .append(eventDate.getmBCAD())
                 .append(", {")
-                .append(eventDates.get(0).getYear())
-                .append(!TextUtils.isEmpty(eventDates.get(0).getMonth()) ? eventDates.get(0).getMonth() : "")
-                .append(!TextUtils.isEmpty(eventDates.get(0).getDay()) ? eventDates.get(0).getDay() : "")
-                .append(eventDates.get(0).getmBCAD());
+                .append(eventDate.getYear())
+                .append(!TextUtils.isEmpty(eventDate.getMonth()) ? eventDate.getMonth() : "")
+                .append(!TextUtils.isEmpty(eventDate.getDay()) ? eventDate.getDay() : "")
+                .append(eventDate.getmBCAD());
 
     }
+
 
     private void checkBCADInputs(String value, int position, boolean backwardTime) {
 
@@ -750,7 +801,7 @@ public class WriteEventBaseFragment extends InstanceBaseFragement implements Vie
 
 
         if (getResources().getStringArray(R.array.event_bc_or_ad)[1]
-                .contentEquals(eventDate.getmBCAD())
+                .contentEquals(selectedBCAD)
                 && yearNumber >= 1900) {
 
             datePicker.setVisibility(View.VISIBLE);
@@ -818,10 +869,24 @@ public class WriteEventBaseFragment extends InstanceBaseFragement implements Vie
 
             case BCAD_STEP:
 
-                return getResources().getStringArray(R.array.event_bc_or_ad)[1]
-                        .contentEquals(eventDates.get(0).getmBCAD())
-                        && getResources().getStringArray(R.array.event_bc_or_ad)[0]
-                        .contentEquals(value);
+                if (backwardTime) {
+
+                    return getResources().getStringArray(R.array.event_bc_or_ad)[0]
+                            .contentEquals(eventDates.get(1).getmBCAD())
+
+                            && getResources().getStringArray(R.array.event_bc_or_ad)[1]
+                            .contentEquals(value);
+
+                } else {
+
+                    return getResources().getStringArray(R.array.event_bc_or_ad)[1]
+                            .contentEquals(eventDates.get(0).getmBCAD())
+
+                            && getResources().getStringArray(R.array.event_bc_or_ad)[0]
+                            .contentEquals(value);
+
+                }
+
 
             case YEAR_STEP:
 
@@ -898,7 +963,6 @@ public class WriteEventBaseFragment extends InstanceBaseFragement implements Vie
         }
 
 
-
         boolean isBCorAD = mDateBCAD
                 .contentEquals(getResources().getStringArray(R.array.event_bc_or_ad)[0]);
 
@@ -908,7 +972,7 @@ public class WriteEventBaseFragment extends InstanceBaseFragement implements Vie
             mBCADSpinner.setSelection(isBCorAD ? 0 : 1);
 
 
-        }catch (IndexOutOfBoundsException e){
+        } catch (IndexOutOfBoundsException e) {
 
             mBCADSpinner.setAdapter(new ArrayAdapter<>(getContext(),
                     R.layout.cell_text_dark,
@@ -984,7 +1048,7 @@ public class WriteEventBaseFragment extends InstanceBaseFragement implements Vie
 
                 if ((year < Calendar.getInstance().get(Calendar.YEAR)) ||
                         (monthOfYear <= Calendar.getInstance().get(Calendar.MONTH)
-                        && dayOfMonth <= Calendar.getInstance().get(Calendar.DAY_OF_MONTH))) {
+                                && dayOfMonth <= Calendar.getInstance().get(Calendar.DAY_OF_MONTH))) {
 
 
                     saveEventYearFromDatePicker(year, monthOfYear, dayOfMonth);
@@ -1007,10 +1071,10 @@ public class WriteEventBaseFragment extends InstanceBaseFragement implements Vie
 
     private void saveEventYearFromDatePicker(int year, int monthOfYear, int dayOfMonth) {
 
-        if(mDatedTypeEventSpinner.getSelectedIndex() == 1){
+        if (mDatedTypeEventSpinner.getSelectedIndex() == 1) {
 
 
-            switch (eventDates.size()){
+            switch (eventDates.size()) {
 
                 case 2:
 
@@ -1021,17 +1085,17 @@ public class WriteEventBaseFragment extends InstanceBaseFragement implements Vie
 
                 case 1:
 
-                    eventDates.add(new EventDate(selectedBCAD,
+                    addAnEventDate(selectedBCAD,
                             String.valueOf(year),
                             String.valueOf(monthOfYear),
-                            String.valueOf(dayOfMonth)));
+                            String.valueOf(dayOfMonth));
 
 
             }
 
-        }else{
+        } else {
 
-            switch (eventDates.size()){
+            switch (eventDates.size()) {
 
                 case 2:
                 case 1:
@@ -1043,16 +1107,28 @@ public class WriteEventBaseFragment extends InstanceBaseFragement implements Vie
 
                 case 0:
 
-                    eventDates.add(new EventDate(selectedBCAD,
+                    addAnEventDate(selectedBCAD,
                             String.valueOf(year),
                             String.valueOf(monthOfYear),
-                            String.valueOf(dayOfMonth)));
+                            String.valueOf(dayOfMonth));
 
             }
 
         }
 
     }
+
+
+    private void addAnEventDate(String selectedBCAD, String inputYear, String month, String day) {
+
+        eventDates.add(new EventDate(selectedBCAD, inputYear, month, day));
+
+        if (mCancelEventDateButton.getVisibility() == View.INVISIBLE) {
+            mCancelEventDateButton.setVisibility(View.VISIBLE);
+        }
+
+    }
+
 
     public void runANewRequest(Request gsonRequest) {
 

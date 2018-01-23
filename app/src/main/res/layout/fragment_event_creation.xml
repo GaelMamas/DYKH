@@ -134,14 +134,36 @@
                     android:animateLayoutChanges="true"
                     android:orientation="vertical">
 
-                    <TextView
-                        android:layout_width="wrap_content"
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_gravity="center"
                         android:layout_marginBottom="@dimen/space.normal"
-                        android:text="@string/event_time_block_title"
-                        android:textColor="@color/color_event_title_top"
-                        android:textSize="15sp"
-                        android:textStyle="bold" />
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/event_time_block_title"
+                            android:paddingTop="@dimen/space.small"
+                            android:textColor="@color/color_event_title_top"
+                            android:textSize="15sp"
+                            android:textStyle="bold" />
+
+
+                        <ImageView
+                            android:id="@+id/button_event_cancel_date"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="right"
+                            android:padding="@dimen/space.small"
+                            app:srcCompat="@drawable/ic_cancel"
+                            tools:ignore="RtlHardcoded"
+                            android:visibility="invisible"
+                            tools:visibility="visible"/>
+
+                    </LinearLayout>
 
                     <malakoff.dykh.DesignWidget.BetterSpinner
                         android:id="@+id/spinner_event_single_date"
@@ -157,9 +179,9 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="@dimen/space.normal"
+                        android:hint="@string/event_which_bc_ad_hint"
                         android:visibility="gone"
-                        tools:visibility="visible"
-                        android:hint="@string/event_which_bc_ad_hint" />
+                        tools:visibility="visible" />
 
 
                     <LinearLayout
