@@ -278,7 +278,7 @@ public class WriteEventBaseFragment extends InstanceBaseFragement implements Vie
 
                     if (eventDates.isEmpty()) {
 
-                        mDatedTypeEventSpinner.setError("Define first the the first date");
+                        mDatedTypeEventSpinner.setError(getString(R.string.event_creation_first_date_warning_msg));
                         mDatedTypeEventSpinner.resetPlaceHolderText();
                         mBCADSpinner.setVisibility(View.GONE);
                         dateSetterLayout.setVisibility(View.GONE);
@@ -385,7 +385,7 @@ public class WriteEventBaseFragment extends InstanceBaseFragement implements Vie
 
                                     eventDates.set(1, new EventDate(selectedBCAD, inputYear, null, null));
 
-                                } else {
+                                } else if(eventDates.size() == 1){
 
                                     addAnEventDate(selectedBCAD, inputYear, null, null);
 
@@ -482,7 +482,7 @@ public class WriteEventBaseFragment extends InstanceBaseFragement implements Vie
 
                                 eventDates.set(1, new EventDate(selectedBCAD, inputYear, String.valueOf(monthIndex), null));
 
-                            } else {
+                            } else if(eventDates.size() == 1){
 
                                 addAnEventDate(selectedBCAD, inputYear, String.valueOf(monthIndex), null);
 
@@ -516,7 +516,7 @@ public class WriteEventBaseFragment extends InstanceBaseFragement implements Vie
 
                                 eventDates.set(1, new EventDate(selectedBCAD, inputYear, String.valueOf(monthIndex), day));
 
-                            } else {
+                            } else if(eventDates.size() == 1){
 
                                 addAnEventDate(selectedBCAD, inputYear, String.valueOf(monthIndex), day);
 
@@ -1005,10 +1005,12 @@ public class WriteEventBaseFragment extends InstanceBaseFragement implements Vie
 
 
             monthSpinner.setVisibility(View.VISIBLE);
+            datePicker.setVisibility(View.GONE);
 
 
-        } else if (selectedBCAD.contentEquals(getResources()
-                .getStringArray(R.array.event_bc_or_ad)[1])) {
+
+        } else if (getResources().getStringArray(R.array.event_bc_or_ad)[1]
+                .contentEquals(selectedBCAD)) {
 
 
             if (year >= 1900 && year <= Calendar.getInstance().get(Calendar.YEAR)) {
@@ -1025,6 +1027,7 @@ public class WriteEventBaseFragment extends InstanceBaseFragement implements Vie
 
 
                 monthSpinner.setVisibility(View.VISIBLE);
+                datePicker.setVisibility(View.GONE);
 
 
             }

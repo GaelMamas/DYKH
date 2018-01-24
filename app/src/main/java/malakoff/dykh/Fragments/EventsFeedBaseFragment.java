@@ -212,9 +212,11 @@ public class EventsFeedBaseFragment extends RecyclerBaseFragment<Event>{
         }
         else
         {
+            if(TextUtils.isEmpty(charText))return;
+
             for (Event event : mEventManager.getEvents())
             {
-                if (event.getTitle().toLowerCase(Locale.getDefault()).contains(charText))
+                if (event != null && event.getTitle().toLowerCase(Locale.getDefault()).contains(charText))
                 {
                     buffer.add(event);
                 }
