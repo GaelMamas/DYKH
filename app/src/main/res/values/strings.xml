@@ -47,6 +47,9 @@
     <string name="event_creation_cancel_warning_title">Clearing Warning</string>
     <string name="event_creation_cancel_warning_msg">Are you sure to clear the whole event date?</string>
     <string name="event_creation_first_date_warning_msg">Define first the the first date</string>
+    <string name="event_creation_in_futur_year_error">Year too ahead from the present</string>
+    <string name="event_creation_in_futur_month_error">Month too ahead from the present</string>
+    <string name="event_creation_in_futur_day_error">Day too ahead from the present</string>
     <string-array name="event_couple_dated_title">
         <item name="first">Beginning date</item>
         <item name="first">Ending date</item>

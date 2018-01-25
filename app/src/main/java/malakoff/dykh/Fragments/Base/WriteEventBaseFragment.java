@@ -348,6 +348,7 @@ public class WriteEventBaseFragment extends InstanceBaseFragement implements Vie
 
 
                     eventDates.get(0).setmBCAD(selectedBCAD = (String) parent.getItemAtPosition(position));
+                    setLayoutsAfterBCAD(position);
 
 
                 }
@@ -747,19 +748,11 @@ public class WriteEventBaseFragment extends InstanceBaseFragement implements Vie
 
                 if (eventDates.size() == 1) {
 
-                    datePicker.setVisibility(View.GONE);
-                    dateSetterLayout.setVisibility(View.VISIBLE);
-                    monthSpinner.setVisibility(View.GONE);
-                    daySpinner.setVisibility(View.GONE);
-
-                    yearEditText.setText("");
-                    monthSpinner.resetPlaceHolderText();
-                    daySpinner.resetPlaceHolderText();
+                    initDateLayout();
 
                 } else if (eventDates.size() > 1) {
 
                     playbackYear(1);
-
 
                 }
 
@@ -773,18 +766,26 @@ public class WriteEventBaseFragment extends InstanceBaseFragement implements Vie
 
                 } else {
 
-                    datePicker.setVisibility(View.GONE);
-                    dateSetterLayout.setVisibility(View.VISIBLE);
-                    monthSpinner.setVisibility(View.GONE);
-                    daySpinner.setVisibility(View.GONE);
-
-                    yearEditText.setText("");
-                    monthSpinner.resetPlaceHolderText();
-                    daySpinner.resetPlaceHolderText();
+                    initDateLayout();
 
                 }
 
         }
+
+    }
+
+    private void initDateLayout() {
+
+
+        datePicker.setVisibility(View.GONE);
+        dateSetterLayout.setVisibility(View.VISIBLE);
+        monthSpinner.setVisibility(View.GONE);
+        daySpinner.setVisibility(View.GONE);
+
+        yearEditText.setText("");
+        monthSpinner.resetPlaceHolderText();
+        daySpinner.resetPlaceHolderText();
+
 
     }
 
@@ -1030,6 +1031,10 @@ public class WriteEventBaseFragment extends InstanceBaseFragement implements Vie
                 datePicker.setVisibility(View.GONE);
 
 
+            }else{
+
+                Toast.makeText(getContext(), R.string.event_creation_in_futur_year_error, Toast.LENGTH_SHORT).show();
+
             }
 
         }
@@ -1057,7 +1062,15 @@ public class WriteEventBaseFragment extends InstanceBaseFragement implements Vie
                     saveEventYearFromDatePicker(year, monthOfYear, dayOfMonth);
 
 
-                } else {
+                } else if(monthOfYear > Calendar.getInstance().get(Calendar.MONTH)) {
+
+                    Toast.makeText(getContext(), R.string.event_creation_in_futur_month_error, Toast.LENGTH_SHORT).show();
+
+                }else if(dayOfMonth > Calendar.getInstance().get(Calendar.MONTH)) {
+
+                    Toast.makeText(getContext(), R.string.event_creation_in_futur_day_error, Toast.LENGTH_SHORT).show();
+
+                }else{
 
 
                     Toast.makeText(getContext(),
