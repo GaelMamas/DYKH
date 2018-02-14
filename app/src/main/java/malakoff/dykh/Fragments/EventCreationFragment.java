@@ -254,7 +254,7 @@ public class EventCreationFragment extends WriteEventBaseFragment {
                     historicLocationEditText.scrollTo(historicLocationEditText.getScrollX(),
                             historicLocationEditText.getScrollY());
 
-                } else if (mBCADSpinner.getSelectedIndex() == -1) {
+                } /*else if (eventDates.isEmpty()) {
 
                     mBCADSpinner.setError("Need to be filled");
                     mBCADSpinner.scrollTo(mBCADSpinner.getScrollX(), mBCADSpinner.getScrollY());
@@ -264,7 +264,7 @@ public class EventCreationFragment extends WriteEventBaseFragment {
                     yearEditText.setError("Need to be filled");
                     yearEditText.scrollTo(yearEditText.getScrollX(), yearEditText.getScrollY());
 
-                }  else if (getView() != null && resetInputsListener.canProcess()) {
+                }*/  else if (getView() != null && resetInputsListener.canProcess()) {
 
                     mEventUpdatingProgressBar.setVisibility(View.VISIBLE);
 

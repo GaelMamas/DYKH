@@ -47,5 +47,12 @@
 
     </style>
 
+    <style name="SwitchCompatStyle" >
+        <item name="thumbTint">@color/colorPrimary</item>
+        <item name="trackTint">@color/progress_shadow_color</item>
+    </style>
+
     <color name="event_creation_spinner_nominal_text_color">#333</color>
+
+
 </resources>

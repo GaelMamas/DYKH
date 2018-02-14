@@ -71,25 +71,25 @@ public class ModifyEventFragment extends WriteEventBaseFragment {
 
             if (!TextUtils.isEmpty(currentEvent.getSliceTime())) {
 
-                dateSetterLayout.setVisibility(View.VISIBLE);
+                //dateSetterLayout.setVisibility(View.VISIBLE);
 
-                mBCADSpinner.setSelection("BC".contains(currentEvent.getSliceTime()) ? 0 : 1);
+                //mBCADSpinner.setSelection("BC".contains(currentEvent.getSliceTime()) ? 0 : 1);
 
                 if ("-".contains(currentEvent.getSliceTime())) {
 
                     try {
                         String[] mYMD = TextUtils.split(currentEvent.getSliceTime(), "-");
 
-                        yearEditText.setText(mYMD[0]);
-                        monthSpinner.setText(mYMD[1]);
+                        //yearEditText.setText(mYMD[0]);
+                        //monthSpinner.setText(mYMD[1]);
 
                         if ("BC".contains(mYMD[2]) || "AD".contains(mYMD[2])) {
 
-                            daySpinner.setText(mYMD[2].split(" ")[0]);
+                            //daySpinner.setText(mYMD[2].split(" ")[0]);
 
                         } else {
 
-                            daySpinner.setText(mYMD[2]);
+                            //daySpinner.setText(mYMD[2]);
 
                         }
 
@@ -100,7 +100,7 @@ public class ModifyEventFragment extends WriteEventBaseFragment {
 
                 } else {
 
-                    yearEditText.setText(currentEvent.getSliceTime());
+                    //yearEditText.setText(currentEvent.getSliceTime());
 
                 }
 
@@ -265,7 +265,7 @@ public class ModifyEventFragment extends WriteEventBaseFragment {
                     historicLocationEditText.scrollTo(historicLocationEditText.getScrollX(),
                             historicLocationEditText.getScrollY());
 
-                } else if (mBCADSpinner.getSelectedIndex() == -1) {
+                } /*else if (mBCADSpinner.getSelectedIndex() == -1) {
 
                     mBCADSpinner.setError("Need to be filled");
                     mBCADSpinner.scrollTo(mBCADSpinner.getScrollX(), mBCADSpinner.getScrollY());
@@ -275,7 +275,7 @@ public class ModifyEventFragment extends WriteEventBaseFragment {
                     yearEditText.setError("Need to be filled");
                     yearEditText.scrollTo(yearEditText.getScrollX(), yearEditText.getScrollY());
 
-                }else if (resetInputsListener.canProcess()) {
+                }*/else if (resetInputsListener.canProcess()) {
 
                     try {
 
