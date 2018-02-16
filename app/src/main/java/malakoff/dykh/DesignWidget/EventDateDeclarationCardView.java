@@ -41,9 +41,9 @@ public class EventDateDeclarationCardView extends CardView implements View.OnCli
 
     private final static String BCAD_STEP = "bc ad", YEAR_STEP = "year", MONTH_STEP = "month", DAY_STEP = "day";
 
-    protected String selectedTheme, selectedTodayLocation, selectedBCAD, inputYear;
+    protected String selectedBCAD, inputYear;
     protected int monthIndex = 0;
-    protected List<EventDate> eventDates = new ArrayList<>();
+    protected EventDate eventDateInside, eventDateOutside;
 
 
     protected BetterSpinner mBCADSpinner, monthSpinner, daySpinner;
@@ -54,7 +54,7 @@ public class EventDateDeclarationCardView extends CardView implements View.OnCli
 
     protected SwitchCompat switchCompat;
 
-    private EventDateSwitchable switchable;
+    private EventDateListener switchable;
 
     protected View rootView;
 
@@ -126,7 +126,7 @@ public class EventDateDeclarationCardView extends CardView implements View.OnCli
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
 
-                if(switchable != null){
+                if (switchable != null) {
 
                     switchable.onSwitch(b);
 
@@ -134,62 +134,30 @@ public class EventDateDeclarationCardView extends CardView implements View.OnCli
             }
         });
 
-        setValues(null, false);
+        setValues(null);
 
         super.onLayout(changed, left, top, right, bottom);
     }
 
 
-    public void setValues(EventDate firstEvent, boolean isSecondDate) {
+    public void setValues(EventDate outsideEventDate) {
 
-        if (firstEvent != null) {
+        rootView.findViewById(R.id.layout_event_date_switch).setVisibility(outsideEventDate == null ? GONE : VISIBLE);
 
-            eventDates.add(firstEvent);
+        if (outsideEventDate != null) {
 
-            ((TextView)rootView.findViewById(R.id.text_event_date_header_title)).setText(R.string.event_time_block_title_2);
+            this.eventDateOutside = outsideEventDate;
 
-        }
+            mBCADSpinner.setSelection(isBC(outsideEventDate.getmBCAD()) ? 0 : 1);
 
-
-        rootView.findViewById(R.id.layout_event_date_switch).setVisibility(isSecondDate?GONE:VISIBLE);
-
-
-        if (eventDates.isEmpty()) {
-
-
-            mBCADSpinner.setVisibility(View.VISIBLE);
-
-
-        } else if (eventDates.size() > 0) {
-
-
-            playbackAnEventDate(0);
+            ((TextView) rootView.findViewById(R.id.text_event_date_header_title)).setText(R.string.event_time_block_title_2);
 
 
         } else {
 
-
-            if (eventDates.isEmpty()) {
-
-                mBCADSpinner.setVisibility(View.GONE);
-                dateSetterLayout.setVisibility(View.GONE);
-                datePicker.setVisibility(View.GONE);
-
-            } else if (eventDates.size() > 1) {
-
-
-                playbackAnEventDate(1);
-
-
-            } else {
-
-                mBCADSpinner.resetPlaceHolderText();
-                mBCADSpinner.setVisibility(View.VISIBLE);
-                dateSetterLayout.setVisibility(View.GONE);
-                datePicker.setVisibility(View.GONE);
-
-
-            }
+            mBCADSpinner.resetPlaceHolderText();
+            dateSetterLayout.setVisibility(View.GONE);
+            datePicker.setVisibility(View.GONE);
 
         }
 
@@ -214,13 +182,13 @@ public class EventDateDeclarationCardView extends CardView implements View.OnCli
                 }
 
 
-                if (eventDates.isEmpty()) {
+                if (eventDateOutside == null) {
 
 
                     setYearInput(Integer.parseInt(inputYear = v.getText().toString()), 0, 1);
 
 
-                } else if (eventDates.size() == 1) {
+                } else {
 
 
                     if (areNot2DatesChronological(YEAR_STEP, v.getText().toString(), false)) {
@@ -228,13 +196,12 @@ public class EventDateDeclarationCardView extends CardView implements View.OnCli
                         yearEditText.setError(getResources().getString(R.string.event_chronological_alert_message));
                         return false;
 
-                    } else if (eventDates.size() == 1) {
+                    } else if (!TextUtils.isEmpty(eventDateOutside.getYear())) {
 
-                        EventDate eventDate = eventDates.get(0);
 
                         setYearInput(Integer.parseInt(inputYear = v.getText().toString()),
-                                UsefulGenericMethods.isANumeric(eventDate.getMonth()) ? Integer.parseInt(eventDate.getMonth()) : 0,
-                                UsefulGenericMethods.isANumeric(eventDate.getDay()) ? Integer.parseInt(eventDate.getDay()) : 1);
+                                UsefulGenericMethods.isANumeric(eventDateOutside.getMonth()) ? Integer.parseInt(eventDateOutside.getMonth()) : 0,
+                                UsefulGenericMethods.isANumeric(eventDateOutside.getDay()) ? Integer.parseInt(eventDateOutside.getDay()) : 1);
 
 
                     } else {
@@ -243,10 +210,6 @@ public class EventDateDeclarationCardView extends CardView implements View.OnCli
 
                     }
 
-
-                } else {
-
-                    playbackYear(0);
 
                 }
 
@@ -263,22 +226,6 @@ public class EventDateDeclarationCardView extends CardView implements View.OnCli
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         switch ((int) id) {
 
-            case R.id.spinner_event_theme:
-
-                selectedTheme = (String) parent.getItemAtPosition(position);
-
-                break;
-
-            case R.id.spinner_event_today_location:
-
-
-                selectedTodayLocation = (String) parent.getItemAtPosition(position);
-
-                if (!TextUtils.isEmpty(selectedTodayLocation))
-                    Toast.makeText(getContext(), "Set precisely the location", Toast.LENGTH_SHORT).show();
-
-                break;
-
 
             case R.id.spinner_event_bc_or_ad:
 
@@ -286,44 +233,14 @@ public class EventDateDeclarationCardView extends CardView implements View.OnCli
                 mBCADSpinner.setError(null);
 
 
-                if (eventDates.isEmpty()) {
+                if (eventDateOutside == null) {
 
-                    if (eventDates.size() == 1) {
-
-
-                        if (areNot2DatesChronological(BCAD_STEP, (String) parent.getItemAtPosition(position), false)) {
-
-
-                            mBCADSpinner.setError(getResources().getString(R.string.event_chronological_alert_message));
-
-
-                        }
-
-                    } else {
-
-                        selectedBCAD = (String) parent.getItemAtPosition(position);
-                        setLayoutsAfterBCAD(position);
-
-                    }
-
-                } else if (eventDates.size() == 1) {
-
-
-                    checkBCADInputs((String) parent.getItemAtPosition(position), position, false);
-
-
-                } else if (eventDates.size() > 1) {
-
-
-                    checkBCADInputs((String) parent.getItemAtPosition(position), position, true);
-
-
-                } else if (eventDates.size() == 1) {//Kidding back and forth with the inputs
-
-
-                    eventDates.get(0).setmBCAD(selectedBCAD = (String) parent.getItemAtPosition(position));
+                    selectedBCAD = (String) parent.getItemAtPosition(position);
                     setLayoutsAfterBCAD(position);
 
+                } else {
+
+                    checkBCADInputs((String) parent.getItemAtPosition(position), position, false);
 
                 }
 
@@ -348,28 +265,15 @@ public class EventDateDeclarationCardView extends CardView implements View.OnCli
                         case Constants.DYKH_ITEM_DATE_UNKNOWN:
 
 
-                            if (eventDates.isEmpty()) {
+                            if (eventDateInside == null) {
 
 
                                 addAnEventDate(selectedBCAD, inputYear, null, null);
 
 
-                            } else if (eventDates.size() == 1) {
-
-                                if (eventDates.size() == 2) {
-
-                                    eventDates.set(1, new EventDate(selectedBCAD, inputYear, null, null));
-
-                                } else if (eventDates.size() == 1) {
-
-                                    addAnEventDate(selectedBCAD, inputYear, null, null);
-
-                                }
-
                             } else {
 
-                                eventDates.set(0, new EventDate(selectedBCAD, inputYear, null, null));
-
+                                eventDateInside = new EventDate(selectedBCAD, inputYear, null, null);
 
                             }
 
@@ -377,7 +281,7 @@ public class EventDateDeclarationCardView extends CardView implements View.OnCli
                             break;
                         default:
 
-                            if (eventDates.isEmpty()) {
+                            if (eventDateInside == null) {
 
 
                                 daySpinner.setVisibility(View.VISIBLE);
@@ -386,7 +290,7 @@ public class EventDateDeclarationCardView extends CardView implements View.OnCli
                                         setMonthDays()));
 
 
-                            } else if (eventDates.size() == 1) {
+                            } else if (eventDateOutside == null) {
 
 
                                 if (areNot2DatesChronological(MONTH_STEP, month, false)) {
@@ -405,7 +309,7 @@ public class EventDateDeclarationCardView extends CardView implements View.OnCli
                                 }
 
 
-                            } else if (eventDates.size() > 1) {
+                            } else {
 
 
                                 if (areNot2DatesChronological(MONTH_STEP, month, true)) {
@@ -446,24 +350,17 @@ public class EventDateDeclarationCardView extends CardView implements View.OnCli
                 switch (day) {
                     case Constants.DYKH_ITEM_DATE_UNKNOWN:
 
-                        if (eventDates.isEmpty()) {
+                        if (eventDateInside == null) {
 
                             addAnEventDate(selectedBCAD, inputYear, String.valueOf(monthIndex), null);
 
 
-                        } else if (eventDates.size() == 1) {
+                        } else if (eventDateOutside != null) {
 
-                            if (eventDates.size() == 2) {
+                            eventDateOutside = new EventDate(selectedBCAD, inputYear, String.valueOf(monthIndex), null);
 
-                                eventDates.set(1, new EventDate(selectedBCAD, inputYear, String.valueOf(monthIndex), null));
 
-                            } else if (eventDates.size() == 1) {
-
-                                addAnEventDate(selectedBCAD, inputYear, String.valueOf(monthIndex), null);
-
-                            }
-
-                        } else if (eventDates.size() > 1) {
+                        } else {
 
                             if (areNot2DatesChronological(DAY_STEP, day, true)) {
 
@@ -471,7 +368,7 @@ public class EventDateDeclarationCardView extends CardView implements View.OnCli
 
                             } else {
 
-                                eventDates.set(0, new EventDate(selectedBCAD, inputYear, String.valueOf(monthIndex), null));
+                                eventDateInside = new EventDate(selectedBCAD, inputYear, String.valueOf(monthIndex), null);
 
                             }
 
@@ -481,23 +378,15 @@ public class EventDateDeclarationCardView extends CardView implements View.OnCli
 
                     default:
 
-                        if (eventDates.isEmpty()) {
+                        if (eventDateInside == null) {
 
                             addAnEventDate(selectedBCAD, inputYear, String.valueOf(monthIndex), String.valueOf(position));
 
-                        } else if (eventDates.size() == 1) {
+                        } else if (eventDateOutside == null) {
 
-                            if (eventDates.size() == 2) {
+                            eventDateInside = new EventDate(selectedBCAD, inputYear, String.valueOf(monthIndex), day);
 
-                                eventDates.set(1, new EventDate(selectedBCAD, inputYear, String.valueOf(monthIndex), day));
-
-                            } else if (eventDates.size() == 1) {
-
-                                addAnEventDate(selectedBCAD, inputYear, String.valueOf(monthIndex), day);
-
-                            }
-
-                        } else if (eventDates.size() > 1) {
+                        } else {
 
                             if (areNot2DatesChronological(DAY_STEP, day, true)) {
 
@@ -505,7 +394,7 @@ public class EventDateDeclarationCardView extends CardView implements View.OnCli
 
                             } else {
 
-                                eventDates.set(0, new EventDate(selectedBCAD, inputYear, String.valueOf(monthIndex), day));
+                                eventDateInside = new EventDate(selectedBCAD, inputYear, String.valueOf(monthIndex), day);
 
                             }
 
@@ -549,21 +438,21 @@ public class EventDateDeclarationCardView extends CardView implements View.OnCli
 
             case 1:
 
-                if (eventDates.size() == 1) {
+                if (eventDateOutside == null) {
 
                     initDateLayout();
 
-                } else if (eventDates.size() > 1) {
+                } else if (eventDateInside != null) {
 
-                    playbackYear(1);
+                    playbackYear(0);
 
                 }
 
             case 0:
             default:
 
-                if (eventDates.size() > 0 && position == 0
-                        && eventDates.size() == 0) {
+                if (eventDateOutside != null && position == 0
+                        && eventDateInside != null) {
 
                     playbackYear(0);
 
@@ -594,8 +483,9 @@ public class EventDateDeclarationCardView extends CardView implements View.OnCli
 
     private void playbackYear(int position) {
 
-        EventDate eventDate = eventDates.get(position);
-        String year = eventDate.getYear();
+        if (eventDateOutside == null) return;
+
+        String year = eventDateOutside.getYear();
 
         if (TextUtils.isEmpty(year)
                 && !year.matches("[-+]?\\d*\\.?\\d+")) return;
@@ -612,10 +502,10 @@ public class EventDateDeclarationCardView extends CardView implements View.OnCli
             dateSetterLayout.setVisibility(View.GONE);
 
             setEventDatePicker(yearNumber,
-                    eventDate.getMonth() == null ? 0 :
-                            Integer.parseInt(eventDate.getMonth()),
-                    eventDate.getDay() == null ? 1 :
-                            Integer.parseInt(eventDate.getDay()));
+                    eventDateOutside.getMonth() == null ? 0 :
+                            Integer.parseInt(eventDateOutside.getMonth()),
+                    eventDateOutside.getDay() == null ? 1 :
+                            Integer.parseInt(eventDateOutside.getDay()));
 
         } else {
 
@@ -631,9 +521,9 @@ public class EventDateDeclarationCardView extends CardView implements View.OnCli
             monthSpinner.setSelection(0);
             daySpinner.setSelection(0);
 
-            if (!TextUtils.isEmpty(eventDate.getMonth())) {
+            if (!TextUtils.isEmpty(eventDateOutside.getMonth())) {
 
-                String month = eventDate.getMonth();
+                String month = eventDateOutside.getMonth();
 
                 monthIndex = month.matches("[-+]?\\d*\\.?\\d+") ?
                         Integer.parseInt(month) : 0;
@@ -646,7 +536,7 @@ public class EventDateDeclarationCardView extends CardView implements View.OnCli
                 monthSpinner.setSelection(monthIndex);
 
 
-                String day = eventDates.get(position).getDay();
+                String day = eventDateOutside.getDay();
 
                 if (monthIndex > 0 && !TextUtils.isEmpty(day)) {
 
@@ -669,6 +559,8 @@ public class EventDateDeclarationCardView extends CardView implements View.OnCli
 
     private boolean areNot2DatesChronological(String step, String value, boolean backwardTime) {
 
+        if (eventDateOutside == null) return false;
+
         switch (step) {
 
             case BCAD_STEP:
@@ -676,7 +568,7 @@ public class EventDateDeclarationCardView extends CardView implements View.OnCli
                 if (backwardTime) {
 
                     return getResources().getStringArray(R.array.event_bc_or_ad)[0]
-                            .contentEquals(eventDates.get(1).getmBCAD())
+                            .contentEquals(eventDateOutside.getmBCAD())
 
                             && getResources().getStringArray(R.array.event_bc_or_ad)[1]
                             .contentEquals(value);
@@ -684,7 +576,7 @@ public class EventDateDeclarationCardView extends CardView implements View.OnCli
                 } else {
 
                     return getResources().getStringArray(R.array.event_bc_or_ad)[1]
-                            .contentEquals(eventDates.get(0).getmBCAD())
+                            .contentEquals(eventDateOutside.getmBCAD())
 
                             && getResources().getStringArray(R.array.event_bc_or_ad)[0]
                             .contentEquals(value);
@@ -694,22 +586,22 @@ public class EventDateDeclarationCardView extends CardView implements View.OnCli
 
             case YEAR_STEP:
 
-                if (eventDates.get(backwardTime ? 1 : 0).getmBCAD().contentEquals(selectedBCAD)) {
+                if (eventDateOutside.getmBCAD().contentEquals(selectedBCAD)) {
 
                     if (getResources().getStringArray(R.array.event_bc_or_ad)[0]
-                            .contentEquals(eventDates.get(0).getmBCAD())) {
+                            .contentEquals(eventDateOutside.getmBCAD())) {
 
 
                         return backwardTime ?
-                                Integer.parseInt(value) < Integer.parseInt(eventDates.get(1).getYear()) :
-                                Integer.parseInt(value) > Integer.parseInt(eventDates.get(0).getYear());
+                                Integer.parseInt(value) < Integer.parseInt(eventDateOutside.getYear()) :
+                                Integer.parseInt(value) > Integer.parseInt(eventDateOutside.getYear());
 
                     } else if (getResources().getStringArray(R.array.event_bc_or_ad)[1]
-                            .contentEquals(eventDates.get(0).getmBCAD())) {
+                            .contentEquals(eventDateOutside.getmBCAD())) {
 
                         return backwardTime ?
-                                Integer.parseInt(value) > Integer.parseInt(eventDates.get(1).getYear()) :
-                                Integer.parseInt(value) < Integer.parseInt(eventDates.get(0).getYear());
+                                Integer.parseInt(value) > Integer.parseInt(eventDateOutside.getYear()) :
+                                Integer.parseInt(value) < Integer.parseInt(eventDateOutside.getYear());
 
                     }
 
@@ -719,12 +611,12 @@ public class EventDateDeclarationCardView extends CardView implements View.OnCli
             case MONTH_STEP:
 
                 if (!TextUtils.isEmpty(value)
-                        && eventDates.get(backwardTime ? 1 : 0).getYear().contentEquals(value)) {
+                        && eventDateOutside.getYear().contentEquals(value)) {
 
 
                     return backwardTime ?
-                            Integer.parseInt(eventDates.get(1).getMonth()) < Integer.parseInt(value) :
-                            Integer.parseInt(eventDates.get(0).getMonth()) > Integer.parseInt(value);
+                            Integer.parseInt(eventDateOutside.getMonth()) < Integer.parseInt(value) :
+                            Integer.parseInt(eventDateOutside.getMonth()) > Integer.parseInt(value);
 
 
                 }
@@ -733,13 +625,13 @@ public class EventDateDeclarationCardView extends CardView implements View.OnCli
             case DAY_STEP:
 
                 if (!TextUtils.isEmpty(value)
-                        && eventDates.get(backwardTime ? 1 : 0).getYear().contentEquals(value)
-                        && eventDates.get(backwardTime ? 1 : 0).getMonth().contentEquals(value)) {
+                        && eventDateOutside.getYear().contentEquals(value)
+                        && eventDateOutside.getMonth().contentEquals(value)) {
 
 
                     return backwardTime ?
-                            Integer.parseInt(eventDates.get(1).getMonth()) < Integer.parseInt(value) :
-                            Integer.parseInt(eventDates.get(0).getMonth()) > Integer.parseInt(value);
+                            Integer.parseInt(eventDateOutside.getMonth()) < Integer.parseInt(value) :
+                            Integer.parseInt(eventDateOutside.getMonth()) > Integer.parseInt(value);
 
 
                 }
@@ -752,12 +644,11 @@ public class EventDateDeclarationCardView extends CardView implements View.OnCli
 
     private void playbackAnEventDate(int position) {
 
+        if (eventDateInside == null) return;
 
-        String mDateBCAD = eventDates.get(position).getmBCAD();
-        String mDateYear = eventDates.get(position).getYear();
+        String mDateBCAD = eventDateInside.getmBCAD();
+        String mDateYear = eventDateInside.getYear();
 
-
-        mBCADSpinner.setVisibility(View.VISIBLE);
 
         if (TextUtils.isEmpty(mDateBCAD)) {
 
@@ -767,8 +658,7 @@ public class EventDateDeclarationCardView extends CardView implements View.OnCli
         }
 
 
-        boolean isBCorAD = mDateBCAD
-                .contentEquals(getResources().getStringArray(R.array.event_bc_or_ad)[0]);
+        boolean isBCorAD = isBC(mDateBCAD);
 
         try {
 
@@ -798,6 +688,12 @@ public class EventDateDeclarationCardView extends CardView implements View.OnCli
         }
 
 
+    }
+
+    private boolean isBC(String mDateBCAD) {
+        return mDateBCAD
+                .contentEquals(getResources()
+                        .getStringArray(R.array.event_bc_or_ad)[0]);
     }
 
 
@@ -889,48 +785,32 @@ public class EventDateDeclarationCardView extends CardView implements View.OnCli
 
     private void saveEventYearFromDatePicker(int year, int monthOfYear, int dayOfMonth) {
 
-        if (eventDates.size() == 1) {
+        if (eventDateOutside == null && eventDateInside != null) {
 
 
-            switch (eventDates.size()) {
+            addAnEventDate(selectedBCAD,
+                    String.valueOf(year),
+                    String.valueOf(monthOfYear),
+                    String.valueOf(dayOfMonth));
 
-                case 2:
-
-                    eventDates.set(1, new EventDate(selectedBCAD,
-                            String.valueOf(year),
-                            String.valueOf(monthOfYear),
-                            String.valueOf(dayOfMonth)));
-
-                case 1:
-
-                    addAnEventDate(selectedBCAD,
-                            String.valueOf(year),
-                            String.valueOf(monthOfYear),
-                            String.valueOf(dayOfMonth));
-
-
-            }
 
         } else {
 
-            switch (eventDates.size()) {
+            if (eventDateOutside != null && eventDateInside != null) {
 
-                case 2:
-                case 1:
 
-                    eventDates.set(0, new EventDate(selectedBCAD,
-                            String.valueOf(year),
-                            String.valueOf(monthOfYear),
-                            String.valueOf(dayOfMonth)));
+                eventDateInside = new EventDate(selectedBCAD,
+                        String.valueOf(year),
+                        String.valueOf(monthOfYear),
+                        String.valueOf(dayOfMonth));
 
-                case 0:
+            } else if (eventDateOutside == null && eventDateInside == null)
 
-                    addAnEventDate(selectedBCAD,
-                            String.valueOf(year),
-                            String.valueOf(monthOfYear),
-                            String.valueOf(dayOfMonth));
+                addAnEventDate(selectedBCAD,
+                        String.valueOf(year),
+                        String.valueOf(monthOfYear),
+                        String.valueOf(dayOfMonth));
 
-            }
 
         }
 
@@ -939,7 +819,7 @@ public class EventDateDeclarationCardView extends CardView implements View.OnCli
 
     private void addAnEventDate(String selectedBCAD, String inputYear, String month, String day) {
 
-        eventDates.add(new EventDate(selectedBCAD, inputYear, month, day));
+        eventDateInside = new EventDate(selectedBCAD, inputYear, month, day);
 
         if (mCancelEventDateButton.getVisibility() == View.INVISIBLE) {
             mCancelEventDateButton.setVisibility(View.VISIBLE);
@@ -968,9 +848,6 @@ public class EventDateDeclarationCardView extends CardView implements View.OnCli
         return monthDay;
     }
 
-    public List<EventDate> getEventDates() {
-        return eventDates;
-    }
 
     public BetterSpinner getmBCADSpinner() {
         return mBCADSpinner;
@@ -1048,11 +925,16 @@ public class EventDateDeclarationCardView extends CardView implements View.OnCli
                                 monthSpinner.resetPlaceHolderText();
                                 daySpinner.resetPlaceHolderText();
 
-                                mBCADSpinner.setVisibility(View.GONE);
                                 dateSetterLayout.setVisibility(View.GONE);
                                 datePicker.setVisibility(View.GONE);
 
-                                eventDates.clear();
+
+                                if(switchable != null){
+                                    switchable.onDeleteInfo(eventDateOutside == null);
+                                }
+
+                                eventDateOutside = null;
+                                eventDateInside = null;
 
                                 mCancelEventDateButton.setVisibility(View.INVISIBLE);
 
@@ -1067,13 +949,15 @@ public class EventDateDeclarationCardView extends CardView implements View.OnCli
 
     }
 
-    public void setSwitchable(EventDateSwitchable switchable) {
+    public void setSwitchable(EventDateListener switchable) {
         this.switchable = switchable;
     }
 
-    public interface EventDateSwitchable{
+    public interface EventDateListener {
 
         void onSwitch(boolean isOn);
+
+        void onDeleteInfo(boolean isStartingDate);
 
     }
 

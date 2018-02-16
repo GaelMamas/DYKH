@@ -1,32 +1,22 @@
 package malakoff.dykh.Fragments.Base;
 
-import android.content.DialogInterface;
 import android.os.Bundle;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.AppCompatEditText;
 import android.text.TextUtils;
 import android.util.Log;
-import android.view.KeyEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.DatePicker;
-import android.widget.ImageView;
 import android.widget.ProgressBar;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
 
-import java.text.DateFormatSymbols;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Calendar;
 import java.util.List;
-import java.util.Locale;
 
-import malakoff.dykh.AppApplication.Constants;
 import malakoff.dykh.DesignWidget.BetterSpinner;
 import malakoff.dykh.DesignWidget.EventDateDeclarationCardView;
 import malakoff.dykh.Interfaces.ResetInputsListener;
@@ -46,7 +36,6 @@ public class WriteEventBaseFragment extends InstanceBaseFragement implements Vie
 
     protected BetterSpinner themeSpinner, todayLocationSpinner;
     protected AppCompatEditText titleEditText, historicLocationEditText, storyEditText;
-    protected EventDateDeclarationCardView startingDateCardView, endingDateCardView;
     protected Button publishButton;
     protected ProgressBar mEventUpdatingProgressBar;
 
@@ -61,12 +50,6 @@ public class WriteEventBaseFragment extends InstanceBaseFragement implements Vie
 
             themeSpinner.resetPlaceHolderText();
             todayLocationSpinner.resetPlaceHolderText();
-            startingDateCardView.getmBCADSpinner().resetPlaceHolderText();
-
-            endingDateCardView.getmBCADSpinner().resetPlaceHolderText();
-
-            startingDateCardView.getDatePicker().setVisibility(View.GONE);
-            endingDateCardView.getDatePicker().setVisibility(View.GONE);
 
             mEventUpdatingProgressBar.setVisibility(View.GONE);
         }
@@ -94,9 +77,6 @@ public class WriteEventBaseFragment extends InstanceBaseFragement implements Vie
         titleEditText = view.findViewById(R.id.edittext_event_title);
         historicLocationEditText = view.findViewById(R.id.edittext_event_location);
         storyEditText = view.findViewById(R.id.edittext_event_story);
-
-        startingDateCardView = view.findViewById(R.id.component_event_starting_date);
-        endingDateCardView = view.findViewById(R.id.component_event_ending_date);
 
         publishButton = view.findViewById(R.id.button_event_publish);
 
@@ -127,14 +107,6 @@ public class WriteEventBaseFragment extends InstanceBaseFragement implements Vie
         todayLocationSpinner.setOnItemSelectedListener(this);
 
         publishButton.setOnClickListener(this);
-
-        startingDateCardView.setSwitchable(new EventDateDeclarationCardView.EventDateSwitchable() {
-            @Override
-            public void onSwitch(boolean isOn) {
-
-                endingDateCardView.setValues(new EventDate("AD", "2018", "1", "14"), true);
-            }
-        });
 
     }
 

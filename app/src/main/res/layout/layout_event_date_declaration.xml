@@ -5,8 +5,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="@dimen/space.small"
     app:cardBackgroundColor="@color/generic_background_color"
+    app:cardUseCompatPadding="true"
     app:cardCornerRadius="2dp"
     app:contentPadding="@dimen/space.normal"
     app:elevation="2dp">
@@ -55,9 +55,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/space.normal"
-            android:hint="@string/event_which_bc_ad_hint"
-            android:visibility="gone"
-            tools:visibility="visible" />
+            android:hint="@string/event_which_bc_ad_hint" />
 
 
         <LinearLayout
