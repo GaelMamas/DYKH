@@ -52,6 +52,15 @@
         <item name="trackTint">@color/progress_shadow_color</item>
     </style>
 
+    <style name="MySwitch" parent="AlertDialog.AppCompat.Light">
+
+        <item name="android:colorControlActivated">@color/colorPrimary</item>
+        <item name="android:colorControlNormal">@color/generic_grey_hint_color</item>
+        <item name="android:colorActivatedHighlight">@color/progress_shadow_color</item>
+        <item name="trackTint">@color/generic_grey_hint_color</item>
+
+    </style>
+
     <color name="event_creation_spinner_nominal_text_color">#333</color>
 
 

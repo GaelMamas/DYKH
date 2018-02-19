@@ -19,6 +19,7 @@ import java.util.List;
 
 import malakoff.dykh.DesignWidget.BetterSpinner;
 import malakoff.dykh.DesignWidget.EventDateDeclarationCardView;
+import malakoff.dykh.DesignWidget.ModelBase.DateRecorderView;
 import malakoff.dykh.Interfaces.ResetInputsListener;
 import malakoff.dykh.ModelBase.Base.EventDate;
 import malakoff.dykh.Network.MySingleton;
@@ -38,6 +39,8 @@ public class WriteEventBaseFragment extends InstanceBaseFragement implements Vie
     protected AppCompatEditText titleEditText, historicLocationEditText, storyEditText;
     protected Button publishButton;
     protected ProgressBar mEventUpdatingProgressBar;
+
+    protected DateRecorderView firstRecorderView, secondRecorderView;
 
 
     protected ResetInputsListener resetInputsListener = new ResetInputsListener() {
@@ -78,6 +81,9 @@ public class WriteEventBaseFragment extends InstanceBaseFragement implements Vie
         historicLocationEditText = view.findViewById(R.id.edittext_event_location);
         storyEditText = view.findViewById(R.id.edittext_event_story);
 
+        firstRecorderView = view.findViewById(R.id.recorder_first_event);
+        secondRecorderView = view.findViewById(R.id.recorder_second_event);
+
         publishButton = view.findViewById(R.id.button_event_publish);
 
         mEventUpdatingProgressBar = view.findViewById(R.id.progressbar_event_updating);
@@ -105,6 +111,21 @@ public class WriteEventBaseFragment extends InstanceBaseFragement implements Vie
 
         todayLocationSpinner.setAdapter(todayLocationAdapter);
         todayLocationSpinner.setOnItemSelectedListener(this);
+
+
+        firstRecorderView.setDateRecordable(new DateRecorderView.EventDateRecordable() {
+            @Override
+            public void onSwitch(boolean isOn) {
+                secondRecorderView.setVisibility(isOn?View.VISIBLE:View.GONE);
+            }
+
+            @Override
+            public void isCompleteDateAvailable(EventDate eventDate) {
+                if(eventDate == null ) return;
+                secondRecorderView.setDefaultValues(eventDate);
+            }
+        });
+
 
         publishButton.setOnClickListener(this);
 

@@ -140,8 +140,7 @@
                 android:id="@+id/switch_event_ending_date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:shadowColor="@color/progress_shadow_color"
-                style="@style/SwitchCompatStyle"/>
+                style="@style/MySwitch"/>
 
         </LinearLayout>
 

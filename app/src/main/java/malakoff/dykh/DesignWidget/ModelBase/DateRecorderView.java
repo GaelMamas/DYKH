@@ -67,6 +67,16 @@ public class DateRecorderView extends CardView implements AdapterView.OnItemSele
     @Override
     protected void onLayout(boolean changed, int left, int top, int right, int bottom) {
 
+        init();
+
+
+        super.onLayout(changed, left, top, right, bottom);
+    }
+
+
+    private void init(){
+
+
         mBCADSpinner = rootview.findViewById(R.id.spinner_event_bc_or_ad);
         yearEditText = rootview.findViewById(R.id.edittext_event_year_setter);
 
@@ -111,7 +121,6 @@ public class DateRecorderView extends CardView implements AdapterView.OnItemSele
         daySpinner.setOnItemSelectedListener(this);
 
 
-        super.onLayout(changed, left, top, right, bottom);
     }
 
     @Override
@@ -121,18 +130,27 @@ public class DateRecorderView extends CardView implements AdapterView.OnItemSele
 
                 mBCADSpinner.setError(null);
 
-                selectedBCAD = (String)adapterView.getItemAtPosition(position);
+                selectedBCAD = (String) adapterView.getItemAtPosition(position);
 
                 yearEditText.setVisibility(VISIBLE);
                 monthSpinner.setVisibility(INVISIBLE);
                 daySpinner.setVisibility(INVISIBLE);
                 dateSetterLayout.setVisibility(VISIBLE);
+                datePicker.setVisibility(GONE);
+                switchLayout.setVisibility(GONE);
+
+                if (mRecordedEventDate != null && dateRecordable != null) {
+
+                    dateRecordable.onSwitch(false);
+                    dateRecordable.isCompleteDateAvailable(null);
+
+                }
 
                 break;
 
             case R.id.spinner_event_month_setter:
 
-                daySpinner.setVisibility(position > 0?VISIBLE:INVISIBLE);
+                daySpinner.setVisibility(position > 0 ? VISIBLE : INVISIBLE);
 
                 monthSpinner.setError(null);
 
@@ -140,13 +158,14 @@ public class DateRecorderView extends CardView implements AdapterView.OnItemSele
 
                 Toast.makeText(getContext(), "Month " + position, Toast.LENGTH_SHORT).show();
 
-                if(position == 0){
-
-                    if(dateRecordable != null) dateRecordable.isCompleteDateAvailable(true);
+                if (position == 0) {
 
                     recordThisDate(inputYear, String.valueOf(monthIndex), null);
 
-                    switchLayout.setVisibility(VISIBLE);
+                    if (dateRecordable != null) {
+                        dateRecordable.isCompleteDateAvailable(mRecordedEventDate);
+                        dateRecordable.onSwitch(true);
+                    }
 
                 }
 
@@ -159,11 +178,13 @@ public class DateRecorderView extends CardView implements AdapterView.OnItemSele
 
                 Toast.makeText(getContext(), "Day " + position, Toast.LENGTH_SHORT).show();
 
-                if(dateRecordable != null) dateRecordable.isCompleteDateAvailable(true);
 
                 recordThisDate(inputYear, String.valueOf(monthIndex), String.valueOf(position));
 
-                switchLayout.setVisibility(VISIBLE);
+                if (dateRecordable != null) {
+                    dateRecordable.isCompleteDateAvailable(mRecordedEventDate);
+                    dateRecordable.onSwitch(true);
+                }
 
                 break;
 
@@ -193,9 +214,7 @@ public class DateRecorderView extends CardView implements AdapterView.OnItemSele
                 }
 
 
-
                 setYearInput(Integer.parseInt(inputYear = v.getText().toString()), 0, 1);
-
 
 
         }
@@ -257,6 +276,7 @@ public class DateRecorderView extends CardView implements AdapterView.OnItemSele
 
         recordThisDate(year, monthOfYear, dayOfMonth);
 
+
         datePicker.init(year, monthOfYear, dayOfMonth == 0 ? 1 : dayOfMonth, new DatePicker.OnDateChangedListener() {
             @Override
             public void onDateChanged(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
@@ -267,6 +287,13 @@ public class DateRecorderView extends CardView implements AdapterView.OnItemSele
                                 && dayOfMonth <= Calendar.getInstance().get(Calendar.DAY_OF_MONTH))) {
 
                     recordThisDate(year, monthOfYear, dayOfMonth);
+
+                    if (dateRecordable != null) {
+
+                        dateRecordable.isCompleteDateAvailable(mRecordedEventDate);
+                        dateRecordable.onSwitch(true);
+
+                    }
 
 
                 } else if (monthOfYear > Calendar.getInstance().get(Calendar.MONTH)) {
@@ -300,7 +327,7 @@ public class DateRecorderView extends CardView implements AdapterView.OnItemSele
 
     }
 
-    private void recordThisDate(String year, String monthOfYear, String dayOfMonth){
+    private void recordThisDate(String year, String monthOfYear, String dayOfMonth) {
 
         mRecordedEventDate = new EventDate(selectedBCAD,
                 String.valueOf(year),
@@ -308,6 +335,8 @@ public class DateRecorderView extends CardView implements AdapterView.OnItemSele
                 String.valueOf(dayOfMonth));
 
         Toast.makeText(getContext(), "Year " + year + " Month " + monthOfYear + " Day " + dayOfMonth, Toast.LENGTH_SHORT).show();
+
+        switchLayout.setVisibility(VISIBLE);
 
     }
 
@@ -360,14 +389,33 @@ public class DateRecorderView extends CardView implements AdapterView.OnItemSele
         }
     }
 
+    public void setDefaultValues(EventDate eventDate) {
+        if (eventDate == null || TextUtils.isEmpty(eventDate.getmBCAD())) return;
+
+        setVisibility(VISIBLE);
+
+        init();
+
+        mBCADSpinner.setSelection(eventDate.getmBCAD().contentEquals(getResources()
+                .getStringArray(R.array.event_bc_or_ad)[0]) ? 0 : 1);
+
+        if(TextUtils.isEmpty(eventDate.getYear())
+                && eventDate.getYear().matches("[-+]?\\d*\\.?\\d+")) return;
+
+        setYearInput(Integer.parseInt(eventDate.getYear()),
+                Integer.parseInt(eventDate.getMonth()),
+                        TextUtils.isEmpty(eventDate.getDay())?0:Integer.parseInt(eventDate.getDay()));
+
+    }
+
     public void setDateRecordable(EventDateRecordable dateRecordable) {
         this.dateRecordable = dateRecordable;
     }
 
-    public interface EventDateRecordable{
+    public interface EventDateRecordable {
 
         void onSwitch(boolean isOn);
 
-        void isCompleteDateAvailable(boolean isAvailable);
+        void isCompleteDateAvailable(EventDate eventDate);
     }
 }
