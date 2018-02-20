@@ -6,12 +6,14 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.AppCompatEditText;
 import android.support.v7.widget.CardView;
+import android.support.v7.widget.SwitchCompat;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.CompoundButton;
 import android.widget.DatePicker;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -44,6 +46,8 @@ public class DateRecorderView extends CardView implements AdapterView.OnItemSele
     private int monthIndex;
     private String selectedBCAD, inputYear;
 
+    private boolean doesSwitchHaveToAppear = true;
+
 
     private EventDateRecordable dateRecordable;
 
@@ -74,7 +78,7 @@ public class DateRecorderView extends CardView implements AdapterView.OnItemSele
     }
 
 
-    private void init(){
+    private void init() {
 
 
         mBCADSpinner = rootview.findViewById(R.id.spinner_event_bc_or_ad);
@@ -88,6 +92,17 @@ public class DateRecorderView extends CardView implements AdapterView.OnItemSele
         datePicker = rootview.findViewById(R.id.datePicker);
 
         switchLayout = rootview.findViewById(R.id.layout_event_date_switch);
+
+        ((SwitchCompat) rootview.findViewById(R.id.switch_event_ending_date)).setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if (dateRecordable != null) {
+
+                    dateRecordable.onSwitch(b);
+
+                }
+            }
+        });
 
         ArrayAdapter<String> adapter = new ArrayAdapter<>(getContext(), R.layout.cell_text_dark,
                 Arrays.asList(getResources().getStringArray(R.array.event_bc_or_ad)));
@@ -141,7 +156,6 @@ public class DateRecorderView extends CardView implements AdapterView.OnItemSele
 
                 if (mRecordedEventDate != null && dateRecordable != null) {
 
-                    dateRecordable.onSwitch(false);
                     dateRecordable.isCompleteDateAvailable(null);
 
                 }
@@ -164,7 +178,6 @@ public class DateRecorderView extends CardView implements AdapterView.OnItemSele
 
                     if (dateRecordable != null) {
                         dateRecordable.isCompleteDateAvailable(mRecordedEventDate);
-                        dateRecordable.onSwitch(true);
                     }
 
                 }
@@ -183,7 +196,6 @@ public class DateRecorderView extends CardView implements AdapterView.OnItemSele
 
                 if (dateRecordable != null) {
                     dateRecordable.isCompleteDateAvailable(mRecordedEventDate);
-                    dateRecordable.onSwitch(true);
                 }
 
                 break;
@@ -291,7 +303,6 @@ public class DateRecorderView extends CardView implements AdapterView.OnItemSele
                     if (dateRecordable != null) {
 
                         dateRecordable.isCompleteDateAvailable(mRecordedEventDate);
-                        dateRecordable.onSwitch(true);
 
                     }
 
@@ -336,7 +347,8 @@ public class DateRecorderView extends CardView implements AdapterView.OnItemSele
 
         Toast.makeText(getContext(), "Year " + year + " Month " + monthOfYear + " Day " + dayOfMonth, Toast.LENGTH_SHORT).show();
 
-        switchLayout.setVisibility(VISIBLE);
+        switchLayout.setVisibility(doesSwitchHaveToAppear ? VISIBLE : GONE);
+
 
     }
 
@@ -392,19 +404,23 @@ public class DateRecorderView extends CardView implements AdapterView.OnItemSele
     public void setDefaultValues(EventDate eventDate) {
         if (eventDate == null || TextUtils.isEmpty(eventDate.getmBCAD())) return;
 
-        setVisibility(VISIBLE);
+        doesSwitchHaveToAppear = false;
 
         init();
 
         mBCADSpinner.setSelection(eventDate.getmBCAD().contentEquals(getResources()
                 .getStringArray(R.array.event_bc_or_ad)[0]) ? 0 : 1);
 
-        if(TextUtils.isEmpty(eventDate.getYear())
-                && eventDate.getYear().matches("[-+]?\\d*\\.?\\d+")) return;
+        selectedBCAD = eventDate.getmBCAD();
+
+        if (TextUtils.isEmpty(eventDate.getYear())
+                && !eventDate.getYear().matches("[-+]?\\d*\\.?\\d+")) return;
+
+        inputYear = eventDate.getYear();
 
         setYearInput(Integer.parseInt(eventDate.getYear()),
                 Integer.parseInt(eventDate.getMonth()),
-                        TextUtils.isEmpty(eventDate.getDay())?0:Integer.parseInt(eventDate.getDay()));
+                TextUtils.isEmpty(eventDate.getDay()) ? 0 : Integer.parseInt(eventDate.getDay()));
 
     }
 
