@@ -121,7 +121,12 @@ public class WriteEventBaseFragment extends InstanceBaseFragement implements Vie
 
             @Override
             public void isCompleteDateAvailable(EventDate eventDate) {
-                if(eventDate == null ) return;
+                if(eventDate == null ){
+
+                    secondRecorderView.setVisibility(View.GONE);
+
+                    return;
+                }
                 secondRecorderView.setDefaultValues(eventDate);
             }
         });

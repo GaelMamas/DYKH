@@ -39,10 +39,12 @@ public class DateRecorderView extends CardView implements AdapterView.OnItemSele
     private final static String BCAD_STEP = "bc ad", YEAR_STEP = "year", MONTH_STEP = "month", DAY_STEP = "day";
 
     private View rootview;
+    private TextView headerTitleTextView;
     private BetterSpinner mBCADSpinner, monthSpinner, daySpinner;
     private AppCompatEditText yearEditText;
     private View dateSetterLayout, switchLayout;
     private DatePicker datePicker;
+    private SwitchCompat switchCompat;
 
 
     private int monthIndex;
@@ -82,6 +84,7 @@ public class DateRecorderView extends CardView implements AdapterView.OnItemSele
 
     private void init() {
 
+        headerTitleTextView = rootview.findViewById(R.id.text_event_date_header_title);
 
         mBCADSpinner = rootview.findViewById(R.id.spinner_event_bc_or_ad);
         yearEditText = rootview.findViewById(R.id.edittext_event_year_setter);
@@ -95,7 +98,10 @@ public class DateRecorderView extends CardView implements AdapterView.OnItemSele
 
         switchLayout = rootview.findViewById(R.id.layout_event_date_switch);
 
-        ((SwitchCompat) rootview.findViewById(R.id.switch_event_ending_date)).setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        switchCompat = rootview.findViewById(R.id.switch_event_ending_date);
+
+
+        switchCompat.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 if (dateRecordable != null) {
@@ -164,6 +170,7 @@ public class DateRecorderView extends CardView implements AdapterView.OnItemSele
 
                     if (mRecordedEventDate != null && dateRecordable != null) {
 
+                        switchCompat.setChecked(false);
                         dateRecordable.isCompleteDateAvailable(null);
 
                     }
@@ -371,6 +378,7 @@ public class DateRecorderView extends CardView implements AdapterView.OnItemSele
                 .getStringArray(R.array.event_bc_or_ad)[0])) {
 
 
+            dateSetterLayout.setVisibility(VISIBLE);
             monthSpinner.setVisibility(View.VISIBLE);
             datePicker.setVisibility(View.GONE);
 
@@ -467,9 +475,7 @@ public class DateRecorderView extends CardView implements AdapterView.OnItemSele
     private void recordThisDate(String year, String monthOfYear, String dayOfMonth) {
 
         mRecordedEventDate = new EventDate(selectedBCAD,
-                String.valueOf(year),
-                String.valueOf(monthOfYear),
-                String.valueOf(dayOfMonth));
+                year, monthOfYear, dayOfMonth);
 
         Toast.makeText(getContext(), "Year " + year + " Month " + monthOfYear + " Day " + dayOfMonth, Toast.LENGTH_SHORT).show();
 
@@ -528,11 +534,14 @@ public class DateRecorderView extends CardView implements AdapterView.OnItemSele
     }
 
     public void setDefaultValues(EventDate eventDate) {
+
         if (eventDate == null || TextUtils.isEmpty(eventDate.getmBCAD())) return;
 
         doesSwitchHaveToAppear = false;
 
         init();
+
+        headerTitleTextView.setText(R.string.event_time_block_title_2);
 
         mBCADSpinner.setSelection(eventDate.getmBCAD().contentEquals(getResources()
                 .getStringArray(R.array.event_bc_or_ad)[0]) ? 0 : 1);
