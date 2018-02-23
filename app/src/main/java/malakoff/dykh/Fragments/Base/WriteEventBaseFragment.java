@@ -117,6 +117,7 @@ public class WriteEventBaseFragment extends InstanceBaseFragement implements Vie
             @Override
             public void onSwitch(boolean isOn) {
                 secondRecorderView.setVisibility(isOn?View.VISIBLE:View.GONE);
+                publishButton.setSelected(!isOn && publishButton.isSelected());
             }
 
             @Override
@@ -125,9 +126,25 @@ public class WriteEventBaseFragment extends InstanceBaseFragement implements Vie
 
                     secondRecorderView.setVisibility(View.GONE);
 
+                    publishButton.setSelected(false);
+
                     return;
                 }
                 secondRecorderView.setDefaultValues(eventDate);
+
+                publishButton.setSelected(true);
+            }
+        });
+
+        secondRecorderView.setDateRecordable(new DateRecorderView.EventDateRecordable() {
+            @Override
+            public void onSwitch(boolean isOn) {
+
+            }
+
+            @Override
+            public void isCompleteDateAvailable(EventDate eventDate) {
+                publishButton.setSelected(eventDate != null);
             }
         });
 

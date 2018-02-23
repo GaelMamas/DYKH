@@ -153,27 +153,18 @@ public class DateRecorderView extends CardView implements AdapterView.OnItemSele
 
                 mBCADSpinner.setError(null);
 
-                if (areNot2DatesChronological(BCAD_STEP, (String) adapterView.getItemAtPosition(position), false)) {
+                if (areNot2DatesChronological(BCAD_STEP, (String) adapterView.getItemAtPosition(position))) {
 
                     mBCADSpinner.setError(getResources().getString(R.string.event_chronological_alert_message));
+                    hideSubsequentComponents();
+                    hideTwin();
 
                 } else {
 
                     selectedBCAD = (String) adapterView.getItemAtPosition(position);
 
-                    yearEditText.setVisibility(VISIBLE);
-                    monthSpinner.setVisibility(INVISIBLE);
-                    daySpinner.setVisibility(INVISIBLE);
-                    dateSetterLayout.setVisibility(VISIBLE);
-                    datePicker.setVisibility(GONE);
-                    switchLayout.setVisibility(GONE);
-
-                    if (mRecordedEventDate != null && dateRecordable != null) {
-
-                        switchCompat.setChecked(false);
-                        dateRecordable.isCompleteDateAvailable(null);
-
-                    }
+                    hideSubsequentComponents();
+                    hideTwin();
 
                 }
 
@@ -183,13 +174,15 @@ public class DateRecorderView extends CardView implements AdapterView.OnItemSele
 
                 monthSpinner.setError(null);
 
-                if (areNot2DatesChronological(BCAD_STEP, (String) adapterView.getItemAtPosition(position), false)) {
+                if (areNot2DatesChronological(MONTH_STEP, String.valueOf(position))) {
 
                     monthSpinner.setError(getResources().getString(R.string.event_chronological_alert_message));
 
+                    manageDisplayDayComponent(false);
+
                 } else {
 
-                    daySpinner.setVisibility(position > 0 ? VISIBLE : INVISIBLE);
+                    manageDisplayDayComponent(true);
 
                     monthIndex = position;
 
@@ -204,6 +197,8 @@ public class DateRecorderView extends CardView implements AdapterView.OnItemSele
                         }
 
                     }
+
+                    //hideTwin();
                 }
 
                 break;
@@ -213,7 +208,7 @@ public class DateRecorderView extends CardView implements AdapterView.OnItemSele
 
                 daySpinner.setError(null);
 
-                if (areNot2DatesChronological(BCAD_STEP, (String) adapterView.getItemAtPosition(position), false)) {
+                if (areNot2DatesChronological(DAY_STEP, String.valueOf(position))) {
 
                     daySpinner.setError(getResources().getString(R.string.event_chronological_alert_message));
 
@@ -227,6 +222,8 @@ public class DateRecorderView extends CardView implements AdapterView.OnItemSele
                     if (dateRecordable != null) {
                         dateRecordable.isCompleteDateAvailable(mRecordedEventDate);
                     }
+
+                    //hideTwin();
 
                 }
 
@@ -258,14 +255,17 @@ public class DateRecorderView extends CardView implements AdapterView.OnItemSele
                 }
 
                 if (relatedEventDate == null
-                        || !areNot2DatesChronological(YEAR_STEP, v.getText().toString(), false)) {
+                        || !areNot2DatesChronological(YEAR_STEP, v.getText().toString())) {
 
                     setYearInput(Integer.parseInt(inputYear = v.getText().toString()), 0, 1);
 
+                    //hideTwin();
 
                 } else {
 
                     yearEditText.setError(getResources().getString(R.string.event_chronological_alert_message));
+
+                    hideMonthDayComponents();
 
                 }
 
@@ -279,7 +279,7 @@ public class DateRecorderView extends CardView implements AdapterView.OnItemSele
     }
 
 
-    private boolean areNot2DatesChronological(String step, String value, boolean backwardTime) {
+    private boolean areNot2DatesChronological(String step, String value) {
 
         if (relatedEventDate == null) return false;
 
@@ -287,15 +287,6 @@ public class DateRecorderView extends CardView implements AdapterView.OnItemSele
 
             case BCAD_STEP:
 
-                if (backwardTime) {
-
-                    return getResources().getStringArray(R.array.event_bc_or_ad)[0]
-                            .contentEquals(relatedEventDate.getmBCAD())
-
-                            && getResources().getStringArray(R.array.event_bc_or_ad)[1]
-                            .contentEquals(value);
-
-                } else {
 
                     return getResources().getStringArray(R.array.event_bc_or_ad)[1]
                             .contentEquals(relatedEventDate.getmBCAD())
@@ -303,7 +294,6 @@ public class DateRecorderView extends CardView implements AdapterView.OnItemSele
                             && getResources().getStringArray(R.array.event_bc_or_ad)[0]
                             .contentEquals(value);
 
-                }
 
 
             case YEAR_STEP:
@@ -316,16 +306,12 @@ public class DateRecorderView extends CardView implements AdapterView.OnItemSele
                             .contentEquals(relatedEventDate.getmBCAD())) {
 
 
-                        return backwardTime ?
-                                Integer.parseInt(value) < Integer.parseInt(relatedEventDate.getYear()) :
-                                Integer.parseInt(value) > Integer.parseInt(relatedEventDate.getYear());
+                        return Integer.parseInt(value) > Integer.parseInt(relatedEventDate.getYear());
 
                     } else if (getResources().getStringArray(R.array.event_bc_or_ad)[1]
                             .contentEquals(relatedEventDate.getmBCAD())) {
 
-                        return backwardTime ?
-                                Integer.parseInt(value) > Integer.parseInt(relatedEventDate.getYear()) :
-                                Integer.parseInt(value) < Integer.parseInt(relatedEventDate.getYear());
+                        return Integer.parseInt(value) < Integer.parseInt(relatedEventDate.getYear());
 
                     }
 
@@ -337,12 +323,10 @@ public class DateRecorderView extends CardView implements AdapterView.OnItemSele
                 if (TextUtils.isEmpty(relatedEventDate.getMonth())) return false;
 
                 if (!TextUtils.isEmpty(value)
-                        && relatedEventDate.getYear().contentEquals(value)) {
+                        && relatedEventDate.getYear().contentEquals(inputYear)) {
 
 
-                    return backwardTime ?
-                            Integer.parseInt(relatedEventDate.getMonth()) < Integer.parseInt(value) :
-                            Integer.parseInt(relatedEventDate.getMonth()) > Integer.parseInt(value);
+                    return Integer.parseInt(relatedEventDate.getMonth()) > Integer.parseInt(value);
 
 
                 }
@@ -353,13 +337,11 @@ public class DateRecorderView extends CardView implements AdapterView.OnItemSele
                 if (TextUtils.isEmpty(relatedEventDate.getDay())) return false;
 
                 if (!TextUtils.isEmpty(value)
-                        && relatedEventDate.getYear().contentEquals(value)
-                        && relatedEventDate.getMonth().contentEquals(value)) {
+                        && relatedEventDate.getYear().contentEquals(inputYear)
+                        && relatedEventDate.getMonth().contentEquals(String.valueOf(monthIndex))) {
 
 
-                    return backwardTime ?
-                            Integer.parseInt(relatedEventDate.getMonth()) < Integer.parseInt(value) :
-                            Integer.parseInt(relatedEventDate.getMonth()) > Integer.parseInt(value);
+                    return Integer.parseInt(relatedEventDate.getDay()) > Integer.parseInt(value);
 
 
                 }
@@ -379,7 +361,9 @@ public class DateRecorderView extends CardView implements AdapterView.OnItemSele
 
 
             dateSetterLayout.setVisibility(VISIBLE);
-            monthSpinner.setVisibility(View.VISIBLE);
+            manageDisplayMonthComponent(true);
+
+            daySpinner.setVisibility(INVISIBLE);
             datePicker.setVisibility(View.GONE);
 
 
@@ -399,14 +383,16 @@ public class DateRecorderView extends CardView implements AdapterView.OnItemSele
 
             } else if (year < 1900) {
 
+                dateSetterLayout.setVisibility(VISIBLE);
+                manageDisplayMonthComponent(true);
 
-                monthSpinner.setVisibility(View.VISIBLE);
+                daySpinner.setVisibility(INVISIBLE);
                 datePicker.setVisibility(View.GONE);
 
 
             } else {
 
-                Toast.makeText(getContext(), R.string.event_creation_in_futur_year_error, Toast.LENGTH_SHORT).show();
+                yearEditText.setError(getResources().getText(R.string.event_creation_in_futur_year_error));
 
             }
 
@@ -464,6 +450,75 @@ public class DateRecorderView extends CardView implements AdapterView.OnItemSele
 
     }
 
+
+    public void hideTwin(){
+
+        if (relatedEventDate == null && dateRecordable != null) {
+
+            switchCompat.setChecked(false);
+            dateRecordable.isCompleteDateAvailable(null);
+
+        }
+
+    }
+
+    private void hideSubsequentComponents(){
+
+        yearEditText.setVisibility(VISIBLE);
+        yearEditText.setText("");
+
+        hideMonthDayComponents();
+
+        dateSetterLayout.setVisibility(VISIBLE);
+        datePicker.setVisibility(GONE);
+        switchLayout.setVisibility(GONE);
+
+    }
+
+    private void hideMonthDayComponents(){
+
+        manageDisplayMonthComponent(false);
+        manageDisplayDayComponent(false);
+
+    }
+
+    private void manageDisplayMonthComponent(boolean wantToShow){
+
+        if(wantToShow){
+
+            monthSpinner.setVisibility(VISIBLE);
+            monthSpinner.resetPlaceHolderText();
+            monthSpinner.setError(null);
+
+        }else{
+
+            monthSpinner.setVisibility(INVISIBLE);
+
+        }
+
+        monthSpinner.resetPlaceHolderText();
+
+    }
+
+    private void manageDisplayDayComponent(boolean wantToShow){
+
+        if(wantToShow){
+
+            daySpinner.setVisibility(VISIBLE);
+            daySpinner.resetPlaceHolderText();
+            daySpinner.setError(null);
+
+        }else{
+
+            daySpinner.setVisibility(INVISIBLE);
+
+        }
+
+        daySpinner.resetPlaceHolderText();
+    }
+
+
+
     private void recordThisDate(int year, int monthOfYear, int dayOfMonth) {
 
         recordThisDate(String.valueOf(year),
@@ -474,8 +529,18 @@ public class DateRecorderView extends CardView implements AdapterView.OnItemSele
 
     private void recordThisDate(String year, String monthOfYear, String dayOfMonth) {
 
-        mRecordedEventDate = new EventDate(selectedBCAD,
-                year, monthOfYear, dayOfMonth);
+        if(mRecordedEventDate == null) {
+
+            mRecordedEventDate = new EventDate(selectedBCAD,
+                    year, monthOfYear, dayOfMonth);
+
+        }else{
+
+            mRecordedEventDate.setYear(year);
+            mRecordedEventDate.setMonth(monthOfYear);
+            mRecordedEventDate.setDay(dayOfMonth);
+
+        }
 
         Toast.makeText(getContext(), "Year " + year + " Month " + monthOfYear + " Day " + dayOfMonth, Toast.LENGTH_SHORT).show();
 
@@ -484,6 +549,10 @@ public class DateRecorderView extends CardView implements AdapterView.OnItemSele
 
     }
 
+
+    public EventDate getmRecordedEventDate() {
+        return mRecordedEventDate;
+    }
 
     private List<String> setMonthDays() {
 
@@ -508,26 +577,27 @@ public class DateRecorderView extends CardView implements AdapterView.OnItemSele
 
     private int setMonthDaysNumber() {
         switch (monthIndex) {
-            case 1:
+            case 2:
 
                 return 29;
-            case 0:
-            case 2:
-            case 4:
-            case 6:
+            case 1:
+            case 3:
+            case 5:
             case 7:
-            case 9:
-            case 11:
+            case 8:
+            case 10:
+            case 12:
 
                 return 31;
 
-            case 3:
-            case 5:
-            case 8:
-            case 10:
+            case 4:
+            case 6:
+            case 9:
+            case 11:
 
                 return 30;
 
+            case 0:
             default:
                 return 0;
         }
@@ -553,7 +623,12 @@ public class DateRecorderView extends CardView implements AdapterView.OnItemSele
         if (TextUtils.isEmpty(eventDate.getYear())
                 && !eventDate.getYear().matches("[-+]?\\d*\\.?\\d+")) return;
 
-        setYearInput(Integer.parseInt(eventDate.getYear()),
+
+        yearEditText.setText(inputYear = eventDate.getYear());
+
+        monthSpinner.resetPlaceHolderText();
+
+        setYearInput(Integer.parseInt(inputYear),
                 TextUtils.isEmpty(eventDate.getMonth()) ? 0 : Integer.parseInt(eventDate.getMonth()),
                 TextUtils.isEmpty(eventDate.getDay()) ? 0 : Integer.parseInt(eventDate.getDay()));
 
