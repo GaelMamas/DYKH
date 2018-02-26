@@ -106,7 +106,7 @@ public class DateRecorderView extends CardView implements AdapterView.OnItemSele
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 if (dateRecordable != null) {
 
-                    dateRecordable.onSwitch(b);
+                    dateRecordable.onSwitch(b, mRecordedEventDate);
 
                 }
             }
@@ -157,16 +157,18 @@ public class DateRecorderView extends CardView implements AdapterView.OnItemSele
 
                     mBCADSpinner.setError(getResources().getString(R.string.event_chronological_alert_message));
                     hideSubsequentComponents();
-                    hideTwin();
+
 
                 } else {
 
                     selectedBCAD = (String) adapterView.getItemAtPosition(position);
 
                     hideSubsequentComponents();
-                    hideTwin();
 
                 }
+
+
+                updateTwin(null);
 
                 break;
 
@@ -180,6 +182,8 @@ public class DateRecorderView extends CardView implements AdapterView.OnItemSele
 
                     manageDisplayDayComponent(false);
 
+                    updateTwin(null);
+
                 } else {
 
                     manageDisplayDayComponent(true);
@@ -192,14 +196,14 @@ public class DateRecorderView extends CardView implements AdapterView.OnItemSele
 
                         recordThisDate(inputYear, String.valueOf(monthIndex), null);
 
-                        if (dateRecordable != null) {
-                            dateRecordable.isCompleteDateAvailable(mRecordedEventDate);
-                        }
+                    }else{
+
+                        updateTwin(null);
 
                     }
 
-                    //hideTwin();
                 }
+
 
                 break;
 
@@ -212,6 +216,8 @@ public class DateRecorderView extends CardView implements AdapterView.OnItemSele
 
                     daySpinner.setError(getResources().getString(R.string.event_chronological_alert_message));
 
+                    updateTwin(null);
+
                 } else {
 
                     Toast.makeText(getContext(), "Day " + position, Toast.LENGTH_SHORT).show();
@@ -219,13 +225,9 @@ public class DateRecorderView extends CardView implements AdapterView.OnItemSele
 
                     recordThisDate(inputYear, String.valueOf(monthIndex), String.valueOf(position));
 
-                    if (dateRecordable != null) {
-                        dateRecordable.isCompleteDateAvailable(mRecordedEventDate);
-                    }
-
-                    //hideTwin();
 
                 }
+
 
                 break;
 
@@ -259,7 +261,6 @@ public class DateRecorderView extends CardView implements AdapterView.OnItemSele
 
                     setYearInput(Integer.parseInt(inputYear = v.getText().toString()), 0, 1);
 
-                    //hideTwin();
 
                 } else {
 
@@ -267,6 +268,7 @@ public class DateRecorderView extends CardView implements AdapterView.OnItemSele
 
                     hideMonthDayComponents();
 
+                    updateTwin(null);
                 }
 
 
@@ -366,6 +368,8 @@ public class DateRecorderView extends CardView implements AdapterView.OnItemSele
             daySpinner.setVisibility(INVISIBLE);
             datePicker.setVisibility(View.GONE);
 
+            updateTwin(null);
+
 
         } else if (getResources().getStringArray(R.array.event_bc_or_ad)[1]
                 .contentEquals(selectedBCAD)) {
@@ -389,10 +393,14 @@ public class DateRecorderView extends CardView implements AdapterView.OnItemSele
                 daySpinner.setVisibility(INVISIBLE);
                 datePicker.setVisibility(View.GONE);
 
+                updateTwin(null);
+
 
             } else {
 
                 yearEditText.setError(getResources().getText(R.string.event_creation_in_futur_year_error));
+
+                updateTwin(null);
 
             }
 
@@ -451,12 +459,16 @@ public class DateRecorderView extends CardView implements AdapterView.OnItemSele
     }
 
 
-    public void hideTwin(){
+    public void updateTwin(EventDate eventDate){
 
-        if (relatedEventDate == null && dateRecordable != null) {
+        if(relatedEventDate == null && dateRecordable != null){
 
             switchCompat.setChecked(false);
-            dateRecordable.isCompleteDateAvailable(null);
+            dateRecordable.isCompleteDateAvailable(eventDate);
+
+        }else if(dateRecordable != null){
+
+            dateRecordable.isCompleteDateAvailable(eventDate);
 
         }
 
@@ -542,6 +554,9 @@ public class DateRecorderView extends CardView implements AdapterView.OnItemSele
 
         }
 
+
+        updateTwin(mRecordedEventDate);
+
         Toast.makeText(getContext(), "Year " + year + " Month " + monthOfYear + " Day " + dayOfMonth, Toast.LENGTH_SHORT).show();
 
         switchLayout.setVisibility(doesSwitchHaveToAppear ? VISIBLE : GONE);
@@ -550,9 +565,6 @@ public class DateRecorderView extends CardView implements AdapterView.OnItemSele
     }
 
 
-    public EventDate getmRecordedEventDate() {
-        return mRecordedEventDate;
-    }
 
     private List<String> setMonthDays() {
 
@@ -640,7 +652,7 @@ public class DateRecorderView extends CardView implements AdapterView.OnItemSele
 
     public interface EventDateRecordable {
 
-        void onSwitch(boolean isOn);
+        void onSwitch(boolean isOn, EventDate eventDate);
 
         void isCompleteDateAvailable(EventDate eventDate);
     }
