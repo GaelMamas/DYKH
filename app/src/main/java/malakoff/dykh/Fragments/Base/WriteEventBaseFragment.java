@@ -1,6 +1,7 @@
 package malakoff.dykh.Fragments.Base;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v7.widget.AppCompatEditText;
 import android.text.TextUtils;
 import android.util.Log;
@@ -9,6 +10,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ProgressBar;
+import android.widget.ScrollView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -35,12 +37,15 @@ public class WriteEventBaseFragment extends InstanceBaseFragement implements Vie
     protected String selectedTheme, selectedTodayLocation;
     protected List<EventDate> eventDates = new ArrayList<>();
 
+    protected ScrollView containerScrollView;
     protected BetterSpinner themeSpinner, todayLocationSpinner;
     protected AppCompatEditText titleEditText, historicLocationEditText, storyEditText;
     protected Button publishButton;
     protected ProgressBar mEventUpdatingProgressBar;
 
     protected DateRecorderView firstRecorderView, secondRecorderView;
+
+    protected Boolean isThemeOK, isTodayLocationOK, isTitleOK, isHistoricLocationOK, isStoryOK, isEventDateOK;
 
 
     protected ResetInputsListener resetInputsListener = new ResetInputsListener() {
@@ -73,6 +78,9 @@ public class WriteEventBaseFragment extends InstanceBaseFragement implements Vie
 
     @Override
     protected void assignViews(View view) {
+
+        containerScrollView = view.findViewById(R.id.container_event_date);
+
         themeSpinner = view.findViewById(R.id.spinner_event_theme);
         todayLocationSpinner = view.findViewById(R.id.spinner_event_today_location);
 
@@ -118,7 +126,7 @@ public class WriteEventBaseFragment extends InstanceBaseFragement implements Vie
             public void onSwitch(boolean isOn, EventDate eventDate) {
                 secondRecorderView.setVisibility(isOn?View.VISIBLE:View.GONE);
                 secondRecorderView.setDefaultValues(eventDate);
-                publishButton.setSelected(!isOn && eventDate != null);
+                isEventDateOK = !isOn && eventDate != null;
             }
 
             @Override
@@ -127,13 +135,13 @@ public class WriteEventBaseFragment extends InstanceBaseFragement implements Vie
 
                     secondRecorderView.setVisibility(View.GONE);
 
-                    publishButton.setSelected(false);
+                    isEventDateOK = false;
 
                     return;
                 }
                 secondRecorderView.setDefaultValues(eventDate);
 
-                publishButton.setSelected(true);
+                isEventDateOK = true;
             }
         });
 
@@ -145,7 +153,7 @@ public class WriteEventBaseFragment extends InstanceBaseFragement implements Vie
 
             @Override
             public void isCompleteDateAvailable(EventDate eventDate) {
-                publishButton.setSelected(eventDate != null);
+                isEventDateOK = eventDate != null;
             }
         });
 
@@ -180,6 +188,8 @@ public class WriteEventBaseFragment extends InstanceBaseFragement implements Vie
 
                 selectedTheme = (String) parent.getItemAtPosition(position);
 
+                isThemeOK = !TextUtils.isEmpty(selectedTheme);
+
                 break;
 
             case R.id.spinner_event_today_location:
@@ -187,7 +197,9 @@ public class WriteEventBaseFragment extends InstanceBaseFragement implements Vie
 
                 selectedTodayLocation = (String) parent.getItemAtPosition(position);
 
-                if (!TextUtils.isEmpty(selectedTodayLocation))
+                isTodayLocationOK = TextUtils.isEmpty(selectedTodayLocation);
+
+                if (!isTodayLocationOK)
                     Toast.makeText(getContext(), "Set precisely the location", Toast.LENGTH_SHORT).show();
 
                 break;
@@ -205,6 +217,8 @@ public class WriteEventBaseFragment extends InstanceBaseFragement implements Vie
     protected String makeUpEventDateFormat() {
 
         // beginning year BC/AD, {start date BC/AD - end date BC/AD}
+        eventDates.add(firstRecorderView.getmRecordedEventDate());
+        if(secondRecorderView.getVisibility() == View.VISIBLE) eventDates.add(secondRecorderView.getmRecordedEventDate());
 
 
         switch (eventDates.size()) {
@@ -269,6 +283,20 @@ public class WriteEventBaseFragment extends InstanceBaseFragement implements Vie
         // Run a new request into the RequestQueue.
 
         MySingleton.getInstance(getContext()).addToRequestQueue(gsonRequest);
+
+    }
+
+
+    protected void onScrollToChild(final int x, final int y){
+
+        new Handler().post(new Runnable() {
+            @Override
+            public void run() {
+
+                containerScrollView.scrollTo(x, y);
+
+            }
+        });
 
     }
 }

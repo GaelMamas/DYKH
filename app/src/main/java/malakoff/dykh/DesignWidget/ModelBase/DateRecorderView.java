@@ -565,6 +565,9 @@ public class DateRecorderView extends CardView implements AdapterView.OnItemSele
     }
 
 
+    public EventDate getmRecordedEventDate() {
+        return mRecordedEventDate;
+    }
 
     private List<String> setMonthDays() {
 

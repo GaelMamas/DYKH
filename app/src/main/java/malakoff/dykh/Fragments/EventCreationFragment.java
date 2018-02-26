@@ -231,44 +231,36 @@ public class EventCreationFragment extends WriteEventBaseFragment {
                         story = storyEditText.getText().toString();
 
 
-                if (TextUtils.isEmpty(title)
-                        || TextUtils.isEmpty(story)) {
+                if (TextUtils.isEmpty(title)) {
                     titleEditText.setError("Need to be filled");
-                    storyEditText.setError("Need to be filled");
+                    onScrollToChild(titleEditText.getScrollX(), titleEditText.getScrollY());
 
-                    titleEditText.scrollTo(titleEditText.getScrollX(), titleEditText.getScrollY());
+                } else if(TextUtils.isEmpty(story)){
+
+                    storyEditText.setError("Need to be filled");
+                    onScrollToChild(storyEditText.getScrollX(), storyEditText.getScrollY());
 
                 } else if (themeSpinner.getSelectedIndex() == -1) {
 
                     themeSpinner.setError("Need to be filled");
-                    themeSpinner.scrollTo(themeSpinner.getScrollX(), themeSpinner.getScrollY());
+                    onScrollToChild(themeSpinner.getScrollX(), themeSpinner.getScrollY());
 
                 } else if (todayLocationSpinner.getSelectedIndex() == -1) {
 
                     todayLocationSpinner.setError("Need to be filled");
-                    todayLocationSpinner.scrollTo(todayLocationSpinner.getScrollX(), todayLocationSpinner.getScrollY());
+                    onScrollToChild(todayLocationSpinner.getScrollX(), todayLocationSpinner.getScrollY());
 
                 } else if (TextUtils.isEmpty(historicLocationEditText.getText())) {
 
                     historicLocationEditText.setError("Need to be filled");
-                    historicLocationEditText.scrollTo(historicLocationEditText.getScrollX(),
+                    onScrollToChild(historicLocationEditText.getScrollX(),
                             historicLocationEditText.getScrollY());
 
-                } /*else if (eventDates.isEmpty()) {
-
-                    mBCADSpinner.setError("Need to be filled");
-                    mBCADSpinner.scrollTo(mBCADSpinner.getScrollX(), mBCADSpinner.getScrollY());
-
-                } else if (TextUtils.isEmpty(yearEditText.getText())) {
-
-                    yearEditText.setError("Need to be filled");
-                    yearEditText.scrollTo(yearEditText.getScrollX(), yearEditText.getScrollY());
-
-                }*/  else if (getView() != null && resetInputsListener.canProcess()) {
+                }else if (getView() != null && (isEventDateOK != null && !isEventDateOK) && resetInputsListener.canProcess()) {
 
                     mEventUpdatingProgressBar.setVisibility(View.VISIBLE);
 
-
+/*
 
                     runANewRequest(RequestsFactory.postAnEvent(getContext(), getView(), new Event(
                             "",
@@ -280,6 +272,8 @@ public class EventCreationFragment extends WriteEventBaseFragment {
                             story,
                             selectedTheme
                     ), resetInputsListener));
+
+                    */
                 }
                 break;
         }
