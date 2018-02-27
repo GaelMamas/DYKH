@@ -3,14 +3,18 @@ package malakoff.dykh.Fragments.Base;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.widget.AppCompatEditText;
+import android.text.Editable;
 import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.ScrollView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -20,7 +24,6 @@ import java.util.Arrays;
 import java.util.List;
 
 import malakoff.dykh.DesignWidget.BetterSpinner;
-import malakoff.dykh.DesignWidget.EventDateDeclarationCardView;
 import malakoff.dykh.DesignWidget.ModelBase.DateRecorderView;
 import malakoff.dykh.Interfaces.ResetInputsListener;
 import malakoff.dykh.ModelBase.Base.EventDate;
@@ -32,7 +35,7 @@ import malakoff.dykh.Utils.UsefulGenericMethods;
  * Created by VM32776N on 03/03/2017.
  */
 
-public class WriteEventBaseFragment extends InstanceBaseFragement implements View.OnClickListener, AdapterView.OnItemSelectedListener {
+public class WriteEventBaseFragment extends InstanceBaseFragement implements View.OnClickListener, AdapterView.OnItemSelectedListener, TextView.OnEditorActionListener {
 
     protected String selectedTheme, selectedTodayLocation;
     protected List<EventDate> eventDates = new ArrayList<>();
@@ -45,7 +48,7 @@ public class WriteEventBaseFragment extends InstanceBaseFragement implements Vie
 
     protected DateRecorderView firstRecorderView, secondRecorderView;
 
-    protected Boolean isThemeOK, isTodayLocationOK, isTitleOK, isHistoricLocationOK, isStoryOK, isEventDateOK;
+    protected boolean isThemeOK, isTodayLocationOK, isTitleOK, isHistoricLocationOK, isStoryOK, isEventDateOK;
 
 
     protected ResetInputsListener resetInputsListener = new ResetInputsListener() {
@@ -114,6 +117,10 @@ public class WriteEventBaseFragment extends InstanceBaseFragement implements Vie
 
         todayLocationAdapter.setDropDownViewResource(R.layout.cell_text_darker);
 
+        titleEditText.setOnEditorActionListener(this);
+        storyEditText.setOnEditorActionListener(this);
+        historicLocationEditText.setOnEditorActionListener(this);
+
         themeSpinner.setAdapter(themeAdapter);
         themeSpinner.setOnItemSelectedListener(this);
 
@@ -121,17 +128,68 @@ public class WriteEventBaseFragment extends InstanceBaseFragement implements Vie
         todayLocationSpinner.setOnItemSelectedListener(this);
 
 
+        titleEditText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                validateTitle(editable);
+            }
+        });
+        storyEditText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                validateStory(editable);
+            }
+        });
+        historicLocationEditText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                validateHistory(editable);
+            }
+        });
+
+
         firstRecorderView.setDateRecordable(new DateRecorderView.EventDateRecordable() {
             @Override
             public void onSwitch(boolean isOn, EventDate eventDate) {
-                secondRecorderView.setVisibility(isOn?View.VISIBLE:View.GONE);
+                secondRecorderView.setVisibility(isOn ? View.VISIBLE : View.GONE);
                 secondRecorderView.setDefaultValues(eventDate);
                 isEventDateOK = !isOn && eventDate != null;
+                enablePublishButton();
             }
 
             @Override
             public void isCompleteDateAvailable(EventDate eventDate) {
-                if(eventDate == null ){
+                if (eventDate == null) {
 
                     secondRecorderView.setVisibility(View.GONE);
 
@@ -142,6 +200,8 @@ public class WriteEventBaseFragment extends InstanceBaseFragement implements Vie
                 secondRecorderView.setDefaultValues(eventDate);
 
                 isEventDateOK = true;
+
+                enablePublishButton();
             }
         });
 
@@ -154,6 +214,7 @@ public class WriteEventBaseFragment extends InstanceBaseFragement implements Vie
             @Override
             public void isCompleteDateAvailable(EventDate eventDate) {
                 isEventDateOK = eventDate != null;
+                enablePublishButton();
             }
         });
 
@@ -186,18 +247,25 @@ public class WriteEventBaseFragment extends InstanceBaseFragement implements Vie
 
             case R.id.spinner_event_theme:
 
+                themeSpinner.setError(null);
+
                 selectedTheme = (String) parent.getItemAtPosition(position);
 
                 isThemeOK = !TextUtils.isEmpty(selectedTheme);
+
+                enablePublishButton();
 
                 break;
 
             case R.id.spinner_event_today_location:
 
+                todayLocationSpinner.setError(null);
 
                 selectedTodayLocation = (String) parent.getItemAtPosition(position);
 
-                isTodayLocationOK = TextUtils.isEmpty(selectedTodayLocation);
+                isTodayLocationOK = !TextUtils.isEmpty(selectedTodayLocation);
+
+                enablePublishButton();
 
                 if (!isTodayLocationOK)
                     Toast.makeText(getContext(), "Set precisely the location", Toast.LENGTH_SHORT).show();
@@ -214,11 +282,43 @@ public class WriteEventBaseFragment extends InstanceBaseFragement implements Vie
     }
 
 
+    @Override
+    public boolean onEditorAction(TextView textView, int i, KeyEvent keyEvent) {
+
+
+        switch (textView.getId()) {
+
+            case R.id.edittext_event_title:
+
+                validateTitle(textView.getText());
+
+                break;
+
+            case R.id.edittext_event_story:
+
+                validateStory(textView.getText());
+
+                break;
+
+            case R.id.edittext_event_location:
+
+                validateHistory(textView.getText());
+
+                break;
+
+        }
+
+
+        return false;
+    }
+
+
     protected String makeUpEventDateFormat() {
 
         // beginning year BC/AD, {start date BC/AD - end date BC/AD}
         eventDates.add(firstRecorderView.getmRecordedEventDate());
-        if(secondRecorderView.getVisibility() == View.VISIBLE) eventDates.add(secondRecorderView.getmRecordedEventDate());
+        if (secondRecorderView.getVisibility() == View.VISIBLE)
+            eventDates.add(secondRecorderView.getmRecordedEventDate());
 
 
         switch (eventDates.size()) {
@@ -238,10 +338,13 @@ public class WriteEventBaseFragment extends InstanceBaseFragement implements Vie
                 } else {
 
                     finalEventDate.append(" - ")
-                            .append(eventDates.get(0).getYear())
-                            .append(!TextUtils.isEmpty(eventDates.get(0).getMonth()) ? eventDates.get(0).getMonth() : "")
-                            .append(!TextUtils.isEmpty(eventDates.get(0).getDay()) ? eventDates.get(0).getDay() : "")
-                            .append(eventDates.get(0).getmBCAD())
+                            .append(eventDates.get(1).getYear())
+                            .append("-")
+                            .append(!TextUtils.isEmpty(eventDates.get(1).getMonth()) ? eventDates.get(1).getMonth() : "")
+                            .append("-")
+                            .append(!TextUtils.isEmpty(eventDates.get(1).getDay()) ? eventDates.get(1).getDay() : "")
+                            .append("-")
+                            .append(eventDates.get(1).getmBCAD())
                             .append("}");
                 }
 
@@ -268,14 +371,21 @@ public class WriteEventBaseFragment extends InstanceBaseFragement implements Vie
                 .append(eventDate.getmBCAD())
                 .append(", {")
                 .append(eventDate.getYear())
+                .append("-")
                 .append(!TextUtils.isEmpty(eventDate.getMonth()) ? eventDate.getMonth() : "")
+                .append("-")
                 .append(!TextUtils.isEmpty(eventDate.getDay()) ? eventDate.getDay() : "")
+                .append("-")
                 .append(eventDate.getmBCAD());
 
     }
 
+    protected void enablePublishButton() {
 
+        publishButton.setSelected(isTitleOK && isThemeOK && isStoryOK
+                && isTodayLocationOK && isHistoricLocationOK && isEventDateOK);
 
+    }
 
 
     public void runANewRequest(Request gsonRequest) {
@@ -287,7 +397,7 @@ public class WriteEventBaseFragment extends InstanceBaseFragement implements Vie
     }
 
 
-    protected void onScrollToChild(final int x, final int y){
+    protected void onScrollToChild(final int x, final int y) {
 
         new Handler().post(new Runnable() {
             @Override
@@ -297,6 +407,36 @@ public class WriteEventBaseFragment extends InstanceBaseFragement implements Vie
 
             }
         });
+
+    }
+
+    private void validateTitle(CharSequence editable) {
+
+        titleEditText.setError(null);
+
+        isTitleOK = !TextUtils.isEmpty(editable);
+
+        enablePublishButton();
+
+    }
+
+    private void validateStory(CharSequence editable) {
+
+        storyEditText.setError(null);
+
+        isStoryOK = !TextUtils.isEmpty(editable);
+
+        enablePublishButton();
+
+    }
+
+    private void validateHistory(CharSequence editable) {
+
+        historicLocationEditText.setError(null);
+
+        isHistoricLocationOK = !TextUtils.isEmpty(editable);
+
+        enablePublishButton();
 
     }
 }

@@ -6,11 +6,11 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.PopupMenu;
-import android.text.TextUtils;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 import com.android.volley.RequestQueue;
 
@@ -52,6 +52,7 @@ public class EventCreationFragment extends WriteEventBaseFragment {
     @Override
     protected void populateViews(Bundle savedInstanceState) {
         super.populateViews(savedInstanceState);
+
 
         publishButton.setOnLongClickListener(new OnLongClickListener() {
             @Override
@@ -231,34 +232,63 @@ public class EventCreationFragment extends WriteEventBaseFragment {
                         story = storyEditText.getText().toString();
 
 
-                if (TextUtils.isEmpty(title)) {
+                if (!isTitleOK) {
                     titleEditText.setError("Need to be filled");
                     onScrollToChild(titleEditText.getScrollX(), titleEditText.getScrollY());
 
-                } else if(TextUtils.isEmpty(story)){
-
-                    storyEditText.setError("Need to be filled");
-                    onScrollToChild(storyEditText.getScrollX(), storyEditText.getScrollY());
-
-                } else if (themeSpinner.getSelectedIndex() == -1) {
+                } else if (!isThemeOK) {
 
                     themeSpinner.setError("Need to be filled");
                     onScrollToChild(themeSpinner.getScrollX(), themeSpinner.getScrollY());
 
-                } else if (todayLocationSpinner.getSelectedIndex() == -1) {
+                } else if (!isStoryOK) {
+
+                    storyEditText.setError("Need to be filled");
+                    onScrollToChild(storyEditText.getScrollX(), storyEditText.getScrollY());
+
+                } else if (!isTodayLocationOK) {
 
                     todayLocationSpinner.setError("Need to be filled");
                     onScrollToChild(todayLocationSpinner.getScrollX(), todayLocationSpinner.getScrollY());
 
-                } else if (TextUtils.isEmpty(historicLocationEditText.getText())) {
+                } else if (!isHistoricLocationOK) {
 
                     historicLocationEditText.setError("Need to be filled");
                     onScrollToChild(historicLocationEditText.getScrollX(),
                             historicLocationEditText.getScrollY());
 
-                }else if (getView() != null && (isEventDateOK != null && !isEventDateOK) && resetInputsListener.canProcess()) {
+                } else if (!isEventDateOK) {
+
+                    if (secondRecorderView.getVisibility() == View.VISIBLE) {
+
+                        firstRecorderView.getHeaderTitleTextView().setError(null);
+                        secondRecorderView.getHeaderTitleTextView().setError("Need to be filled");
+
+                    } else {
+
+                        firstRecorderView.getHeaderTitleTextView().setError("Need to be filled");
+
+                        onScrollToChild(firstRecorderView.getHeaderTitleTextView().getScrollX(),
+                                firstRecorderView.getHeaderTitleTextView().getScrollY());
+
+                    }
+
+                } else if (getView() != null && resetInputsListener.canProcess()) {
 
                     mEventUpdatingProgressBar.setVisibility(View.VISIBLE);
+
+                    String readyToPush = " Date " + makeUpEventDateFormat() + " \n Historic Loc " +
+                            historicLocation + " \n Today Loc " +
+                            selectedTodayLocation + " \n UserId " +
+                            AppApplication.getUserInfo().getUserId() + " \n Title " +
+                            title + " \nStory " +
+                            story + " \nTheme " +
+                            selectedTheme;
+
+                    Toast.makeText(getContext(), readyToPush,
+                            Toast.LENGTH_LONG).show();
+
+                    Log.i(this.getClass().getSimpleName(), readyToPush);
 
 /*
 

@@ -569,6 +569,10 @@ public class DateRecorderView extends CardView implements AdapterView.OnItemSele
         return mRecordedEventDate;
     }
 
+    public TextView getHeaderTitleTextView() {
+        return headerTitleTextView;
+    }
+
     private List<String> setMonthDays() {
 
         int number = setMonthDaysNumber();
@@ -625,6 +629,7 @@ public class DateRecorderView extends CardView implements AdapterView.OnItemSele
         doesSwitchHaveToAppear = false;
 
         init();
+
 
         headerTitleTextView.setText(R.string.event_time_block_title_2);
 
