@@ -182,7 +182,7 @@ public class WriteEventBaseFragment extends InstanceBaseFragement implements Vie
             @Override
             public void onSwitch(boolean isOn, EventDate eventDate) {
                 secondRecorderView.setVisibility(isOn ? View.VISIBLE : View.GONE);
-                secondRecorderView.setDefaultValues(eventDate);
+                secondRecorderView.setDefaultValues(eventDate, false);
                 isEventDateOK = !isOn && eventDate != null;
                 enablePublishButton();
             }
@@ -197,7 +197,7 @@ public class WriteEventBaseFragment extends InstanceBaseFragement implements Vie
 
                     return;
                 }
-                secondRecorderView.setDefaultValues(eventDate);
+                secondRecorderView.setDefaultValues(eventDate, false);
 
                 isEventDateOK = true;
 
@@ -315,7 +315,8 @@ public class WriteEventBaseFragment extends InstanceBaseFragement implements Vie
 
     protected String makeUpEventDateFormat() {
 
-        // beginning year BC/AD, {start date BC/AD - end date BC/AD}
+        // only one year: year BC/AD, date: YYYY-MM-DD-BC/AD
+        // start year: year BC/AD,start date: YYYY-MM-DD-BC/AD,end date : YYYY-MM-DD-BC/AD
         eventDates.add(firstRecorderView.getmRecordedEventDate());
         if (secondRecorderView.getVisibility() == View.VISIBLE)
             eventDates.add(secondRecorderView.getmRecordedEventDate());
@@ -329,30 +330,27 @@ public class WriteEventBaseFragment extends InstanceBaseFragement implements Vie
 
                 if (finalEventDate.toString().contentEquals(makeUpFirstPartEventDate(eventDates.get(1)))) {
 
-                    finalEventDate = makeUpFirstPartEventDate(eventDates.get(0))
-                            .append("}");
+                    finalEventDate = makeUpFirstPartEventDate(eventDates.get(0));
 
 
                     Log.i("DYKH Date Format", "Same Date " + finalEventDate.toString());
 
                 } else {
 
-                    finalEventDate.append(" - ")
+                    finalEventDate.append(",")
                             .append(eventDates.get(1).getYear())
                             .append("-")
                             .append(!TextUtils.isEmpty(eventDates.get(1).getMonth()) ? eventDates.get(1).getMonth() : "")
                             .append("-")
                             .append(!TextUtils.isEmpty(eventDates.get(1).getDay()) ? eventDates.get(1).getDay() : "")
                             .append("-")
-                            .append(eventDates.get(1).getmBCAD())
-                            .append("}");
+                            .append(eventDates.get(1).getmBCAD());
                 }
 
                 return finalEventDate.toString();
             case 1:
 
-                finalEventDate = makeUpFirstPartEventDate(eventDates.get(0))
-                        .append("}");
+                finalEventDate = makeUpFirstPartEventDate(eventDates.get(0));
 
 
                 Log.i("DYKH Date Format", finalEventDate.toString());
@@ -368,8 +366,9 @@ public class WriteEventBaseFragment extends InstanceBaseFragement implements Vie
     private StringBuilder makeUpFirstPartEventDate(EventDate eventDate) {
 
         return new StringBuilder().append(eventDate.getYear())
+                .append(" ")
                 .append(eventDate.getmBCAD())
-                .append(", {")
+                .append(",{")
                 .append(eventDate.getYear())
                 .append("-")
                 .append(!TextUtils.isEmpty(eventDate.getMonth()) ? eventDate.getMonth() : "")

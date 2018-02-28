@@ -23,6 +23,7 @@ import malakoff.dykh.AppApplication.AppApplication;
 import malakoff.dykh.AppApplication.Constants;
 import malakoff.dykh.Event.Event;
 import malakoff.dykh.Fragments.Base.WriteEventBaseFragment;
+import malakoff.dykh.ModelBase.Base.EventDate;
 import malakoff.dykh.Network.RequestsFactory;
 import malakoff.dykh.R;
 import malakoff.dykh.Utils.UsefulGenericMethods;
@@ -69,38 +70,79 @@ public class ModifyEventFragment extends WriteEventBaseFragment {
             }
             historicLocationEditText.setText(currentEvent.getLocation());
 
+            currentEvent.setSliceTime("1899 AD,1899-12-31-AD");
+            //"1899 AD, {1899-12-30-AD|1899-12-31-AD}"
+
             if (!TextUtils.isEmpty(currentEvent.getSliceTime())) {
 
-                //dateSetterLayout.setVisibility(View.VISIBLE);
+                EventDate startEventDate;
 
-                //mBCADSpinner.setSelection("BC".contains(currentEvent.getSliceTime()) ? 0 : 1);
+                if (currentEvent.getSliceTime().contains(",")) {
 
-                if ("-".contains(currentEvent.getSliceTime())) {
+                    String[] eventDates = currentEvent.getSliceTime().split(",");
 
-                    try {
-                        String[] mYMD = TextUtils.split(currentEvent.getSliceTime(), "-");
+                    if (eventDates == null || eventDates.length == 0) return;
 
-                        //yearEditText.setText(mYMD[0]);
-                        //monthSpinner.setText(mYMD[1]);
 
-                        if ("BC".contains(mYMD[2]) || "AD".contains(mYMD[2])) {
+                    if (!TextUtils.isEmpty(eventDates[0]) && eventDates.length == 1) {
 
-                            //daySpinner.setText(mYMD[2].split(" ")[0]);
+                        startEventDate = retrieveYearAndBCAD(currentEvent.getSliceTime());
 
-                        } else {
+                        if (startEventDate != null) {
 
-                            //daySpinner.setText(mYMD[2]);
+                            this.eventDates.add(startEventDate);
+
+                        }
+
+                        firstRecorderView.setDefaultValues(this.eventDates.get(0), true);
+
+                    } else {
+
+                        for (int i = 1; i < eventDates.length; i++) {
+
+                            if (!TextUtils.isEmpty(eventDates[i])) {
+
+                                EventDate eventDate = retrieveEventDate(eventDates[i]);
+
+                                switch (i) {
+                                    case 1:
+                                        if (eventDate != null) {
+
+                                            firstRecorderView.setDefaultValues(eventDate, true);
+
+                                            secondRecorderView.setVisibility(View.GONE);
+                                        }
+
+                                    case 2:
+
+                                        if (eventDate != null) {
+
+                                            firstRecorderView.putOnSwitch(true);
+                                            secondRecorderView.setVisibility(View.VISIBLE);
+                                            secondRecorderView.setDefaultValues(eventDate, false);
+                                        }
+                                }
+
+                            }
 
                         }
 
 
-                    } catch (NullPointerException e) {
-                        e.getStackTrace();
                     }
+
 
                 } else {
 
-                    //yearEditText.setText(currentEvent.getSliceTime());
+                    startEventDate = retrieveYearAndBCAD(currentEvent.getSliceTime());
+
+                    if (startEventDate != null) {
+
+                        this.eventDates.add(startEventDate);
+
+                        firstRecorderView.setDefaultValues(eventDates.get(0), true);
+
+                    }
+
 
                 }
 
@@ -235,6 +277,55 @@ public class ModifyEventFragment extends WriteEventBaseFragment {
     }
 
 
+    private EventDate retrieveEventDate(String eventDateFormat) {
+
+        String[] skinOff;
+
+        if (TextUtils.isEmpty(eventDateFormat)) return null;
+
+        skinOff = eventDateFormat.split("-");
+
+        if (skinOff == null || skinOff.length == 0) return null;
+
+        return new EventDate(skinOff[3], skinOff[0], skinOff[1], skinOff[2]);
+
+    }
+
+    private EventDate retrieveYearAndBCAD(String sliceTime) {
+
+        if (TextUtils.isEmpty(sliceTime)) return null;
+
+        if (sliceTime.contains("BC")
+                || sliceTime.contains("AD")) {
+
+            String[] yearBCADArray = sliceTime.trim().split(" ");
+            String mBCAD = null;
+            String mYear = null;
+
+            if (yearBCADArray == null || yearBCADArray.length == 0) return null;
+
+            if (TextUtils.isEmpty(yearBCADArray[1])) {
+
+                mBCAD = yearBCADArray[1];
+
+            }
+
+            if (!TextUtils.isEmpty(yearBCADArray[0])
+                    && yearBCADArray[0].matches("[-+]?\\d*\\.?\\d+")) {
+
+                mYear = yearBCADArray[0];
+
+            }
+
+            return new EventDate(mBCAD, mYear, null, null);
+
+        }
+
+
+        return null;
+    }
+
+
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
@@ -245,37 +336,48 @@ public class ModifyEventFragment extends WriteEventBaseFragment {
                         story = storyEditText.getText().toString();
 
 
-                if (TextUtils.isEmpty(title)) {
+                if (!isTitleOK) {
                     titleEditText.setError("Need to be filled");
-                    titleEditText.scrollTo(titleEditText.getScrollX(), titleEditText.getScrollY());
+                    onScrollToChild(titleEditText.getScrollX(), titleEditText.getScrollY());
 
-                } else if (themeSpinner.getSelectedIndex() == -1) {
+                } else if (!isThemeOK) {
 
                     themeSpinner.setError("Need to be filled");
-                    themeSpinner.scrollTo(themeSpinner.getScrollX(), themeSpinner.getScrollY());
+                    onScrollToChild(themeSpinner.getScrollX(), themeSpinner.getScrollY());
 
-                } else if (todayLocationSpinner.getSelectedIndex() == -1) {
+                } else if (!isStoryOK) {
+
+                    storyEditText.setError("Need to be filled");
+                    onScrollToChild(storyEditText.getScrollX(), storyEditText.getScrollY());
+
+                } else if (!isTodayLocationOK) {
 
                     todayLocationSpinner.setError("Need to be filled");
-                    todayLocationSpinner.scrollTo(todayLocationSpinner.getScrollX(), todayLocationSpinner.getScrollY());
+                    onScrollToChild(todayLocationSpinner.getScrollX(), todayLocationSpinner.getScrollY());
 
-                } else if (TextUtils.isEmpty(historicLocationEditText.getText())) {
+                } else if (!isHistoricLocationOK) {
 
                     historicLocationEditText.setError("Need to be filled");
-                    historicLocationEditText.scrollTo(historicLocationEditText.getScrollX(),
+                    onScrollToChild(historicLocationEditText.getScrollX(),
                             historicLocationEditText.getScrollY());
 
-                } /*else if (mBCADSpinner.getSelectedIndex() == -1) {
+                } else if (!isEventDateOK) {
 
-                    mBCADSpinner.setError("Need to be filled");
-                    mBCADSpinner.scrollTo(mBCADSpinner.getScrollX(), mBCADSpinner.getScrollY());
+                    if (secondRecorderView.getVisibility() == View.VISIBLE) {
 
-                } else if (TextUtils.isEmpty(yearEditText.getText())) {
+                        firstRecorderView.getHeaderTitleTextView().setError(null);
+                        secondRecorderView.getHeaderTitleTextView().setError("Need to be filled");
 
-                    yearEditText.setError("Need to be filled");
-                    yearEditText.scrollTo(yearEditText.getScrollX(), yearEditText.getScrollY());
+                    } else {
 
-                }*/else if (resetInputsListener.canProcess()) {
+                        firstRecorderView.getHeaderTitleTextView().setError("Need to be filled");
+
+                        onScrollToChild(firstRecorderView.getHeaderTitleTextView().getScrollX(),
+                                firstRecorderView.getHeaderTitleTextView().getScrollY());
+
+                    }
+
+                } else if (resetInputsListener.canProcess()) {
 
                     try {
 
