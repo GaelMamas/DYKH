@@ -113,6 +113,8 @@ public class ModifyEventFragment extends WriteEventBaseFragment {
                                             secondRecorderView.setVisibility(View.GONE);
                                         }
 
+                                        break;
+
                                     case 2:
 
                                         if (eventDate != null) {
@@ -121,6 +123,8 @@ public class ModifyEventFragment extends WriteEventBaseFragment {
                                             secondRecorderView.setVisibility(View.VISIBLE);
                                             secondRecorderView.setDefaultValues(eventDate, false);
                                         }
+
+                                        break;
                                 }
 
                             }

@@ -368,7 +368,7 @@ public class WriteEventBaseFragment extends InstanceBaseFragement implements Vie
         return new StringBuilder().append(eventDate.getYear())
                 .append(" ")
                 .append(eventDate.getmBCAD())
-                .append(",{")
+                .append(",")
                 .append(eventDate.getYear())
                 .append("-")
                 .append(!TextUtils.isEmpty(eventDate.getMonth()) ? eventDate.getMonth() : "")

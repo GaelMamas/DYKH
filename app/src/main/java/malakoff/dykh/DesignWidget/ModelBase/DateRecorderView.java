@@ -196,7 +196,7 @@ public class DateRecorderView extends CardView implements AdapterView.OnItemSele
 
                         recordThisDate(inputYear, String.valueOf(monthIndex), null);
 
-                    }else{
+                    } else {
 
                         updateTwin(null);
 
@@ -290,12 +290,11 @@ public class DateRecorderView extends CardView implements AdapterView.OnItemSele
             case BCAD_STEP:
 
 
-                    return getResources().getStringArray(R.array.event_bc_or_ad)[1]
-                            .contentEquals(relatedEventDate.getmBCAD())
+                return getResources().getStringArray(R.array.event_bc_or_ad)[1]
+                        .contentEquals(relatedEventDate.getmBCAD())
 
-                            && getResources().getStringArray(R.array.event_bc_or_ad)[0]
-                            .contentEquals(value);
-
+                        && getResources().getStringArray(R.array.event_bc_or_ad)[0]
+                        .contentEquals(value);
 
 
             case YEAR_STEP:
@@ -459,14 +458,14 @@ public class DateRecorderView extends CardView implements AdapterView.OnItemSele
     }
 
 
-    public void updateTwin(EventDate eventDate){
+    public void updateTwin(EventDate eventDate) {
 
-        if(relatedEventDate == null && dateRecordable != null){
+        if (relatedEventDate == null && dateRecordable != null) {
 
             switchCompat.setChecked(false);
             dateRecordable.isCompleteDateAvailable(eventDate);
 
-        }else if(dateRecordable != null){
+        } else if (dateRecordable != null) {
 
             dateRecordable.isCompleteDateAvailable(eventDate);
 
@@ -474,7 +473,7 @@ public class DateRecorderView extends CardView implements AdapterView.OnItemSele
 
     }
 
-    private void hideSubsequentComponents(){
+    private void hideSubsequentComponents() {
 
         yearEditText.setText("");
 
@@ -486,22 +485,22 @@ public class DateRecorderView extends CardView implements AdapterView.OnItemSele
 
     }
 
-    private void hideMonthDayComponents(){
+    private void hideMonthDayComponents() {
 
         manageDisplayMonthComponent(false);
         manageDisplayDayComponent(false);
 
     }
 
-    private void manageDisplayMonthComponent(boolean wantToShow){
+    private void manageDisplayMonthComponent(boolean wantToShow) {
 
-        if(wantToShow){
+        if (wantToShow) {
 
             monthSpinner.setVisibility(VISIBLE);
             monthSpinner.resetPlaceHolderText();
             monthSpinner.setError(null);
 
-        }else{
+        } else {
 
             monthSpinner.setVisibility(INVISIBLE);
 
@@ -511,15 +510,15 @@ public class DateRecorderView extends CardView implements AdapterView.OnItemSele
 
     }
 
-    private void manageDisplayDayComponent(boolean wantToShow){
+    private void manageDisplayDayComponent(boolean wantToShow) {
 
-        if(wantToShow){
+        if (wantToShow) {
 
             daySpinner.setVisibility(VISIBLE);
             daySpinner.resetPlaceHolderText();
             daySpinner.setError(null);
 
-        }else{
+        } else {
 
             daySpinner.setVisibility(INVISIBLE);
 
@@ -527,7 +526,6 @@ public class DateRecorderView extends CardView implements AdapterView.OnItemSele
 
         daySpinner.resetPlaceHolderText();
     }
-
 
 
     private void recordThisDate(int year, int monthOfYear, int dayOfMonth) {
@@ -540,12 +538,12 @@ public class DateRecorderView extends CardView implements AdapterView.OnItemSele
 
     private void recordThisDate(String year, String monthOfYear, String dayOfMonth) {
 
-        if(mRecordedEventDate == null) {
+        if (mRecordedEventDate == null) {
 
             mRecordedEventDate = new EventDate(selectedBCAD,
                     year, monthOfYear, dayOfMonth);
 
-        }else{
+        } else {
 
             mRecordedEventDate.setYear(year);
             mRecordedEventDate.setMonth(monthOfYear);
@@ -563,7 +561,7 @@ public class DateRecorderView extends CardView implements AdapterView.OnItemSele
 
     }
 
-    public void putOnSwitch(boolean yes){
+    public void putOnSwitch(boolean yes) {
 
         switchCompat.setChecked(yes);
         switchLayout.setVisibility(yes ? VISIBLE : GONE);
@@ -641,7 +639,7 @@ public class DateRecorderView extends CardView implements AdapterView.OnItemSele
 
         headerTitleTextView.setText(R.string.event_time_block_title_2);
 
-        if(TextUtils.isEmpty(eventDate.getmBCAD())){
+        if (TextUtils.isEmpty(eventDate.getmBCAD())) {
 
             mBCADSpinner.resetPlaceHolderText();
 
@@ -653,7 +651,7 @@ public class DateRecorderView extends CardView implements AdapterView.OnItemSele
             dateSetterLayout.setVisibility(VISIBLE);
             yearEditText.setVisibility(VISIBLE);
 
-        }else {
+        } else {
 
             mBCADSpinner.setSelection(eventDate.getmBCAD().contentEquals(getResources()
                     .getStringArray(R.array.event_bc_or_ad)[0]) ? 0 : 1);
@@ -677,6 +675,88 @@ public class DateRecorderView extends CardView implements AdapterView.OnItemSele
 
 
     }
+
+
+    public void setFirstCardViewValues(EventDate eventDate) {
+
+        //TODO NULL
+        if (eventDate == null)return;
+
+        if(TextUtils.isEmpty(eventDate.getmBCAD())
+                && TextUtils.isEmpty(eventDate.getYear())) return;
+
+
+        //TODO PARTIALLY FILLED
+
+        if (TextUtils.isEmpty(eventDate.getmBCAD())) {
+
+            mBCADSpinner.resetPlaceHolderText();
+
+            if (TextUtils.isEmpty(eventDate.getYear())
+                    && !eventDate.getYear().matches("[-+]?\\d*\\.?\\d+")) return;
+
+            yearEditText.setText(inputYear = eventDate.getYear());
+
+            dateSetterLayout.setVisibility(VISIBLE);
+            yearEditText.setVisibility(VISIBLE);
+
+            return;
+        }
+
+
+
+
+        this.doesSwitchHaveToAppear = true;
+
+
+
+        //TODO COMPLETELY FILLED
+
+
+    }
+
+
+    public void setSecondCardViewValues(EventDate eventDate) {
+
+
+        if (eventDate == null
+                || TextUtils.isEmpty(eventDate.getmBCAD())) return;
+
+        this.doesSwitchHaveToAppear = false;
+
+        init();
+
+
+        headerTitleTextView.setText(R.string.event_time_block_title_2);
+
+        if (TextUtils.isEmpty(eventDate.getmBCAD())) {
+
+
+
+        } else {
+
+            mBCADSpinner.setSelection(eventDate.getmBCAD().contentEquals(getResources()
+                    .getStringArray(R.array.event_bc_or_ad)[0]) ? 0 : 1);
+
+            selectedBCAD = eventDate.getmBCAD();
+
+            relatedEventDate = eventDate;
+
+            if (TextUtils.isEmpty(eventDate.getYear())
+                    && !eventDate.getYear().matches("[-+]?\\d*\\.?\\d+")) return;
+
+
+            yearEditText.setText(inputYear = eventDate.getYear());
+
+            monthSpinner.resetPlaceHolderText();
+
+            setYearInput(Integer.parseInt(inputYear),
+                    TextUtils.isEmpty(eventDate.getMonth()) ? 0 : Integer.parseInt(eventDate.getMonth()),
+                    TextUtils.isEmpty(eventDate.getDay()) ? 0 : Integer.parseInt(eventDate.getDay()));
+        }
+
+    }
+
 
     public void setDateRecordable(EventDateRecordable dateRecordable) {
         this.dateRecordable = dateRecordable;
