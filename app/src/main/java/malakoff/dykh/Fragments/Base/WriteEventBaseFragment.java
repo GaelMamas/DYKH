@@ -182,7 +182,7 @@ public class WriteEventBaseFragment extends InstanceBaseFragement implements Vie
             @Override
             public void onSwitch(boolean isOn, EventDate eventDate) {
                 secondRecorderView.setVisibility(isOn ? View.VISIBLE : View.GONE);
-                secondRecorderView.setDefaultValues(eventDate, false);
+                secondRecorderView.setTwinDefaultValues(eventDate);
                 isEventDateOK = !isOn && eventDate != null;
                 enablePublishButton();
             }
@@ -197,7 +197,7 @@ public class WriteEventBaseFragment extends InstanceBaseFragement implements Vie
 
                     return;
                 }
-                secondRecorderView.setDefaultValues(eventDate, false);
+                secondRecorderView.setTwinDefaultValues(eventDate);
 
                 isEventDateOK = true;
 
@@ -315,8 +315,8 @@ public class WriteEventBaseFragment extends InstanceBaseFragement implements Vie
 
     protected String makeUpEventDateFormat() {
 
-        // only one year: year BC/AD, date: YYYY-MM-DD-BC/AD
-        // start year: year BC/AD,start date: YYYY-MM-DD-BC/AD,end date : YYYY-MM-DD-BC/AD
+        // only one year: year BC/AD, date:YYYY-MM-DD-BC/AD
+        // start year: year BC/AD,start date:YYYY-MM-DD-BC/AD, end date :YYYY-MM-DD-BC/AD
         eventDates.add(firstRecorderView.getmRecordedEventDate());
         if (secondRecorderView.getVisibility() == View.VISIBLE)
             eventDates.add(secondRecorderView.getmRecordedEventDate());

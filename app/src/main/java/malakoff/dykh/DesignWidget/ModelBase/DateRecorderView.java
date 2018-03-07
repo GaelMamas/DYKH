@@ -413,6 +413,12 @@ public class DateRecorderView extends CardView implements AdapterView.OnItemSele
 
     private void setEventDatePicker(int year, int monthOfYear, int dayOfMonth) {
 
+        /* TODO When Inputs are a date the future
+        int correctYear = year <= Calendar.getInstance().get(Calendar.YEAR) ? year : Calendar.getInstance().get(Calendar.YEAR);
+        int correctMonthOfYear = monthOfYear <= Calendar.getInstance().get(Calendar.MONTH) ? monthOfYear : Calendar.getInstance().get(Calendar.MONTH);
+        int correctDayOfMonth = dayOfMonth <= Calendar.getInstance().get(Calendar.DAY_OF_MONTH) ? dayOfMonth : Calendar.getInstance().get(Calendar.DAY_OF_MONTH);
+        TODO END*/
+
         recordThisDate(year, monthOfYear, dayOfMonth);
 
 
@@ -581,11 +587,11 @@ public class DateRecorderView extends CardView implements AdapterView.OnItemSele
 
         int number = setMonthDaysNumber();
 
-        if (number == 0) return null;
-
         List<String> monthDay = new ArrayList<>();
 
         monthDay.add(getResources().getString(R.string.event_creation_unknown_item_date));
+
+        if (number == 0) return monthDay;
 
 
         for (int i = 0; i < number; i++) {
@@ -626,98 +632,7 @@ public class DateRecorderView extends CardView implements AdapterView.OnItemSele
         }
     }
 
-    public void setDefaultValues(EventDate eventDate, boolean potentiallyEnableNextDateLayout) {
-
-        if (eventDate == null
-                || (TextUtils.isEmpty(eventDate.getmBCAD())
-                && !potentiallyEnableNextDateLayout)) return;
-
-        this.doesSwitchHaveToAppear = potentiallyEnableNextDateLayout;
-
-        init();
-
-
-        headerTitleTextView.setText(R.string.event_time_block_title_2);
-
-        if (TextUtils.isEmpty(eventDate.getmBCAD())) {
-
-            mBCADSpinner.resetPlaceHolderText();
-
-            if (TextUtils.isEmpty(eventDate.getYear())
-                    && !eventDate.getYear().matches("[-+]?\\d*\\.?\\d+")) return;
-
-            yearEditText.setText(inputYear = eventDate.getYear());
-
-            dateSetterLayout.setVisibility(VISIBLE);
-            yearEditText.setVisibility(VISIBLE);
-
-        } else {
-
-            mBCADSpinner.setSelection(eventDate.getmBCAD().contentEquals(getResources()
-                    .getStringArray(R.array.event_bc_or_ad)[0]) ? 0 : 1);
-
-            selectedBCAD = eventDate.getmBCAD();
-
-            relatedEventDate = eventDate;
-
-            if (TextUtils.isEmpty(eventDate.getYear())
-                    && !eventDate.getYear().matches("[-+]?\\d*\\.?\\d+")) return;
-
-
-            yearEditText.setText(inputYear = eventDate.getYear());
-
-            monthSpinner.resetPlaceHolderText();
-
-            setYearInput(Integer.parseInt(inputYear),
-                    TextUtils.isEmpty(eventDate.getMonth()) ? 0 : Integer.parseInt(eventDate.getMonth()),
-                    TextUtils.isEmpty(eventDate.getDay()) ? 0 : Integer.parseInt(eventDate.getDay()));
-        }
-
-
-    }
-
-
-    public void setFirstCardViewValues(EventDate eventDate) {
-
-        //TODO NULL
-        if (eventDate == null)return;
-
-        if(TextUtils.isEmpty(eventDate.getmBCAD())
-                && TextUtils.isEmpty(eventDate.getYear())) return;
-
-
-        //TODO PARTIALLY FILLED
-
-        if (TextUtils.isEmpty(eventDate.getmBCAD())) {
-
-            mBCADSpinner.resetPlaceHolderText();
-
-            if (TextUtils.isEmpty(eventDate.getYear())
-                    && !eventDate.getYear().matches("[-+]?\\d*\\.?\\d+")) return;
-
-            yearEditText.setText(inputYear = eventDate.getYear());
-
-            dateSetterLayout.setVisibility(VISIBLE);
-            yearEditText.setVisibility(VISIBLE);
-
-            return;
-        }
-
-
-
-
-        this.doesSwitchHaveToAppear = true;
-
-
-
-        //TODO COMPLETELY FILLED
-
-
-    }
-
-
-    public void setSecondCardViewValues(EventDate eventDate) {
-
+    public void setTwinDefaultValues(EventDate eventDate) {
 
         if (eventDate == null
                 || TextUtils.isEmpty(eventDate.getmBCAD())) return;
@@ -731,7 +646,15 @@ public class DateRecorderView extends CardView implements AdapterView.OnItemSele
 
         if (TextUtils.isEmpty(eventDate.getmBCAD())) {
 
+            mBCADSpinner.resetPlaceHolderText();
 
+            if (TextUtils.isEmpty(eventDate.getYear())
+                    && !eventDate.getYear().matches("[-+]?\\d*\\.?\\d+")) return;
+
+            yearEditText.setText(inputYear = eventDate.getYear());
+
+            dateSetterLayout.setVisibility(VISIBLE);
+            yearEditText.setVisibility(VISIBLE);
 
         } else {
 
@@ -754,6 +677,85 @@ public class DateRecorderView extends CardView implements AdapterView.OnItemSele
                     TextUtils.isEmpty(eventDate.getMonth()) ? 0 : Integer.parseInt(eventDate.getMonth()),
                     TextUtils.isEmpty(eventDate.getDay()) ? 0 : Integer.parseInt(eventDate.getDay()));
         }
+
+
+    }
+
+
+    public void fillEventDateBlock(EventDate source, boolean potentiallyEnableNextDateLayout, boolean hasNext) {
+
+        if (source == null) return;
+
+        init();
+
+        headerTitleTextView.setText(potentiallyEnableNextDateLayout ?
+                R.string.event_time_block_title :
+                R.string.event_time_block_title_2);
+
+
+        if (!TextUtils.isEmpty(source.getmBCAD())) {
+
+            mBCADSpinner.setSelection(source.getmBCAD().contentEquals(getResources()
+                    .getStringArray(R.array.event_bc_or_ad)[0]) ? 0 : 1);
+
+            selectedBCAD = source.getmBCAD();
+
+
+            if (!TextUtils.isEmpty(source.getYear())
+                    && source.getYear().matches("[-+]?\\d*\\.?\\d+")) {
+
+                int year = Integer.parseInt(source.getYear());
+
+                if (year > 1899 && mBCADSpinner.getSelectedIndex() == 1) {
+
+                    setYearInput(year,
+                            TextUtils.isEmpty(source.getMonth()) ? 0 : Integer.parseInt(source.getMonth()),
+                            TextUtils.isEmpty(source.getDay()) ? 0 : Integer.parseInt(source.getDay()));
+
+                } else {
+
+                    dateSetterLayout.setVisibility(VISIBLE);
+                    monthSpinner.setVisibility(VISIBLE);
+                    daySpinner.setVisibility(VISIBLE);
+
+
+                    yearEditText.setText(source.getYear());
+
+                    if (!TextUtils.isEmpty(source.getMonth())
+                            && source.getMonth().matches("[-+]?\\d*\\.?\\d+")) {
+
+                        monthSpinner.setSelection(Integer.parseInt(source.getMonth()));
+
+                    } else {
+                        monthSpinner.setSelection(0);
+                    }
+
+                    monthIndex = monthSpinner.getSelectedIndex();
+
+                    daySpinner.setAdapter(new ArrayAdapter<>(getContext(),
+                            R.layout.cell_text_dark,
+                            setMonthDays()));
+
+
+                    if (!TextUtils.isEmpty(source.getDay())
+                            && source.getDay().matches("[-+]?\\d*\\.?\\d+")) {
+
+
+                        daySpinner.setSelection(Integer.parseInt(source.getDay()));
+
+                    } else {
+                        daySpinner.setSelection(0);
+                    }
+
+                }
+
+
+            }
+
+        }
+
+        switchLayout.setVisibility(potentiallyEnableNextDateLayout ? VISIBLE : GONE);
+        switchCompat.setChecked(hasNext);
 
     }
 

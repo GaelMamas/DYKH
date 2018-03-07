@@ -70,8 +70,11 @@ public class ModifyEventFragment extends WriteEventBaseFragment {
             }
             historicLocationEditText.setText(currentEvent.getLocation());
 
-            currentEvent.setSliceTime("1899 AD,1899-12-31-AD");
-            //"1899 AD, {1899-12-30-AD|1899-12-31-AD}"
+            //currentEvent.setSliceTime("1899 AD,1899-12-31-AD");
+            currentEvent.setSliceTime("2018 AD,2018-03-25-AD");
+            //currentEvent.setSliceTime("2015 AD,2015-10-19-AD,2018-01-24-AD");
+            //currentEvent.setSliceTime("1899 AD,1899-12-30-AD,1899-12-31-AD");
+            //currentEvent.setSliceTime("1899 AD");
 
             if (!TextUtils.isEmpty(currentEvent.getSliceTime())) {
 
@@ -94,7 +97,7 @@ public class ModifyEventFragment extends WriteEventBaseFragment {
 
                         }
 
-                        firstRecorderView.setDefaultValues(this.eventDates.get(0), true);
+                        firstRecorderView.fillEventDateBlock(this.eventDates.get(0), true, false);
 
                     } else {
 
@@ -108,7 +111,7 @@ public class ModifyEventFragment extends WriteEventBaseFragment {
                                     case 1:
                                         if (eventDate != null) {
 
-                                            firstRecorderView.setDefaultValues(eventDate, true);
+                                            firstRecorderView.fillEventDateBlock(eventDate, true, eventDates.length > 2);
 
                                             secondRecorderView.setVisibility(View.GONE);
                                         }
@@ -121,7 +124,7 @@ public class ModifyEventFragment extends WriteEventBaseFragment {
 
                                             firstRecorderView.putOnSwitch(true);
                                             secondRecorderView.setVisibility(View.VISIBLE);
-                                            secondRecorderView.setDefaultValues(eventDate, false);
+                                            secondRecorderView.fillEventDateBlock(eventDate, false, false);
                                         }
 
                                         break;
@@ -143,7 +146,7 @@ public class ModifyEventFragment extends WriteEventBaseFragment {
 
                         this.eventDates.add(startEventDate);
 
-                        firstRecorderView.setDefaultValues(eventDates.get(0), true);
+                        firstRecorderView.fillEventDateBlock(eventDates.get(0), true, false);
 
                     }
 
@@ -303,16 +306,10 @@ public class ModifyEventFragment extends WriteEventBaseFragment {
                 || sliceTime.contains("AD")) {
 
             String[] yearBCADArray = sliceTime.trim().split(" ");
-            String mBCAD = null;
             String mYear = null;
 
             if (yearBCADArray == null || yearBCADArray.length == 0) return null;
 
-            if (TextUtils.isEmpty(yearBCADArray[1])) {
-
-                mBCAD = yearBCADArray[1];
-
-            }
 
             if (!TextUtils.isEmpty(yearBCADArray[0])
                     && yearBCADArray[0].matches("[-+]?\\d*\\.?\\d+")) {
@@ -321,7 +318,7 @@ public class ModifyEventFragment extends WriteEventBaseFragment {
 
             }
 
-            return new EventDate(mBCAD, mYear, null, null);
+            return new EventDate(yearBCADArray[1], mYear, null, null);
 
         }
 
