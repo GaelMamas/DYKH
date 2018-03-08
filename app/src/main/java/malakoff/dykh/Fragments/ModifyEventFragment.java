@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -50,110 +51,46 @@ public class ModifyEventFragment extends WriteEventBaseFragment {
         }
 
         if (currentEvent != null) {
+
             titleEditText.setText(currentEvent.getTitle());
+            isTitleOK = !TextUtils.isEmpty(currentEvent.getTitle());
+
+
             List<String> themes = Arrays.asList(getResources().getStringArray(R.array.event_themes));
             if (themes.contains(currentEvent.getTheme())) {
                 themeSpinner.setSelection(themes.indexOf(currentEvent.getTheme()));
+                isThemeOK = true;
             }
 
             storyEditText.setText(currentEvent.getStory());
+            isStoryOK = !TextUtils.isEmpty(currentEvent.getStory());
 
             List<String> todayLocations = UsefulGenericMethods.getWorldCountriesList();
 
-            if (todayLocations.contains(!TextUtils.isEmpty(currentEvent.getLocationModernCalling()) ?
-                    currentEvent.getLocationModernCalling() : currentEvent.getLocation())) {
+            if (!TextUtils.isEmpty(currentEvent.getLocationModernCalling())
+                    && todayLocations.contains(currentEvent.getLocationModernCalling())) {
                 try {
-                    todayLocationSpinner.setSelection(themes.indexOf(currentEvent.getLocationModernCalling()));
+                    todayLocationSpinner.setSelection(todayLocations.indexOf(currentEvent.getLocationModernCalling()));
+                    isTodayLocationOK = true;
                 } catch (IndexOutOfBoundsException e) {
                     Log.d(ModifyEventFragment.class.getSimpleName(), e.getLocalizedMessage());
                 }
+            } else {
+                todayLocationSpinner.resetPlaceHolderText();
             }
+
+
             historicLocationEditText.setText(currentEvent.getLocation());
+            isHistoricLocationOK = !TextUtils.isEmpty(currentEvent.getLocation());
 
             //currentEvent.setSliceTime("1899 AD,1899-12-31-AD");
-            currentEvent.setSliceTime("2018 AD,2018-03-25-AD");
+            //currentEvent.setSliceTime("2018 AD,2018-03-25-AD");
             //currentEvent.setSliceTime("2015 AD,2015-10-19-AD,2018-01-24-AD");
-            //currentEvent.setSliceTime("1899 AD,1899-12-30-AD,1899-12-31-AD");
+            //currentEvent.setSliceTime("1899 AD,1899-12-30-AD,1901-12-31-AD");
             //currentEvent.setSliceTime("1899 AD");
 
-            if (!TextUtils.isEmpty(currentEvent.getSliceTime())) {
 
-                EventDate startEventDate;
-
-                if (currentEvent.getSliceTime().contains(",")) {
-
-                    String[] eventDates = currentEvent.getSliceTime().split(",");
-
-                    if (eventDates == null || eventDates.length == 0) return;
-
-
-                    if (!TextUtils.isEmpty(eventDates[0]) && eventDates.length == 1) {
-
-                        startEventDate = retrieveYearAndBCAD(currentEvent.getSliceTime());
-
-                        if (startEventDate != null) {
-
-                            this.eventDates.add(startEventDate);
-
-                        }
-
-                        firstRecorderView.fillEventDateBlock(this.eventDates.get(0), true, false);
-
-                    } else {
-
-                        for (int i = 1; i < eventDates.length; i++) {
-
-                            if (!TextUtils.isEmpty(eventDates[i])) {
-
-                                EventDate eventDate = retrieveEventDate(eventDates[i]);
-
-                                switch (i) {
-                                    case 1:
-                                        if (eventDate != null) {
-
-                                            firstRecorderView.fillEventDateBlock(eventDate, true, eventDates.length > 2);
-
-                                            secondRecorderView.setVisibility(View.GONE);
-                                        }
-
-                                        break;
-
-                                    case 2:
-
-                                        if (eventDate != null) {
-
-                                            firstRecorderView.putOnSwitch(true);
-                                            secondRecorderView.setVisibility(View.VISIBLE);
-                                            secondRecorderView.fillEventDateBlock(eventDate, false, false);
-                                        }
-
-                                        break;
-                                }
-
-                            }
-
-                        }
-
-
-                    }
-
-
-                } else {
-
-                    startEventDate = retrieveYearAndBCAD(currentEvent.getSliceTime());
-
-                    if (startEventDate != null) {
-
-                        this.eventDates.add(startEventDate);
-
-                        firstRecorderView.fillEventDateBlock(eventDates.get(0), true, false);
-
-                    }
-
-
-                }
-
-            }
+            playBackEventDateInputs(currentEvent.getSliceTime());
 
 
             publishButton.setText(R.string.event_modify_apply_button);
@@ -283,6 +220,85 @@ public class ModifyEventFragment extends WriteEventBaseFragment {
         }
     }
 
+    private void playBackEventDateInputs(String sliceTime) {
+
+        if (!TextUtils.isEmpty(sliceTime)) {
+
+            EventDate startEventDate;
+
+            if (sliceTime.contains(",")) {
+
+                String[] eventDates = sliceTime.split(",");
+
+                if (eventDates == null || eventDates.length == 0) return;
+
+
+                if (!TextUtils.isEmpty(eventDates[0]) && eventDates.length == 1) {
+
+                    startEventDate = retrieveYearAndBCAD(sliceTime);
+
+                    if (startEventDate != null) {
+
+                        secondRecorderView.setVisibility(View.GONE);
+                        firstRecorderView.fillEventDateBlock(startEventDate, true, false);
+                    }
+
+
+                } else {
+
+                    for (int i = 1; i < eventDates.length; i++) {
+
+                        if (!TextUtils.isEmpty(eventDates[i])) {
+
+                            EventDate eventDate = retrieveEventDate(eventDates[i]);
+
+                            switch (i) {
+                                case 1:
+                                    if (eventDate != null) {
+
+                                        secondRecorderView.setVisibility(View.GONE);
+                                        firstRecorderView.fillEventDateBlock(eventDate, true, eventDates.length > 2);
+
+                                    }
+
+                                    break;
+
+                                case 2:
+
+                                    if (eventDate != null) {
+
+                                        secondRecorderView.setVisibility(View.VISIBLE);
+                                        secondRecorderView.fillEventDateBlock(eventDate, false, false);
+                                    }
+
+                                    break;
+                            }
+
+                        }
+
+                    }
+
+                }
+
+
+            } else {
+
+                startEventDate = retrieveYearAndBCAD(sliceTime);
+
+                if (startEventDate != null) {
+
+                    secondRecorderView.setVisibility(View.GONE);
+                    firstRecorderView.fillEventDateBlock(startEventDate, true, false);
+
+                }
+
+
+            }
+
+        }
+
+    }
+
 
     private EventDate retrieveEventDate(String eventDateFormat) {
 
@@ -337,28 +353,28 @@ public class ModifyEventFragment extends WriteEventBaseFragment {
                         story = storyEditText.getText().toString();
 
 
-                if (!isTitleOK) {
-                    titleEditText.setError("Need to be filled");
+                if (TextUtils.isEmpty(title)) {
+                    titleEditText.setError(getString(R.string.dykh_create_event_form_item_error));
                     onScrollToChild(titleEditText.getScrollX(), titleEditText.getScrollY());
 
-                } else if (!isThemeOK) {
+                } else if (themeSpinner.getSelectedIndex() < 0) {
 
-                    themeSpinner.setError("Need to be filled");
+                    themeSpinner.setError(getString(R.string.dykh_create_event_form_item_error));
                     onScrollToChild(themeSpinner.getScrollX(), themeSpinner.getScrollY());
 
-                } else if (!isStoryOK) {
+                } else if (TextUtils.isEmpty(story)) {
 
-                    storyEditText.setError("Need to be filled");
+                    storyEditText.setError(getString(R.string.dykh_create_event_form_item_error));
                     onScrollToChild(storyEditText.getScrollX(), storyEditText.getScrollY());
 
-                } else if (!isTodayLocationOK) {
+                } else if (todayLocationSpinner.getSelectedIndex() < 0) {
 
-                    todayLocationSpinner.setError("Need to be filled");
+                    todayLocationSpinner.setError(getString(R.string.dykh_create_event_form_item_error));
                     onScrollToChild(todayLocationSpinner.getScrollX(), todayLocationSpinner.getScrollY());
 
-                } else if (!isHistoricLocationOK) {
+                } else if (TextUtils.isEmpty(historicLocation)) {
 
-                    historicLocationEditText.setError("Need to be filled");
+                    historicLocationEditText.setError(getString(R.string.dykh_create_event_form_item_error));
                     onScrollToChild(historicLocationEditText.getScrollX(),
                             historicLocationEditText.getScrollY());
 
@@ -367,22 +383,42 @@ public class ModifyEventFragment extends WriteEventBaseFragment {
                     if (secondRecorderView.getVisibility() == View.VISIBLE) {
 
                         firstRecorderView.getHeaderTitleTextView().setError(null);
-                        secondRecorderView.getHeaderTitleTextView().setError("Need to be filled");
+                        secondRecorderView.getHeaderTitleTextView().setError(getString(R.string.dykh_create_event_form_item_error));
 
                     } else {
 
-                        firstRecorderView.getHeaderTitleTextView().setError("Need to be filled");
+                        firstRecorderView.getHeaderTitleTextView().setError(getString(R.string.dykh_create_event_form_item_error));
 
                         onScrollToChild(firstRecorderView.getHeaderTitleTextView().getScrollX(),
                                 firstRecorderView.getHeaderTitleTextView().getScrollY());
 
                     }
 
-                } else if (resetInputsListener.canProcess()) {
+                } else if (!view.isSelected()) {
+
+                    Toast.makeText(getContext(), R.string.dyky_modifying_msg_error, Toast.LENGTH_SHORT).show();
+
+                } else if (resetInputsListener.canProcess() && view.isSelected()) {
+
+
+                    String readyToPush = "EventId: " + currentEvent.getEventId() + " \nDate " + makeUpEventDateFormat() + " \n Historic Loc " +
+                            historicLocation + " \n Today Loc " +
+                            selectedTodayLocation + " \n UserId " +
+                            AppApplication.getUserInfo().getUserId() + " \n Title " +
+                            title + " \nStory " +
+                            story + " \nTheme " +
+                            selectedTheme;
+
+                    Toast.makeText(getContext(), readyToPush,
+                            Toast.LENGTH_LONG).show();
+
+                    Log.i(this.getClass().getSimpleName(), readyToPush);
+
 
                     try {
 
                         mEventUpdatingProgressBar.setVisibility(View.VISIBLE);
+
 
                         runANewRequest(RequestsFactory.putAnEvent(getContext(), UsefulGenericMethods.getEventJSONObject(
                                 new Event(

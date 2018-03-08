@@ -16,6 +16,7 @@ import org.json.JSONObject;
 
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 import java.util.Locale;
 import java.util.Random;
@@ -185,5 +186,24 @@ public class UsefulGenericMethods {
 
         return !TextUtils.isEmpty(number) && number.matches("[-+]?\\d*\\.?\\d+");
 
+    }
+
+    public static boolean isTheDateReasonable(int year, int monthOfYear, int dayOfMonth){
+
+        if(year > Calendar.getInstance().get(Calendar.YEAR)) return false;
+
+        if(year == Calendar.getInstance().get(Calendar.YEAR)){
+
+            if(monthOfYear > Calendar.getInstance().get(Calendar.MONTH)) return false;
+
+            if(monthOfYear == Calendar.getInstance().get(Calendar.MONTH)){
+
+                return dayOfMonth > Calendar.getInstance().get(Calendar.DAY_OF_MONTH);
+
+            }
+
+        }
+
+        return true;
     }
 }

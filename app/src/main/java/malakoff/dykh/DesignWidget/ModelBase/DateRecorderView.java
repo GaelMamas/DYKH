@@ -381,7 +381,7 @@ public class DateRecorderView extends CardView implements AdapterView.OnItemSele
                 datePicker.setVisibility(View.VISIBLE);
 
 
-                setEventDatePicker(year, monthOfYear, dayOfMonth);
+                setEventDatePicker(year, monthOfYear, dayOfMonth, true);
 
 
             } else if (year < 1900) {
@@ -411,7 +411,8 @@ public class DateRecorderView extends CardView implements AdapterView.OnItemSele
 
     }
 
-    private void setEventDatePicker(int year, int monthOfYear, int dayOfMonth) {
+
+    private void setEventDatePicker(int year, int monthOfYear, int dayOfMonth, boolean isForSavingPurpose) {
 
         int reasonableYear = Math.min(year, Calendar.getInstance().get(Calendar.YEAR));
 
@@ -422,7 +423,9 @@ public class DateRecorderView extends CardView implements AdapterView.OnItemSele
                 dayOfMonth : reasonableMonthOfYear < Calendar.getInstance().get(Calendar.MONTH) ?
                 dayOfMonth : Math.min(dayOfMonth, Calendar.getInstance().get(Calendar.DAY_OF_MONTH));
 
-        recordThisDate(reasonableYear, reasonableMonthOfYear, reasonableDayOfMonth);
+        if (isForSavingPurpose) {
+            recordThisDate(reasonableYear, reasonableMonthOfYear, reasonableDayOfMonth);
+        }
 
 
         datePicker.init(reasonableYear, reasonableMonthOfYear, reasonableDayOfMonth == 0 ? 1 : reasonableDayOfMonth, new DatePicker.OnDateChangedListener() {
@@ -430,9 +433,7 @@ public class DateRecorderView extends CardView implements AdapterView.OnItemSele
             public void onDateChanged(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
 
 
-                if ((year < Calendar.getInstance().get(Calendar.YEAR)) ||
-                        (monthOfYear <= Calendar.getInstance().get(Calendar.MONTH)
-                                && dayOfMonth <= Calendar.getInstance().get(Calendar.DAY_OF_MONTH))) {
+                if (UsefulGenericMethods.isTheDateReasonable(year, monthOfYear, dayOfMonth)) {
 
                     recordThisDate(year, monthOfYear, dayOfMonth);
 
@@ -567,13 +568,6 @@ public class DateRecorderView extends CardView implements AdapterView.OnItemSele
 
         switchLayout.setVisibility(doesSwitchHaveToAppear ? VISIBLE : GONE);
 
-
-    }
-
-    public void putOnSwitch(boolean yes) {
-
-        switchCompat.setChecked(yes);
-        switchLayout.setVisibility(yes ? VISIBLE : GONE);
 
     }
 
@@ -718,7 +712,7 @@ public class DateRecorderView extends CardView implements AdapterView.OnItemSele
                             TextUtils.isEmpty(source.getMonth()) ? 0 :
                                     Integer.parseInt(source.getMonth().matches("[-+]?\\d*\\.?\\d+") ? source.getMonth() : "0"),
                             TextUtils.isEmpty(source.getDay()) ? 0 :
-                                    Integer.parseInt(source.getDay().matches("[-+]?\\d*\\.?\\d+") ? source.getDay() : "0"));
+                                    Integer.parseInt(source.getDay().matches("[-+]?\\d*\\.?\\d+") ? source.getDay() : "0"), false);
 
                 } else {
 
@@ -728,19 +722,20 @@ public class DateRecorderView extends CardView implements AdapterView.OnItemSele
                     datePicker.setVisibility(GONE);
 
 
-                    yearEditText.setText(source.getYear());
+                    inputYear = source.getYear();
+                    yearEditText.setText(inputYear);
 
-                    monthIndex = monthSpinner.getSelectedIndex();
-
-                    daySpinner.setAdapter(new ArrayAdapter<>(getContext(),
-                            R.layout.cell_text_dark,
-                            setMonthDays()));
 
                     monthSpinner.setSelection(
                             (!TextUtils.isEmpty(source.getMonth())
                                     && source.getMonth().matches("[-+]?\\d*\\.?\\d+")) ?
                                     Integer.parseInt(source.getMonth()) : 0);
 
+                    monthIndex = monthSpinner.getSelectedIndex();
+
+                    daySpinner.setAdapter(new ArrayAdapter<>(getContext(),
+                            R.layout.cell_text_dark,
+                            setMonthDays()));
 
                     daySpinner.setSelection(
                             (!TextUtils.isEmpty(source.getDay())

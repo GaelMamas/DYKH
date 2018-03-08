@@ -52,6 +52,8 @@
     <string name="event_creation_in_futur_month_error">Month too ahead from the present</string>
     <string name="event_creation_in_futur_day_error">Day too ahead from the present</string>
     <string name="event_creation_has_ending_date">This event has an ending date</string>
+    <string name="dyky_modifying_msg_error">Please modify before applying</string>
+    <string name="dykh_create_event_form_item_error">Need to be filled</string>
     <string-array name="event_couple_dated_title">
         <item name="first">Beginning date</item>
         <item name="first">Ending date</item>

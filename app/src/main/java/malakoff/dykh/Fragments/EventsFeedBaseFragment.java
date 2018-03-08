@@ -216,7 +216,8 @@ public class EventsFeedBaseFragment extends RecyclerBaseFragment<Event>{
 
             for (Event event : mEventManager.getEvents())
             {
-                if (event != null && event.getTitle().toLowerCase(Locale.getDefault()).contains(charText))
+                if (event != null && event.getTitle() != null
+                        && event.getTitle().toLowerCase(Locale.getDefault()).contains(charText))
                 {
                     buffer.add(event);
                 }

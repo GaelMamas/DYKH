@@ -233,27 +233,27 @@ public class EventCreationFragment extends WriteEventBaseFragment {
 
 
                 if (!isTitleOK) {
-                    titleEditText.setError("Need to be filled");
+                    titleEditText.setError(getString(R.string.dykh_create_event_form_item_error));
                     onScrollToChild(titleEditText.getScrollX(), titleEditText.getScrollY());
 
                 } else if (!isThemeOK) {
 
-                    themeSpinner.setError("Need to be filled");
+                    themeSpinner.setError(getString(R.string.dykh_create_event_form_item_error));
                     onScrollToChild(themeSpinner.getScrollX(), themeSpinner.getScrollY());
 
                 } else if (!isStoryOK) {
 
-                    storyEditText.setError("Need to be filled");
+                    storyEditText.setError(getString(R.string.dykh_create_event_form_item_error));
                     onScrollToChild(storyEditText.getScrollX(), storyEditText.getScrollY());
 
                 } else if (!isTodayLocationOK) {
 
-                    todayLocationSpinner.setError("Need to be filled");
+                    todayLocationSpinner.setError(getString(R.string.dykh_create_event_form_item_error));
                     onScrollToChild(todayLocationSpinner.getScrollX(), todayLocationSpinner.getScrollY());
 
                 } else if (!isHistoricLocationOK) {
 
-                    historicLocationEditText.setError("Need to be filled");
+                    historicLocationEditText.setError(getString(R.string.dykh_create_event_form_item_error));
                     onScrollToChild(historicLocationEditText.getScrollX(),
                             historicLocationEditText.getScrollY());
 
@@ -262,11 +262,11 @@ public class EventCreationFragment extends WriteEventBaseFragment {
                     if (secondRecorderView.getVisibility() == View.VISIBLE) {
 
                         firstRecorderView.getHeaderTitleTextView().setError(null);
-                        secondRecorderView.getHeaderTitleTextView().setError("Need to be filled");
+                        secondRecorderView.getHeaderTitleTextView().setError(getString(R.string.dykh_create_event_form_item_error));
 
                     } else {
 
-                        firstRecorderView.getHeaderTitleTextView().setError("Need to be filled");
+                        firstRecorderView.getHeaderTitleTextView().setError(getString(R.string.dykh_create_event_form_item_error));
 
                         onScrollToChild(firstRecorderView.getHeaderTitleTextView().getScrollX(),
                                 firstRecorderView.getHeaderTitleTextView().getScrollY());
@@ -290,11 +290,10 @@ public class EventCreationFragment extends WriteEventBaseFragment {
 
                     Log.i(this.getClass().getSimpleName(), readyToPush);
 
-/*
 
                     runANewRequest(RequestsFactory.postAnEvent(getContext(), getView(), new Event(
                             "",
-                             makeUpEventDateFormat(),
+                            makeUpEventDateFormat(),
                             historicLocation,
                             selectedTodayLocation,
                             AppApplication.getUserInfo().getUserId(),
@@ -303,7 +302,7 @@ public class EventCreationFragment extends WriteEventBaseFragment {
                             selectedTheme
                     ), resetInputsListener));
 
-                    */
+
                 }
                 break;
         }
